@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<html>
+<body>
+<form action = "/parse" method = "post">{% csrf_token %}
+<h2>Update Information</h2>
+Roll_no:<input type="text" id = "1" name="country" value="student.roll_no"><br>
+Username:<input type="text" id = "2" name="country" value="student.username"><br>
+Email:<input type="text" id = "3" name="country" value="student.email"><br>
+<br>
+<br>
+<button type = "submit" id = "btn" value = "Submit"></button>
+</body>
+</html>
+
+
+{% endblock %}

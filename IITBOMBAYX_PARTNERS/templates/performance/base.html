@@ -1,0 +1,282 @@
+{% load staticfiles %}
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+  <script type="text/javascript" src="{% static 'js/a' %}"></script>
+
+  <link rel="icon" type="image/x-icon" href="https://iitbombayx.in/static/themes/iitbombayx-theme/images/favicon.22b053d5ddae.ico">
+    <link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static 'js/lms-main_vendor.js' %}"charset="utf-8"></script>
+
+
+
+
+</head>
+<body class="ltr  lang_en">
+
+
+
+<div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#content">Skip to this view's content</a>
+	<header class="global " aria-label="Global Navigation">
+    <nav>	<ol class="left nav-global" style="font-size:18">
+      
+      
+<!-- Bharat MOOCs 8th Sept 2014 -->
+<!-- Bharat MOOCs 20th Oct 2014 changed href from swayam_courses to all_courses -->
+
+            <a class="cta cta-register" href="/"  >Coordinator Dasboard</a>&nbsp; &nbsp; &nbsp;
+          <!--<li class="nav-global-04">-->
+            <a class="cta cta-register" href="/iselect" >Instructor Dasboard </a>&nbsp; &nbsp; &nbsp;
+         
+          <!--<li class="nav-global-04">--->
+            <a class="cta cta-register" href="/internsdisplay"  >Student Performance </a>&nbsp; &nbsp; &nbsp;
+
+        
+	<!-- %endif -->
+
+    </ol>
+   <ol class="right nav-courseware">
+
+
+    <li class="nav-courseware-01">
+          <a class="cta cta-login"href="/login" accesskey="1" target="ifram">Log in</a>
+    </li>
+    </ol>
+
+    </nav>
+    </header>
+
+<div class="content-wrapper" id="content">
+
+<style>
+
+header.global h1.logo{
+display:none;
+}
+
+.home>header{
+width:1180px;
+min-width:1180px;
+height:308px;
+margin:auto;
+}
+
+header.global{
+position:fixed;
+top:0px;
+}
+
+.home > header{
+margin-top:26px;
+}
+
+.home > .container, .home > section.outside-app{
+background:#E4E4E4;
+box-shadow: 0px 8px 8px -8px rgba(0, 0, 0, 0.1) inset, 0px -8px 8px -8px rgba(0, 0, 0, 0.1) inset;
+width:1180px; /* Swayam - For mobile device, added by NA*/
+margin:auto;
+}
+
+.wrapper-footer
+{
+width:100% !important;
+min-width:1160px !important;
+}
+</style>
+
+<section class="home">
+
+
+
+
+    <header>
+
+ <style>
+        .text p{
+        margin:0px;                
+        margin-bottom:5px;
+        font-family:'Open Sans';                     
+        font-size:26px;
+        line-height:1.5em;
+        font-weight:400;
+	color:#FFF;
+	margin-bottom:-10px;
+}
+
+.highlighted-courses .courses .course header.course-preview hgroup, .find-courses .courses .course header.course-preview hgroup {
+top:5px;
+}
+   </style>
+        
+        <div style="width:auto; margin:0px; padding-top:0px;">
+                <div style="width:1180px; margin:auto; margin-top:0px;height:400px; overflow:hidden;">
+                        <div class="text" style=" position:relative; ;">
+                          <div class="text" style=" position:relative; top:175px; left:125px;">
+                            <p><strong>Management Information System </strong></p>
+                       
+                    </div>
+                           <img src="{% static 'images/iitbx.png' %}" alt="" class="image image-full" />
+                           
+                    </div>
+                 </div>
+                 </div>
+
+  
+	</header>
+
+<div style="width=100%; margin:0px; margin-top:20px; padding:0px;">
+	<div style="width:1180px; margin:auto;">
+		<div style="padding-top:0px;padding-bottom:0px; margin-top:-5px;"> 
+			<h2 style="font-family: 'Open Sans',Verdana,Geneva,sans-serif,sans-serif;text-align:center;font-size:26px;font-weight:300; color:#EC5A1A; text-transform:none;margin-bottom:0px; letter-spacing:0em;"></h2>
+			<p style="color:#FFF; font-size:22px; height:12px; margin:0px; padding:0px; valign:top;" align="center">▼</p>
+			<div id="banner" class="container" style="padding:10px" align="center" style="width:100%; height :100%;" >
+
+
+{% block body_block %}{% endblock %}
+
+</div>		
+</div>
+
+	</div>
+</div>
+
+
+</div>
+
+
+<style>
+.wrapper-footer{
+padding-top:16px;
+
+}
+
+.wrapper-footer footer .references{
+margin-top:0px;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a {
+        border-bottom:none !important;
+	color:#3D3E3F;
+}
+
+
+
+.wrapper-footer footer{
+width:960px;
+margin:auto;
+}
+
+</style>
+
+<div class="wrapper wrapper-footer" style="width:auto;">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon" style="margin-bottom:20px;">
+      <ol>
+          <li class="nav-colophon-01">
+          <a id="about" href="https://iitbombayx.in/about">
+              About
+          </a>
+          </li>
+	  <!-- Bharat MOOCs -->
+          <li class="nav-colophon-02" style="color:#565656;">
+          <a id="news" href="http://news.iitbombayx.in/" target="_blank">
+              News
+          </a>
+          </li>
+          <li class="nav-colophon-03" style="color:#565656;">
+          <a id="blog" href="http://blogs.iitbombayx.in/" target="_blank">
+              Blog
+          </a>
+          </li>
+          <li class="nav-colophon-04" style="color:#565656;">
+          <a id="faq" href="https://iitbombayx.in/faq">
+              FAQ
+          </a>
+          </li>
+          <li class="nav-colophon-05" style="color:#565656;">
+          <a id="contact" href="https://iitbombayx.in/contact">
+              Contact Us
+          </a>
+          </li>
+      </ol>
+      </nav>
+
+      <div class="colophon-about">
+<!-- Bharat MOOCs-->
+        <img src="{% static 'images/swayamlogo_footer.png' %}" style="width:auto; height:auto;" alt="IITBombayX Logo">
+
+        <p style="text-align:justify; color:#565656;">IITBombayX offers 
+interactive online classes and MOOCs. Subjects from multiple disciplines
+ are presently offered, as can be seen in the list of courses. This list
+ will expand later. IITBombayX is a non-profit online platform created 
+with funding from National Mission on Education through Information and 
+Communication Technology (NME-ICT), Ministry of Human Resource 
+Development (MHRD), Government of India (GoI).</p> 
+      </div>
+    </div>
+
+    <div class="references">
+      <nav class="nav-social">
+        <ul>
+          <li class="nav-social-02">
+            <a href="https://www.facebook.com/iitbombayx" target="_blank" rel="external">
+              <img src="{% static 'images/ico-social-facebook.png' %}" alt="edX on Facebook">
+            </a>
+          </li>
+          <li class="nav-social-03">
+            <a href="https://twitter.com/iitbombayx" target="_blank" rel="external">
+              <img src="{% static 'images/ico-social-twitter.png' %}" alt="edX on Twitter">
+            </a>
+          </li>
+          <li class="nav-social-04">
+            <a href="https://plus.google.com/u/0/113536343441190768869" target="_blank" rel="external">
+              <img src="{% static 'images/ico-social-google.png' %}" alt="edX on Google+">
+            </a>
+          </li>
+          <!--li class="nav-social-05">
+            <a href="#"  target="_blank" rel="external">
+              <img src="/static/images/social/ico-social-youtube.909f05910c79.png" alt="edX on YouTube" />
+            </a>
+          </li-->
+        </ul>
+      </nav>
+
+      <!--p class="copyright" style="text-align:right; color:#050505; margin-bottom:11px;">&copy; 2014 IITBombayX, except where noted, all rights reserved</p-->
+
+      <nav class="nav-legal">
+        <ul style="display:block;float:right;text-align:right;">
+          <li class="nav-legal-01" style="display:block;">
+		<style>.wrapper-footer footer .references .nav-legal .nav-legal-01 a:after {content:none;}</style>
+            <a style="display: inline-block;" href="https://iitbombayx.in/tos" target="_blank">Terms of Service and Honour Code</a>
+          </li>
+          <li class="nav-legal-02" style="display:block;">
+            <a style="display: inline-block;" target="_blank" href="https://iitbombayx.in/privacy">Privacy Policy</a>
+          </li>
+          <li class="nav-legal-03" style="display:block; float:right;">	
+		 <style>.wrapper-footer footer .references .nav-legal .nav-legal-03 a:hover{border-bottom:0px;}</style> 
+            <a style="display: inline-block; " href="http://openedx.org/" target="_blank"><img src="{% static 'images/edx-openedx-logo-tag.png' %}" style="padding-top:2.5em; float:right; width:150px; height:50px;" alt="Powered by Open edX"></a>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+</div>
+
+
+</body>
+</html>

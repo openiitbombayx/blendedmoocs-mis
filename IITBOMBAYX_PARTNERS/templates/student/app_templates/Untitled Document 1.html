@@ -1,0 +1,37 @@
+
+<html>
+<body>
+<table>
+<tr><td>Courses:</td>
+	<td>
+	<select>
+		<option value = "none">none</option>
+		{% for course in course_list %}
+			<option value = "{{course.course_id}}">{{course.course_id}}</option>
+		{% endfor %}
+	</select>
+	
+	</td>
+<td><input type= "submit" value = "show teacher" /></td></tr>
+</table>
+</body>
+</html>
+
+
+
+/*{% if courses_list %}
+   <ul>
+   <div id = "courseRadio">
+   {% for course in courses_list %}
+     
+    <input type="radio" name="course" value="male">{{course.course_id}}
+    <br>
+    
+   {% endfor %}
+   </div>
+  </ul>
+{% else %}
+  <p> No courses for your institute.</p>
+{% endif %}
+
+

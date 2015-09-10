@@ -1,0 +1,27 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+
+<html>
+<body>
+{% block header %}
+<h2>{{coursename}}({{institutename}})</h2>
+{% endblock %}
+{% block body_block %}
+<header>
+<h2>Welcome to the Course Coordinator Home<h2>{% csrf_token %}
+</header>
+<ul style="list-style-type:disc">
+<!--<h2><a href = "">Your course</a></h2></li>-->
+{% for course in courses %}
+<li><h3><a href = "/teacherlist/{{course.courseid.courseid}}/">View Course Team</a></h3></li>
+{% endfor %}
+<br>
+<li><h3><a href = "/substituteteacher/">Substitute Teacher</a></h3></li>
+<br>
+<li><h3><a href = "/massunenrollment/">Mass Unenrollment</a></h3></li>
+</ul>
+</body>
+</html>
+{% endblock %} 
+
+

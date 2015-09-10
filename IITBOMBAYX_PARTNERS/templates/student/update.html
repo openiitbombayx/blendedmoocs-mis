@@ -1,0 +1,45 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header><h2>Update Student Information -<font color=#F7691F> {{course}}</font></h2></header>
+
+
+{% endblock %}
+{% block body_block %}
+
+<form action = "/updatestudentinformation/{{pid}}/{{courseid}}/{{t_id}}/" method="POST">{% csrf_token %}
+<!--
+<table border = "1">
+<tr>
+<td>Username</td><td><input id="myInput" type="text" name="username" value={{info.userid.username}} readonly></td></tr>
+<tr>
+<td>Email-Id</td><td><input id="myInput" type="text" name="email" value={{info.userid.email}} readonly></td></tr>
+<tr>
+<td>Roll_No</td><td><input id="myInput" type="text" name="roll_no" value={{info.roll_no}}></td></tr>
+</table>
+<br>
+<br>
+<br>
+<input id="edit2" type="submit" name = "submit" value="Save" />-->
+<label for = "myInput1" ><b>Student Username</b></label>
+<br><br>
+<input id="myInput1" type="text" name="username" size = "50" value={{info.edxuserid.username}}  readonly>
+<br>
+<br>
+<label for = "myInput2" ><b>Student Email-Id</b></label>
+<br>
+<br>
+<input id="myInput2" type="text" name="email" size = "50" value={{info.edxuserid.email}}  readonly>
+<br>
+<br>
+<label for = "myInput3" ><b>Enter New Roll Number</b></label>
+<br>
+<br>
+<input id="myInput3" type="text" name="roll_no" size = "50" value={{info.roll_no}}>
+<br>
+<br>
+
+<input id="edit2" type="submit" name = "submit" value="Submit" />
+
+
+</form>
+{% endblock %}

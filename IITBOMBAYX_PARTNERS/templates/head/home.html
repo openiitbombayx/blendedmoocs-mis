@@ -1,0 +1,28 @@
+{% extends 'test.html' %}
+
+{% block heading %}
+
+<h2> HOI LOGIN SCREEN </h2>
+{% endblock %}
+
+{% block hyperlink %}
+<li class="nav-global-01">
+<a href = "{% url 'ccourses' viewer.id %}">Course Enrollment</a>
+<li>
+<li class="nav-global-01">
+<a href = "{% url 'team' viewer.id %}">Team Management</a>
+</li>
+{% endblock %}
+
+
+{% block name %}{{viewer.firstname}} {{viewer.lastname}}
+{% endblock %}
+
+{% block email %}{{viewer.email}}
+{% endblock %}
+
+{% block body_block %}
+
+Welcome to the HOI Home Screen
+
+{% endblock %}

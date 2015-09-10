@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% block body_block %}
+<html>
+<body> 
+ <table border = "1" style="width:100%">
+  <tr>
+    <th>Roll_No</th>
+    <th>Username</th>
+    <th>Email-Id</th>
+  </tr>
+  <tr align="center">
+    <td><input id="myInput"  type="text" name="Roll_no" value="100" ></td>
+    <td><input id="myInput1"  type="text" name="User_name" value="Mohsin" ></td>
+    <td><input id="myInput2"  type="text" name="Email_id" value="mohsin@gmail.com"></td>
+  </tr>
+  <tr align="center">
+    <td><input id="myInput"  type="text" name="Roll_no" value="101" ></td>
+    <td><input id="myInput1"  type="text" name="User_name" value="Jack" ></td>
+    <td><input id="myInput2"  type="text" name="Email_id" value="jack@gmail.com"></td>
+  </tr>
+</table>
+<br>
+<br>
+<br>
+<button onclick="location.href='/downloadcsv'" value = 'Downloadcsv'>Download</button>
+<button onclick="location.href='/deleteStudent'" value = 'Downloadcsv'>Delete</button>
+</body>
+</html>
+{% endblock %}

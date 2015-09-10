@@ -1,0 +1,69 @@
+{% extends 'pbase2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Students' Performance Report </font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+
+<br><br>
+
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{institutename}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+	<div  class ="col-md-4 " align="right">
+	<h4><a href = '/downloadgradecsv/{{courseid}}/{{pid}}/'>Download</a></h4>
+	</div>
+	<div class ="col-md-8">
+	<h4><b>Course:</b> {{course}}</h4>
+
+	</div>
+
+</div>
+</br>
+<div class="table-responsive">
+ <table id="example" class="table table-bordered" cellspacing="0" width="100%" >
+    <thead> 
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+ <tr align = "left" >
+  {% for i in heading %}
+ <td align="center"  >
+  <b> {{i}}</b>
+</td>
+
+ {% endfor %}
+</tr>
+   </thead>
+<tbody>
+  {% for i in grade_data %}
+  <tr align = "left">
+     {% for j in i %}  
+
+      
+      <td align=center >  {{j}}</td>
+
+      {% endfor %}
+</tr>
+ {% endfor %}
+</tbody>
+</table> </div>
+<br>
+<br>
+
+
+
+{% endblock %}

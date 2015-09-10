@@ -1,0 +1,339 @@
+{% extends 'pbase2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Teachers' Upload Report </font></h2></header>
+ <script>
+            $(document).ready(function(){
+                  //begin
+                  $('#Institute').on('change', function() {   // check for changes
+             $('#Course').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/institutecourses",
+           data:{id: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+ 
+                    var listItems= "<option value='nocourse'>" + "-- Select the Course -- " + "</option>";
+                    var teams =  result[1] ;
+                    var instiname='<label for="Institute" id="instiname">'+result[0]+'</label>';
+                    $("#instiname").html(instiname);
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Institute has not Enrolled for any Courses !!!");
+listItems += "<option value='nocourse'>" + " -- " + "</option>";
+               
+                     $("#Course").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#Course").html(listItems);
+                 }}
+
+            },
+        });
+
+
+                  });
+              //end
+
+//newbegin
+
+                  $('#Course').on('change', function() {   // check for changes
+             $('#Teacher').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/courseteachers",
+           data:{cid: $('#Course').val(),iid: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                    var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>"+"<option value='All Teachers'>All Teachers</option>"; 
+                        
+                    var teams =  result ;
+
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Teacher has not Enrolled for any Courses !!!");
+listItems += "<option value='noinstiute'>" + " -- " + "</option>";
+               
+                     $("#Teacher").html(listItems);
+
+                     }
+                    else{
+                        
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#Teacher").html(listItems);
+                 }}
+
+            },
+        });
+
+                  });
+
+//newend
+
+//newbegin
+/*
+                  $('#Teacher).on('change', function() {   // check for changes
+             $('#datatable').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/teacherstudent",
+           data:{cid: $('#Course').val(),iid: $('#Institute').val(),tid: $('#Teachers').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                    var listItems= ""; 
+                        
+                    var teams =  result ;
+
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Teacher has not Enrolled for any Courses !!!");
+listItems += "<option value='noinstiute'>" + " -- " + "</option>";
+               
+                     $("#Teacher").html(listItems);
+
+                     }
+                    else{
+                        
+                    for(var c=0; c<teams.length; c++){
+                       var collist=""  
+                       for(var j=0; j<c.length; j++){
+                       collist+= "<td value='" + teams[c][j]+ "'>" + teams[c][j]+ "</td";
+
+                     $("#Teacher").html( collist); }
+                 }}
+
+            },
+        });
+
+                  });
+*/
+//newend
+
+            })(this);
+         
+        </script>
+
+
+<!--begindownloadcsv-->
+ <!-- Scripts ----------------------------------------------------------- -->
+<script>
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        
+        var dateformated = new Date().toString().replace(/ /g,'');
+        
+        exportTableToCSV.apply(this, [$('#dvData>table'), 'teacherupload_'+dateformated+".csv"]);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+<!--enddownloadcsv-->
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+
+<div >
+<form action="/teacherstudent/" method="POST">
+{% csrf_token %}
+
+<div class ="row">
+<div class="col-xs-6 col-sm-3">
+<b>RCID</b>
+</div>
+<div class="col-xs-6 col-sm-3">
+<b>Course</b>
+</div>
+<div class="col-xs-6 col-sm-3">
+<b>Teacher</b>
+</div>
+<div class="col-xs-6 col-sm-3">
+</div>
+</div>
+</br>
+<div class ="row">
+<div class="col-xs-6 col-sm-3">
+
+<select id="Institute" name="Institute"  style="width:200px;">
+<option value=""  >-- Select the Institute -- </option>
+                {% for institute in approvinstitute %}
+      
+
+<option value="{{ institute.1 }}" >{{ institute.0 }}</option>
+
+	{% endfor %}
+
+              </select>
+
+</div>
+
+
+<div class="col-xs-6 col-sm-3">
+<select id="Course" name="Course" style="width:200px;">
+	<option value=""  >-- Select the Course --</option>
+                {% for c in courseenroll %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select></div>
+
+<div class="col-xs-6 col-sm-3">
+<select id="Teacher" name="Teacher" style="width:200px;">
+	<option value="">-- Select the Teacher --</option>
+           
+                {% for c in courseteacher %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select></div>
+
+
+
+
+
+<div class="col-xs-6 col-sm-3" >
+<input type="submit" value="Submit" >
+<input type="button" value="clear" onclick="location.href='/approvedinstitute/'">
+</div>
+</div>
+
+<div class ="row">
+<div class="col-xs-6 ">
+<label for="Institute" id="instiname">{{instiname}}</label>
+</div>
+</div>
+
+</form>  
+ </div>
+
+<br>
+<br>
+
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+
+<thead>
+<tr><th scope="row">
+	<h4><b>Institute:</b> </th><td>{{apinstitutename}}</h4></td></tr>
+ <tr>   
+	<th scope="row">
+	<h4><b>Teacher:</b></th><td> {{teacher}}</h4></td></tr>
+<tr>
+	
+	<th scope="row">
+	<h4><b>Course:</b> </th><td> {{course}}</h4></td>
+</tr>
+
+</table>
+</div>
+<div class="row">
+<a href="#" class="export">Download CSV</a>
+</div>
+</br>
+<div id="dvData" class="table-responsive">
+
+ <table id="datatable" class="table table-bordered" cellspacing="0" width="100%" >
+
+
+  {% for i in student %}
+  <tr align = "left" >
+  {% for j in i %}
+  {% ifequal forloop.parentloop.counter 1%}
+   
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+
+ <td align="left"  >
+  <b> {{j}}</b>
+</td>
+
+{% else %}
+
+      <td align=left>  {{j}}</td>
+
+     
+
+{% endifequal %}
+ {% endfor %}
+</tr>
+ {% endfor %}
+
+</table> </div>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+{% if flag %}
+<header>
+      <h2>Select Institute:</h2>
+    </header>
+<form action="/get_multi_roles/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<select name = "institute_id">
+  <option value = "default">-select-</option>
+  {% for row in l %}
+  
+  	<option value="{{row.0}}">{{row.1}}</option>
+	
+  {% endfor %}
+</select>
+<input type="submit" name="submit" value="submit">
+</form>                
+{% endif %}
+{% if not flag %}
+
+{% if rolelist %}
+<header>
+      <h2>Select Role:</h2>
+    </header>
+{% else %}
+<header>
+      <h2>
+<div class="row"><font color="red">{{norole}}</font></div>
+</h2>
+    </header>
+{% endif %}
+{% endif %}
+
+{% for i in rolelist %}
+	{% if not i.2 %} 
+     <h2> <a href="/set_role/{{i.1}}/0/0" class="cover">{{i.0}}</a></h2>
+	{% else %}
+	
+ <header>
+      <h2>  <a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}">{{i.0}}: {{i.2.coursename}}</a></h2>
+    </header>
+
+      <ul class="listing-courses">
+        
+			
+<li class="course-item">
+    <article class="course">
+    
+           
+        <a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}" class="cover">
+        <img src="{{ i.2.image }}" alt="Course Cover Image">
+      </a>
+
+    <section class="info">
+      <hgroup>
+       
+        <h3>
+            <a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}">{{i.2.courseid}}</a>
+        </h3>
+      </hgroup>
+<h3>
+<a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}" class="unenroll" >
+          {{i.0}}
+        </a></h3>
+<!--
+          <p align = "right">
+          <a href="/upload/2/" class="enter-course">Upload Students</a>&nbsp &nbsp &nbsp
+          &nbsp <a href="/parse/{{course}}" class="enter-course">Student Details</a>
+            
+         </p>-->
+             </section>
+</article>
+
+</li>
+		
+
+
+
+
+	{% endif %}
+<br>
+<br>
+{% endfor %}
+{% endblock %}
+{% block email %}{{email}}{% endblock %}
+

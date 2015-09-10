@@ -1,0 +1,75 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header><h2>Students' Information -<font color=#F7691F> {{course}}</font></h2></header>
+
+
+{% endblock %}
+{% block body_block %}
+
+<table width = "100%" >{% csrf_token %}
+<tr align = "right"><td align = "left">
+{% if role_id == 5 %}
+<!--<right><a href = '/addstudent/{{id}}/'>Add Student</a></right></td>-->
+{% endif %}
+<!--<td align = "left"><button onclick="location.href='/addstudent/{{id}}/'" value = 'AddStudent'>Add Student</button>-->
+</td>
+<td align = "right"><a href = '/downloadcsv1/{{courseid}}/{{id}}/'>Download</a></td></tr>
+
+</table>
+<br><br>
+ <table border = "1"width="100%">
+  <tr align = "left">
+    <th>S.No</th>
+    <th>Roll Number</th>
+    <th>UserName</th>
+    <th>Email</th>
+{% if role_id == 5 %}
+    <th>Select</th>
+    <th>Unenroll</th>
+{% endif %}
+    <!--<th>Select</th>-->
+  </tr>
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+  {% for student in info %}
+  <tr align = "left">
+   <td>{{forloop.counter}}</td>
+  {% for data in student %}
+  {% ifnotequal forloop.counter 1 %}
+    <td>{{data}}</td>
+  {% endifnotequal  %}
+
+   
+   
+  
+  {% endfor %}
+{% if role_id == 5 %}
+   <td><a href = "/updatestudentinformation/{{student.0}}/{{courseid}}/{{id}}/" >Edit </a></td>
+    <td><a href = "/unenroll/{{student.0}}/{{courseid}}/{{id}}/" onclick="return confirm('Are you sure you want to delete this item?');">unenroll</a></td> 
+{% endif %}
+    </tr>
+ {% endfor %}
+  <!-- <tr align = "center">
+    <td>101</td>
+    <td>Mohsin</td>
+    <td>mohsin@gmail.com</td>
+  </tr>-->
+</table> 
+<br>
+<br>
+<!--<input class="cta cta-login" style="background-color:#EC5A1A;height:50px;width:200px;color:#FFFFFF;" type=button onClick="location.href='/downloadcsv'" value=' Downloadcsv'>
+<button onclick="location.href='/downloadcsv1/{{course}}/'" value = 'Downloadcsv'>Download</button>
+<!--<button onclick = "download()" value = 'Downloadcsv'>Download</button>-->
+<header>
+<!--<a href='/addstudent/{{course}}/' align = "right">Add Student</a></header>-->
+<script>
+function download()
+{
+   alert("Your file is downloaded");
+   window.location = '/downloadcsv';
+};
+
+
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base2.html' %}
+{% block header %}
+<h2>{{coursename}}({{institutename}})</h2>
+{% endblock %}
+{% block body_block %}
+
+<html>
+<header><p><font size="4">* Enter the email-id of a teacher whose students you want to unenroll!!</font></p></header>
+<body>
+<br>
+{% if is_error %}{{ error}}!!<br><br>{% endif %}
+<form action = "/massunenrollment/" method="POST">{% csrf_token %}
+
+<label for = "myInput1" ><b>Enter Teacher Email</b></label>
+<br><br>
+<input id="myInput1" type="text" name="email" size = "50" value = "{{mail}}" required>
+<br>
+<br>
+
+<input id="edit2" type="submit" name = "submit" value="Submit" />
+
+
+</form>
+</body>
+</html>
+{% endblock %}

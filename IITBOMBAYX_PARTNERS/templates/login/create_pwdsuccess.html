@@ -1,0 +1,15 @@
+{% extends 'login/indexbase.html' %}
+{% load staticfiles  %}
+ {% block title %}Password Created Successfully{% endblock %}
+
+{% block header %}
+ <img src="{% static 'images/iitbxheader.png' %}"/>
+          <h1 class="title">
+      <span class="title-super">Password Created Successfully</span>
+      <span class="title-sub"></span>
+    </h1>
+{% endblock %}
+ {% block form %}
+     Your password has been set. You may go ahead and <a href="/">log in</a> now.
+
+{% endblock %}

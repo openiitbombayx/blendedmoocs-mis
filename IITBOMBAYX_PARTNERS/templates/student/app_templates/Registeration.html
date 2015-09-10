@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="ie ie7 lte9 lte8 lte7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!-->
+{% load staticfiles  %}
+<html lang="en"><!--<![endif]--><head dir="ltr">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+      <title>
+       Register for IITBombayX | IITBombayX
+      </title>
+  
+
+  <script type="text/javascript">
+    /* immediately break out of an iframe if coming from the marketing website */
+    (function(window) {
+      if (window.location !== window.top.location) {
+        window.top.location = window.location;
+      }
+    })(this);
+  </script>
+
+  <script type="text/javascript" src="Registeration_files/a"></script>
+
+  <link rel="icon" type="image/x-icon" href="https://www.iitbombayx.in/static/themes/iitbombayx-theme/images/favicon.22b053d5ddae.ico">
+
+  
+  
+
+    <link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
+
+
+
+
+    
+    <script type="text/javascript" src="{% static 'js/lms-main_vendor.js' %}" charset="utf-8"></script>
+
+
+
+  <script>
+    window.baseUrl = "/static/";
+    (function (require) {
+        var urlArgs = "v=14d3fa0";
+      require.config({
+          baseUrl: baseUrl,
+          urlArgs: urlArgs
+      });
+    }).call(this, require || RequireJS.require);
+  </script>
+  <script type="text/javascript" src="{% static 'js/require-config-lms.js' %}"></script>
+
+  
+
+
+  
+  
+
+    
+
+
+  <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.d5e37d8ee1a4.js"></script>
+  <![endif]-->
+
+  
+  <!-- dummy segment.io -->
+<script type="text/javascript">
+  var analytics = {
+    track: function() { return; },
+    pageview: function() { return; }
+  };
+</script>
+<!-- end dummy segment.io -->
+
+
+  <meta name="path_prefix" content="">
+  <meta name="google-site-verification" content="_mipQ4AtZQDNmbtOkwehQDOgCxUUV2fb_C0b6wbiRHY">
+
+  <script></script>
+
+
+
+</head>
+
+<body class="ltr view-register lang_en js">
+  <div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#content">Skip to this view's content</a>
+
+    
+<!--[if IE]>
+<div class="sr message-accessibility message" id="mathjax-accessibility-message" aria-hidden="true">
+	<p class="copy">This page features MathJax technology to render mathematical formulae. To make math accessibile, we suggest using the MathPlayer plugin. Please visit the <a href="//www.dessci.com/en/products/mathplayer/download.htm">MathPlayer Download Page</a> to download the plugin for your browser.</p>
+</div>
+<div class="sr message-accessibility message" id="mathplayer-browser-message" aria-hidden="true">
+	<p class="copy">
+	 Your browser does not support the MathPlayer plugin. To use MathPlayer, please use Internet Explorer 6 through 9.
+	 </p>
+</div>
+<![endif]-->
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 22nd Sept 2014 Swayam GUI -->
+
+<style>
+
+</style>
+
+ <header class="global " aria-label="Global Navigation">
+    <nav>
+    <h1 class="logo">
+      <a href="https://www.iitbombayx.in/">
+        
+  <img src="{% static 'images/swayamlogo_header.png' %} " alt="Home Page" height="50">
+
+      </a>
+    </h1>
+
+
+    <ol class="left nav-global">
+      
+      
+<!-- Bharat MOOCs 8th Sept 2014 -->
+<!-- Bharat MOOCs 20th Oct 2014 changed href from swayam_courses to all_courses -->
+<li class="nav-global-04">
+            <a class="cta cta-register" href="https://www.iitbombayx.in/how_it_works">How it works</a>
+          </li>
+          <li class="nav-global-04">
+            <a class="cta cta-register" href="https://www.iitbombayx.in/all_courses/all">Courses</a>
+          </li>
+          <li class="nav-global-04">
+            <a class="cta cta-register" href="https://www.iitbombayx.in/partners">Partners</a>
+          </li>
+
+          <li class="nav-global-04">
+            <a class="cta cta-register" href="https://www.iitbombayx.in/register">Register Now</a>
+          </li>
+		
+        <li class="nav-global-04">
+            <a href="#change_language" rel="leanModal" class="cta cta-register">Language</a>
+        </li>
+
+
+          <!--li class="nav-global-04">
+            <a class="cta cta-register" href="/about_swayam">About Swayam</a>
+          </li-->
+	<!--%if len(language_options) > 1: -->
+	<!-- %endif -->
+
+    </ol>
+
+    
+<ol class="right nav-courseware">
+
+<!-- Bharat MOOCs -->
+<!-- Bharat MOOCs -->
+      <!--  <li class="nav-courseware-02"> 
+                <a href="#change_language" rel="leanModal" class="edit-language" style="text-transform: uppercase; font-family: 'Open Sans'; font-weight: 600; font-size: 0.875em; text-decoration:none;">Language</a>
+        </li>-->
+
+
+    <li class="nav-courseware-01">
+          <a class="cta cta-login" href="https://www.iitbombayx.in/login">Log in</a>
+    </li>
+    </ol>
+  </nav>
+</header>
+
+<!--Bab Bharat MOOCs-->
+
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+
+(function() {
+
+
+$('.message.is-expandable .wrapper-tip').bind('click', toggleExpandMessage);
+
+$("#submit-lang").click(function(event, xhr) {
+
+event.preventDefault();
+
+$.post('/lang_pref/setlang/',
+
+{"language": $('#settings-language-value').val()})
+
+.done(
+
+function(data){
+
+// submit form as normal
+
+$('.settings-language-form').submit();
+
+}
+
+);
+
+});
+
+})(this);
+
+
+</script>
+
+
+
+  
+
+
+
+<section id="forgot-password-modal" class="modal" role="dialog" tabindex="-1" aria-label="Password Reset">
+  <div class="inner-wrapper">
+    <button class="close-modal">
+      <i class="icon-remove"></i> 
+      <span class="sr">
+        Close
+      </span>
+    </button>
+
+    <div id="password-reset">
+      <header>
+        <h2>Password Reset</h2>
+      </header>
+
+      <div class="instructions">
+        <p>Please enter your e-mail address below, and we will e-mail instructions for setting a new password.</p>
+      </div>
+
+      <form id="pwd_reset_form" action="/password_reset/" method="post" data-remote="true">
+        <fieldset class="group group-form group-form-requiredinformation">
+          <legend class="is-hidden">Required Information</legend>
+
+          <ol class="list-input">
+            <li class="field required text" id="forgot-password-modal-field-email">
+              <label for="pwd_reset_email">Your E-mail Address</label>
+              <input class="" id="pwd_reset_email" name="email" placeholder="example: username@domain.com" aria-describedby="pwd_reset_email-tip" aria-required="true" type="email">
+              <span class="tip tip-input" id="pwd_reset_email-tip">This is the e-mail address you used to register with IITBombayX</span>
+            </li>
+          </ol>
+        </fieldset>
+
+        <div class="form-actions">
+          <button name="submit" type="submit" id="pwd_reset_button" class="action action-primary action-update">Reset My Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  (function() {
+    $(document).delegate('#pwd_reset_form', 'ajax:success', function(data, json, xhr) {
+      if(json.success) {
+        $("#password-reset").html(json.value);
+      } else {
+        if($('#pwd_error').length == 0) {
+          $('#pwd_reset_form').prepend('<div id="pwd_error" class="modal-form-error">Email is incorrect.</div>');
+        }
+        $('#pwd_error').stop().css("display", "block");
+      }
+    });
+
+    // removing close link's default behavior
+    $('#login-modal .close-modal').click(function(e) {
+     e.preventDefault();
+    });
+
+    var onModalClose = function() {
+      $("#forgot-password-modal").attr("aria-hidden", "true");
+      $("#forgot-password-link").focus();
+    };
+    
+    var cycle_modal_tab = function(from_element_name, to_element_name) {
+      $(from_element_name).on('keydown', function(e) {
+          var keyCode = e.keyCode || e.which;
+          var TAB_KEY = 9;  // 9 corresponds to the tab key
+          if (keyCode === TAB_KEY) {
+              e.preventDefault();
+              $(to_element_name).focus();
+          }
+      });
+    };
+    $("#forgot-password-modal .close-modal").click(onModalClose);
+    cycle_modal_tab("#forgot-password-modal .close-modal", "#pwd_reset_email");
+    cycle_modal_tab("#pwd_reset_email", "#pwd_reset_button");
+    cycle_modal_tab("#pwd_reset_button", "#forgot-password-modal .close-modal");
+
+    // Hitting the ESC key will exit the modal
+    $("#forgot-password-modal").on("keydown", function(e) {
+        var keyCode = e.keyCode || e.which;
+        // 27 is the ESC key
+        if (keyCode === 27) {
+            e.preventDefault();
+            $("#forgot-password-modal .close-modal").click();
+        }
+    });
+
+  })(this)
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content-wrapper" id="content">
+      
+
+<!-- Bharat MOOCs 19th Sept 2014 LAnguage selection box added -->
+
+
+
+
+<!--
+#Bharat_Mooc
+#Details : Added language settings 
+-->
+<script type="text/javascript"> 
+
+ function myFunction()
+{
+    var valueSelected= String($('#settings-language-value').val());
+
+    String.prototype.in = function() {
+    for(var i=0; i<arguments.length; i++)
+       if(arguments[i] == this) return true;
+    return false;
+}
+   
+
+
+   if (!valueSelected.in('en','hi','as','mr'))
+      {
+      divTxt= ' Not fully supported !  Will be implemented soon '
+      document.getElementById('support').innerHTML = divTxt;
+      }
+   else
+     $('#support').empty();
+
+    
+};
+
+</script>
+<!--
+#Bharat_Mooc
+-->
+<section id="change_language" class="modal modal-settings-language" aria-hidden="true">
+  <div class="inner-wrapper" role="dialog" aria-labelledby="change_language_title">
+    <button class="close-modal">
+      <i class="icon-remove"></i>
+      <span class="sr">
+        Close
+      </span>
+    </button>
+
+    <header>
+      <h2>
+        <span id="change_language_title">Change Preferred Language</span>
+        <span class="sr">,
+          window open
+        </span>
+      </h2>
+      <hr>
+    </header>
+    <div id="change_language_body">
+      <form action="/i18n/setlang/" method="post" class="settings-language-form" id="settings-form">
+      <input name="csrfmiddlewaretoken" value="yqDU4I1dFK8IPiyEDqfRcwsqNGaWB7dr" type="hidden">
+        <ol class="list-input">
+          <li class="field text settings-language-select" id="settings-language-select">
+            <label class="label sr" for="settings-language-value">Please choose your preferred language</label>
+<!--Bharat_MOOC : Added  onchange="myFunction()-->
+            <select class="input select" id="settings-language-value" name="language" onchange="myFunction()">
+                    <option selected="selected" value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+            </select>
+          </li>
+        </ol>
+<!--Bharat_MOOC : Added div -->
+        <div id="support" style="color:#FF0000;"></div>
+
+        <div class="submit">
+          <input id="submit-lang" value="Save Language Settings" type="submit">
+        </div>
+      </form>
+
+<!--      <ul class="list list-actions actions-supplemental">
+        <li class="list-actions-item">
+        Don't see your preferred language? <a class=" action action-volunteer" rel="external" target="_blank" href=https://github.com/edx/edx-platform/blob/master/docs/en_us/developers/source/i18n_translators_guide.rst>Volunteer to become a translator!</a>
+        </li>
+      </ul>                -->
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<!--BharatMooc 
+#Date added: 18/08/2014
+#Author: MOOC Dev Team
+#Date modified : NA 
+#Modified by : NA 
+#Description : Added City,State,Pincode on registration page
+-->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Bharat MOOCs 23rd Sept 2014 Formatting -->
+<style>
+.view-register .wrapper-footer footer .colophon-about img, .view-login
+.wrapper-footer footer .colophon-about img {
+    margin-top: 0px;
+}
+
+.content-wrapper{
+padding-bottom:0px;
+background:#F7F7F7 !important;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+margin-top:76px;
+}
+
+header.global{
+position:fixed;
+top:0px;
+}
+
+.view-register .container{
+background:#FFF;
+}
+
+header.global .nav-global li a{
+color:#3D3E3F !important;
+}
+
+header.global .nav-global li a:hover{
+color:#F7691F !important;
+}
+
+.ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.ui-autocomplete {
+    background-color: rgba(236, 236, 236, 0.95);
+    width: 300px;
+    padding: 25px;
+    height: 100px;
+    border: 1px solid #222;
+    margin: 5px;
+    overflow: scroll;
+ }
+.ui-menu-item{
+list-style-type: none;
+}
+
+.ui-menu-item a {
+color: #222 !important;
+}
+
+</style>
+
+
+<section class="introduction">
+  <header>
+    <h1 class="title">
+      <span class="title-super">Welcome to IITBombayX!</span>
+      <span class="title-sub">Register below to create your IITBombayX account</span>
+    </h1>
+  </header>
+</section>
+
+<section class="register container">
+  <section role="main" class="content">
+    <form role="form" id="register-form" method="post" data-remote="true" action="/create_account" novalidate="">
+      <input name="csrfmiddlewaretoken" value="yqDU4I1dFK8IPiyEDqfRcwsqNGaWB7dr" type="hidden">
+
+      <!-- status messages -->
+      <div role="alert" class="status message">
+        <h3 class="message-title">We're sorry, IITBombayX enrollment is not available in your region</h3>
+      </div>
+
+      <div role="alert" class="status message submission-error" tabindex="-1">
+        <h3 class="message-title">The following errors occurred while processing your registration: </h3>
+        <ul class="message-copy"> </ul>
+      </div>
+
+
+      <p class="instructions">
+        Please complete the following fields to register for an account. <br>
+        Required fields are noted by <strong class="indicator">bold text and an asterisk (*)</strong>.
+      </p>
+
+
+      <div class="group group-form group-form-requiredinformation">
+        <h2 class="sr">Required Information</h2>
+
+
+        <ol class="list-input">
+          <li class="field required text" id="field-email">
+            <label for="email">E-mail</label>
+            <input class="" id="email" name="email" placeholder="example: username@domain.com" required="" aria-required="true" type="email">
+          </li>
+
+          <li class="field required text" id="field-name">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" placeholder="example: Jane Doe" required="" aria-required="true" aria-describedby="name-tip" type="text">
+            <span class="tip tip-input" id="name-tip">Needed for any certificates you may earn</span>
+          </li>
+          <li class="field required text" id="field-username">
+            <label for="username">Public Username</label>
+            <input id="username" name="username" placeholder="example: JaneDoe" required="" aria-required="true" aria-describedby="username-tip" type="text">
+            <span class="tip tip-input" id="username-tip">Will be shown in any discussions or forums you participate in <strong>(cannot be changed later)</strong></span>
+          </li>
+
+
+          <li class="field required password" id="field-password">
+            <label for="password">Password</label>
+            <input id="password" name="password" value="" required="" aria-required="true" type="password">
+          </li>
+
+        </ol>
+
+      </div>
+
+      <div class="group group-form group-form-secondary group-form-personalinformation">
+        <h2 class="sr">Additional Personal Information</h2>
+
+        <ol class="list-input">
+<!--############################   Added state dropdown         ############################### -->
+<!--
+Bharat_Mooc
+#Date added: 19/08/2014
+#Author: MOOC Dev Team
+#Date modified : NA 
+#Modified by : NA 
+#Description : Added state field on Registration page
+-->
+          <li class="field-group">
+         <div class="field required select" id="field-state">
+              <label for="state">State</label>
+              <select id="state" name="state" required="" aria-required="true">
+                <option selected="selected" value="">--</option>
+                <option value="1">Andaman and Nicobar islands</option>
+                <option value="2">Andhra Pradesh</option>
+                <option value="3">Arunachal Pradesh</option>
+                <option value="4">Assam</option>
+                <option value="5">Bihar</option>
+                <option value="6">Chandigarh</option>
+                <option value="7">Chattisgarh</option>
+                <option value="8">Dadra and Nagar Haveli</option>
+                <option value="9">Daman and Diu</option>
+                <option value="10">Delhi</option>
+                <option value="11">Goa</option>
+                <option value="12">Gujarat</option>
+                <option value="13">Haryana</option>
+                <option value="14">Himachal Pradesh</option>
+                <option value="15">Jammu and Kashmir</option>
+                <option value="16">Jharkhand</option>
+                <option value="17">Karnataka</option>
+                <option value="18">Kerala</option>
+                <option value="19">Lakshadweep</option>
+                <option value="20">Madhya Pradesh</option>
+                <option value="21">Maharashtra</option>
+                <option value="22">Manipur</option>
+                <option value="23">Meghalaya</option>
+                <option value="24">Mizoram</option>
+                <option value="25">Nagaland</option>
+                <option value="26">Orissa</option>
+                <option value="27">Pondicherry</option>
+                <option value="28">Punjab</option>
+                <option value="29">Rajasthan</option>
+                <option value="30">Sikkim</option>
+                <option value="31">Tamil Nadu</option>
+                <option value="36">Telangana</option>
+                <option value="32">Tripura</option>
+                <option value="34">Uttar Pradesh</option>
+                <option value="33">Uttarakhand</option>
+                <option value="35">West Bengal</option>
+              </select>
+            </div>
+          </li>
+
+
+<!--
+Bharat_Mooc
+#Date added: 19/08/2014
+#Author: MOOC Dev Team
+#Date modified : NA 
+#Modified by : NA 
+#Description : Added City field on Registration page
+-->
+
+<!-- ############################   Added city dropdown                 ############################### -->
+<!-- ############################   Changed city from dropdown to edit box               ############################### -->
+
+          <li class="field-group">
+         <div class="field required select" id="field-city">
+              <label for="city">City</label>
+              <!--select id="city" name="city" required aria-required="true">
+              </select-->
+              <input id="city" name="city" size="50" maxlength="50" placeholder="example: Mumbai" required="" aria-required="" aria-describedby="city-tip" autocomplete="off" type="text">
+
+            </div>
+          </li>
+
+
+
+<!--
+Bharat_Mooc
+#Date added: 19/08/2014
+#Author: MOOC Dev Team
+#Date modified : NA 
+#Modified by : NA 
+#Description : Added Pin Code field on Registration page
+-->
+<!-- ############################    Changes done               ############################### -->
+          <li class="field-group">
+            <div class="field required select" id="field-pincode">
+              <label for="pincode">Pincode</label>
+               <input id="pincode" name="pincode" maxlength="6" placeholder="example: 400076" required="" aria-required="true" aria-describedby="pincode-tip" type="text">
+            <span class="tip tip-input" id="pincode-tip">Will be shown in any discussions or forums you participate in <strong>(cannot be changed later)</strong></span>
+            </div>
+          </li>
+
+<!-- 
+#Bharat_Mooc
+#Date added: 23/08/2014
+#Author: MOOC Dev Team
+#Date modified : NA 
+#Modified by : NA 
+#Description : Added For aadhar card id (UIDAI id)
+-->
+<!-- ############################ AADHAR ID (UIDAI) #################################-->
+
+	<li class="field-group" id="field-aadhar_id">
+            <div id="field-aadhar_id">
+              <label for="aadhar">Aadhaar ID (UIDAI)</label>
+               <input id="aadhar" name="aadhar_id" maxlength="12" placeholder="example: 555544443333" required="" aria-required="" }="" aria-describedby="aadhar-tip" type="text">
+            </div>
+        </li>
+
+
+          <li class="field-group">
+          <div class="field optional select" id="field-education-level">
+              <label for="education-level">Highest Level of Education Completed</label>
+              <select id="education-level" name="level_of_education">
+                <option selected="selected" value="">--</option>
+                <option value="p">Doctorate</option>
+                <option value="m">Master's or professional degree</option>
+                <option value="b">Bachelor's degree</option>
+                <option value="a">Associate's degree</option>
+                <option value="hs">Secondary/high school</option>
+                <option value="jhs">Junior secondary/junior high/middle school</option>
+                <option value="el">Elementary/primary school</option>
+                <option value="none">None</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </li>
+          <li class="field-group field-gender">
+            <div class="field optional select" id="field-gender">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender">
+                <option selected="selected" value="">--</option>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+                <option value="o">Other</option>
+              </select>
+            </div>
+          </li>
+          <li class="field-group field-yob">
+            <div class="field optional select" id="field-yob">
+              <label for="yob">Year of Birth</label>
+              <select id="yob" name="year_of_birth">
+                <option selected="selected" value="">--</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2000">2000</option>
+                <option value="1999">1999</option>
+                <option value="1998">1998</option>
+                <option value="1997">1997</option>
+                <option value="1996">1996</option>
+                <option value="1995">1995</option>
+                <option value="1994">1994</option>
+                <option value="1993">1993</option>
+                <option value="1992">1992</option>
+                <option value="1991">1991</option>
+                <option value="1990">1990</option>
+                <option value="1989">1989</option>
+                <option value="1988">1988</option>
+                <option value="1987">1987</option>
+                <option value="1986">1986</option>
+                <option value="1985">1985</option>
+                <option value="1984">1984</option>
+                <option value="1983">1983</option>
+                <option value="1982">1982</option>
+                <option value="1981">1981</option>
+                <option value="1980">1980</option>
+                <option value="1979">1979</option>
+                <option value="1978">1978</option>
+                <option value="1977">1977</option>
+                <option value="1976">1976</option>
+                <option value="1975">1975</option>
+                <option value="1974">1974</option>
+                <option value="1973">1973</option>
+                <option value="1972">1972</option>
+                <option value="1971">1971</option>
+                <option value="1970">1970</option>
+                <option value="1969">1969</option>
+                <option value="1968">1968</option>
+                <option value="1967">1967</option>
+                <option value="1966">1966</option>
+                <option value="1965">1965</option>
+                <option value="1964">1964</option>
+                <option value="1963">1963</option>
+                <option value="1962">1962</option>
+                <option value="1961">1961</option>
+                <option value="1960">1960</option>
+                <option value="1959">1959</option>
+                <option value="1958">1958</option>
+                <option value="1957">1957</option>
+                <option value="1956">1956</option>
+                <option value="1955">1955</option>
+                <option value="1954">1954</option>
+                <option value="1953">1953</option>
+                <option value="1952">1952</option>
+                <option value="1951">1951</option>
+                <option value="1950">1950</option>
+                <option value="1949">1949</option>
+                <option value="1948">1948</option>
+                <option value="1947">1947</option>
+                <option value="1946">1946</option>
+                <option value="1945">1945</option>
+                <option value="1944">1944</option>
+                <option value="1943">1943</option>
+                <option value="1942">1942</option>
+                <option value="1941">1941</option>
+                <option value="1940">1940</option>
+                <option value="1939">1939</option>
+                <option value="1938">1938</option>
+                <option value="1937">1937</option>
+                <option value="1936">1936</option>
+                <option value="1935">1935</option>
+                <option value="1934">1934</option>
+                <option value="1933">1933</option>
+                <option value="1932">1932</option>
+                <option value="1931">1931</option>
+                <option value="1930">1930</option>
+                <option value="1929">1929</option>
+                <option value="1928">1928</option>
+                <option value="1927">1927</option>
+                <option value="1926">1926</option>
+                <option value="1925">1925</option>
+                <option value="1924">1924</option>
+                <option value="1923">1923</option>
+                <option value="1922">1922</option>
+                <option value="1921">1921</option>
+                <option value="1920">1920</option>
+                <option value="1919">1919</option>
+                <option value="1918">1918</option>
+                <option value="1917">1917</option>
+                <option value="1916">1916</option>
+                <option value="1915">1915</option>
+                <option value="1914">1914</option>
+                <option value="1913">1913</option>
+                <option value="1912">1912</option>
+                <option value="1911">1911</option>
+                <option value="1910">1910</option>
+                <option value="1909">1909</option>
+                <option value="1908">1908</option>
+                <option value="1907">1907</option>
+                <option value="1906">1906</option>
+                <option value="1905">1905</option>
+                <option value="1904">1904</option>
+                <option value="1903">1903</option>
+                <option value="1902">1902</option>
+                <option value="1901">1901</option>
+                <option value="1900">1900</option>
+                <option value="1899">1899</option>
+                <option value="1898">1898</option>
+                <option value="1897">1897</option>
+                <option value="1896">1896</option>
+              </select>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="group group-form group-form-personalinformation2">
+        <ol class="list-input">
+          <li class="field optional text" id="field-address-mailing">
+            <label for="address-mailing">Mailing Address</label>
+            <textarea id="address-mailing" name="mailing_address" value=""></textarea>
+          </li>
+
+          <li class="field optional text" id="field-goals">
+            <label for="goals">Please share with us your reasons for registering with IITBombayX</label>
+            <textarea id="goals" name="goals" value=""></textarea>
+          </li>
+        </ol>
+      </div>
+
+      <div class="group group-form group-form-accountacknowledgements">
+        <h2 class="sr">Account Acknowledgements</h2>
+
+        <ol class="list-input">
+          <li class="field-group">
+
+            <div class="field required checkbox" id="field-tos">
+              <input id="tos-yes" name="terms_of_service" value="true" required="" aria-required="true" type="checkbox">
+              <label for="tos-yes">I agree to the <a href="https://www.iitbombayx.in/tos" class="new-vp" tabindex="-1">Terms of Service</a></label>
+            </div>
+
+            <div class="field required checkbox" id="field-honorcode">
+              <input id="honorcode-yes" name="honor_code" value="true" type="checkbox">
+              
+  
+  
+              <label for="honorcode-yes">I agree to the <a href="https://www.iitbombayx.in/honor" class="new-vp" tabindex="-1">Honour Code</a></label>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+
+
+      <div class="form-actions">
+        <button name="submit" type="submit" id="submit" class="action action-primary action-update register-button">Create My IITBombayX Account</button>
+      </div>
+    </form>
+  </section>
+
+  <aside role="complementary">
+
+
+
+    
+
+
+
+
+<header>
+  <h3 class="sr">Registration Help</h3>
+</header>
+
+
+<div class="cta cta-login">
+  <h3 class="title">Already registered?</h3>
+  <p class="instructions">
+    <a href="https://www.iitbombayx.in/login">
+      Click here to log in.
+    </a>
+  </p>
+</div>
+
+
+
+  
+    <div class="cta cta-welcome">
+    <h3>Welcome to IITBombayX</h3>
+    <p>Registering with IITBombayX gives you access to all of our 
+current and future free courses. Not ready to take a course just yet? 
+Registering puts you on our mailing list - we will update you as courses
+ are added.</p>
+  </div>
+
+<div class="cta cta-nextsteps">
+  <h3>Next Steps</h3>
+
+  
+      <p>As part of joining IITBombayX, you will receive an activation 
+email.  You must click on the activation link to complete the process.  
+Don't see the email?  Check your spam folder and mark IITBombayX emails 
+as 'not spam'.  At IITBombayX, we communicate mostly through email.</p>
+</div>
+
+  <div class="cta cta-help">
+    <h3>Need Help?</h3>
+    <p>Need help in registering with IITBombayX?
+      <a href="https://www.iitbombayx.in/faq">
+          View our FAQs for answers to commonly asked questions.
+      </a>
+      Once registered, most questions can be answered in the course specific discussion forums or through the FAQs.</p>
+  </div>
+
+
+  </aside>
+</section>
+
+      
+    </div>
+
+    
+
+
+
+
+
+
+<style>
+.wrapper-footer{
+padding-top:16px;
+
+}
+
+.wrapper-footer footer .references{
+margin-top:0px;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a {
+        border-bottom:none !important;
+	color:#3D3E3F;
+}
+
+
+
+/*.wrapper-footer footer .colophon .nav-colophon li a {
+	border-bottom:none !important;
+    color: #3D3E3F !important;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a:hover{
+    color: #FF621B !important;
+}
+
+.wrapper-footer footer a:link, .wrapper-footer footer a:visited, .wrapper-footer footer a:hover, .wrapper-footer footer a:focus, .wrapper-footer footer a:active {
+    border-bottom: medium none;
+    color: #E44600;
+    text-decoration: none !important;
+}
+
+.wrapper-footer footer a:hover, .wrapper-footer footer a:focus, .wrapper-footer footer a:active {
+    border-bottom: 1px dotted #FF621B;
+    color: #FF621B;
+}*/
+
+.wrapper-footer footer{
+width:960px;
+margin:auto;
+}
+
+</style>
+
+<div class="wrapper wrapper-footer" style="width:auto;">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon" style="margin-bottom:20px;">
+      <ol>
+          <li class="nav-colophon-01">
+          <a id="about" href="https://www.iitbombayx.in/about">
+              About
+          </a>
+          </li>
+	  <!-- Bharat MOOCs -->
+          <li class="nav-colophon-02" style="color:#565656;">
+          <a id="news" href="http://news.iitbombayx.in/" target="_blank">
+              News
+          </a>
+          </li>
+          <li class="nav-colophon-03" style="color:#565656;">
+          <a id="blog" href="http://blogs.iitbombayx.in/" target="_blank">
+              Blog
+          </a>
+          </li>
+          <li class="nav-colophon-04" style="color:#565656;">
+          <a id="faq" href="https://www.iitbombayx.in/faq">
+              FAQ
+          </a>
+          </li>
+          <li class="nav-colophon-05" style="color:#565656;">
+          <a id="contact" href="https://www.iitbombayx.in/contact">
+              Contact Us
+          </a>
+          </li>
+      </ol>
+      </nav>
+
+      <div class="colophon-about">
+<!-- Bharat MOOCs-->
+        <img src="Registeration_files/swayamlogo_footer.png" style="width:auto; height:auto;" alt="IITBombayX Logo">
+
+        <p style="text-align:justify; color:#565656;">IITBombayX offers 
+interactive online classes and MOOCs. Subjects from multiple disciplines
+ are presently offered, as can be seen in the list of courses. This list
+ will expand later. IITBombayX is a non-profit online platform created 
+with funding from National Mission on Education through Information and 
+Communication Technology (NME-ICT), Ministry of Human Resource 
+Development (MHRD), Government of India (GoI).</p> 
+      </div>
+    </div>
+
+    <div class="references">
+      <nav class="nav-social">
+        <ul>
+          <li class="nav-social-02">
+            <a href="https://www.facebook.com/iitbombayx" target="_blank" rel="external">
+              <img src="Registeration_files/ico-social-facebook.png" alt="edX on Facebook">
+            </a>
+          </li>
+          <li class="nav-social-03">
+            <a href="https://twitter.com/iitbombayx" target="_blank" rel="external">
+              <img src="Registeration_files/ico-social-twitter.png" alt="edX on Twitter">
+            </a>
+          </li>
+          <li class="nav-social-04">
+            <a href="https://plus.google.com/u/0/113536343441190768869" target="_blank" rel="external">
+              <img src="Registeration_files/ico-social-google.png" alt="edX on Google+">
+            </a>
+          </li>
+          <!--li class="nav-social-05">
+            <a href="#"  target="_blank" rel="external">
+              <img src="/static/images/social/ico-social-youtube.909f05910c79.png" alt="edX on YouTube" />
+            </a>
+          </li-->
+        </ul>
+      </nav>
+
+      <!--p class="copyright" style="text-align:right; color:#050505; margin-bottom:11px;">&copy; 2014 IITBombayX, except where noted, all rights reserved</p-->
+
+      <nav class="nav-legal">
+        <ul style="display:block;float:right;text-align:right;">
+          <li class="nav-legal-01" style="display:block;">
+		<style>.wrapper-footer footer .references .nav-legal .nav-legal-01 a:after {content:none;}</style>
+            <a style="display: inline-block;" href="https://www.iitbombayx.in/tos" target="_blank">Terms of Service and Honour Code</a>
+          </li>
+          <li class="nav-legal-02" style="display:block;">
+            <a style="display: inline-block;" target="_blank" href="https://www.iitbombayx.in/privacy">Privacy Policy</a>
+          </li>
+          <li class="nav-legal-03" style="display:block; float:right;">	
+		 <style>.wrapper-footer footer .references .nav-legal .nav-legal-03 a:hover{border-bottom:0px;}</style> 
+            <a style="display: inline-block; " href="http://openedx.org/" target="_blank"><img src="Registeration_files/edx-openedx-logo-tag.png" style="padding-top:2.5em; float:right; width:150px; height:50px;" alt="Powered by Open edX"></a>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+
+  </div>
+
+  <script>window.baseUrl = "/static/";</script>
+    
+    <script type="text/javascript" src="Registeration_files/lms-application.js" charset="utf-8"></script>
+
+
+    
+    <script type="text/javascript" src="Registeration_files/lms-modules.js" charset="utf-8"></script>
+
+
+
+  
+  <script type="text/javascript">
+    $(function() {
+
+      // adding js class for styling with accessibility in mind
+      $('body').addClass('js');
+
+      // new window/tab opening
+      $('a[rel="external"], a[class="new-vp"]')
+      .click( function() {
+      window.open( $(this).attr('href') );
+      return false;
+      });
+
+      // form field label styling on focus
+      $("form :input").focus(function() {
+        $("label[for='" + this.id + "']").parent().addClass("is-focused");
+      }).blur(function() {
+        $("label").parent().removeClass("is-focused");
+      });
+
+    });
+
+    (function() {
+      toggleSubmitButton(true);
+
+      $('#register-form').on('submit', function() {
+        toggleSubmitButton(false);
+      });
+
+      $('#register-form').on('ajax:error', function() {
+        toggleSubmitButton(true);
+      });
+
+      $('#register-form').on('ajax:success', function(event, json, xhr) {
+        var url = json.redirect_url || "/dashboard";
+        location.href = url;
+      });
+
+      $('#register-form').on('ajax:error', function(event, jqXHR, textStatus) {
+        toggleSubmitButton(true);
+        json = $.parseJSON(jqXHR.responseText);
+        $('.status.message.submission-error').addClass('is-shown').focus();
+        $('.status.message.submission-error .message-copy').html(json.value).stop().css("display", "block");
+        $(".field-error").removeClass('field-error');
+        $("[data-field='"+json.field+"']").addClass('field-error')
+      });
+    })(this);
+
+    function thirdPartySignin(event, url) {
+      event.preventDefault();
+      window.location.href = url;
+    }
+
+    function toggleSubmitButton(enable) {
+      var $submitButton = $('form .form-actions #submit');
+
+      if(enable) {
+        $submitButton.
+          removeClass('is-disabled').
+          removeProp('disabled').
+          html("Create My IITBombayX Account");
+      }
+      else {
+        $submitButton.
+          addClass('is-disabled').
+          prop('disabled', true).
+          text("Processing your account information…");
+      }
+    }
+//Bharat_Mooc   
+//#Date added: 19/08/2014
+//#Author: MOOC Dev Team
+//#Date modified : NA 
+//#Modified by : NA 
+//#Description : To populate city based on state selected using ajax
+//Pending:
+//- validation if state is not selected
+
+ (function() {
+         $('#city').on('keyup', function() {   // check for changes
+         //$('#city').empty();         //  Make the city dropdown empty
+         //alert($('#state').val())
+         // Now it's time to fill the City drop down based on the state selection
+        $.ajax({
+           url:"/city_ajax", 
+           type: "post",
+           data:{id: $('#state').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 { 
+                   //result = JSON.parse(result);
+                   //alert(result)
+                   //Next four lines are to add select option to the dropdown
+                    //var option1 = document.createElement('option');
+                    
+    
+          $("#city ").autocomplete({
+            source: result
+          });
+                    //option1.value="Select";
+                    //option1.text="Select";
+                   //one in the option field and finally apeend it to the select.
+
+                },
+            error: function()
+            { 
+            
+              alert("Please select state first");
+            }
+           });
+       });
+      $( "#city" ).change(function() {
+        $( "#city" ).autocomplete( "close" );
+});
+    })(this);
+
+  </script>
+
+
+
+
+
+<div id="lean_overlay"></div><div id="reader-feedback" class="sr" style="display:none" aria-hidden="false" aria-atomic="true" aria-live="assertive"></div></body></html>

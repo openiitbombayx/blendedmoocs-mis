@@ -1,0 +1,253 @@
+{% extends "register_base.html" %}
+
+{% block head_block %}
+
+{% endblock %}
+{% block title_block %}
+<title>
+       Request Register for IITBombayX | IITBombayX
+      </title>
+{% endblock %}
+
+
+
+{% block body_block %}
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
+<script type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+                  alert("he");
+                  $('#Institute').on('change', function() {   // check for changes
+             $('#Course').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/selectcourse",
+           data:{id: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                 
+                   //Next four lines are to add select option to the dropdown
+                    //var option1 = document.createElement('option');
+                          console.log(result);
+                    var listItems= "";
+                    var teams = eval('(' + result + ')');
+                    //option1.value="Select";
+                    //option1.text="Select";
+                    //$("#city").append(option1);
+                    if (teams.length==0){ alert(" Selected Institute has not Enrolled for any Courses !!!");
+listItems += "<option value='nocourse'>" + " -- " + "</option>";
+                   // $("#city").append(option);
+                     $("#Course").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                          
+                //var option = document.createElement('option');
+                 //option.value= result[c].fields.state
+                 //option.text=  result[c].fields.name
+                    
+                    //listItems+= "<option value='" + result.Table[c].id + "'>" + result.Table[c].name + "</option>";
+                        
+                       //listItems += "<option value='" + teams[c]+ "'>" + teams[c] + "</option>";
+                        //listItems += "<option value='" + teams[c].instituteid+ "'>" + teams[c].fields.institutename + "</option>";
+                       listItems += "<option value='" + teams[c].course+ "'>" + teams[c].fields.course+ "</option>";
+                   // $("#city").append(option);
+                     $("#Course").html(listItems);
+                 }}
+
+
+                   // this for loop get the json array and put every value one by
+                   //one in the option field and finally apeend it to the select.
+
+
+            },
+        });
+
+
+                  });
+            })(this);
+        </script>
+<section class="register container">
+  <section role="main" class="content">
+    <form role="form" id="register-form" method="post" data-remote="true" action="" novalidate="">{% csrf_token %}
+     
+      <div role="alert" class="status message">
+      </div>
+
+<div class="status message submission-error " id="error-msg-js" role="alert" tabindex="-1" >
+        <h3 class="message-title">The following errors occurred while processing your registration: </h3>
+        <ul class="message-copy" style="display:block;">
+		<li><span id="showerrormsg"></span></li>  
+	</ul>
+	
+      </div>
+
+
+      <p class="instructions">
+        Please complete the following fields to get a registration link <br>
+        Required fields are noted by <strong class="indicator">bold text</strong>.
+      </p>
+
+
+      <div class="group group-form group-form-requiredinformation">
+        <h2 class="sr">Required Information</h2>
+
+
+        <ol class="list-input">
+
+
+	  <li class="field-group">
+         <div class="field optional select" id="field-state">
+              <label for="state"><b>State</b></label>
+              <select id="state" name="state"   >
+{% if errors %}
+<option value="{{state}}" selected>{{state}}</option>
+{% else %}
+<option value="">-- Select the State -- </option>
+{% endif %}
+	{% for state in state_list %}
+<option value="{{ state }}">{{ state }}</option>
+	{% endfor %}
+ 
+              </select>
+            </div>
+          </li>
+
+<script type="text/javascript">
+function get_rcid()
+{ 
+var Institute = document.getElementById("Institute").value;
+document.getElementById("rcid").value = rcid ; 
+}
+</script>
+
+
+	<li class="field-group">
+         <div class="field optional select" id="field-Institute">
+              <label for="Institute"><b>Institute</b></label>
+              <select id="Institute" name="Institute" ><option value="">-- Select the Institute -- </option>
+                {% for institute in institute_list %}
+
+<option value="{{ institute }}">{{ institute }}</option>
+	{% endfor %}
+              </select>
+          </div>
+</li>
+
+
+
+	<li class="field optional text" id="field-rcid">
+            <label for="rcid"><b>Remote Center</b></label>
+            <input id="rcid" name="rcid" size="50" placeholder="" required="" aria-required="true" readonly aria-describedby="name-tip" type="text"  >
+            <span class="tip tip-input" id="name-tip"></span>
+          </li>
+
+          <li class="field optional text" id="field-fname">
+            <label for="fname"><b>First Name</b></label>
+            <input id="fname" name="fname"  required="" aria-required="true" aria-describedby="name-tip" type="text" title="Should be at least 2 characters( atmost 30 characters) ">
+            <span class="tip tip-input" id="name-tip"></span>
+          </li>
+
+	 <li class="field optional text" id="field-lname">
+            <label for="lname">Last Name</label>
+            <input id="lname" name="lname" value="{{ last_name }}" required="" aria-required="true" aria-describedby="name-tip" type="text" title="Should be at least 1 character( at most 30 character) ">
+            <span class="tip tip-input" id="name-tip"></span>
+          </li>
+
+
+          <li class="field roptional text" id="field-email">
+            <label for="email"><b>E-mail</b></label>
+            <input type="email" title="Enter a valid email address" id="email" name="email" placeholder="example: username@domain.com" required="" aria-required="true" onfocus="Enter email">
+	<span class="tip tip-input" id="name-tip">This email will be used for verification purposes.
+) </span>
+          </li>
+
+
+	<li class="field-group">
+         <div class="field optional select"  id="field-Course">
+              <label for="Course"><b>Course</b></label>
+              <select id="Course" name="Course" required="" aria-required="true">
+	<option value="">-- Select the Course --</option>
+                {% for c in course_list %}
+<option value="{{ c }}">{{ c }}</option>
+	{% endfor %}
+              </select>
+          </div>
+         </li>
+
+	<li class="field-group">
+		<div class="field optional select"  id="field-role">
+		    <label for="role"><b> Role </b></label>
+		</div>
+
+		    <div class="field optional checkbox" id="userrole">
+		      <input id="role" name="role" value="CC" checked required="" aria-required="true" type="radio">
+		      <label for="CC">Course Co-od</label>
+		    </div>
+	&nbsp &nbsp &nbsp
+		   <div class="field optional checkbox" id="TA">
+		      <input id="role" name="role" value="TA" required="" aria-required="true" type="radio">
+		      <label for="TA">Teacher</label>
+		    </div>
+
+
+
+        </li>
+
+	<li class="field-group">
+         <div class="field optional select" id="field-Desg">
+              <label for="Desg"><b>Designation</b></label>
+              <select id="Desg" name="Desg" required="" aria-required="true">
+<option value="">-- Select your Designation --</option>
+                {% for d in desg_list %}
+<option value="{{ d }}">{{ d }}</option>
+	{% endfor %}
+              </select>
+          </div>
+         </li>
+
+
+      </div>
+
+      <div class="group group-form group-form-secondary group-form-personalinformation">
+        <h2 class="sr">Additional Personal Information</h2>
+
+        <ol class="list-input">
+
+   <div class="group group-form group-form-accountacknowledgements">
+        <h2 class="sr">Account Acknowledgements</h2>
+
+
+        <ol class="list-input">
+	<li class="field-input">
+            <div class="field optional checkbox" id="field-tos">
+              <input id="tos-yes" name="terms_of_service" value="true" required="" aria-required="true" type="checkbox"  required>
+              <label for="tos-yes"><b>Clicking here amounts to self declaration of the following:</b></label>
+            </div>
+</li></ol>
+           <p>{{ termsofservice }}</p>
+          
+        
+      </div>
+
+
+
+      <div class="form-actions">
+
+        <input type="button" name="sub" id="sub" class="nav-courseware-01" value="Submit" onclick="register_field_validation({{pageid}})"  />
+<!-- hardcoded value pageid = 4 for request_register page -->
+      
+	<input type="button" value="Reset"  class="nav-courseware-01" onclick="document.getElementById('register-form').reset()" />
+
+      </div>
+
+    </form>
+  </section>
+
+{% endblock %}

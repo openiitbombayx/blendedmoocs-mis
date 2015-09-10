@@ -1,0 +1,88 @@
+{% extends 'student/mybase1.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+
+<head>
+
+  <title>Performance Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <style>
+	
+	table, td, th {
+	    border: 1px solid black;
+	    border-collapse: collapse;
+	}
+
+	table {
+	    width: 100%;
+	}
+	tr:nth-child(odd) {
+	   background-color: #ccc;
+	}
+	tr:hover {
+		  background-color: #ffff99;
+		}
+	th {
+	    height: 35px;
+	    color: #F7691F
+	}
+	tr {
+	    height: 28px;
+	}
+	h2 {
+  	     color:#F7691F;
+	   }
+</style>
+</head>
+<body>
+<br>
+<pre>
+<h2><center><b>Students Performance Report</b></center></h2><h4> Institute Name :  {{institutename}}
+ Course Name	:  {{coursename}}
+ Teacher Name	:  {{teachername}}
+ Total Students	:  {{totalstudents}}										<a href="/report/download">Download Report</a></h4></pre>
+<div class="pagination">
+    <span class="step-links">
+        {% if pdata.has_previous %}
+            &nbsp <a href="?page={{ pdata.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            &nbsp Page {{ pdata.number }} of {{ pdata.paginator.num_pages }}.
+        </span>
+
+        {% if pdata.has_next %}
+            <a href="?page={{ pdata.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+  <table>
+      <tr>
+        <th class="col-sm-1">Roll No</th>
+        <th class="col-sm-3">Email</th>
+        <th class="col-sm-2">Username</th>
+        <th class="col-sm-1">Grade</th>
+	{% for m in quiz %}
+	<th class="col-sm-1">Quiz{{m}}</th>
+	{% endfor %}
+	<th class="col-sm-1">Average</th>
+      </tr>
+        {% for m in pdata %}
+          <tr>
+	   	{% for n in m %}
+            	<td>{{n}}</td>
+		{% endfor %}
+          </tr>
+        {% endfor %}
+  </table>
+
+{% endblock %}
+
+
+
+

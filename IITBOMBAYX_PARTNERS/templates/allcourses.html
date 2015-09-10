@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+<br><br>
+
+<div class="row" align="center">
+	
+	
+ 
+  <font color=red>{{error_message}}</font>
+</div>
+ 
+</div>
+</br>
+         
+<div class="table-responsive">
+<form action="/allcourses/1/" method="POST">
+{% csrf_token %}
+
+<center><b><p><font face="12"><b>Courses</b></font></p></b></center>
+</br>
+<center><select onchange="" id="courseid" name="courseid">
+  <option value="Select" selected=selected>Select the course</option>
+ {% for i in courseobj %}
+
+  <option value="{{i.courseid}}" >{{i.course}}</option>
+
+{% endfor %}
+
+
+</center></select>
+<br><br><br><br><br>
+<input type="submit" value="Submit">
+</form>  
+ </div>
+<br>
+<br>
+{% endautoescape off %}
+
+
+{% endblock %}

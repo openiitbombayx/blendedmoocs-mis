@@ -1,0 +1,56 @@
+{% extends 'test.html' %}
+
+{% block heading %}
+
+<h2> PERSON INFORMATION DATA </h2>
+{% endblock %}
+
+{% block hyperlink %}
+<li class="nav-global-01">
+<a href = "{% url 'ccourses' viewer.id %}">Course Enrollment</a>
+<li>
+<li class="nav-global-01">
+<a href = "{% url 'team' viewer.id %}">Team Management</a>
+</li>
+{% endblock %}
+
+{% block name %}{{hoi.firstname}} {{hoi.lastname}}
+{% endblock %}
+
+{% block email %}{{hoi.email}}
+{% endblock %}
+
+
+
+{% block body_block %}
+
+<h1>The details of the pc has been recorded</h1>
+<h2>Below is the list of all Program Coordinators in the database</h2>
+
+<table border="1">
+
+	<tr>
+
+		<td>EMAIL ID</td>
+		<td>FIRST NAME</td>
+		<td>LAST NAME</td>
+		<td>GENDER</td>
+		<td>INSTITUE ID</td>
+
+	</tr>
+
+	{% for data in pc_data %}
+	<tr>
+
+		<td>{{ data.personid.email }}</td>
+		<td>{{ data.personid.firstname }}</td>
+		<td>{{ data.personid.lastname }}</td>
+		<td>{{ data.personid.gender }}</td>
+		<td>{{ data.personid.instituteid.instituteid }}</td>
+
+	</tr>
+	{% endfor %}
+
+</table>
+
+{% endblock %}

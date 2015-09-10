@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% load staticfiles  %}
+<html lang="en"><!--<![endif]--><head dir="ltr">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+       {% block title %}{% endblock %}
+</title>
+<link rel="icon" type="image/x-icon" href="">
+<link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
+<!-- ******************************************Begin JavaScript**************************************** -->
+<SCRIPT TYPE="text/javascript"> 
+function submitenter(input,e) { 
+var keycode;
+ if (window.event) keycode = window.event.keyCode;
+ else if (e) keycode = e.which; 
+else return true; if (keycode == 13) { input.form.submit(); 
+return false; }
+ else return true; }
+</SCRIPT> 
+
+{% block script %}{% endblock %}
+<!-- ******************************************End JavaScript**************************************** -->
+
+
+<!-- ******************************************Begin Style**************************************** -->
+{% block style %}{% endblock %}
+<style>
+ .wrapper-footer footer .colophon-about img, .view-login
+.wrapper-footer footer .colophon-about img {
+    margin-top: 0px;
+}
+
+.content-wrapper{
+padding-bottom:0px;
+background:#F7F7F7 !important;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+margin-top:76px;
+}
+
+header.global{
+position:fixed;
+top:0px;
+}
+
+.view-login .container{
+background:#FFF;
+}
+
+.wrapper-footer{
+padding-top:16px;
+
+}
+
+.wrapper-footer footer .references{
+margin-top:0px;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a {
+        border-bottom:none !important;
+	color:#3D3E3F;
+}
+.wrapper-footer footer{
+width:960px;
+margin:auto;
+}
+</style>
+<!-- ******************************************End JavaScript**************************************** -->
+
+</head>
+
+<body class="ltr view-login lang_en js">
+<div class="window-wrap" dir="ltr">
+<header class="global " aria-label="Global Navigation">
+<nav>
+     <h1 class="logo">
+          <a href="/"><img src="{% static 'images/swayamlogo_header.png' %}" alt="Home Page" height="50"></a>
+     </h1>
+     <ol class="left nav-global">
+          <li class="nav-global-04">
+          Information System for Blended MOOCs 
+         </li>
+     </ol>
+</nav>
+</header>
+
+<div class="content-wrapper" id="content"></div>
+
+
+<section class="introduction">
+<header>
+  {% block header %}{% endblock %}
+</header>
+
+</section>
+
+<section class="login container">
+<section role="main" class="content">
+  {% block form %}{% endblock %}
+</section>
+{% block aside %}{% endblock %}
+
+</section>
+</div>
+
+
+<div class="wrapper wrapper-footer" style="width:auto;">
+ <footer style="width:90%;">
+    <div class="colophon" style="width:43%">
+      <nav class="nav-colophon" style="margin-bottom:20px;">
+   <ol>
+          <li class="nav-colophon-01">         
+ <a href="https://www.iitbombayx.in/" target=_blank>
+<img border="0"  src="{% static 'images/swayamfooter_trans.png' %}"  alt="IITBombayX Logo">
+</a>
+          </li>
+<li class="nav-colophon-01">
+<a href="http://www.it.iitb.ac.in/moodle/" target="_blank"><img border="0"  src="{% static 'images/moodle_trans.png' %}" alt="DBP's Moodle">
+</a>
+</li>
+<li class="nav-colophon-01">
+<a href="http://www.it.iitb.ac.in/nmeict/home.html" target="_blank" ><img border="0"  src="{% static 'images/nmeict_trans.png' %}"    alt="T10KT-IITB NMEICT"></a>
+</li> 
+<li class="nav-colophon-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+
+</nav>
+</div>
+<div class="references" style="width:50%;font-size:80%;"><p align=justify>The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program.
+</p></div>
+  </footer>
+          </div>
+
+</body></html>

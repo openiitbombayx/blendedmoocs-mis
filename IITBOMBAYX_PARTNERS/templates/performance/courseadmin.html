@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header>
+<h2>Blended MOOC Course Admin Home</h2>
+</header>
+{% endblock %}
+{% block body_block %}
+<div style="align:center">
+{% if course_list %}
+<form role="form" method="post" action="/courseadminhome/" autocomplete="off" >{% csrf_token %}
+	<p class="instructions">
+	<h3>Please select the course</h3>
+	</p><br>
+	<div class="group group-form group-form-requiredinformation">
+	<select name="course" required aria-required="true">
+	<option value="select" selected="selected">-- select course --</option>
+		{% for i in course_list %}
+			<option value="{{ i }}">{{ i }}</option>
+		{% endfor %}
+	</select><br><br>
+	<h3>Please select the Report type</h3><br>
+	<select name="report_type" required aria-required="true">
+		<option value="select" selected="selected">-- select report-type --</option>
+		<option value="college" >All Students Report</option>
+		<option value="compare" >Institute-wise Report</option>
+	</select>
+	<br><br><br>
+	<input type='submit' name='submit' value='Submit'>
+	</div>
+	</form>
+{% else %}
+<h3 style="color:red">		{{message}}</h3><br>
+{% endif %}
+</div>
+{% endblock %}

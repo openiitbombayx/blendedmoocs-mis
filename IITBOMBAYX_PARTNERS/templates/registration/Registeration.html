@@ -1,0 +1,323 @@
+{% extends "register_base.html" %}
+{% block title_block %}
+<title>
+{% if pageid == '3' %}
+	Edit Profile 
+{% else %}
+       Register for IITBombayX Blended 
+{% endif %}
+</title>
+{% endblock %}
+
+
+
+{% block body_block %}
+<section class="register container">
+  <section role="main" class="content">
+    <form role="form" id="register-form" method="post" data-remote="true" action="" novalidate=""> {% csrf_token %}
+     
+   <div role="alert" class="status message">
+      </div>
+
+{% if errors %}
+      <div class="status message submission-error is-shown" id="error-msg" role="alert" tabindex="-1" >
+        <h3 class="message-title">The following errors occurred while processing your registration: </h3>
+        <ul class="message-copy" style="display:block;">
+		<li><span id="errormsg">{{ errors|safeseq|unordered_list }}</span></li>  
+	</ul>
+	
+      </div>
+{% endif %}
+
+<div class="status message submission-error " id="error-msg-js" role="alert" tabindex="-1" >
+        <h3 class="message-title">The following errors occurred while processing your registration: </h3>
+        <ul class="message-copy" style="display:block;">
+		<li><span id="showerrormsg"></span></li>  
+	</ul>
+	
+      </div>
+
+      <p class="instructions">
+{% if pageid != '3' %}
+        Please complete the following fields to register for an account. <br>
+        Required fields are noted by <strong class="indicator">bold text</strong>.
+{% endif %}
+      </p>
+
+
+      <div class="group group-form group-form-requiredinformation">
+        <h2 class="sr">Required Information</h2>
+
+
+        <ol class="list-input">
+  <!--     
+{% if pageid == '1' %}
+  <li class="field-group">
+         <div class="field optional select" id="field-state">
+              <label for="state"><b>State</b></label>
+              <select id="state" name="state"   >
+{% if errors %}
+<option value="{{state}}" selected>{{state}}</option>
+{% else %}
+<option value="">-- Select the State -- </option>
+{% endif %}
+	{% for state in state_list %}
+<option value="{{ state }}">{{ state }}</option>
+	{% endfor %}
+ 
+              </select>
+            </div>
+          </li>
+	<li class="field-group">
+         <div class="field optional select" id="field-Institute">
+              <label for="Institute"><b>Institute</b></label>
+              <select id="Institute" name="Institute" ><option value="">-- Select the Institute -- </option>
+                {% for institute in institute_list %}
+
+<option value="{{ institute }}">{{ institute }}</option>
+	{% endfor %}
+              </select>
+          </div>
+</li>
+{% else %}-->
+<!-- {% endif %} -->
+
+{% if pageid != '3' %}
+<li class="field-group">
+         <div class="field optional select" id="field-Institute">
+              <label for="Institute"><b>Institute</b></label>
+              <select id="Institute" name="Institute" readonly >
+<option value="{{ institute }}">{{ institute }}</option>
+	
+              </select>
+          </div>
+</li>
+{% endif %}
+
+
+{% if pageid == '1' %}
+	<li class="field optional text" id="field-rcid">
+            <label for="rcid"><b>Remote Center</b></label>
+            <input id="rcid" name="rcid" size="50" placeholder="" aria-required="true" readonly aria-describedby="name-tip" type="text" title="This is your institutes remote-center-id" >
+            <span class="tip tip-input" id="name-tip"></span>
+          </li>
+{% endif %}
+
+
+</li>
+   <li class="field optional text" id="field-email">
+            <label for="email"><b>E-mail</b></label>
+            <input id="email" name="email" value="{{emailid}}"  required="" aria-required="true"  placeholder="{{emailid}}" type="email" readonly >
+{% if pageid != '3' %}
+	<span class="tip tip-input" id="name-tip">Will be used as your username for login</span>
+{% endif %}
+          </li>
+
+
+<li class="field-group">
+         <div class="field optional select" id="field-title">
+              <label for="title"><b>Title</b></label>
+              <select id="title" name="title" required="" aria-required="true">
+{% if pageid == '3' %}
+	<option selected="selected" value="{{title}}">{{title}}</option>
+	{% else %}
+<option selected="selected" value="">-- Select Title --</option>
+{% endif %}
+                {% for d in title_list %}
+{% if d != title %}
+<option value="{{ d }}">{{ d }}</option>
+{% endif %}
+	{% endfor %}
+              </select>
+          </div>
+         
+
+  <li class="field optional text" id="field-fname">
+            <label for="fname"><b>First Name</b></label>
+            <input id="fname" name="fname" placeholder="" required="" aria-required="true"  aria-describedby="name-tip" type="text" value="{{fname}}" title="Should be at least 2 characters( atmost 30 characters) with period(.),cant use consecutive periods and it should start with alphabet " >
+            <span class="tip tip-input" id="name-tip"></span>
+          </li>
+
+	 <li class="field optional text" id="field-lname">
+            <label for="lname">Last Name</label>
+            <input id="lname" name="lname" placeholder="" required="" aria-required="true" aria-describedby="name-tip" type="text" value="{{lname}}" title="Should be at least 1 character( at most 30 character) ">
+            <span class="tip tip-input" id="name-tip"></span>
+          </li>
+
+{% if pageid != '3' %}
+          <li class="field optional password" id="field-password1">
+            <label for="password1"><b>Password</b></label>
+            <input id="password1" name="password1" value="" required="" aria-required="true" type="password" title="Please enter password.It should be 6 to 20 characters">
+          </li>
+
+
+	<li class="field optional password" id="field-password2">
+            <label for="password2"><b>Password(again)</b></label>
+            <input id="password2" name="password2" value="" required="" aria-required="true" type="password" title="Please confirm your password">
+          </li>
+{% endif %}
+
+        </ol>
+
+      </div>
+
+      <div class="group group-form group-form-secondary group-form-personalinformation">
+        <h2 class="sr">Additional Personal Information</h2>
+
+        <ol class="list-input">
+
+  <li class="field-group field-gender">
+            <div class="field optional select" id="field-gender">
+              <label for="gender"><b>Gender</b></label>
+              <select id="gender" name="gender">
+{% if pageid == '3' %}
+	<option selected="selected" value="{{gender}}">{{gender}}</option>
+{% else %}
+                <option selected="selected" value="">--</option>
+{% endif %}
+{% if gender != "Male" %}
+                <option value="Male">Male</option>
+{% endif %}
+{% if gender != "Female" %}
+                <option value="Female">Female</option>
+{% endif %}
+{% if gender != "Other" %}
+                <option value="Other">Other</option>
+{% endif %}
+              </select>
+            </div>
+<!--         </li>
+
+<li class="field-group"> -->
+         <div class="field optional select" id="field-Desg">
+              <label for="Desg"><b>Designation</b></label>
+              <select id="Desg" name="Desg" required="" aria-required="true">
+{% if pageid == '3' %}
+<option selected="selected" value="{{desg}}">{{desg}}</option>
+{% else %}
+<option selected="selected" value="">--</option>
+{% endif %}
+                {% for d in desg_list %}
+{% if d != desg %}
+<option value="{{ d }}">{{ d }}</option>
+{% endif %}
+	{% endfor %}
+              </select>
+          </div>
+         </li>
+
+<li> &nbsp </li>
+	
+
+	<li class="field-group">
+         <div class="field optional select" id="field-Qual">
+              <label for="Qual"><b>Qualification</b></label>
+              <select id="Qual" name="Qual" required="" aria-required="true">
+      
+{% if pageid == '3' %}
+<option selected="selected" value="{{Qual}}">{{Qual}}</option>
+{% else %}
+<option selected="selected" value="">-- Select your Qualification --</option>
+{% endif %}
+                {% for q in qual_list %}
+{% if q != Qual %}
+<option value="{{ q }}">{{ q }}</option>
+{% endif %}	
+{% endfor %}
+              </select>
+          </div>
+       <!--  </li>
+
+    <li class="field-group"> -->
+          <div class="field optional select" id="field-experience">
+              <label for="experience"><b>Experience</b></label>
+              <select id="experience" name="experience">
+		{% if pageid == '3' %}
+	<option selected="selected" value="{{exp}}">{{exp}}</option>
+	{% else %}
+                <option selected="selected" value="">--</option>
+{% endif %}
+{% if exp != "0-2 years" %}
+                <option value="0-2 years">0-2 years</option>
+{% endif %}
+{% if exp != "2-5 years" %}
+                <option value="2-5 years">2-5 years</option>
+{% endif %}
+{% if exp != "5-10 years" %}
+                <option value="5-10 years">5-10 years</option>
+{% endif %}
+{% if exp != "> 10 years" %}
+                <option value="> 10 years">> 10 years</option>
+{% endif %}
+              </select>
+            </div>
+          </li>
+
+<li class="field-group">
+         <div class="field optional select" id="field-stream">
+              <label for="stream"><b>Discipline</b></label>
+              <select id="stream" name="stream" required="" aria-required="true">
+     
+{% if pageid == '3' %}
+<option selected="selected" value="{{stream}}">{{stream}}</option>
+{% else %}
+<option selected="selected" value="">-- Select your Discipline --</option>
+{% endif %}
+                {% for q in stream_list %}
+{% if q != stream %}
+<option value="{{ q }}">{{ q }}</option>
+{% endif %}
+	
+{% endfor %}
+              </select>
+          </div>
+         </li>
+
+
+	<li class="field-group">
+         <div class="field optional select" id="field-phone1">
+              <label for="phone1"><b>Mobile</b></label>
+          
+              <input id="phone1" name="phone1" size="30" maxlength="50" value="{{phone1}}" placeholder="" required="" aria-required="" aria-describedby="city-tip" autocomplete="off" type="text" title="Should be 10 digits (beginining with 9/8/7)" >
+            </div>
+          </li>
+	
+	<li class="field-group">
+         <div class="field optional select" id="field-phone2">
+              <label for="phone2">Phone(office)</label>
+              <input id="phone2" name="phone2" value="{{phone2}}"size="30" maxlength="50" placeholder="" required="" aria-required="" aria-describedby="city-tip" autocomplete="off" type="text">
+
+            </div>
+          </li>
+
+{% if pageid != '3' %}
+      <div class="group group-form group-form-accountacknowledgements">
+        <h2 class="sr">Account Acknowledgements</h2>
+
+ <ol class="list-input">
+	<li class="field-input">
+            <div class="field optional checkbox" id="field-tos">
+              <input id="tos-yes" name="terms_of_service" value="true" required="" aria-required="true" type="checkbox">
+              <label for="tos-yes"><b>Clicking here amounts to self declaration of the following:</b></label>
+            </div>
+</li></ol>
+           <p>{{termsofservice}}</p>
+         
+      </div>
+{% endif %}
+
+
+
+      <div class="form-actions">
+        <input name="sub" type="button" id="sub" class="nav-courseware-01" value="{{ submitvalue }}" onclick="register_field_validation({{pageid}})"/>
+
+
+      </div>
+<br><br>
+<div class="form-actions">
+	<input type="button" value="Reset"  class="nav-courseware-01" onclick="document.getElementById('register-form').reset()"/>
+      </div>
+
+    </form>
+  </section>
+{% endblock %}

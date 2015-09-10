@@ -1,0 +1,233 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block heading %}
+{% endblock %}
+
+{% block header %}
+<header>
+<h2>Course enrollment</h2>
+</header>
+{% endblock %}
+
+{% block header_block %}
+<ol class="left nav-global authenticated">
+
+		<li class="nav-global-01">
+<a href = "{% url 'ccourses' %}">Course Enrollment</a>
+</li>
+<li class="nav-global-01">
+<a href = "dash">Team Management</a>
+</li>
+
+<li class="nav-global-01">
+<a href = "{% url 'allcourses' %}">Find course</a>
+</li>
+
+    </ol>
+<ol class="right nav-courseware">
+
+
+    <li class="nav-courseware-01">
+   
+	<button onclick="location.href='/logout'" >Log out</button>
+          </li>
+      
+    </ol>
+{% endblock %}
+{% block name %}{{firstname}} {{lastname}}
+{% endblock %}
+
+{% block email %}{{email}}
+{% endblock %}
+
+
+
+{% block body_block %}
+
+</head>
+
+<body class="ltr view-register lang_en">
+  <div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#content">Skip to this view's content</a>
+
+<!-- 22nd Sept 2014 Swayam GUI -->
+
+<style>
+
+</style>
+
+ 
+
+
+<style>
+.view-register .wrapper-footer footer .colophon-about img, .view-login
+.wrapper-footer footer .colophon-about img {
+    margin-top: 0px;
+}
+
+.content-wrapper{
+padding-bottom:0px;
+background:#F7F7F7 !important;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+margin-top:76px;
+}
+
+header.global{
+position:fixed;
+top:0px;
+}
+
+.view-register .container{
+background:#FFF;
+}
+
+header.global .nav-global li a{
+color:#3D3E3F !important;
+}
+
+header.global .nav-global li a:hover{
+color:#F7691F !important;
+}
+
+.ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.ui-autocomplete {
+    background-color: rgba(236, 236, 236, 0.95);
+    width: 300px;
+    padding: 25px;
+    height: 100px;
+    border: 1px solid #222;
+    margin: 5px;
+    overflow: scroll;
+ }
+.ui-menu-item{
+list-style-type: none;
+}
+
+.ui-menu-item a {
+color: #222 !important;
+}
+
+</style>
+<!------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------->
+<section class="register container">  
+<section role="main" class="content">
+    <form role="form" id="register-form" method="post" data-remote="true" action="" novalidate autocomplete="off">{% csrf_token %}
+     <!-- <input type="hidden" name="csrfmiddlewaretoken" value="nFt27sSy18E3Vilv670tVbh610EaUACY"> -->
+      <!-- status messages -->
+
+
+
+      <p class="instructions">
+        Please fill the following details for enrolling your institute <strong class="indicator">{{ institutename }}</strong> for course <strong class="indicator">{{ coursename }} ({{course}})</strong>. <br />
+        Required fields are noted by <strong class="indicator">bold text and an asterisk (*)</strong>.
+      </p>
+
+
+      <div class="group group-form group-form-requiredinformation">
+        
+
+	{% if errors %}
+		<p style="color:red;"><h3 style="color:red;">{{ errors.0 }}</h3></p><br>
+	{% endif %}
+
+        <ol class="list-input">
+          <li class="field required text" id="field-email">
+            <label for="email">Corresponding course name in your institute.</label>
+            <input class="" id="email" type="text" name="coursename" placeholder="example: {{coursename}}" value="{{coursename}}" required aria-required="true" placeholder="example: Introduction to programming" />
+          </li>
+<style>
+h1 {
+  font-family: Helvetica;
+  font-weight: 100;
+}
+body {
+  color:#333;
+	text-align:center;
+}
+</style>
+<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
+    <script src="{% static 'js/jquery-1.9.1.js' %}" ></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/runnable.css' %}"  />
+<script>
+$(document).ready(
+  
+  /* This is the function that will get executed after the DOM is fully loaded */
+  function () {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,//this option for allowing user to select month
+      changeYear: true //this option for allowing user to select from year range
+    }),$("#txtDate").datepicker({ dateFormat: 'yy-mm-dd' }),$("#fxtDate").datepicker({ dateFormat: 'yy-mm-dd' });
+  }
+
+);
+</script>
+
+          <li class="field required text" id="field-name">
+            <label for="name">Start date(yyyy-mm-dd) of corresponding course in your institute</label>
+            <input id="txtDate" type="" name="startdate" value="{{ startdate }}" placeholder="example: 2015-08-15" required aria-required="true" aria-describedby="name-tip" />
+          </li>
+          <li class="field required text" id="field-username">
+            <label for="username">End date(yyyy-mm-dd) of corresponding course in your institute</label>
+            <input id="fxtDate" type="" name="enddate" value="{{ enddate }}" placeholder="example: 2015-08-15" required aria-required="true" aria-describedby="username-tip"/>
+          </li>
+
+
+          <li class="field required password" id="field-password">
+            <label for="password">Select the program to which this course is to be taught</label>
+	<select name="program" value="{{ program }}" required aria-required="true">
+<option value="BTech">B.Tech</option>
+<option value="MTech">M.Tech</option>
+<option value="Others">Others</option>
+</select>
+            <!--<input id="password" type="password" name="password" value="" required aria-required="true" />-->
+          </li>
+<li class="field required text" id="field-name">
+            <label for="name">Year</label>
+	<select name="year" value="{{ year }}" required aria-required="true">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+          </li>
+		<li class="field required text" id="field-username">
+            <label for="username">Total number of students to attend the course on IITBombayX</label>
+            <input type="number" name="total_moocs_students" value="{{ total_moocs_students }}" min="1" required aria-required="true" aria-describedby="username-tip"/>
+          </li>
+
+<li class="field required text" id="field-username">
+            <label for="username">Total number of students attending the corresponding course in institute</label>
+            <input type="number" name="total_course_students" value="{{ total_course_students }}" min="1" required aria-required="true" aria-describedby="username-tip"/>
+          </li>
+	<li class="field text" id="field-username">
+            <label for="username">Comments</label>
+		<textarea name="comments" aria-required="true" aria-describedby="username-tip">{{ comments }}</textarea>
+          </li><br><br>
+<input type='submit' name='submit' value='Enroll'>
+
+        </ol>
+
+      </div>
+
+      
+    </form>
+  </section>
+</section>
+
+{% endblock %}
+
+

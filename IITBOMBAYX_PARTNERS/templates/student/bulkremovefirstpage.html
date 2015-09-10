@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% block body_block %}
+
+<h2> Teacher List </h2>
+ <form action="upload/1/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<select name = "teacher_id">
+  <option value = "default">select</option>
+  {% for teacher in info %}
+  <option value="{{teacher.personid}}">{{teacher.personid.firstname}}</option>
+  {% endfor %}
+</select>
+ <head>
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+<p><h3>Upload student information:</h3></p>
+<p>
+<h6>1) Download  <a href = "/static/demofiles/template.csv">Template</a> and <a href = "/static/demofiles/demo.csv">Demo CSV</a> file</h6></p>
+<p>
+<h6>2) Add records in the given template as shown in Demo csv file</h6></p>
+<p><h6>3) Click on upload button to upload your csv file</h6></p>
+
+<ul>
+{{form.as_ul}}
+</ul>
+
+<input type="submit" name="submit" value="Upload CSV">
+</form>
+
+{% endblock %}

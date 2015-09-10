@@ -1,0 +1,47 @@
+{% extends 'base2.html' %}
+{% block body_block %}
+{% block content %}
+<head>
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+<h2>BLENDED MOOCs ADMIN</h2>
+<p><h3>Upload Grade Reports:</h3></p>
+<div>
+<!--
+<p>
+<h6>1) Download  <a href = "/static/demofiles/template.csv" download>Template</a> and <a href = "/static/demofiles/demo.csv" download>Sample CSV</a> file</h6></p>
+<p>
+<h6>2) Add records in the given template as shown in Demo csv file</h6></p>
+<p><h6>3) Click on upload button to upload your csv file</h6></p> -->
+<p><h5 style = "color : red">{{message}}</p>
+<!--<p><h5 style = "color : red">{{message}}</p>-->
+<form action="/gradeupload/" method="post" enctype="multipart/form-data">{% csrf_token %}
+  <br><p>Select the Course: 
+  <select name="course">
+	<option value="" selected disabled>select</option>
+  	<option value="IITBombayX/CS101.1x/2015-16">CS101</option>
+  	<option value="IITBombayX/ME209x/2015-16">ME209</option>
+  </select></p>
+  <p>Select the Filetype: 
+  <select name="filetype">
+	<option value="" selected disabled>select</option>
+	<option value="performance">Performance List</option>
+	<option value="students">Students List</option>
+  </select></p>
+<ul>
+{{form.as_ul}}
+</ul>
+
+<input type="submit" name="submit" value="Upload CSV">
+</form>
+<p><h5 style = "color : red">{{result}}</p>
+</div>
+
+
+{% endblock %}
+{% endblock %}
+
+
+
+
+

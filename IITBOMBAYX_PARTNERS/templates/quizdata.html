@@ -1,0 +1,85 @@
+{% extends 'pbase2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Evaluation Report</font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+{% autoescape off %}
+
+<br><br>
+
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{institutename}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+	<div  class ="col-md-4 " align="right">
+	<h4><a href = '/downloadquizcsv/{{courseid}}/{{pid}}/'>Download</a></h4>
+	</div>
+	<div class ="col-md-8">
+	<h4><b>Course:</b> {{course}}</h4>
+
+	</div>
+      <div class ="col-md-8">
+	<h4><b>Evaluation:</b> {{secname}}</h4>
+
+	</div>
+
+</div>
+</br>
+<style>
+
+
+.table td,.table th ,.table tr,.table thread .table tbody {
+    border: 1px solid black;
+}
+</style>
+<div class="table-responsive">
+ <table id="example" class="table" border="1"  cellspacing="0" width="100%" >
+    <thead> 
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+ <tr align = "left" >
+  {% for i in heading %}
+ <td align="center"  >
+  <b> {{i}}</b>
+</td>
+
+ {% endfor %}
+</tr>
+   </thead>
+<tbody >
+  {% for i in stud_rec %}
+  <tr align = "left">
+   
+     {% for j in i %}  
+ {% ifequal forloop.counter 6 %}
+      {% for k in j %} 
+       <td align=center >  {{k}}</td>
+       {% endfor %}
+      {% else %}
+      
+      <td align=center >  {{j}}</td>
+{% endifequal %}
+      {% endfor %}
+</tr>
+ {% endfor %}
+</tbody>
+</table> </div>
+<br>
+<br>
+
+  {% endautoescape %}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base2.html' %}
+{% block body_block %}
+{% block content %}
+<head>
+<style>
+
+</style>
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+<h2>Course Name</h2>
+<p><h3>Upload student information:</h3></p>
+
+<div align="right">
+<section class="profile-sidebar" align="center">
+     <header class="profile">
+      <h1 class="user-name">Download Links</h1>
+    </header>
+    <header class="profile">
+      <p>
+<h6><a href = "/static/demofiles/template.csv" download>Template</a> <br>
+	<br>
+	<a href = "/static/demofiles/demo.csv" download>Demo CSV</a></h6></p>
+    </header>
+    <section class="user-info">
+      
+    </section>
+
+  </section>
+</div>
+<br><br><br><br><br><br><br><br>
+<form action="upload/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<ul>
+{{form.as_ul}}
+</ul>
+
+<input type="submit" name="submit" value="Upload CSV">
+</form>
+
+
+{% endblock %}
+{% endblock %}
+

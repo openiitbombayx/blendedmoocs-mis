@@ -1,0 +1,85 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+
+
+
+<head>
+<style>
+
+   table {border-collapse:collapse; table-layout:fixed; width:310px;}
+   table td {border:solid 1px #fab; width:100px; word-wrap:break-word;}
+  
+</style>
+
+  <title>Students Information Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+ <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>-->
+</head>
+<body>
+{% block header %}
+<header><h2>{{fname}} Status Report  ({{coursename}})   </h2></header>
+<table class="table table-hover">
+
+ 
+    <tr><td>Total number of Students to be Marked:  {{totalrecords}} </td></tr>
+
+<tr><td>Number of Students Marked : {{validcount}}</td><td><a href="/downloadcsv/1">Marked Students </a></td></tr>
+<tr><td>Number of Students Already Marked: {{ignorecount}}</td><td> <a href="/downloadcsv/2">Already Marked Students </a></td></tr>
+<tr><td>Number of Students Unmarked: {{invalidcount}}</td><td> <a href="/downloadcsv/3">Unmarked Students</a></td></tr>
+
+</table>
+{% endblock %}
+
+{% block body_block %}
+
+  
+
+<div class="container">
+<BR>
+<h4><center><B>Unmarked Students' Report</B></center></h4>
+<br>
+<div>
+  
+  <table border=1 WIDTH="100%">
+    {% if errorreport %}	
+
+      <tr>
+        <th >SNo.</th>
+        <th >Roll No</th>
+        <th >Username</th>
+        <th >Email</th>
+        <th >Message</th>
+
+      </tr>
+
+
+
+        {% for error  in errorreport %}
+          <tr>
+            <td >{{error.recordno}}</td>
+            <td >{{error.roll_no}}</td>
+            <td >{{error.username}}</td>
+            <td >{{error.email}}</td>
+            <td >{{error.error_message}}</td>
+            
+          </tr>
+        {% endfor %}
+
+{% else %}
+<tr align="center"> No Error Records</tr>
+{% endif %}
+  </table>
+</div>
+</div>
+
+
+{% endblock %}
+{% block my_block %}
+{% endblock %}
+
+
+
+

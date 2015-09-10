@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!--[if IE 7]><html class="ie ie7 lte9 lte8 lte7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en"><!--<![endif]--><head dir="ltr">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+      <title>
+       Course Name
+      </title>
+  
+
+  <script type="text/javascript">
+    /* immediately break out of an iframe if coming from the marketing website */
+    (function(window) {
+      if (window.location !== window.top.location) {
+        window.top.location = window.location;
+      }
+    })(this);
+  </script>
+
+  <script type="text/javascript" src="{% static 'css/a' %}"></script>
+
+  <link rel="icon" type="image/x-icon" href="https://www.iitbombayx.in/static/themes/iitbombayx-theme/images/favicon.22b053d5ddae.ico">
+
+  
+  
+
+    <link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
+
+
+
+
+    
+    <script type="text/javascript" src="{% static 'js/lms-main_vendor.js' %}" charset="utf-8"></script>
+
+
+
+  <script>
+    window.baseUrl = "/static/";
+    (function (require) {
+        var urlArgs = "v=14d3fa0";
+      require.config({
+          baseUrl: baseUrl,
+          urlArgs: urlArgs
+      });
+    }).call(this, require || RequireJS.require);
+  </script>
+  <script type="text/javascript" src="{% static 'js/require-config-lms.js' %}"></script>
+
+  
+
+  
+
+    <link href="{% static 'css/lms-style-course-vendor.css' %}" rel="stylesheet" type="text/css">
+
+
+
+
+  
+
+    <link href="{% static 'css/lms-style-course.css' %}" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+  
+  
+
+    
+
+
+  <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.d5e37d8ee1a4.js"></script>
+  <![endif]-->
+
+  
+  <!-- dummy segment.io -->
+<script type="text/javascript">
+  var analytics = {
+    track: function() { return; },
+    pageview: function() { return; }
+  };
+</script>
+<!-- end dummy segment.io -->
+
+
+  <meta name="path_prefix" content="">
+  <meta name="google-site-verification" content="_mipQ4AtZQDNmbtOkwehQDOgCxUUV2fb_C0b6wbiRHY">
+
+  <script></script>
+
+
+
+</head>
+
+<body class="ltr  lang_en">
+  <div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#content">Skip to this view's content</a>
+
+    
+<!--[if IE]>
+<div class="sr message-accessibility message" id="mathjax-accessibility-message" aria-hidden="true">
+	<p class="copy">This page features MathJax technology to render mathematical formulae. To make math accessibile, we suggest using the MathPlayer plugin. Please visit the <a href="//www.dessci.com/en/products/mathplayer/download.htm">MathPlayer Download Page</a> to download the plugin for your browser.</p>
+</div>
+<div class="sr message-accessibility message" id="mathplayer-browser-message" aria-hidden="true">
+	<p class="copy">
+	 Your browser does not support the MathPlayer plugin. To use MathPlayer, please use Internet Explorer 6 through 9.
+	 </p>
+</div>
+<![endif]-->
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 22nd Sept 2014 Swayam GUI -->
+
+<style>
+
+</style>
+
+ <header class="global slim" aria-label="Global Navigation">
+    <nav>
+    <h1 class="logo">
+      <a href="https://www.iitbombayx.in/">
+        
+  <img src="{% static 'images/swayamlogo_header.png' %}" alt="Home Page" height="50">
+
+      </a>
+    </h1>
+
+    <!--<h2><span class="provider">IITBombayX:</span> CS101.1x Introduction to Computer Programming</h2>-->
+
+    <ol class="left nav-global authenticated">
+      
+          <li class="nav-global-01">
+           <!-- BharatMooc 22nd Dec 2014 changed the URL; <a href="/courses">Find Courses</a> -->
+            <a href="https://www.iitbombayx.in/all_courses/all">Find Courses</a>
+          </li>
+      
+    </ol>
+    <ol class="user">
+      <li class="primary">
+        <a href="https://www.iitbombayx.in/dashboard" class="user-link">
+          <span class="avatar"></span>
+          <span class="sr">Dashboard for: </span> teacher id
+        </a>
+      </li>
+      <li class="primary">
+        <a href="#" class="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr">More options dropdown</span> ▾</a>
+        <ul class="dropdown-menu" aria-label="More Options" role="menu">
+          
+
+            <li><a href="https://www.iitbombayx.in/faq">Help</a></li>
+          
+          <li><a href="https://www.iitbombayx.in/logout" role="menuitem">Log Out</a></li>
+        </ul>
+      </li>
+    </ol>
+  </nav>
+</header>
+
+<!--Bab Bharat MOOCs-->
+
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+
+(function() {
+
+
+$('.message.is-expandable .wrapper-tip').bind('click', toggleExpandMessage);
+
+$("#submit-lang").click(function(event, xhr) {
+
+event.preventDefault();
+
+$.post('/lang_pref/setlang/',
+
+{"language": $('#settings-language-value').val()})
+
+.done(
+
+function(data){
+
+// submit form as normal
+
+$('.settings-language-form').submit();
+
+}
+
+);
+
+});
+
+})(this);
+
+
+</script>
+
+
+<!--[if lte IE 8]>
+<div class="ie-banner" aria-hidden="true"><strong>Warning:</strong> Your browser is not fully supported. We strongly recommend using <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Chrome</a> or <a href="http://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox</a>.</div>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="container">
+  <div class="info-wrapper" style="width:fixed">
+
+    <section class="updates">
+
+    
+      <section>
+<br><br>
+
+{% block data_block %}{% endblock %}
+ <div><b>
+
+</b></div></article></article></section>
+
+</section><b>
+    </b><b>
+
+      
+
+
+
+    <div class="content-wrapper" id="content">
+<section aria-label="Handout Navigation" class="handouts treeview">
+      <h1>Download Links</h1>
+          <hr>
+
+<br>
+{% block my_block %}{% endblock %}
+<br></hr>
+<br>
+</div>
+  
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<nav class="info course-material">
+  <div class="inner-wrapper">
+    <ol class="course-tabs">
+        
+          <li>
+             <a href="https://www.iitbombayx.in/courses/IITBombayX/CS101.1x/2015-16/courseware" class="">
+                 Courseware
+             </a>
+          </li>
+        
+          <li>
+             <a href="https://www.iitbombayx.in/courses/IITBombayX/CS101.1x/2015-16/info" class="active">
+                 Course Info
+                   <span class="sr">, current location</span>
+             </a>
+          </li>
+        
+          <li>
+             <a href="https://www.iitbombayx.in/courses/IITBombayX/CS101.1x/2015-16/discussion/forum" class="">
+                 Discussion
+             </a>
+          </li>
+        
+          <li>
+             <a href="https://www.iitbombayx.in/courses/IITBombayX/CS101.1x/2015-16/progress" class="">
+                 Progress
+             </a>
+          </li>
+    
+    </ol>
+  </div>
+</nav>-->
+
+
+
+
+
+
+
+
+  </b></div><b>
+</b></section><b>
+
+      
+    </b></div>
+
+{% block body_block %}{% endblock %}    
+
+
+
+
+
+
+<style>
+.wrapper-footer{
+padding-top:16px;
+
+}
+
+.wrapper-footer footer .references{
+margin-top:0px;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a {
+        border-bottom:none !important;
+	color:#3D3E3F;
+}
+
+
+
+/*.wrapper-footer footer .colophon .nav-colophon li a {
+	border-bottom:none !important;
+    color: #3D3E3F !important;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a:hover{
+    color: #FF621B !important;
+}
+
+.wrapper-footer footer a:link, .wrapper-footer footer a:visited, .wrapper-footer footer a:hover, .wrapper-footer footer a:focus, .wrapper-footer footer a:active {
+    border-bottom: medium none;
+    color: #E44600;
+    text-decoration: none !important;
+}
+
+.wrapper-footer footer a:hover, .wrapper-footer footer a:focus, .wrapper-footer footer a:active {
+    border-bottom: 1px dotted #FF621B;
+    color: #FF621B;
+}*/
+
+.wrapper-footer footer{
+width:960px;
+margin:auto;
+}
+
+</style>
+
+<div class="wrapper wrapper-footer" style="width:auto;">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon" style="margin-bottom:20px;">
+      <ol>
+          <li class="nav-colophon-01">
+          <a id="about" href="https://www.iitbombayx.in/about">
+              About
+          </a>
+          </li>
+	  <!-- Bharat MOOCs -->
+          <li class="nav-colophon-02" style="color:#565656;">
+          <a id="news" href="http://news.iitbombayx.in/" target="_blank">
+              News
+          </a>
+          </li>
+          <li class="nav-colophon-03" style="color:#565656;">
+          <a id="blog" href="http://blogs.iitbombayx.in/" target="_blank">
+              Blog
+          </a>
+          </li>
+          <li class="nav-colophon-04" style="color:#565656;">
+          <a id="faq" href="https://www.iitbombayx.in/faq">
+              FAQ
+          </a>
+          </li>
+          <li class="nav-colophon-05" style="color:#565656;">
+          <a id="contact" href="https://www.iitbombayx.in/contact">
+              Contact Us
+          </a>
+          </li>
+      </ol>
+      </nav>
+
+      <div class="colophon-about">
+<!-- Bharat MOOCs-->
+        <img src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/swayamlogo_footer.png" style="width:auto; height:auto;" alt="IITBombayX Logo">
+
+        <p style="text-align:justify; color:#565656;">IITBombayX offers 
+interactive online classes and MOOCs. Subjects from multiple disciplines
+ are presently offered, as can be seen in the list of courses. This list
+ will expand later. IITBombayX is a non-profit online platform created 
+with funding from National Mission on Education through Information and 
+Communication Technology (NME-ICT), Ministry of Human Resource 
+Development (MHRD), Government of India (GoI).</p> 
+      </div>
+    </div>
+
+    <div class="references">
+      <nav class="nav-social">
+        <ul>
+          <li class="nav-social-02">
+            <a href="https://www.facebook.com/iitbombayx" target="_blank" rel="external">
+              <img src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/ico-social-facebook.png" alt="edX on Facebook">
+            </a>
+          </li>
+          <li class="nav-social-03">
+            <a href="https://twitter.com/iitbombayx" target="_blank" rel="external">
+              <img src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/ico-social-twitter.png" alt="edX on Twitter">
+            </a>
+          </li>
+          <li class="nav-social-04">
+            <a href="https://plus.google.com/u/0/113536343441190768869" target="_blank" rel="external">
+              <img src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/ico-social-google.png" alt="edX on Google+">
+            </a>
+          </li>
+          <!--li class="nav-social-05">
+            <a href="#"  target="_blank" rel="external">
+              <img src="/static/images/social/ico-social-youtube.909f05910c79.png" alt="edX on YouTube" />
+            </a>
+          </li-->
+        </ul>
+      </nav>
+
+      <!--p class="copyright" style="text-align:right; color:#050505; margin-bottom:11px;">&copy; 2014 IITBombayX, except where noted, all rights reserved</p-->
+
+      <nav class="nav-legal">
+        <ul style="display:block;float:right;text-align:right;">
+          <li class="nav-legal-01" style="display:block;">
+		<style>.wrapper-footer footer .references .nav-legal .nav-legal-01 a:after {content:none;}</style>
+            <a style="display: inline-block;" href="https://www.iitbombayx.in/tos" target="_blank">Terms of Service and Honour Code</a>
+          </li>
+          <li class="nav-legal-02" style="display:block;">
+            <a style="display: inline-block;" target="_blank" href="https://www.iitbombayx.in/privacy">Privacy Policy</a>
+          </li>
+          <li class="nav-legal-03" style="display:block; float:right;">	
+		 <style>.wrapper-footer footer .references .nav-legal .nav-legal-03 a:hover{border-bottom:0px;}</style> 
+            <a style="display: inline-block; " href="http://openedx.org/" target="_blank"><img src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/edx-openedx-logo-tag.png" style="padding-top:2.5em; float:right; width:150px; height:50px;" alt="Powered by Open edX"></a>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+
+  </b></div><b>
+
+  <script>window.baseUrl = "/static/";</script>
+    
+    <script type="text/javascript" src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/lms-application.js" charset="utf-8"></script>
+
+
+    
+    <script type="text/javascript" src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/lms-modules.js" charset="utf-8"></script>
+
+
+
+  
+  <script type="text/javascript" src="CS101.1x%20Course%20Info%20_%20IITBombayX_files/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+    $(".handouts").treeview({collapsed:true, unique:true/*, cookieId: "treeview-book-nav", persist: "cookie"*/});
+    });
+  </script>
+
+
+
+
+
+</b><div id="reader-feedback" class="sr" style="display:none" aria-hidden="false" aria-atomic="true" aria-live="assertive"></div></body></html>

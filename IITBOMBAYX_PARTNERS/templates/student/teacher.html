@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% block header %}
+<h2>Teachers' List - <font color=#F7691F> {{course}}<font></h2>
+{% endblock %}
+
+{% block body_block %}
+<html>
+
+<body>
+<table  border = "1"width="100%">
+<tr align = "left">
+<th>First name</th>
+<th>Last name</th>
+<th>Email</th>
+<th>Students' Information</th>
+</tr>
+{% for teacher in teacherlist %}
+   	<tr align = "left">
+	<td>{{teacher.personid.firstname}}</td>
+	<td>{{teacher.personid.lastname}}</td>
+	<td>{{teacher.personid.email}}</td>
+        <td><a href = "/teacher/{{teacher.personid.id}}/">Show</a></td>  
+        </tr>             
+{% endfor %} 
+</table>
+{% endblock %} 
+
+</body>
+</html>

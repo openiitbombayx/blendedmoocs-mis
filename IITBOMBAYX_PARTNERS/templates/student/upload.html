@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header>
+<p><h2>Upload Students' Information - <font color=#F7691F> {{coursename}}</font></h2></p>
+</header>
+{% endblock %}
+{% block body_block %}
+{% block content %}
+
+<head>
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+
+
+<div>
+<p>
+
+<h6><ol> Download  <a href = "/static/demofiles/template.csv" download>Template</a> and <a href = "/static/demofiles/demo.csv" download>Sample .csv</a> file</h6></p></ol>
+<p>
+<h6><ol> Add records in the given template as shown in Sample .csv file</h6></p></ol>
+<p><h6><ol> Click on browse button to select the .csv file</h6></p></ol>
+<p><h6><ol> Click Upload File to upload the details.</h6></p></ol>
+<ol><p><h5 style = "color : red">{{message}}</p></ol>
+<form action="/uploads_studentsinfo/2/{{courseid}}/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<ul>
+{{form.as_ul}}
+</ul>
+<br>
+<input type="submit" name="submit" value="Upload File">
+</form>
+</div>
+
+
+{% endblock %}
+{% endblock %}
+
+
+
+
+

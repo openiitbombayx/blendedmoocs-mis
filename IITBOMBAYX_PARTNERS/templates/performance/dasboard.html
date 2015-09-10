@@ -1,0 +1,54 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block body_block %}
+    <header>
+      <h2>Current Courses</h2>
+    </header>
+
+      <ul class="listing-courses">
+            
+            
+            
+ 
+
+		{% for course in courses_list %}
+                        
+			<!--<option value = "{{course}}" >{{course}}</option>-->
+<li class="course-item">
+    <article class="course">
+    
+
+        <a href="/upload/2/" class="cover">
+        <img src="{% static 'images/IITBombayXdemo_course_banner.png' %}" alt="IITBombayX Demo Course Cover Image">
+      </a>
+
+    <section class="info">
+      <hgroup>
+        <h2 class="university">IITBombayX</h2>
+        <h3>
+            <a href="/upload/2/">{{course}}</a>
+        </h3>
+      </hgroup>
+
+          <p align = "right">
+          <a href="/upload/2/" class="enter-course">Upload Students</a>&nbsp &nbsp &nbsp
+          &nbsp <a href="/parse/{{course}}" class="enter-course">Student Details</a>
+            
+         </p>
+             </section>
+</article>
+
+</li>
+		{% endfor %}        
+            
+               
+      {% endblock %}      
+            
+
+
+
+
+
+
+
+

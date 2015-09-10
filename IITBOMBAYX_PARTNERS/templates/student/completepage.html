@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}
+{% block header %}
+<h2>{{institutename}}</h2>
+{% endblock %}
+{% block body_block %}
+<html>
+<header>
+<h2>Substitution Successful!!!</h2>
+</header>
+<h3>Following students are substituted : <h3>
+<br>
+<table width = "100%" >{% csrf_token %}
+<tr align = "right"><td>
+<!--<right><a href = '/downloadcsv1/{{course}}/'>Download</a></right></td>  #send course argument when it is set in session
+</tr>-->
+<a href = '/coordinatorhome'>Go to Homepage</a></td></tr>
+</table>
+<br>
+
+<table border = "1"width="100%">
+  <tr align = "left">
+    <th>Roll_No</th>
+    <th>Username</th>
+    <th>Email-Id</th>
+  </tr>
+  {% for student in students %}
+   <tr>
+   <td>{{student.roll_no}}</td>
+   <td>{{student.userid.username}}</td>
+   <td>{{student.userid.email}}<td>
+   </tr>
+  {% endfor %}
+    
+  <!-- <tr align = "center">
+    <td>101</td>
+    <td>Mohsin</td>
+    <td>mohsin@gmail.com</td>
+  </tr>-->
+</table> 
+<br>
+<br>
+<!--<input class="cta cta-login" style="background-color:#EC5A1A;height:50px;width:200px;color:#FFFFFF;" type=button onClick="location.href='/downloadcsv'" value=' Downloadcsv'>-->
+{% endblock %} 
+
+</body>
+</html>

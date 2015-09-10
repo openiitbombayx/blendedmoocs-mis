@@ -1,0 +1,94 @@
+{% extends 'student/mybase1.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+
+<head>
+
+  <title>Performance Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <style>
+	
+	table.data,table.data td,table.data th {
+	    border: 1px solid black;
+	    border-collapse: collapse;
+	    text-align: center;
+	}
+
+	table.data {
+	    width: 100%;
+	}
+	table.data tr:nth-child(odd) {
+	   background-color: #ccc;
+	}
+	table.data tr:hover {
+		  background-color: #ffff99;
+		}
+	table.data th {
+	    height: 40px;
+	    color: #F7691F
+	}
+	table.data tr {
+	    height: 30px;
+	}
+	table.head, td, th, tr {
+		border: 0px solid black;
+		border-collapse: collapse;		
+	}
+	table.head {
+	    width: 100%;
+	    background-color: ;
+	}
+</style>
+</head>
+<br>
+<body>
+<table class="head">
+	<tr><td></td><td align="center"><font color="#F7691F" size="6"><b>Students Performance Report College-Wise</b></td><td></td></tr>
+ <tr><td>								
+<div class="pagination">
+    <span class="step-links">
+        {% if pdata.has_previous %}
+            &nbsp <a href="/reportinst/view/{{course}}/?page={{ pdata.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            &nbsp Page {{ pdata.number }} of {{ pdata.paginator.num_pages }}.
+        </span>
+
+        {% if pdata.has_next %}
+            <a href="/reportinst/view/{{course}}/?page={{ pdata.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div></td><td></td><td align="center"><font size="4"><a href="/reportinst/download/{{course}}/">Download Report</td></tr></table>
+  <table class="data" border=1>
+      <tr>
+        <th>Institute ID</th>
+        <th>Institute Name</th>
+        <th>Email</th>
+        <th>Grade</th>
+	{% for m in quiz %}
+	<th>Quiz{{m}}</th>
+	{% endfor %}
+	<th>Average</th>
+      </tr>
+        {% for m in pdata %}
+          <tr>
+	   	{% for n in m %}
+            	<td>{{n}}</td>
+		{% endfor %}
+          </tr>
+        {% endfor %}
+  </table>
+
+
+<br><br><br><br><br>
+{% endblock %}
+
+
+
+

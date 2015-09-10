@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en"><head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>IIT BomabayX Demo</title>
+
+        <script src="{% static 'js/jquery-1.js' %}"></script>  
+        <script src="{% static 'js/jquery.js' %}"></script>
+        
+        <!-- momentjs --> 
+        <script src="{% static 'js/moment.js' %}"></script>
+        
+        <!-- select2 --> 
+        <link href="{% static 'css/select2.css' %}" rel="stylesheet">
+        <script src="{% static 'css/select2.css' %}"></script>         
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]--> 
+        
+         
+        <!-- bootstrap 3 -->
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+
+        <!-- bootstrap-datetimepicker -->
+        <link href="{% static 'css/datetimepicker.css' %}" rel="stylesheet">
+        <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>        
+        
+        <!-- x-editable (bootstrap 3) -->
+        <link href="{% static 'css/bootstrap-editable.css' %}" rel="stylesheet">
+        <script src="{% static 'js/bootstrap-editable.js' %}"></script>
+
+        <!-- select2 bootstrap -->
+        <link href="{% static 'css/select2-bootstrap.css' %}" rel="stylesheet">
+       
+        <!-- typeaheadjs -->
+        <link href="{% static 'css/typeahead.css' %}" rel="stylesheet">
+        <script src="{% static 'js/typeahead.js' %}"></script>         
+        <script src="{% static 'js/typeaheadjs.js' %}"></script>         
+        
+        <link href="{% static 'css/demo-bs3.css' %}" rel="stylesheet">
+        
+        <style type="text/css">       
+            #comments:hover {
+                background-color: #FFFFC0;
+                cursor: text; 
+            }
+        </style>
+        
+        <script>
+        var f = 'bootstrap3';
+        </script>
+
+        
+        <!-- address input -->
+        <link href="{% static 'css/address.css' %}" rel="stylesheet">
+        <script src="{% static 'js/address.js' %}"></script> 
+        
+        <script>
+            var c = window.location.href.match(/c=inline/i) ? 'inline' : 'popup';
+            $.fn.editable.defaults.mode = c === 'inline' ? 'inline' : 'popup';
+
+            $(function(){
+                $('#f').val(f);
+                $('#c').val(c);
+                
+                $('#frm').submit(function(){
+                    var f = $('#f').val();
+                    if(f === 'jqueryui') {
+                        $(this).attr('action', 'demo-jqueryui.html');
+                    } else if(f === 'plain') {
+                        $(this).attr('action', 'demo-plain.html');
+                    } else if(f === 'bootstrap2') {
+                        $(this).attr('action', 'demo.html');
+                    } else {
+                        $(this).attr('action', 'demo-bs3.html');                        
+                    }
+                });
+            });
+        </script>        
+                
+        <style type="text/css">
+            body {
+                padding-top: 50px;
+                padding-bottom: 30px;
+            }
+            
+            table.table > tbody > tr > td {
+                height: 30px;
+                vertical-align: middle;
+            }
+        </style>         
+
+    </head>
+
+    <body> 
+<script type="text/javascript" src="{% static 'js/jquery-2.1.1.js' %}">
+$(function () {
+            $('#btn').on('click', function () {
+                        $.ajax({
+                            url: "/parse", 
+                            type: "post",
+                            
+                            contentType: "application/json; charset=utf-8",
+           
+                           
+                            
+                            datatype: "json",
+                             data:{id:$('#roll_no').val()},
+                        
+                            success: function (response) {
+                                alert(response);
+                            }
+                        }).complete(function(data) {
+                            alert("hello");
+                    }
+                                 }
+                        )
+</script>
+
+        <div style="width: 80%; margin: auto;"> 
+           <!-- <h1>X-editable Demo</h1>
+            <hr>
+
+            <h2>Settings</h2>
+             <form method="get" id="frm" class="form-inline" action="demo.html">
+                
+                <label>
+                    <span>Form style:</span>
+                    <select id="f" class="form-control">
+                        <option selected="selected" value="bootstrap3">Bootstrap 3</option>
+                        <option value="bootstrap2">Bootstrap 2</option>
+                        <option value="jqueryui">jQuery UI</option>
+                        <option value="plain">Plain</option>
+                    </select>
+                </label>
+
+                <label style="margin-left: 30px">Mode:
+                    <select name="c" id="c" class="form-control">
+                        <option selected="selected" value="popup">Popup</option>
+                        <option value="inline">Inline</option>
+                    </select>
+                </label>
+
+                <button type="submit" class="btn btn-primary" style="margin-left: 30px">refresh</button>
+            </form>
+
+            <hr>--> 
+            <div style="float: right; margin-bottom: 10px">
+            <label style="display: inline-block; margin-right: 50px"><input id="autoopen" style="vertical-align: baseline" type="checkbox">&nbsp;auto-open next field</label>
+            <button id="enable" class="btn btn-default">enable / disable</button>
+            </div>
+            <table id="user" class="table table-bordered table-striped" style="clear: both">
+                <tbody> 
+                 <tr align = "center">
+                     <th width = "65%">Roll_No</th>
+                     <th>Username</th>
+                    <th>Email-Id</th>
+                     </tr>
+
+                    {% for student in info %}
+                    <tr align = "center">
+    <td width="65%" ><a style="" title="" data-original-title="" class="editable editable-click" href="" id="roll_no" data-type="text" data-pk="1" data-title="Enter username" value="hello">{{student.roll_no}}</a></td>
+    <td width="65%"><a style="" title="" data-original-title="" class="editable editable-click" href="" id="username" data-type="text" data-pk="1" data-title="Enter username">{{student.username}}</a></td>
+<td width="65%"><a style="" title="" data-original-title="" class="editable editable-click" href="" id="email" data-type="text" data-pk="1" data-title="Enter username">{{student.email}}</a></td>
+<td><a href=""><button   id = "btn" value="Save">Submit</button></a></td>
+  </tr>
+ {% endfor %}       
+      </tbody>
+      </table>                  
+        </div>
+        
+        <script src="{% static 'js/demo-mock.js' %}"></script> 
+        <script src="{% static 'js/demo.js' %}"></script>         
+        
+
+  
+</body></html>

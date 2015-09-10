@@ -1,0 +1,58 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header><h2>Students' Information for {{teachername}}</h2></header>
+
+
+{% endblock %}
+{% block body_block %}
+  
+     {% for course in courses_list %}
+   	<li class="course-item">
+    	<article class="course">
+        <a href="" class="cover">
+        <img src="{{course.image}}" alt="Course Cover Image">
+        </a>
+ 	<section class="info">
+     	 <hgroup>
+        <h2 class="university">IITBombayX</h2>
+        <h3>
+            <a href="">{{course.coursename}}</a>
+        </h3>
+	<h5> <a href="">({{course.courseid}})</a></h5>
+      </hgroup>
+
+<br><br>
+<table   cellspacing="0" width="100%"  >  
+    <tr><td > <a href="/coursedescription/{{course.courseid}}/{{pid}}/" class="enter-course">Course  Details</a><br><br><br><br></td></tr>
+    
+    <tr>
+     {% if role_id == 5 %}
+     <td> <a href="/uploads_studentsinfo/2/{{course.courseid}}" class="enter-course">Upload Students' Info</a><br><br><br><br></td>
+     {% endif %}
+     <td> <a href="/studentsinformation/{{course.courseid}}/{{pid}}/" class="enter-course">Students' Details</a></td></tr>
+<tr><td ></br><center><h2>Evaluation</h2></center></td></tr>
+ <tr> <td> <a href="/evaluation/{{course.courseid}}/{{pid}}/0" class="enter-course">Evaluation Details </a></td>   
+ <td> <a href="/grades/{{course.courseid}}/{{pid}}/" class="enter-course">Grade Details</a></td>
+    </tr>
+            
+      </table>
+        
+      </section>
+     
+</article>
+
+</li>
+		{% endfor %}        
+            
+          <h4 style="color:red">{{message}}</h4>      
+      {% endblock %}      
+            
+
+
+
+
+
+
+
+

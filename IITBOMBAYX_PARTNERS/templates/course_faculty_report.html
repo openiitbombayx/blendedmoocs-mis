@@ -1,0 +1,77 @@
+{% extends 'base2.html' %}
+
+{% load staticfiles %}
+{% block header %}
+<header><h2>{{course}}- List of Reports</h2></header>
+
+
+{% endblock %}
+
+<head>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <style>
+	
+	table.data,table.data td,table.data th {
+	    border: 1px solid black;
+	    border-collapse: collapse;
+	    text-align: center;
+	}
+
+	table.data {
+	    width: 100%;
+	}
+	table.data tr:nth-child(odd) {
+	   background-color: #ccc;
+	}
+	table.data tr:hover {
+		  background-color: #ffff99;
+		}
+	table.data th {
+	    height: 35px;
+	    color: #F7691F
+	}
+	table.data tr {
+	    height: 28px;
+	}
+	table.head, td, th, tr {
+		border: 0px solid black;
+		border-collapse: collapse;		
+	}
+	table.head {
+	    width: 100%;
+	    background-color: ;
+	}
+</style>
+
+
+</head>
+<body>
+{% block body_block %}
+
+{% if courselist_flag == 1 %}
+<br><table style="width:90%" cellspacing="5" cellpadding="5" align="center"><tr><td align="right"><a href="/faculty_report">Course List</a></td></tr></table>
+{% endif %}
+<br><br>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+
+<tr>
+<th> Report Name</th><th>MOOCS</th><th>Blended Vs Non- Blended</th><th>within Blended</th>
+</tr>
+ {% for rec in record %}
+<tr>
+<td>{{rec.name}}</td>
+<td><a href="/instructoradmin/{{rec.record.0}}/{{course}}/0">Details</a></td>
+<td><a href="/instructoradmin/{{rec.record.1}}/{{course}}/0">Details</a></td>
+<td><a href="/instructoradmin/{{rec.record.2}}/{{course}}/0">Details</a></td>
+
+{% endfor %}
+
+</tr>
+
+
+</table>
+
+
+{% endblock %}

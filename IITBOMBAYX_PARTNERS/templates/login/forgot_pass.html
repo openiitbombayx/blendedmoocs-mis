@@ -1,0 +1,35 @@
+{% extends 'login/indexbase.html' %}
+{% load staticfiles  %}
+ {% block title %}Reset Account Password{% endblock %}
+ {% block header %}
+
+ <img src="{% static 'images/iitbxheader.png' %}"/>
+          <h1 class="title">
+          <span class="title-super">Reset Account Password</span>
+          </h1>
+{% endblock %}
+
+ {% block form %}
+<form role="form" id="login-form" method="post" action="" > {% csrf_token %}
+     <div role="alert" class="third-party-signin message" tabindex="-1">
+          <p class="instructions"> </p>
+     </div>
+     <p>
+          {{ message }}
+     </p>
+     <div class="group group-form group-form-requiredinformation">
+          <h2 class="sr">Required Information</h2>
+               <ol class="list-input">
+                    <li class="field required text" id="field-email">
+                         <label for="email">Email</label>
+                         <input class="" id="email" name="email" value="" placeholder="example: username@domain.com" required="" aria-required="true" aria-described-by="email-tip" type="email" >
+                    </li>
+          
+               </ol>
+     </div>
+     <div class="form-actions">
+          <button name="submit" type="submit" id="submit" action="location.href=/forgot_pass/">Reset Password</button>
+     </div>
+</form>
+{% endblock %}
+

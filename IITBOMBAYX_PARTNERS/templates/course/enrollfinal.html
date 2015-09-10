@@ -1,0 +1,134 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block heading %}
+{% endblock %}
+{% block header %}
+<header>
+<h2>Course participation</h2>
+</header>
+{% endblock %}
+{% block header_block %}
+<ol class="left nav-global authenticated">
+		<li class="nav-global-01">
+<a href = "{% url 'ccourses' %}">Course Enrollment</a>
+</li>
+{% if role_id <= 4 %}
+<li class="nav-global-01">
+<a href = "{% url 'dash' %}">Team Management</a>
+</li>
+<li class="nav-global-01">
+<a href = "{% url 'allcourses' %}">Find course</a>
+</li>
+{% endif %}
+    </ol>
+<ol class="right nav-courseware">
+    <li class="nav-courseware-01">
+   	<button onclick="location.href='/logout'" >Log out</button>
+          </li>
+          </ol>
+{% endblock %}
+{% block name %}{{firstname}} {{lastname}}
+{% endblock %}
+{% block email %}{{email}}
+{% endblock %}
+{% block body_block %}
+ <section class="register container">  
+<section role="main" class="content">
+    <form role="form" id="register-form" method="post" data-remote="true" action="" novalidate autocomplete="off">{% csrf_token %}
+     <!-- <input type="hidden" name="csrfmiddlewaretoken" value="nFt27sSy18E3Vilv670tVbh610EaUACY"> -->
+      <!-- status messages -->
+     <p class="instructions">
+        Please fill the following details for enrolling your institute <strong class="indicator">{{ institutename }}</strong> for course <strong class="indicator">{{ coursename }} ({{course}})</strong>. <br />
+        Required fields are noted by <strong class="indicator">bold text and an asterisk (*)</strong>.
+      </p>
+
+
+      <div class="group group-form group-form-requiredinformation">
+        
+
+	{% if errors %}
+		<p style="color:red;"><h3 style="color:red;">{{ errors.0 }}</h3></p><br>
+	{% endif %}
+
+        <ol class="list-input">
+          <li class="field required text" id="field-email">
+            <label for="email">Corresponding course name in your institute.</label>
+            <input class="" id="email" type="text" name="coursename" placeholder="example: {{coursename}}" value="{{coursename}}" required aria-required="true" placeholder="example: Introduction to programming" />
+          </li>
+<style>
+h1 {
+  font-family: Helvetica;
+  font-weight: 100;
+}
+body {
+  color:#333;
+	text-align:center;
+}
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="runnable.css" />
+<script>
+$(document).ready(
+  
+  /* This is the function that will get executed after the DOM is fully loaded */
+  function () {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,//this option for allowing user to select month
+      changeYear: true //this option for allowing user to select from year range
+    }),$("#txtDate").datepicker({ dateFormat: 'yy-mm-dd' }),$("#fxtDate").datepicker({ dateFormat: 'yy-mm-dd' });
+  }
+
+);
+</script>
+
+          <li class="field required text" id="field-name">
+            <label for="name">Start date(yyyy-mm-dd) of corresponding course in your institute</label>
+            <input id="txtDate" type="" name="startdate" value="{{ startdate }}" placeholder="example: 2015-08-15" required aria-required="true" aria-describedby="name-tip" />
+          </li>
+          <li class="field required text" id="field-username">
+            <label for="username">End date(yyyy-mm-dd) of corresponding course in your institute</label>
+            <input id="fxtDate" type="" name="enddate" value="{{ enddate }}" placeholder="example: 2015-08-15" required aria-required="true" aria-describedby="username-tip"/>
+          </li>
+          <li class="field required password" id="field-password">
+            <label for="password">Select the program to which this course is to be taught</label>
+	<select name="program" value="{{ program }}" required aria-required="true">
+<option value="select" selected="selected">-- select program --</option>
+<option value="BTech">B.Tech</option>
+<option value="MTech">M.Tech</option>
+<option value="Others">Others</option>
+</select>
+            <!--<input id="password" type="password" name="password" value="" required aria-required="true" />-->
+          </li>
+<li class="field required text" id="field-name">
+            <label for="name">Academic year of students to which this course is to be taught</label>
+	<select name="year" value="{{ year }}" required aria-required="true">
+<option value="0" selected="selected">-- select year --</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+          </li>
+		<li class="field required text" id="field-username">
+            <label for="username">Total number of students to attend the course on IITBombayX</label>
+            <input type="number" name="total_moocs_students" value="{{ total_moocs_students }}" min="1" required aria-required="true" aria-describedby="username-tip" onkeypress="return isNumberKey(event)"/>
+          </li>
+
+<li class="field required text" id="field-username">
+            <label for="username" >Total number of students attending the corresponding course in institute</label>
+            <input type="number" name="total_course_students" value="{{ total_course_students }}" min="1" required aria-required="true" aria-describedby="username-tip" onkeypress="return isNumberKey(event)"/>
+          </li>
+	<li class="field text" id="field-username">
+            <label for="username">Comments</label>
+		<textarea name="comments" aria-required="true" aria-describedby="username-tip">{{ comments }}</textarea>
+          </li><br><br>
+<input type='submit' name='submit' value='Enroll'>
+        </ol>
+      </div>
+    </form>
+  </section>
+</section>
+{% endblock %}

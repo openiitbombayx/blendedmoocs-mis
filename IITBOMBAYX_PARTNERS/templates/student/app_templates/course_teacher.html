@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<html>
+<body>
+
+{% if teacher_list %}
+   <ul>
+   {% for teacher in teacher_list %}
+{% block content %}
+<h1>Import file with comma separated fields for each entry.</h1>
+<form action="/create/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<ul>
+{{form.as_ul}}
+</ul>
+   {% endfor %}
+  </ul>
+{% else %}
+  <p> No courses for your institute.</p>
+{% endif %}
+</body>
+</html>
+{% endblock %}
+
+
+

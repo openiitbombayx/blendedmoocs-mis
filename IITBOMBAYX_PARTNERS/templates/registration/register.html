@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body_block %}
+{% block title %}{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+<h1> Registration </h1>
+	
+    <form method="post" action="." id="myForm" style="float: left">{% csrf_token %}
+        <table border="0" align="left">
+            {{ form.as_p | linebreaks  }}
+        </table>
+	<br><br>
+<br>
+<br>
+        <input type="submit" onMouseMove="" value="Register" />
+<br>
+<br>
+<input type="button" value="Login" onclick="location.href='/login/'" align="left" > 
+&nbsp &nbsp &nbsp
+	<input type="button" value="Reset" onclick="document.getElementById('myForm').reset()" align="left"/>
+        
+    </form>
+    
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body_block %}
+{% block content %}
+<h1>Click on Course button to see all the courses of your institute.</h1>
+<form action="/view_courses/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<ul>
+{{form.as_ul}}
+</ul>
+
+<input type="submit" name="submit" value="Course">
+</form>
+
+{% endblock %}
+{% endblock %}

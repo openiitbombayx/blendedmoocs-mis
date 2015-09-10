@@ -1,0 +1,23 @@
+{% extends 'login/indexbase.html' %}
+{% load staticfiles  %}
+ {% block title %}
+     Mail Sent
+{% endblock %}
+
+{% block header %}
+     <img src="{% static 'images/iitbxheader.png' %}"/>
+          <h1 class="title">
+          <span class="title-super">Mail Sent</span>
+          </h1>
+{% endblock %}
+ {% block form %}
+     <div role="alert" class="third-party-signin message" tabindex="-1">
+          <p class="instructions"> </p>
+     </div>
+     <p>
+          {{ message }}
+     </p>
+     
+    
+
+{% endblock %}

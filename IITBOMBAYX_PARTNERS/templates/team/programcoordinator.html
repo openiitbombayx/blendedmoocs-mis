@@ -1,0 +1,198 @@
+{% extends 'base2.html' %}
+
+{% block name %}{{hoi.firstname}} {{hoi.lastname}}
+{% endblock %}
+
+{% block email %}{{hoi.email}}
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+
+    /* Validating Entries Client Side */
+
+    function validate(){
+	
+	// fetch values from fields
+		var fname = document.getElementById('firstname').value;
+		var lname = document.getElementById('lastname').value;
+		var email = document.getElementById('email').value;
+
+				
+
+		// Regex 
+		var ck_fname = /^[A-Za-z. ]{2,30}$/;
+		var ck_lname = /^[A-Za-z]{1,30}$/;
+		var ck_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i ;
+		var msg="";
+
+		// checks
+		if (email == "") //Check if Field is Blank
+			msg = 'Please Enter a Valid Email Address !';
+		else if (!ck_email.test(email)) //Validate Email
+			msg = 'Please Enter a Valid Email Address !';
+		else if (fname == "") //Check if Field is Blank
+			msg = 'Please Enter a Valid First Name !';
+		else if (!ck_fname.test(fname)) //Validate First Name
+			msg = 'Please Enter a Valid First Name !';
+		else if (lname == "") //Check if Field is Blank
+			msg = 'Please Enter a Valid Last Name !';
+		else if (!ck_lname.test(lname)) //Validate Last Name
+			msg = 'Please Enter a Valid Last Name !';
+		else // if no errors
+		{
+		//submit the form 
+		document.forms["myForm"].submit();
+		}
+
+		document.getElementById('errors').innerHTML = msg;
+    
+}
+
+  </script>
+
+{% endblock %}
+
+{% block body_block %}
+
+{% if error_message %}<p ><strong>{{ error_message.0 }}</strong></p>{% endif %}
+
+<strong><p id="errors"></p></strong>
+
+<h3>ENTER PROGRAM COORDINATOR DETAILS</h3>
+
+
+<section class="register container">  
+<section role="main" class="content">
+
+    <form id="myForm" method="post"  action="." >
+	{% csrf_token %}
+    
+
+
+      <p class="instructions">
+        Please fill the following details for choosing a Team Member of your institute {{ institutename }}. <br />
+        Required fields are noted by <strong class="indicator">bold text and an asterisk (*)</strong>.
+      </p>
+
+
+      <div class="group group-form group-form-requiredinformation">
+        
+
+        <ol class="list-input">
+
+		
+          <li class="field required text" id="field-email">
+            <label for="email">Email</label>
+            <input class="" id="email" type="text" name="email" value="{{ email }}" placeholder="email123@sample.com" />
+          </li>
+		
+	<br>
+
+		
+	<li class="field required text" id="field-username">
+            <label for="firstname" >First Name</label>
+            <input type="text" id="firstname" name="firstname" value="{{ firstname }}"/>
+        </li>
+	
+	<br>
+
+	<li class="field required text" id="field-username">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" value="{{ lastname }}" />
+         </li>
+	
+	
+{% if ilu %}
+
+<br><br>
+	
+	<font>NAME : {{ ilu.0.personid.firstname }} {{ ilu.0.personid.lastname }}	</font><br>
+	<font>EMAIL : {{ ilu.0.personid.email }}					</font><br><br>
+
+	{% for each in ilu %}
+	<font>ROLE : {% if each.roleid = 2 %}HEAD OF THE INSTITUTE
+		  	{% else %}PROGRAM COORDINATOR
+		  	{% endif %}						</font><br>
+	<font>STARTDATE : {{ each.startdate }}	 				</font><br>
+	
+	{% if each.enddate.year <= 3000 %}
+	<font>ENDDATE : {{ each.enddate }}	 				</font><br>
+	{% endif %}
+	<br>
+	{% endfor %}		
+	<br>	
+
+	<p class="instructions">The person you are inviting is already registered in your Institute. Click Submit to give him / her an additional role. </p><br>
+	
+		<input type="hidden" name="secret" value="1">
+{% endif %}
+
+
+<br>
+<br>
+
+{% if clu %}
+	
+	{% if not ilu %}
+	
+	
+	<font>NAME : {{ clu.0.personid.firstname }} {{ clu.0.personid.lastname }}	</font><br>
+	<font>EMAIL : {{ clu.0.personid.email }}					</font><br>
+	
+	
+	<p class="instructions">The person you are inviting is already registered in your Institute. Click Submit to give him / her an additional role.</p><br>
+	
+	{% endif %}
+	
+	<table border="1" width='100%'>
+		<thead>
+    			<tr>
+    		  		<th><font>BM COURSE NAME</font><br></th>
+    				<th><font>ROLE</font><br></th>
+				<th><font>START DATE</font><br></th>
+				<th><font>END DATE</font><br></th>
+    			</tr>
+    		</thead>
+    		{% for post in clu %}
+    		<tbody>
+    			<tr>
+    		  		<td>{{ post.courseid.coursename }}<br></td>
+    				<td>{% if post.roleid = 4 %}COURSE COORDINATOR
+						   {% else %}Teacher
+						   {% endif %}
+				<br></td>
+				<td>{{ post.startdate }}<br></td>
+				{% if post.enddate.year <= 3000 %}
+				<td>{{ post.enddate }}<br></td>
+				{% endif %}	
+    			</tr>
+    		</tbody>
+		{% endfor %}
+    	</table><br>
+	
+		
+		
+		<input type="hidden" name="secret" value="1">
+{% endif %}
+
+
+	
+	<br>
+		<input type="button" name='sub' value="Submit" onclick="validate()">
+		
+		<input type="button" value="Reset" onclick="document.getElementById('myForm').reset()"/>
+
+        </ol>
+
+      </div>
+
+      
+    </form>
+  </section>
+</section>
+
+
+ 
+{% endblock %}

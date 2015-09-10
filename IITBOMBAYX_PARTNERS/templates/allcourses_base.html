@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!--[if IE 7]><html class="ie ie7 lte9 lte8 lte7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en"><!--<![endif]--><head dir="ltr">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+      <title>
+       Courses | IITBombayX
+      </title>
+  
+
+  <script type="text/javascript">
+    /* immediately break out of an iframe if coming from the marketing website */
+    (function(window) {
+      if (window.location !== window.top.location) {
+        window.top.location = window.location;
+      }
+    })(this);
+  </script>
+
+  <script type="text/javascript" src="AllCourses%20%7C%20IITBombayX_files/a"></script>
+
+  <link rel="icon" type="image/x-icon" href="https://iitbombayx.in/static/themes/iitbombayx-theme/images/favicon.22b053d5ddae.ico">
+
+  
+  
+
+    <link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
+
+
+
+
+    
+    <script type="text/javascript" src="{% static 'js/lms-main_vendor.js' %}" charset="utf-8"></script>
+
+
+
+  <script>
+    window.baseUrl = "/static/";
+    (function (require) {
+        var urlArgs = "v=14d3fa0";
+      require.config({
+          baseUrl: baseUrl,
+          urlArgs: urlArgs
+      });
+    }).call(this, require || RequireJS.require);
+  </script>
+  <script type="text/javascript" src="{% static 'js/require-config-lms.js' %}"></script>
+
+  
+
+
+  
+  
+
+    
+
+
+  <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.d5e37d8ee1a4.js"></script>
+  <![endif]-->
+
+  
+  <!-- dummy segment.io -->
+<script type="text/javascript">
+  var analytics = {
+    track: function() { return; },
+    pageview: function() { return; }
+  };
+</script>
+<!-- end dummy segment.io -->
+
+
+  <meta name="path_prefix" content="">
+  <meta name="google-site-verification" content="_mipQ4AtZQDNmbtOkwehQDOgCxUUV2fb_C0b6wbiRHY">
+
+  <script></script>
+
+
+
+</head>
+
+<body class="ltr  lang_en">
+  <div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#content">Skip to this view's content</a>
+
+    
+<!--[if IE]>
+<div class="sr message-accessibility message" id="mathjax-accessibility-message" aria-hidden="true">
+	<p class="copy">This page features MathJax technology to render mathematical formulae. To make math accessibile, we suggest using the MathPlayer plugin. Please visit the <a href="//www.dessci.com/en/products/mathplayer/download.htm">MathPlayer Download Page</a> to download the plugin for your browser.</p>
+</div>
+<div class="sr message-accessibility message" id="mathplayer-browser-message" aria-hidden="true">
+	<p class="copy">
+	 Your browser does not support the MathPlayer plugin. To use MathPlayer, please use Internet Explorer 6 through 9.
+	 </p>
+</div>
+<![endif]-->
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 22nd Sept 2014 Swayam GUI -->
+
+<style>
+
+</style>
+
+ <header class="global " aria-label="Global Navigation">
+    <nav>
+    <h1 class="logo">
+      <a href="https://iitbombayx.in/">
+        
+  <img src="{% static 'images/swayamlogo_header.png' %}" alt="Home Page" height="50">
+
+      </a>
+    </h1>
+
+
+    <ol class="left nav-global authenticated">
+		<li class="nav-global-01">
+<a href = "{% url 'ccourses' %}">Course Enrollment</a>
+
+</li>
+{% if roleid <= 4 %}
+<li class="nav-global-01">
+<a href = "{% url 'dash' %}">Team Management</a>
+</li>
+
+<li class="nav-global-01">
+<a href="{% url 'allcourses' %}">Find courses</a>
+</li>
+{% endif %}
+</ol>
+    <ol class="right nav-courseware">
+
+
+    <li class="nav-courseware-01">
+   
+	<button onclick="location.href='/logout'" >Log out</button>
+          </li>
+      
+    </ol>
+  </nav>
+</header>
+
+<!--Bab Bharat MOOCs-->
+
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+
+(function() {
+
+
+$('.message.is-expandable .wrapper-tip').bind('click', toggleExpandMessage);
+
+$("#submit-lang").click(function(event, xhr) {
+
+event.preventDefault();
+
+$.post('/lang_pref/setlang/',
+
+{"language": $('#settings-language-value').val()})
+
+.done(
+
+function(data){
+
+// submit form as normal
+
+$('.settings-language-form').submit();
+
+}
+
+);
+
+});
+
+})(this);
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content-wrapper" id="content">
+      
+<!-- Bharat MOOCs 19th Sept 2014 Added language selection box -->
+
+
+
+
+<!--
+#Bharat_Mooc
+#Details : Added language settings 
+-->
+<script type="text/javascript"> 
+
+ function myFunction()
+{
+    var valueSelected= String($('#settings-language-value').val());
+
+    String.prototype.in = function() {
+    for(var i=0; i<arguments.length; i++)
+       if(arguments[i] == this) return true;
+    return false;
+}
+   
+
+
+   if (!valueSelected.in('en','hi','as','mr'))
+      {
+      divTxt= ' Not fully supported !  Will be implemented soon '
+      document.getElementById('support').innerHTML = divTxt;
+      }
+   else
+     $('#support').empty();
+
+    
+};
+
+</script>
+<!--
+#Bharat_Mooc
+-->
+<section id="change_language" class="modal modal-settings-language" aria-hidden="true">
+  <div class="inner-wrapper" role="dialog" aria-labelledby="change_language_title">
+    <button class="close-modal">
+      <i class="icon-remove"></i>
+      <span class="sr">
+        Close
+      </span>
+    </button>
+
+    <header>
+      <h2>
+        <span id="change_language_title">Change Preferred Language</span>
+        <span class="sr">,
+          window open
+        </span>
+      </h2>
+      <hr>
+    </header>
+    <div id="change_language_body">
+      <form action="/i18n/setlang/" method="post" class="settings-language-form" id="settings-form">
+      <input name="csrfmiddlewaretoken" value="nFt27sSy18E3Vilv670tVbh610EaUACY" type="hidden">
+        <ol class="list-input">
+          <li class="field text settings-language-select" id="settings-language-select">
+            <label class="label sr" for="settings-language-value">Please choose your preferred language</label>
+<!--Bharat_MOOC : Added  onchange="myFunction()-->
+            <select class="input select" id="settings-language-value" name="language" onchange="myFunction()">
+                    <option selected="selected" value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+            </select>
+          </li>
+        </ol>
+<!--Bharat_MOOC : Added div -->
+        <div id="support" style="color:#FF0000;"></div>
+
+        <div class="submit">
+          <input id="submit-lang" value="Save Language Settings" type="submit">
+        </div>
+      </form>
+
+<!--      <ul class="list list-actions actions-supplemental">
+        <li class="list-actions-item">
+        Don't see your preferred language? <a class=" action action-volunteer" rel="external" target="_blank" href=https://github.com/edx/edx-platform/blob/master/docs/en_us/developers/source/i18n_translators_guide.rst>Volunteer to become a translator!</a>
+        </li>
+      </ul>                -->
+    </div>
+  </div>
+</section>
+                                    
+          
+       
+                                              
+  
+            
+                                                        
+<!--Updated by Bab-->                           
+
+
+                                              
+
+
+<link href="AllCourses%20%7C%20IITBombayX_files/css.css" rel="stylesheet" type="text/css">
+
+<style>
+body{
+ font-family: "Open Sans",Arial,Helvetica,sans-serif;
+ background:#F7F7F7;
+ margin:0px;
+ height:auto;
+ line-height:1.5em;
+ font-size:16px; 
+}
+
+.homebanner{
+	background-image: url('/static/images/courses.png');
+	width: 960px;
+	height: 124px;
+	margin-top: 0px;
+	border-bottom: 1px solid #888;
+	background-color: #fff;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+
+.main_content{
+width:960px;
+height:auto;
+margin:auto;
+background:#ffffff;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+}
+
+.region_highlighted{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+word-wrap: break-word;
+}
+
+.course_filter{
+background-color: #f3f0e6;
+border-bottom-color: #999;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+overflow: auto;
+overflow-x: auto;
+overflow-y: auto;
+padding-bottom: 20px;
+padding-left: 90px;
+padding-right: 25px;
+padding-top: 20px;
+word-wrap: break-word;
+}
+
+#coursefilter-form{
+color: #565656;
+float:right;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+word-wrap: break-word;
+}
+
+.item_link{
+color: #565656;
+display: inline-block;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 14.4px;
+padding-top: 0px;
+vertical-align: middle;
+word-wrap: break-word;
+}
+
+.item_link ul{
+list-style: none outside none;
+margin: 0px;
+padding: 0px;
+}
+
+.item_link a{
+text-decoration:none;
+color:#565656;
+}
+
+.item_link a:hover{
+color:#f7691f;
+text-decoration:none;
+}
+
+.selected_even_first a{
+color:#EC5A1A;
+text-decoration:none;
+}
+
+
+.selected_even_first{
+border-left-color: #565656;
+border-left-style: none;
+border-left-width: 0px;
+color: #565656;
+float:left;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 7.2px;
+padding-top: 0px;
+text-transform: lowercase;
+word-wrap: break-word;
+}
+
+.odd{
+border-left-color: #BCBCBC;
+border-left-style: solid;
+border-left-width: 1px;
+color: #565656;
+float:left;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 7.2px;
+padding-right: 7.2px;
+padding-top: 0px;
+text-transform: lowercase;
+word-wrap: break-word;
+}
+
+.even{
+border-left-color: #BCBCBC;
+border-left-style: solid;
+border-left-width: 1px;
+color: #565656;
+float:left;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 7.2px;
+padding-right: 7.2px;
+padding-top: 0px;
+text-transform: lowercase;
+word-wrap: break-word;
+}
+
+.odd_last{
+border-left-color: #BCBCBC;
+border-left-style: solid;
+border-left-width: 1px;
+color: #565656;
+float:left;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 7.2px;
+padding-right: 7.2px;
+padding-top: 0px;
+text-transform: lowercase;
+word-wrap: break-word;
+}
+
+.item_subject{
+color: #565656;
+display: inline-block;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 14.4px;
+padding-top: 0px;
+word-wrap: break-word;
+vertical-align:middle;
+}
+
+
+#edit_subject{
+background-position: 100% 50%;
+background-repeat: no-repeat;
+border-bottom-color: #AEAEAE;
+border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #AEAEAE;
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: #AEAEAE;
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: #AEAEAE;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-top-style: solid;
+border-top-width: 1px;
+color: #565656;
+font-family: sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 19px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+outline-color: #565656;
+outline-style: none;
+outline-width: 0px;
+overflow: hidden;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-bottom: 4px;
+padding-top: 4px;
+text-overflow: ellipsis;
+vertical-align: baseline;
+white-space: nowrap;
+width: 182px;
+word-wrap: normal;
+-moz-appearance: button;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+-moz-user-select: none;
+}
+
+.item_university{
+color: #565656;
+display: inline-block;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 14.4px;
+padding-top: 0px;
+word-wrap: break-word;
+vertical-align:middle;
+}
+
+#edit_university{
+background-position: 100% 50%;
+background-repeat: no-repeat;
+border-bottom-color: #AEAEAE;
+border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #AEAEAE;
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: #AEAEAE;
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: #AEAEAE;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-top-style: solid;
+border-top-width: 1px;
+color: #565656;
+font-family: sans-serif;
+font-size: 14.4px;
+font-weight: 400;
+line-height: 19px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+outline-color: #565656;
+outline-style: none;
+outline-width: 0px;
+overflow: hidden;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-bottom: 4px;
+padding-top: 4px;
+text-overflow: ellipsis;
+vertical-align: baseline;
+white-space: nowrap;
+width: 182px;
+word-wrap: normal;
+-moz-appearance: button;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+-moz-user-select: none;
+}
+
+.form-submit{
+background: none repeat scroll 0px 0px #EC5A1A;
+border: 0px none #FFF;
+border-radius: 2px;
+box-shadow: 0px 1px 0px 0px #FF862B inset;
+box-sizing: border-box;
+color: #FFF;
+background-image:none;
+cursor: pointer;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: 19px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+vertical-align: middle;
+word-wrap: break-word;
+padding-top:6px;
+padding-bottom:6px;
+padding-right:20px;
+padding-left:20px;
+text-shadow:none;
+}
+
+.form-submit:hover{
+background-color:#F7691F !important;
+background-image:none !important;
+box-shadow:none !important;
+}
+
+button:focus:not(:disabled){
+box-shadow:none !important;
+}
+
+/*-------Page below the button------*/
+
+.inner_region_content{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+margin-left: 0px;
+margin-right: 0px;
+padding-bottom: 25px;
+padding-left: 25px;
+padding-right: 25px;
+padding-top: 25px;
+word-wrap: break-word;
+}
+
+.view_header{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+padding-bottom: 16px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+word-wrap: break-word;
+}
+
+.view_header strong{
+color: #333;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+word-wrap: break-word;
+}
+
+.view_content{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+word-wrap: break-word;
+}
+
+.view_row_course{
+border-bottom-color: #949494;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #949494;
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: #949494;
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: #949494;
+border-top-style: solid;
+border-top-width: 1px;
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 30px;
+min-width: 262px;
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+}
+
+.right_course_view_fieldset{
+border-left-color: #949494;
+border-left-style: solid;
+border-left-width: 1px;
+color: #565656;
+float:right;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+position: relative;
+width: 262px;
+word-wrap: break-word;
+}
+
+.image{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+word-wrap: break-word;
+}
+
+.image a{
+color: #EC5A1A;
+display: block;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-decoration: none;
+word-wrap: break-word;
+-moz-text-decoration-color: #EC5A1A;
+-moz-text-decoration-line: none;
+-moz-text-decoration-style: solid;
+}
+
+
+.image_style_none{
+border-bottom-color: #EC5A1A;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #EC5A1A;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: #EC5A1A;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: #EC5A1A;
+border-top-style: none;
+border-top-width: 0px;
+color: #EC5A1A;
+display: block;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+height: 136px;
+line-height: 24px;
+max-width: 262px;
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+}
+
+.action{
+bottom: 0px;
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+position: absolute;
+width: 262px;
+word-wrap: break-word;
+}
+
+.action a{
+background-attachment: scroll;
+background-clip: border-box;
+background-color: #828081;
+background-image: none;
+background-origin: padding-box;
+background-position: 0px 0px;
+background-repeat: repeat;
+background-size: auto auto;
+border-bottom-color: #FFF;
+border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #FFF;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: #FFF;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: #FFF;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-top-style: none;
+border-top-width: 0px;
+box-shadow: none;
+box-sizing: border-box;
+color: #FFF;
+cursor: pointer;
+display: block;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 18px;
+font-weight: 300;
+line-height: 24px;
+padding-bottom: 10px;
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 10px;
+text-align: center;
+text-decoration: none;
+transition-delay: 0s, 0s, 0s;
+transition-duration: 0.25s, 0.25s, 0.25s;
+transition-property: color, #000, box-shadow;
+transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1), cubic-bezier(0.42, 0, 0.58, 1), cubic-bezier(0.42, 0, 0.58, 1);
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+-moz-text-decoration-color: #FFF;
+-moz-text-decoration-line: none;
+-moz-text-decoration-style: solid;
+}
+
+.action a:hover{
+background: none repeat scroll 0px 0px #f7691f;
+}
+
+.left_course_view_fieldset{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+max-width: 615px;
+padding-bottom: 15px;
+padding-left: 15px;
+padding-right: 15px;
+padding-top: 15px;
+width: 615px;
+word-wrap: break-word;
+}
+
+.new_course_ribbon{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+height: 29px;
+line-height: 24px;
+position: absolute;
+width: 30px;
+word-wrap: break-word;
+}
+
+.new_course_ribbon img{
+border-bottom-color: #565656;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #565656;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: #565656;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: #565656;
+border-top-style: none;
+border-top-width: 0px;
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+height: 22px;
+line-height: 24px;
+max-width: 30px;
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+}
+
+.top_view_fieldset{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+min-height: 75px;
+padding-bottom: 0px;
+padding-left: 45px;
+padding-right: 0px;
+padding-top: 0px;
+word-wrap: break-word;
+}
+
+.top_view_fieldset h2{
+text-transform:none;
+border-bottom-color: #050505;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #050505;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: #050505;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: #050505;
+border-top-style: none;
+border-top-width: 0px;
+color: #050505;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 17.6px;
+font-weight: 400;
+line-height: 17.6px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+overflow: hidden;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-bottom: 10px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+text-overflow: ellipsis;
+white-space: nowrap;
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+}
+
+ strong{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 17.6px;
+font-weight: 700;
+line-height: 17.6px;
+white-space: nowrap;
+word-wrap: break-word;
+}
+
+.title_course_title a{
+border-bottom-color: #565656;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #565656;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: #565656;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: #565656;
+border-top-style: none;
+border-top-width: 0px;
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 17.6px;
+font-weight: 700;
+line-height: 17.6px;
+text-decoration: none;
+white-space: nowrap;
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+-moz-text-decoration-color: #565656;
+-moz-text-decoration-line: none;
+-moz-text-decoration-style: solid;
+}
+
+.title_course_title{
+border-bottom-color: #050505;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #050505;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: #050505;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: #050505;
+border-top-style: none;
+border-top-width: 0px;
+color: #050505;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 17.6px;
+font-weight: 400;
+line-height: 17.6px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+overflow: hidden;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-bottom: 10px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+text-overflow: ellipsis;
+white-space: nowrap;
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+}
+
+.course_sub_title{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 12.8px;
+font-weight: 400;
+line-height: 19.2px;
+word-wrap: break-word;
+}
+
+.learn_more{
+width:170px;
+padding:5px 0px 5px 95px;
+height:20px;
+background:#126f9a;
+margin-top:106px;
+color:#ffffff;
+}
+
+.bottom_view_fieldset{
+background-attachment: scroll;
+background-clip: border-box;
+background-color: #F2F2F2;
+background-image: none;
+background-origin: padding-box;
+background-position: 0px 0px;
+background-repeat: repeat;
+background-size: auto auto;
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 12.8px;
+font-weight: 400;
+line-height: 30px;
+margin-left: 30px;
+overflow: hidden;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-left: 15px;
+word-wrap: break-word;
+}
+
+.bottom_view_fieldset ul li{
+display:inline;
+margin-right: 15px;
+}
+
+.clearfix{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 12.8px;
+font-weight: 400;
+line-height: 30px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+word-wrap: break-word;
+display:inline-block;
+}
+
+.first{
+color: #565656;
+float:left;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 12.8px;
+font-weight: 400;
+line-height: 30px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-right: 15px;
+word-wrap: break-word;
+}
+
+.label{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 12.8px;
+font-weight: 700;
+line-height: 30px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+text-transform: uppercase;
+word-wrap: break-word;
+}
+
+.college_name{
+color: #333;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 12.8px;
+font-weight: 700;
+line-height: 30px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+word-wrap: break-word;
+}
+
+/** Next Page Number Styling List */
+
+.below_page_number_item_list{
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+word-wrap: break-word;
+}
+
+.pager li a{
+color:#EC5A1A;
+text-decoration:none;
+}
+
+.pager li a:hover{
+border-bottom:1px dotted #f7691f;
+}
+
+.pager{
+clear: both;
+color: #565656;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 12px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 8px;
+text-align: center;
+word-wrap: break-word;
+}
+
+.page_current_even_first{
+background-image: none;
+color: #565656;
+display: inline;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+text-align: center;
+word-wrap: break-word;
+}
+
+.page_item_odd{
+background-image: none;
+color: #565656;
+display: inline;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+text-align: center;
+word-wrap: break-word;
+}
+
+.page_item_even{
+background-image: none;
+color: #565656;
+display: inline;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+text-align: center;
+word-wrap: break-word;
+}
+
+.page_item_ellipsis_odd{
+background-image: none;
+color: #565656;
+display: inline;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+text-align: center;
+word-wrap: break-word;
+}
+
+.page_item_next_even{
+background-image: none;
+color: #565656;
+display: inline;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+text-align: center;
+word-wrap: break-word;
+}
+
+#forward-arrow{
+font-size: 8px;
+font-weight: 400;
+letter-spacing:0px;
+}
+
+.page_item_last_odd{
+background-image: none;
+color: #565656;
+display: inline;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+text-align: center;
+word-wrap: break-word;
+}
+
+.content-wrapper{
+padding-bottom:0px;
+background:#F7F7F7;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+margin-top:76px;
+}
+
+
+header.global{
+position:fixed;
+top:0px;
+}
+
+
+.css_btn_class {
+	font-size:16px;
+	font-family:Arial;
+	font-weight:normal;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border:1px solid #dcdcdc;
+	padding:9px 18px;
+	text-decoration:none;
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	background:-ms-linear-gradient( top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #ededed), color-stop(100%, #dfdfdf) );
+	background-color:#ededed;
+	color:#777777;
+	display:inline-block;
+	text-shadow:1px 1px 0px #ffffff;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #ffffff;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #ffffff;
+ 	box-shadow:inset 1px 1px 0px 0px #ffffff;
+}.css_btn_class:hover {
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	background:-ms-linear-gradient( top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed) );
+	background-color:#dfdfdf;
+}.css_btn_class:active {
+	position:relative;
+	top:1px;
+}
+
+.inner-content{
+width:100%;
+margin:0px;
+padding:0px;
+
+}
+
+.inner-content2{
+width:1000px;
+margin:auto;
+}
+
+        .text p{
+        margin:0px;                
+        margin-bottom:5px;
+        font-family:'Open Sans';                     
+        font-size:24px;
+        line-height:1.5em;
+        font-weight:400;
+	color:#EC5A1A;
+	margin-bottom:-10px;
+}
+
+
+</style>
+
+
+
+
+<div class="inner-content">
+	<div class="inner-content2">
+		<div class="homebanner">
+		<div style="width:auto; margin:0px; padding-top:0px;">
+                <div style="width=960px; margin:auto; margin-top:0px;height:124px; overflow:hidden;">
+                        <div class="text" style=" position:relative; top:35px; left:30px;">
+                            <p>TAKE ONLINE COURSES</p>
+                            <p style="color:#464646; font-size:18px; position:relative; left:45px; font-weight:500; margin-top:2px;">from one of India's best Universities</p>
+                    </div>
+                 </div>
+                 </div>		
+		</div>
+		<div class="main_content">
+		<!-- Below_banner_button_strip starts-->
+			<!--<div class="region_highlighted">
+				<div class="course_filter">
+				<form id="coursefilter-form" accept-charset="UTF-8" method="post" action="/all_courses/all" novalidate="">
+                                       <input name="csrfmiddlewaretoken" value="nFt27sSy18E3Vilv670tVbh610EaUACY" type="hidden"> 
+					<div class="item_link">
+						<ul>
+						<li class="even" style="border-left:none"><a class="active" href="https://iitbombayx.in/all_courses/all">all</a></li>
+						<li class="odd"><a href="https://iitbombayx.in/all_courses/current">current</a></li>
+						<li class="even"><a href="https://iitbombayx.in/all_courses/upcoming">new</a></li>
+						<li class="odd"><a href="https://iitbombayx.in/all_courses/past">past</a></li>
+                                                 </ul>
+                                        
+					</div>
+					<div class="item_subject">
+                                                
+						<select id="edit_subject" name="subject">
+                                                 <option selected="selected" value="">--</option>
+                                                   <option value="1">Electronic Media</option>
+                                                   <option value="2">Electrical Engineering</option>
+                                                   <option value="3">Electronics</option>
+                                                   <option value="4">Computer Science (IT)</option>
+                                                   <option value="5">Foreign Language</option>
+                                                   <option value="6">Economics &amp; Finance </option>
+                                                   <option value="7">Humanities (Hindi)</option>
+                                                   <option value="8">Physics</option>
+                                                   <option value="9">Social Sciences</option>
+                                                   <option value="10">English Language| Writing Skills| Academic Writing</option>
+                                                   <option value="11">Linguistics </option>
+                                                   <option value="12">Animation</option>
+                                                   <option value="13">Chemistry</option>
+                                                   <option value="14">Indian English</option>
+                                                   <option value="15">Translation Studies</option>
+                                                   <option value="16">Mass Communication</option>
+                                                   <option value="17">Biology</option>
+                                                   <option value="18">Social Sciences (International Relations)</option>
+                                                   <option value="19">Social Sciences | Politics Development | Policy &amp; India</option>
+
+						
+						</select>
+					</div>
+
+				
+					<button id="submit" class="form-submit" type="submit" name="submit" href="">FIND</button>
+					
+				</form>
+				</div>
+			</div>-->
+		<!-- Below_banner_button_strip_ends-->
+		
+
+
+		<!-- region main content-->
+			<div class="inner_region_content">
+				<!--div class="view_header">
+					<strong>Courses:</strong>
+					 Showing 1 - 15 of 242
+				</div-->
+				
+				<!-- Course_container-->
+				<div class="view_content">			
+
+					{% block body_block %}{% endblock %}
+					
+		   </div>
+		<!-- Course_container ends here-->
+
+
+		<!--div class="below_page_number_item_list">	
+				<ul class="pager"><li class="page_current_even_first">1</li><li class="page_item_odd"><a href="#">2</a></li><li class="page_item_even"><a href="#">3</a></li><li class="page_item_odd"><a href="#">4</a></li><li class="page_item_even"><a href="#">5</a></li><li class="page_item_odd"><a href="#">6</a></li><li class="page_item_even"><a href="#">7</a></li><li class="page_item_odd"><a href="#">8</a></li><li class="page_item_even"><a href="#">9</a></li><li class="page_item_ellipsis_odd">...</li><li class="page_item_next_even"><a href="#">next <span id="forward-arrow">&#10095;</span></a></li><li class="page_item_last_odd"><a href="#">last <span id="forward-arrow">&#10095;&#10095;</span></a></li></ul>
+		</div-->
+
+<!-- Bharat MOOCs 23rd Sept 2014 Page numbers moved up -->
+		<!--<div class="pagination" style="margin:auto;width:auto; text-align:center; font-family: 'Open sans', Arial, Helvetica; ">
+			<span class="step-links">
+				<span class="current">
+				Page 1 of 3 
+				</span>
+				<span><a href="https://iitbombayx.in/all_courses/all?page=2" class="" style="text-decoration:none;">&nbsp;Next</a>
+				</span>
+			</span>
+		</div>-->	
+	</div>	
+</div>
+</div>
+</div>
+
+
+
+
+      
+    </div>
+
+    
+
+
+
+
+
+
+<style>
+.wrapper-footer{
+padding-top:16px;
+
+}
+
+.wrapper-footer footer .references{
+margin-top:0px;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a {
+        border-bottom:none !important;
+	color:#3D3E3F;
+}
+
+
+
+/*.wrapper-footer footer .colophon .nav-colophon li a {
+	border-bottom:none !important;
+    color: #3D3E3F !important;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a:hover{
+    color: #FF621B !important;
+}
+
+.wrapper-footer footer a:link, .wrapper-footer footer a:visited, .wrapper-footer footer a:hover, .wrapper-footer footer a:focus, .wrapper-footer footer a:active {
+    border-bottom: medium none;
+    color: #E44600;
+    text-decoration: none !important;
+}
+
+.wrapper-footer footer a:hover, .wrapper-footer footer a:focus, .wrapper-footer footer a:active {
+    border-bottom: 1px dotted #FF621B;
+    color: #FF621B;
+}*/
+
+.wrapper-footer footer{
+width:960px;
+margin:auto;
+}
+
+</style>
+
+<div class="wrapper wrapper-footer" style="width:auto;">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon" style="margin-bottom:20px;">
+      <ol>
+          <li class="nav-colophon-01">
+          <a id="about" href="https://iitbombayx.in/about">
+              About
+          </a>
+          </li>
+	  <!-- Bharat MOOCs -->
+          <li class="nav-colophon-02" style="color:#565656;">
+          <a id="news" href="http://news.iitbombayx.in/" target="_blank">
+              News
+          </a>
+          </li>
+          <li class="nav-colophon-03" style="color:#565656;">
+          <a id="blog" href="http://blogs.iitbombayx.in/" target="_blank">
+              Blog
+          </a>
+          </li>
+          <li class="nav-colophon-04" style="color:#565656;">
+          <a id="faq" href="https://iitbombayx.in/faq">
+              FAQ
+          </a>
+          </li>
+          <li class="nav-colophon-05" style="color:#565656;">
+          <a id="contact" href="https://iitbombayx.in/contact">
+              Contact Us
+          </a>
+          </li>
+      </ol>
+      </nav>
+
+      <div class="colophon-about">
+<!-- Bharat MOOCs-->
+        <img src="AllCourses%20%7C%20IITBombayX_files/swayamlogo_footer.png" style="width:auto; height:auto;" alt="IITBombayX Logo">
+
+        <p style="text-align:justify; color:#565656;">IITBombayX offers 
+interactive online classes and MOOCs. Subjects from multiple disciplines
+ are presently offered, as can be seen in the list of courses. This list
+ will expand later. IITBombayX is a non-profit online platform created 
+with funding from National Mission on Education through Information and 
+Communication Technology (NME-ICT), Ministry of Human Resource 
+Development (MHRD), Government of India (GoI).</p> 
+      </div>
+    </div>
+
+    <div class="references">
+      <nav class="nav-social">
+        <ul>
+          <li class="nav-social-02">
+            <a href="https://www.facebook.com/iitbombayx" target="_blank" rel="external">
+              <img src="AllCourses%20%7C%20IITBombayX_files/ico-social-facebook.png" alt="edX on Facebook">
+            </a>
+          </li>
+          <li class="nav-social-03">
+            <a href="https://twitter.com/iitbombayx" target="_blank" rel="external">
+              <img src="AllCourses%20%7C%20IITBombayX_files/ico-social-twitter.png" alt="edX on Twitter">
+            </a>
+          </li>
+          <li class="nav-social-04">
+            <a href="https://plus.google.com/u/0/113536343441190768869" target="_blank" rel="external">
+              <img src="AllCourses%20%7C%20IITBombayX_files/ico-social-google.png" alt="edX on Google+">
+            </a>
+          </li>
+          <!--li class="nav-social-05">
+            <a href="#"  target="_blank" rel="external">
+              <img src="/static/images/social/ico-social-youtube.909f05910c79.png" alt="edX on YouTube" />
+            </a>
+          </li-->
+        </ul>
+      </nav>
+
+      <!--p class="copyright" style="text-align:right; color:#050505; margin-bottom:11px;">&copy; 2014 IITBombayX, except where noted, all rights reserved</p-->
+
+      <nav class="nav-legal">
+        <ul style="display:block;float:right;text-align:right;">
+          <li class="nav-legal-01" style="display:block;">
+		<style>.wrapper-footer footer .references .nav-legal .nav-legal-01 a:after {content:none;}</style>
+            <a style="display: inline-block;" href="https://iitbombayx.in/tos" target="_blank">Terms of Service and Honour Code</a>
+          </li>
+          <li class="nav-legal-02" style="display:block;">
+            <a style="display: inline-block;" target="_blank" href="https://iitbombayx.in/privacy">Privacy Policy</a>
+          </li>
+          <li class="nav-legal-03" style="display:block; float:right;">	
+		 <style>.wrapper-footer footer .references .nav-legal .nav-legal-03 a:hover{border-bottom:0px;}</style> 
+            <a style="display: inline-block; " href="http://openedx.org/" target="_blank"><img src="AllCourses%20%7C%20IITBombayX_files/edx-openedx-logo-tag.png" style="padding-top:2.5em; float:right; width:150px; height:50px;" alt="Powered by Open edX"></a>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+
+  </div>
+
+  <script>window.baseUrl = "/static/";</script>
+    
+    <script type="text/javascript" src="AllCourses%20%7C%20IITBombayX_files/lms-application.js" charset="utf-8"></script>
+
+
+    
+    <script type="text/javascript" src="AllCourses%20%7C%20IITBombayX_files/lms-modules.js" charset="utf-8"></script>
+
+
+
+  
+
+
+
+
+<div id="reader-feedback" class="sr" style="display:none" aria-hidden="false" aria-atomic="true" aria-live="assertive"></div></body></html>

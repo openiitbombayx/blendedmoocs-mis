@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="ie ie7 lte9 lte8 lte7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!-->
+{% load staticfiles  %}
+<html lang="en"><!--<![endif]--><head dir="ltr">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>
+       Login Page
+      </title>
+  
+
+  <script type="text/javascript">
+    /* immediately break out of an iframe if coming from the marketing website */
+    (function(window) {
+      if (window.location !== window.top.location) {
+        window.top.location = window.location;
+      }
+    })(this);
+  </script>
+
+  <script type="text/javascript" src="Login_files/a"></script>
+
+  <link rel="icon" type="image/x-icon" href="">
+
+  
+  
+
+    <link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  
+  
+
+    <link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
+
+
+
+
+    
+    <script type="text/javascript" src="{% static 'css/lms-main_vendor.js' %}" charset="utf-8"></script>
+
+  <script type="text/javascript" src="{% static 'css/require-config-lms.js' %}"></script>
+
+<script type="text/javascript">
+  var analytics = {
+    track: function() { return; },
+    pageview: function() { return; }
+  };
+</script>
+<!-- end dummy segment.io -->
+
+
+  <meta name="path_prefix" content="">
+  <meta name="google-site-verification" content="_mipQ4AtZQDNmbtOkwehQDOgCxUUV2fb_C0b6wbiRHY">
+
+  <script></script>
+
+
+
+</head>
+
+<body class="ltr view-login lang_en js">
+  <div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#content">Skip to this view's content</a>
+
+<style>
+
+</style>
+
+ <header class="global " aria-label="Global Navigation">
+    <nav>
+    <h1 class="logo">
+      <a href="/">
+        
+  <img src="{% static 'images/swayamlogo_header.png' %}" alt="Home Page" height="50">
+
+      </a>
+    </h1>
+
+
+    <ol class="left nav-global">
+
+<li class="nav-global-04">
+            <a class="cta cta-register" href="">How it works</a>
+          </li>
+          <li class="nav-global-04">
+            <a class="cta cta-register" href="">Courses</a>
+          </li>
+          <li class="nav-global-04">
+            <a class="cta cta-register" href="">Partners</a>
+          </li>
+
+    </ol>
+
+    
+<ol class="right nav-courseware">
+
+
+
+    <li class="nav-courseware-01">
+          <a class="cta cta-login" href="https://www.iitbombayx.in/login">Log in</a>
+    </li>
+    </ol>
+  </nav>
+</header>
+
+
+
+    <div class="content-wrapper" id="content">
+
+
+
+
+<style>
+.view-register .wrapper-footer footer .colophon-about img, .view-login
+.wrapper-footer footer .colophon-about img {
+    margin-top: 0px;
+}
+
+.content-wrapper{
+padding-bottom:0px;
+background:#F7F7F7 !important;
+font-family: "Open Sans",Arial,Helvetica,sans-serif;
+margin-top:76px;
+}
+
+header.global{
+position:fixed;
+top:0px;
+}
+
+.view-login .container{
+background:#FFF;
+}
+</style>
+
+
+<section class="introduction">
+  <header>
+<img src="{% static 'images/iitbxheader.png' %}"/>
+    <h1 class="title">
+      <span class="title-super">Please log in</span>
+      <span class="title-sub">to access your account </span>
+    </h1>
+  </header>
+</section>
+
+<section class="login container">
+<section role="main" class="content">
+{% block bodyblock %}
+{% endblock %}
+</section>
+  <aside role="complementary">
+
+
+
+    
+
+<header>
+  <h2 class="sr">Helpful Information</h2>
+</header>
+
+
+<div class="cta cta-help">
+  <h3>Not Enrolled?</h3>
+  <p><a href="/request_registration/">Sign up for IITBombayX Partner Systems today!</a></p>
+
+    <h3>Need Help?</h3>
+    <p>Looking for help in logging in or with your IITBombayX Partner Systems account?
+    <a href="https://www.iitbombayx.in/faq">
+        View our help section for answers to commonly asked questions.
+    </a></p>
+</div>
+
+  </aside>
+  </section>
+
+
+      
+    </div>
+
+
+<style>
+.wrapper-footer{
+padding-top:16px;
+
+}
+
+.wrapper-footer footer .references{
+margin-top:0px;
+}
+
+.wrapper-footer footer .colophon .nav-colophon li a {
+        border-bottom:none !important;
+	color:#3D3E3F;
+}
+
+
+
+.wrapper-footer footer{
+width:960px;
+margin:auto;
+}
+
+</style>
+
+<div class="wrapper wrapper-footer" style="width:auto;">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon" style="margin-bottom:20px;">
+      <ol>
+          <li class="nav-colophon-01">
+          <a id="about" href="https://www.iitbombayx.in/about">
+              About
+          </a>
+          </li>
+	  <!-- Bharat MOOCs -->
+          <li class="nav-colophon-02" style="color:#565656;">
+          <a id="news" href="http://news.iitbombayx.in/" target="_blank">
+              News
+          </a>
+          </li>
+          <li class="nav-colophon-03" style="color:#565656;">
+          <a id="blog" href="http://blogs.iitbombayx.in/" target="_blank">
+              Blog
+          </a>
+          </li>
+          <li class="nav-colophon-04" style="color:#565656;">
+          <a id="faq" href="https://www.iitbombayx.in/faq">
+              FAQ
+          </a>
+          </li>
+          <li class="nav-colophon-05" style="color:#565656;">
+          <a id="contact" href="https://www.iitbombayx.in/contact">
+              Contact Us
+          </a>
+          </li>
+      </ol>
+      </nav>
+
+      <div class="colophon-about">
+<!-- Bharat MOOCs-->
+        <img src="{% static 'images/swayamlogo_footer.png' %}" style="width:auto; height:auto;" alt="IITBombayX Logo">
+
+        <p style="text-align:justify; color:#565656;">From database</p> 
+      </div>
+    </div>
+
+    <div class="references">
+      <nav class="nav-social">
+        <ul>
+          <li class="nav-social-02">
+            <a href="https://www.facebook.com/iitbombayx" target="_blank" rel="external">
+              <img src="{% static 'images/ico-social-facebook.png' %}" alt="edX on Facebook">
+            </a>
+          </li>
+          <li class="nav-social-03">
+            <a href="https://twitter.com/iitbombayx" target="_blank" rel="external">
+              <img src="{% static 'images/ico-social-twitter.png' %}" alt="edX on Twitter">
+            </a>
+          </li>
+          <li class="nav-social-04">
+            <a href="https://plus.google.com/u/0/113536343441190768869" target="_blank" rel="external">
+              <img src="{% static 'images/ico-social-google.png' %}" alt="edX on Google+">
+            </a>
+          </li>
+          <!--li class="nav-social-05">
+            <a href="#"  target="_blank" rel="external">
+              <img src="/static/images/social/ico-social-youtube.909f05910c79.png" alt="edX on YouTube" />
+            </a>
+          </li-->
+        </ul>
+      </nav>
+
+      <!--p class="copyright" style="text-align:right; color:#050505; margin-bottom:11px;">&copy; 2014 IITBombayX, except where noted, all rights reserved</p-->
+
+      <nav class="nav-legal">
+        <ul style="display:block;float:right;text-align:right;">
+          <li class="nav-legal-01" style="display:block;">
+		<style>.wrapper-footer footer .references .nav-legal .nav-legal-01 a:after {content:none;}</style>
+            <a style="display: inline-block;" href="https://www.iitbombayx.in/tos" target="_blank">Terms of Service and Honour Code</a>
+          </li>
+          <li class="nav-legal-02" style="display:block;">
+            <a style="display: inline-block;" target="_blank" href="https://www.iitbombayx.in/privacy">Privacy Policy</a>
+          </li>
+          <li class="nav-legal-03" style="display:block; float:right;">	
+		 <style>.wrapper-footer footer .references .nav-legal .nav-legal-03 a:hover{border-bottom:0px;}</style> 
+            <a style="display: inline-block; " href="http://openedx.org/" target="_blank"><img src="{% static 'images/edx-openedx-logo-tag.png' %}" style="padding-top:2.5em; float:right; width:150px; height:50px;" alt="Powered by Open edX"></a>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+
+  </div>
+
+  <script>window.baseUrl = "/static/";</script>
+    
+    <script type="text/javascript" src="Log%20into%20your%20IITBombayX%20Account%20%7C%20IITBombayX_files/lms-application.js" charset="utf-8"></script>
+
+
+    
+    <script type="text/javascript" src="Log%20into%20your%20IITBombayX%20Account%20%7C%20IITBombayX_files/lms-modules.js" charset="utf-8"></script>
+
+
+
+<div style="display: none; opacity: 1;" id="lean_overlay"></div><div id="reader-feedback" class="sr" style="display:none" aria-hidden="false" aria-atomic="true" aria-live="assertive"></div></body></html>

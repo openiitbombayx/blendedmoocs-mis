@@ -1,0 +1,18 @@
+{% extends 'login/indexbase.html' %}
+{% load staticfiles  %}
+{% block title %} Error Page{% endblock %}
+{% block header %}
+     <img src="{% static 'images/iitbxheader.png' %}"/>
+          <h1 class="title">
+          <span class="title-super">
+               Error Occured
+          </span>
+          </h1>
+{% endblock %}
+{% block form %}   
+   {% autoescape off %}   
+     {{error_message}}</br></br>
+      <a href="javascript:history.go(-1);">Back To Previous Page</a>
+    {% endautoescape %}
+
+{% endblock %}

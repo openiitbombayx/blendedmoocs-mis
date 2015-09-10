@@ -1,0 +1,57 @@
+{% extends 'base2.html' %}
+{% block header %}
+<h2>{{institutename}}</h2>
+{% endblock %}
+
+{% block body_block %}
+
+<html>
+<header><h2>Add Student Information</h2></header>
+<body>
+<p>* All fields are mandatory!!</p>
+<br>
+{% if iserror %}
+<table>
+{% for error in errors %}
+   <tr><td>{{error}}!!</td></tr>
+{% endfor %}
+</table>
+<br>
+{% endif %}
+<form action = "/addstudent/{{id}}/" method="POST">{% csrf_token %}
+<!--
+<table border = "1">
+<tr>
+<td>Username</td><td><input id="myInput" type="text" name="username" value={{info.userid.username}} readonly></td></tr>
+<tr>
+<td>Email-Id</td><td><input id="myInput" type="text" name="email" value={{info.userid.email}} readonly></td></tr>
+<tr>
+<td>Roll_No</td><td><input id="myInput" type="text" name="roll_no" value={{info.roll_no}}></td></tr>
+</table>
+<br>
+<br>
+<br>
+<input id="edit2" type="submit" name = "submit" value="Save" />-->
+<label for = "myInput1" >Enter Student Username</label>
+<br><br>
+<input id="myInput1" type="text" name="username" size = "50" value = "{{username}}" required>
+<br>
+<br>
+<label for = "myInput2" >Enter Student Email</label>
+<br>
+<br>
+<input id="myInput2" type="text" name="email" size = "50" value = "{{email}}" required>
+<br>
+<br>
+<label for = "myInput3" >Enter Student Roll_no</label>
+<br>
+<br>
+<input id="myInput3" type="text" name="roll_no" size = "50" value = "{{roll_no}}" required>
+<br>
+<br>
+
+<input id="edit2" type="submit" name = "submit" value="Submit" onclick ="return confirm('Are you sure you want to add this student?');"/>
+</form>
+</body>
+</html>
+{% endblock %}

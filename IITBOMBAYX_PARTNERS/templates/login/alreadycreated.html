@@ -1,0 +1,17 @@
+{% extends 'login/indexbase.html' %}
+{% load staticfiles  %}
+ {% block title %}
+     Already Created Password
+{% endblock %}
+
+{% block header %}
+     <img src="{% static 'images/iitbxheader.png' %}"/>
+          <h1 class="title">
+      <span class="title-super">ALREADY CREATED ACCOUNT PASSWORD</span>
+      <span class="title-sub"></span>
+    </h1>
+  {% endblock %}
+ {% block form %}
+You have already created a password. But if you forgotten your password click  
+<a href="/forgot_pass/" rel="leanModal" class="pwd-reset action action-forgotpw" id="forgot-password-link" role="button" aria-haspopup="true">here</a>.
+{% endblock %}

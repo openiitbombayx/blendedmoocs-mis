@@ -1,0 +1,70 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header><h2>IITBombayX Courses List</h2></header>
+
+
+{% endblock %}
+<head>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <style>
+	
+	table.data,table.data td,table.data th {
+	    border: 1px solid black;
+	    border-collapse: collapse;
+	    text-align: center;
+	}
+
+	table.data {
+	    width: 100%;
+	}
+	table.data tr:nth-child(odd) {
+	   background-color: #ccc;
+	}
+	table.data tr:hover {
+		  background-color: #ffff99;
+		}
+	table.data th {
+	    height: 35px;
+	    color: #F7691F
+	}
+	table.data tr {
+	    height: 28px;
+	}
+	table.head, td, th, tr {
+		border: 0px solid black;
+		border-collapse: collapse;		
+	}
+	table.head {
+	    width: 100%;
+	    background-color: ;
+	}
+</style>
+
+</head>
+{% block body_block %}
+
+
+<table  border="1" cellspacing="5" cellpadding="5" style="width:100%" align="center" >
+
+<tr>
+<th>Course</th><th>Name</th><th>Start Date</th><th>End Date</th>
+</tr>
+
+{% for courses in list_of_courses %}
+<tr>
+  {%  for course in courses %}
+    {% if forloop.counter == 1%}
+      <td><a href="/instructor_course_report/{{course}}">{{course}}</a></td>
+    {% else %}
+      <td>{{course}}</td>
+    {% endif %}
+  {% endfor %}
+</tr>  
+{% endfor %}
+</table>
+{% endblock %}
+
