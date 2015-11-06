@@ -111,7 +111,8 @@ return $text.replace('"', '""'); // escape double quotes
 
 
 <header><center><h2><font color="#F7691F"><u>{{report_name}}</u></font></h2></center></header>
-<br><table style="width:90%" cellspacing="5" cellpadding="5" align="center"><tr><td align="left"><a href="#" class="export">Download CSV</a></td><td align="right"><a href="/blendedadmin_home">Admin Home</a></td></tr></table>
+<br><table style="width:90%" cellspacing="5" cellpadding="5" align="center"><tr><td align="left"><a href="#" class="export">Download CSV</a></td>
+{% ifnotequal facultyflag 1 %}<td align="right"><a href="/blendedadmin_home">Admin Home</a></td>{% endifnotequal %}</tr></table>
 <div id="dvData">
 
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">

@@ -1,0 +1,107 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Deactivated Teachers' List </font></h2></header>
+ 
+
+
+<!--begindownloadcsv-->
+ <!-- Scripts ----------------------------------------------------------- -->
+<script>
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        
+        var dateformated = new Date().toString().replace(/ /g,'');
+        
+        exportTableToCSV.apply(this, [$('#dvData>table'), 'teacherupload_'+dateformated+".csv"]);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+<!--enddownloadcsv-->
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+
+<br>
+<br>
+
+
+
+<div class="row">
+<a href="#" class="export">Download CSV</a>
+</div>
+</br>
+<div id="dvData" class="table-responsive">
+
+ <table id="datatable" class="table table-bordered" cellspacing="0" width="100%" >
+
+  <tr><td>S.No</td><td>Institute</td><td>Email</td><td>Course</td><tr>
+  {% for i in inactteachers %}
+     <tr><td>{{forloop.counter}}</td>
+<td>{{i.instituteid.institutename}}</td>
+<td>{{i.personid.email}}</td>
+         <td>{{i.courseid.course}}</td>
+         </tr>
+   {% endfor %}
+
+</table> </div>
+
+{% endblock %}

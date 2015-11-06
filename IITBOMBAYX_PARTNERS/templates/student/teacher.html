@@ -7,22 +7,38 @@
 <html>
 
 <body>
+{% if teacherlist %}
 <table  border = "1"width="100%">
 <tr align = "left">
 <th>First name</th>
 <th>Last name</th>
 <th>Email</th>
 <th>Students' Information</th>
+<th>Unenroll</th>
 </tr>
+
 {% for teacher in teacherlist %}
    	<tr align = "left">
 	<td>{{teacher.personid.firstname}}</td>
 	<td>{{teacher.personid.lastname}}</td>
 	<td>{{teacher.personid.email}}</td>
         <td><a href = "/teacher/{{teacher.personid.id}}/">Show</a></td>  
+        <td><a href = "/teacherunenroll/{{courseid}}/{{teacher.personid.id}}/" onclick="return confirm('Are you sure want to unenroll this teacher?');">Unenroll</a></td>  
         </tr>             
 {% endfor %} 
+<tr align = "left">
+        <td><b>All Teachers</b></td>
+        <td></td>
+	    <td></td>
+        <td><a href = "/teacher/-1/">Show</a></td>  
+        </tr> 
 </table>
+{% endif %}
+<br>
+<br>
+<h2><center>click to <a href="/registrationinterface/{{role_id}}/" >Enroll  </a>  for   new   teacher.</center></h2>
+
+
 {% endblock %} 
 
 </body>

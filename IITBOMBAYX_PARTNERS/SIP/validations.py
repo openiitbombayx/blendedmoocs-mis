@@ -3,6 +3,8 @@ Copyright (C) 2015  BMWinfo
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
+
 from .models import *
 from django.shortcuts import render_to_response, render, redirect
 from django.core.exceptions import *
@@ -292,6 +294,7 @@ def validatefileinfo(request,courseid,fname,teacher_id):
            courselevelobj=Courselevelusers.objects.get(personid=Personinformation.objects.get(id=teacher_id),courseid=edxcourses.objects.get(courseid = courseid))
            default_teacher=Courselevelusers.objects.get(personid=Personinformation.objects.get(id=1),courseid=edxcourses.objects.get(courseid = courseid)) 
        except Exception as e:
+           args={}
            args['error_message'] = getErrorContent("not_valid_teacher")
            args['error_message'] = "\n Error " + str(e.message) + str(type(e))
            return render(request,'geterror.html',args)

@@ -1,6 +1,6 @@
 {% extends 'base2.html' %}
 {% block header %}
-<header><h2>Students' Information -<font color=#F7691F> {{course}}</font></h2></header>
+<header><h2>Students' Information -<font color=#F7691F> {{course}}</font> {% ifequal role_id 5 %} {% else %} {% ifequal id "-1" %} {{teachername}} {% else %} for {{teachername}}{% endifequal %} {% endifequal %}</h2></header>
 
 
 {% endblock %}
@@ -13,20 +13,23 @@
 {% endif %}
 <!--<td align = "left"><button onclick="location.href='/addstudent/{{id}}/'" value = 'AddStudent'>Add Student</button>-->
 </td>
-<td align = "right"><a href = '/downloadcsv1/{{courseid}}/{{id}}/'>Download</a></td></tr>
+{% if faculty != 1 %}
+<td align = "right"><a href = '/downloadcsv1/{{courseid}}/{{id}}/'>Download</a></td>
+{% else %}
+<td align = "right"><a href = '/downloadcsv1/{{course}}/{{id}}/'>Download</a></td>
+{% endif %}
+</tr>
 
 </table>
 <br><br>
  <table border = "1"width="100%">
-  <tr align = "left">
-    <th>S.No</th>
-    <th>Roll Number</th>
-    <th>UserName</th>
-    <th>Email</th>
-{% if role_id == 5 %}
-    <th>Select</th>
-    <th>Unenroll</th>
-{% endif %}
+<tr align = "left">
+ {% for head in header %}
+  
+    <th>{{head}}</th>
+    
+  {% endfor %}
+
     <!--<th>Select</th>-->
   </tr>
   <!--<form action = "/update" method = "post">{% csrf_token %}-->

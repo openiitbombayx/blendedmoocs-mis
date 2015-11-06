@@ -1,0 +1,54 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Bulk Move summary </font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+<br><br>
+
+  <div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+</br>
+<div class="table-responsive">
+<form action="/bulkmoveupdate/{{courseid}}/{{persid}}/{{instituteid}}/" method="POST">
+{% csrf_token %}
+<center>{{oldteacher_initcount}} of {{oldteachemail}} Move To  {{newteachemail}}</center><br><br>
+<center><b><p><font face="12"><b>Current Status</b></font></p></b></center>
+</br>
+ <table   width="90%" >
+	<tr>
+	<h4><td>
+Total number of current student of {{oldteachemail}}</td>
+</td> <td align="left">  {{studcountoldteach}} </td></h4>
+    </tr>
+	<tr>
+	<h4><td>
+Total number of current student  of {{newteachemail}}</td>
+</td> <td>   {{studcountnewteach}}
+</td></h4>
+    </tr>
+   
+</table>
+<br><br><br><br><br>
+
+</form>  
+ </div>
+<br>
+<br>
+
+{% endautoescape %}
+
+{% endblock %}

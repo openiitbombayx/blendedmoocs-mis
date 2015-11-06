@@ -1,0 +1,237 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Admin Students' Upload  </font></h2></header>
+ <script>
+            $(document).ready(function(){
+                  //begin
+                  $('#Institute').on('change', function() {   // check for changes
+             $('#Course').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/institutecourses",
+           data:{id: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+ 
+                    var listItems= "<option value='nocourse'>" + "-- Select the Course -- " + "</option>";
+                    var teams =  result[1] ;
+                    var instiname='<label for="Institute" id="instiname">'+result[0]+'</label>';
+                    $("#instiname").html(instiname);
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Institute has not Enrolled for any Courses !!!");
+listItems += "<option value='nocourse'>" + " -- " + "</option>";
+               
+                     $("#Course").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#Course").html(listItems);
+                 }}
+
+            },
+        });
+
+
+                  });
+              //end
+
+//newbegin
+
+                  $('#Course').on('change', function() {   // check for changes
+             $('#Teacher').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/courseteachers",
+           data:{cid: $('#Course').val(),iid: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                    var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>" ; 
+                        listItems +=   "<option value='All Teachers'>"   + "All Teacher " + "</option>"
+                    var teams =  result[0] ;
+
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Teacher has not Enrolled for any Courses !!!");
+listItems += "<option value='noinstiute'>" + " -- " + "</option>";
+               
+                     $("#Teacher").html(listItems);
+
+                     }
+                    else{
+                        
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#Teacher").html(listItems);
+                 }}
+
+            },
+        });
+
+                  });
+
+//newend
+
+
+
+            })(this);
+         
+        </script>
+
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+<div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+<br>
+<br>
+<div >
+<form action="/adminuploaderinfo/" method="POST">
+{% csrf_token %}
+
+<div class ="row">
+<div class="col-xs-6 col-sm-3">
+<b>RCID</b>
+</div>
+<div class="col-xs-6 col-sm-3">
+<b>Course</b>
+</div>
+<div class="col-xs-6 col-sm-3">
+<b>Teacher</b>
+</div>
+<div class="col-xs-6 col-sm-3">
+</div>
+</div>
+</br>
+<div class ="row">
+<div class="col-xs-6 col-sm-3">
+
+<select id="Institute" name="Institute"  style="width:200px;">
+<option value="noinstitute"  >-- Select the Institute -- </option>
+                {% for institute in approvinstitute %}
+      
+
+<option value="{{ institute.1 }}" >{{ institute.0 }}</option>
+
+	{% endfor %}
+
+              </select>
+
+</div>
+
+
+<div class="col-xs-6 col-sm-3">
+<select id="Course" name="Course" style="width:200px;">
+	<option value=""  >-- Select the Course --</option>
+                {% for c in courseenroll %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select></div>
+
+<div class="col-xs-6 col-sm-3">
+<select id="Teacher" name="Teacher" style="width:200px;">
+	<option value="">-- Select the Teacher --</option>
+           
+                {% for c in courseteacher %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select></div>
+
+
+
+
+</div>
+
+<div class ="row">
+<div class="col-xs-6 ">
+<label for="Institute" id="instiname">{{instiname}}</label>
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+
+<div class="col-xs-6" >
+<input type="submit"  value="Students' Details"  name="teacherstudent">
+
+</div>
+<div class="col-xs-6" >
+<input type="submit"  value="Upload Student' Info"  name="studentupload">
+
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Evaluation Details"  name="evaluation">
+
+</div>
+
+<div class="col-xs-6" >
+<input type="submit"  value="Evaluation Status "  name="evaluationstatus">
+
+</div>
+
+</div>
+<br>
+<br>
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Grade Details "  name="grade">
+
+</div>
+<div class="col-xs-6 " >
+<input type="button" value="clear" onclick="location.href='/adminuploaderinfo/'">
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Deactivate"  name="deactivate"  onclick="return confirm('Are you sure want to Deactivate this teacher?');">
+
+</div>
+<div class="col-xs-6" >
+<input type="submit"  value="Bulkmove"  name="bulkmove"  >
+
+</div>
+</div>
+</form>  
+ </div>
+
+<br>
+<br>
+
+
+
+</br>
+
+{% endblock %}

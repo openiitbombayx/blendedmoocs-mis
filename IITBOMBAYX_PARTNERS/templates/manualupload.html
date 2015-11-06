@@ -1,0 +1,41 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header>
+<p><h2>Upload Students' Information - <font color=#F7691F> {{coursename}}</font></h2></p>
+</header>
+{% endblock %}
+{% block body_block %}
+{% block content %}
+
+<head>
+<link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+
+
+<div>
+<p><h6><ol> Click on browse button to select the .pdf file</h6></p></ol>
+<p><h6><ol> Click Upload File to upload the details.</h6></p></ol>
+<ol><p><h5 style = "color : red">{{error_message}}{{successmsg}}</p></ol>
+<ol><form enctype="multipart/form-data" method="post" action="/manualupload/">
+
+    {% csrf_token %}
+    <table>
+        <tr><td>
+            <input type="file" value="usermanual" name="usermanual" id="usermanual" /><br/>
+          
+        </td></tr>
+        <tr><td>
+            <input type="submit" value="upload" id="Save"/>
+        </td></tr>
+    </table>
+</form></ol>
+</div>
+
+
+{% endblock %}
+{% endblock %}
+
+
+
+
+

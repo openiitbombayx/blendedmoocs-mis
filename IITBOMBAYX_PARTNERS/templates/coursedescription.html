@@ -29,14 +29,14 @@ table {
 <table  cellspacing="10" >
 <tr>
 <td align="left">
-	<b>Enrollment Start Date </b>
+	<b>Enrollment Start </b>
 	</td><td>
 	{{enrollstart}}
     </td>
 </tr>
 <tr>
 <td align="left"">
-	<b>Enrollment End Date </b>
+	<b>Enrollment End </b>
 	</td>
      <td>
 	{{enrollend}}
@@ -44,14 +44,14 @@ table {
 </tr>
    <tr>
 <td align="left"">
-	<b>Course Start Date </b> 
+	<b>Classes Start </b> 
 	</td><td>
 	{{coursestart}}
  </td>
 </tr>
   <tr>
 <td align="left""> 
-	<b>Course End Date</b>
+	<b>Classes End</b>
 	</td><td>
 	{{courseend}}
     </td>
@@ -69,7 +69,7 @@ table {
 
 <tr  width="100%"><td  align=left  width="70%">
 
-<h2><font size="4"><b align = "center">Grade Policy</b></font></h2>
+<h2><font size="4"><b align = "center">Evaluation Policy</b></font></h2>
 
 <table   cellspacing="0">
 
@@ -87,10 +87,10 @@ table {
 </td>
 
 {% else %}
-    {% if forloop.counter == 1  or forloop.counter == 2 or forloop.counter == 6 %}
+    {% if forloop.counter == 1  or  forloop.counter == 5 %}
       <td align=left>  {{j}}</td>
     {% else %}
-         <td align="right">  {{j}}</td>
+         <td align="center">  {{j}}</td>
     {% endif %}
 
 {% endifequal %}
@@ -102,7 +102,7 @@ table {
 </td><td align=left  width="30%" class="verticalLine">
 
 
-<h2><font size="4"><b align = "left">Grade Criteria</b></font></h2>
+<h2><font size="4"><b align = "left">Grading Criteria</b></font></h2>
 
 
 <table  cellspacing="0" >
@@ -110,22 +110,22 @@ table {
 
   {% for i in criteria %}
 
-  <tr align = "left" >
+  <tr align = "center" >
   {% for j in i %}
   {% ifequal forloop.parentloop.counter 1%}
    
   <!--<form action = "/update" method = "post">{% csrf_token %}-->
 
- <td align="right" >
+ <td align="center" >
   <b> {{j}}</b>
 </td>
 
 {% else %}
   {% ifequal forloop.counter 1%}
-      <td align="left">  {{j}}</td>
+      <td align="center">  {{j}}</td>
 
    {% else %}  
-    <td align="right">  {{j}}</td>
+    <td align="center">  {{j}}</td>
     {% endifequal %}
 {% endifequal %}
  {% endfor %}
@@ -137,7 +137,7 @@ table {
    
 
 <tr ><td >
-<h2><font size="4"><b align = "center" >Evaluation Details </b></font></h2>
+<h2><font size="4"><b align = "center" >Graded Assignments</b></font></h2>
 
 
 <table  cellspacing="0" width="120%" >
@@ -151,13 +151,13 @@ table {
    
   <!--<form action = "/update" method = "post">{% csrf_token %}-->
 
- <td align="left" width="30%"  >
+ <td align="center" width="30%"  >
   <b> {{j}}</b>
 </td>
 
 {% else %}
 
-      <td align=left width="30%">  {{j}}</td>
+      <td align="center" width="30%">  {{j}}</td>
 
      
 

@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<header><h2>Students' Information for {{teachername}}</h2></header>
+<header><h2>Students' Information {% ifequal role_id 5 %} {% else %} for {{teachername}}{% endifequal %} </h2></header>
 
 
 {% endblock %}
@@ -24,18 +24,23 @@
 
 <br><br>
 <table   cellspacing="0" width="100%"  >  
-    <tr><td > <a href="/coursedescription/{{course.courseid}}/{{pid}}/" class="enter-course">Course  Details</a><br><br><br><br></td></tr>
+    <tr><td > <a href="/coursedescription/{{course.courseid}}/{{pid}}/" class="enter-course">Course  Details</a><br><br><br><br></td>
+<td> <a href="/studentsinformation/{{course.courseid}}/{{pid}}/" class="enter-course">Students' Details</a></td></tr>
     
     <tr>
      {% if role_id == 5 %}
      <td> <a href="/uploads_studentsinfo/2/{{course.courseid}}" class="enter-course">Upload Students' Info</a><br><br><br><br></td>
      {% endif %}
-     <td> <a href="/studentsinformation/{{course.courseid}}/{{pid}}/" class="enter-course">Students' Details</a></td></tr>
+     </tr>
+
 <tr><td ></br><center><h2>Evaluation</h2></center></td></tr>
- <tr> <td> <a href="/evaluation/{{course.courseid}}/{{pid}}/0" class="enter-course">Evaluation Details </a></td>   
- <td> <a href="/grades/{{course.courseid}}/{{pid}}/" class="enter-course">Grade Details</a></td>
+
+  <tr> <td> <a href="/evaluation/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Evaluation Details </a><br><br><br><br></td> <td ><a href="/evalstatus/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Evaluation Status</td>   
+
     </tr>
-            
+    <tr>
+ <td> <a href="/grades/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/" class="enter-course">Grade Details</a></td>
+ </tr>        
       </table>
         
       </section>

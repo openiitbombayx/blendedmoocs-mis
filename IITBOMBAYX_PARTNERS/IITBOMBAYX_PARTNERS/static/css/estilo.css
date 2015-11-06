@@ -1,0 +1,8 @@
+*{font-family:"Century Gothic";}
+
+#student{width:100%;}
+#student thead tr{background:grey; color:White;}
+#student tr td, #student tr th{text-align:left;
+						 			   margin: 10px}
+#student tbody input{width:100%;}
+#student img{cursor: pointer;}

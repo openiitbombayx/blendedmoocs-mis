@@ -3,6 +3,7 @@ Copyright (C) 2015  BMWinfo
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
 # There are three parts of the interface LOAD,VALIDATE and SEND REGISTRATION LINK
 import sys,os
 #Global Variable 
@@ -247,7 +248,7 @@ def createpersoninformation(email,fname,lname,designation,instituteid):
     return person_obj
 
 def emailusers(filename):  
-     ec_id = EmailContent.objects.get(systype = 'Login', name = 'createpass').id
+     ec_id = EmailContent.objects.get(systype = 'Login', name = 'createpassword').id
      mail_obj = EmailContent.objects.get(id=ec_id)
      emailsendc=0
      for row in mail_interface.objects.filter(status=CREATED,filename=filename).values('email','status').distinct():

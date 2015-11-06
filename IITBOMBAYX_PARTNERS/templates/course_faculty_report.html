@@ -55,9 +55,27 @@
 {% endif %}
 <br><br>
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr> <td><a href = "/blendedadmin/7" >Institute-wise:Teachers' Participation Report</a></td></tr>
+<tr> <td><a href = "/blendedadmin/14" >Institute wise:Student's Participation Summary Report</a></td></tr>
+<tr> <td><a href = "/blendedadmin/19" >MOOC's Paticipants Profile</a></td></tr>
+
+<tr> <td><a href="/facultygenericinterface/{{course}}/" class="enter-course">Teachers' Student Association</a></td></tr>
+<tr><td> <a href="/coursedescription/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td>   
+</tr>
+<tr>
+<td> <a href="/studentsinformation/{{course}}/{{pid}}/" class="enter-course">Students' Details</a></td>
+</tr>
+<tr>
+
+<td> <a href="/evaluation/{{course}}/{{pid}}/{{institute_id}}/0" class="enter-course">Evaluation Details </a></td></tr>
+<tr> <td><a href="/grades/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Grade Details</a></td></tr>
+</table>
+<br>
+<br>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 
 <tr>
-<th> Report Name</th><th>MOOCS</th><th>Blended Vs Non- Blended</th><th>within Blended</th>
+<th>Name</th><th>MOOCS</th><th>Blended Vs Non- Blended</th><th>Within Blended</th>
 </tr>
  {% for rec in record %}
 <tr>
@@ -65,12 +83,8 @@
 <td><a href="/instructoradmin/{{rec.record.0}}/{{course}}/0">Details</a></td>
 <td><a href="/instructoradmin/{{rec.record.1}}/{{course}}/0">Details</a></td>
 <td><a href="/instructoradmin/{{rec.record.2}}/{{course}}/0">Details</a></td>
-
 {% endfor %}
-
 </tr>
-
-
 </table>
 
 

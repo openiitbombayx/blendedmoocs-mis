@@ -3,9 +3,12 @@ Copyright (C) 2015  BMWinfo
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
+
 #!/usr/bin/env python
 from iitbx_settings import *
 
+question_types=["<choiceresponse>","<optionresponse>","<multiplechoiceresponse>","<numericalresponse ","<stringresponse ","<drag_and_drop_input","<imageresponse","<formularesponse","<customresponse","<jsmeresponse>","<schematicresponse>"]
 def init():
 
        global prefix_url
@@ -236,6 +239,7 @@ def fetch_evaluations(course_id):
      runtime = datetime.now() 
      status=[]
      course=course_id.split('/')[1]
+     
      try:   
           edx_course_obj=edxcourses.objects.get(courseid=course_id)
      except Exception as e:
@@ -252,11 +256,16 @@ def fetch_evaluations(course_id):
                         sequential_id=sequential["_id"]["name"]    #sectionid
                         seq_name=sequential["metadata"]["display_name"].encode('utf-8')    #sec_name
                         try:
-                          release_date=sequential["metadata"]["start"]
-                        except:
+                          
+                          release_date=datetime(*map(int, re.split('[^\d]', sequential["metadata"]["start"])[:-1]))
+                          
+                        except Exception as e :
+                          
                           release_date=runtime
                         try:
-                          due_date=sequential["metadata"]["due"]
+                          
+                          due_date=datetime(*map(int, re.split('[^\d]', sequential["metadata"]["due"])[:-1]))
+                          
                         except:
                           due_date=runtime
                         
@@ -269,7 +278,15 @@ def fetch_evaluations(course_id):
                                  for vdetails in vertical_det:
                                     vertical_name= vdetails["metadata"]["display_name"] 
                                     try:
+      
                                          evaluations_obj=evaluations.objects.get(subsec_id=vertical_id)
+                                          
+                                         evaluations_obj.sec_name=seq_name
+                                         evaluations_obj.release_date=release_date
+                                         evaluations_obj.due_date=due_date=due_date
+                                         evaluations_obj.subsec_name=vertical_name
+                                         evaluations_obj.grade_weight=grade_weight
+                                         evaluations_obj.save()
                                     except Exception as e:
                                          try:
                                            evaluations_obj=evaluations(course=edx_course_obj, sectionid=sequential_id,sec_name=seq_name, subsec_id=vertical_id, subsec_name=vertical_name,type=grade_type.type ,release_date=release_date, due_date=due_date, total_weight=0 ,grade_weight=grade_weight)
@@ -283,6 +300,7 @@ def fetch_evaluations(course_id):
 
                                     
                                     result=fetch_questions(vertical_id,course,course_id,edx_course_obj,grade_type.type,vdetails["definition"]["children"],evaluations_obj)
+                                    
                                     inserted_problem_count+=result[0]
                                     updated_problem_count+=result[1]
                                     error_problem_count+=result[2]
@@ -347,6 +365,10 @@ def update_deleted_evaluations(edx_course_obj):
            questions.objects.filter(eval=eval).delete()
            eval.delete()
            del_eval=del_eval+1
+       evaluation_objs=evaluations.objects.exclude(id__in=[ques.eval_id for ques in questions.objects.all()])
+       for eval in evaluation_objs:
+           eval.delete()
+           del_eval=del_eval+1
     return [del_ques,del_eval]
 
 def fetch_questions(vertical_id,course,course_id,edx_course_obj,gtype,problist,evaluations):
@@ -361,7 +383,7 @@ def fetch_questions(vertical_id,course,course_id,edx_course_obj,gtype,problist,e
                 weight=0
                 problem_id=problemlist.split('/')[5]
                 p_id=problemlist
-                problem_details= collection.find({"_id.category":"problem","_id.name":problem_id,"_id.course":course},{"metadata.display_name":1,"metadata.weight":1,"edit_info.published_date":1,"edit_info.edited_on":1})
+                problem_details= collection.find({"_id.category":"problem","_id.name":problem_id,"_id.course":course},{"metadata.display_name":1,"metadata.weight":1,"edit_info.published_date":1,"edit_info.edited_on":1,"definition.data.data":1})
                 
                 for problemdet in  problem_details:
                             
@@ -376,13 +398,21 @@ def fetch_questions(vertical_id,course,course_id,edx_course_obj,gtype,problist,e
                             if (edited_on > published_on):
                                
                                continue;                   
-                            problem_name=problemdet["metadata"]["display_name"]
+                            try: 
+                                problem_name=problemdet["metadata"]["display_name"]
+                            except:
+                                problem_name=""
                             try:
                                 weight=problemdet["metadata"]["weight"]
                                 
                             except Exception as e:
-                               
-                               weight=0 
+                                
+                                definition_data=problemdet['definition']['data']['data'].encode('utf-8')
+ 
+                                global question_types
+                                for type in question_types:
+                                    weight+=definition_data.count(type)
+                                
                             try:
 
                                 problem_obj=questions.objects.get( qid=p_id)
@@ -438,32 +468,30 @@ r.maxgrade = b.max_grade WHERE b.module_id = a.qid AND b.course_id='%s' AND b.gr
 
 
 def evaldata(course_id):
-     
      print course_id,"course_id"
      runtime = datetime.now()
      inserteval=0
      updateeval=0
      course=course_id.split('/')[1]
      try:   
-          courseobj=edxcourses.objects.get(courseid=course_id)
+          courseobj=edxcourses.objects.filter(courseid=course_id)
      except Exception as e:
           print "Error - %s,(%s) edxcourse object for %s doesnot exists"%(e.message,type(e), course_id)
           return [-1]
-     
+            
      evals=evaluations.objects.filter(course=courseobj,release_date__lte=runtime).values('sectionid').distinct()
-     
      
      for eval in evals:
          ques_dict={}
          secid=str(eval['sectionid'])
-         evaluation_obj=questions.objects.filter(course=courseobj,eval__sectionid=secid ).exclude(q_weight=0 ).order_by('id')
+         
+         evaluation_obj=questions.objects.filter(course=courseobj,eval__sectionid=secid ).exclude(q_weight=0 ).order_by('eval_id','id')
          heading = ["Rollno","Username","Email"]
          count=0
          totalweight=0
          not_attempt=[]
          qlist=[]
          for evaluate in evaluation_obj:
-           
            count=count+1
            totalweight=totalweight+evaluate.q_weight
            quesname="Q"+str(count).zfill(2)+"<br>MM:"+str(evaluate.q_weight)
@@ -479,59 +507,53 @@ def evaldata(course_id):
                 headers.heading=",".join(map(str,heading))
                 headers.save()
          except Exception as e:
-                
                 heading_obj=headings(heading=",".join(map(str,heading)),section=evaluate.eval.sectionid)
                 heading_obj.save()
            
-         
          stud_list = studentDetails.objects.filter(courseid=course_id)
          grade_list=[]
          stud_rec=[]
          for studvalue in stud_list:
                 totalmark=0.0
-                avgmarks=0.0                
+                avgmarks=0.0  
                 quiz_res=result.objects.filter(edxuserid=studvalue.edxuserid.edxuserid,question__eval__sectionid=secid).exclude(question__q_weight=0 ).order_by('question__id')
-
                 quizdata=[]
                 for res in quiz_res:
-                     quizmark=(res.grade/res.maxgrade)*res.question.q_weight
+                     quizmark=round((res.grade/res.maxgrade)*res.question.q_weight,2)
                      totalmark=totalmark+quizmark
-                     
                      while (len(quizdata) < ques_dict[res.question.qid]):
                        quizdata.append("NA")
                      quizdata.append(round(quizmark,2))
                      try:
                        avgmarks=totalmark/totalweight
-                       total=totalmark
+                       total=round(totalmark,2)
                      except:
                        avgmarks=0.0
-                if quizdata == []:
+                if quizdata != []:
+                   while len(quizdata) <= max(value for (key,value) in ques_dict.items()):
+                      quizdata.append("NA")
+                elif quizdata == []:
                      quizdata=not_attempt
                      total="NA"
                      while len(quizdata) < count:
                         quizdata.append("NA")
-
+    
                 res=",".join(map(str, quizdata))
-                print res,"This is res"
- 	 	
-                #stud_rec.append([str(studvalue.roll_no), str(studvalue.edxuserid.username),str(studvalue.edxuserid.email), round(avgmarks,2),round(totalmark,2),quizdata])
+                
+                
                 try:
-
                    marks_obj=markstable.objects.get(stud=studvalue,section=secid)
-
                    marks_obj.eval=res
                    marks_obj.total=total
-                   marks_obj.save() 
+                   marks_obj.save()
                    updateeval = updateeval +1
                 except Exception as e:
                    marks_obj=markstable(stud=studvalue,section=secid,eval=res,total=total)
                    marks_obj.save() 
                    inserteval=inserteval+1
-         
+           
      return [inserteval,updateeval]
 #end evaldata()
-
-
 
 
 
@@ -564,24 +586,282 @@ def print_student_grade_status(result,outlist):
     if (outlist[0]!= -1):
        print "Total inserted student marks records are",outlist[0]
        print "Total updated student marks records are",outlist[1]      
-       
+     
+def insert_modlist(disnm,motype,moid,rel_id):
+    try:
+       print moid
+       mod_obj = course_modlist.objects.get(module_id=moid)
+       mod_obj.display_name = disnm
+       mod_obj.module_type = motype
+       mod_obj.module_id = moid
+       mod_obj.related_id = rel_id
+       mod_obj.save()
+       return mod_obj.id
+    except Exception as e:
+       print str(e.message)
+       coursemod = course_modlist(display_name=disnm,module_type=motype,module_id=moid,related_id=rel_id)
+       coursemod.save()
+       return coursemod.id
+ 
+
+def deleted_module(module):
+    try:
+          module_detail=collection.find({"_id.name":module.module_id})
+          try:
+              for module in module_detail:
+                 try:
+                    if module['metadata']['visible_to_staff_only'] == True:
+                          module.delete() 
+                          return 1            
+                 except:
+                          return 0
+          except:
+            module.delete()
+            return 1
+          return 0
+    except:
+      return 0
+    
+def update_deleted_modules():
+    modules_deleted =0
+    modules_list=course_modlist.objects.exclude(module_type__in=["course","chapter","sequential","vertical"])
+    for module in modules_list:
+           modules_deleted +=deleted_module(module)
+    
+    vertical_list=course_modlist.objects.filter(module_type="vertical")
+    for vertical in vertical_list:
+           modules_deleted +=deleted_module(vertical)
+ 
+    sequential_list=course_modlist.objects.filter(module_type="sequential")
+    for sequential in sequential_list:
+           modules_deleted +=deleted_module(sequential)
+ 
+    chapter_list=course_modlist.objects.filter(module_type="chapter")
+    for chapter in chapter_list:
+           modules_deleted +=deleted_module(chapter)
+
+    course_list=course_modlist.objects.filter(module_type="course")  
+    for course in course_list:
+           modules_deleted +=deleted_module(course)
+    print "Number of modules deleted=",modules_deleted
+
+    
+def course_modules(csr):
+    for csr_name in collection.find({"_id.course":csr,"_id.category":"course"} ,{"metadata.display_name":1, "metadata.visible_to_staff_only":1}):
+        try:
+           if csr_name['metadata']['visible_to_staff_only'] == True:
+             continue 
+        except:
+             pass
+        csr_id=insert_modlist((csr_name["metadata"]["display_name"].encode('utf-8')),"course",csr,"0")
+
+        for chp_name in collection.find({"_id.course":csr,"_id.category":"chapter"},{"metadata.display_name":1,"definition.children":1,"metadata.start":1,"_id.name":1, "metadata.visible_to_staff_only":1}).sort([("metadata.start",1)]):
+           try:
+             if vertical['metadata']['visible_to_staff_only'] == True:
+                continue 
+           except:
+             pass
+   
+             chp_id=insert_modlist((chp_name["metadata"]["display_name"].encode('utf-8')),"chapter",chp_name["_id"]["name"],csr_id)
+
+             for sequential in  chp_name["definition"]["children"]:
+
+                  stype= sequential.split('/')[4]
+                  seq_id = sequential.split('/')[5]
+
+
+                  if (stype== "sequential"):
+                        for seq_name in collection.find({ "_id.course":csr,"_id.name":seq_id}, {"metadata.display_name":1,  "metadata.start":1,  "metadata.due":1, "definition.children":1,"_id.name":1, "metadata.visible_to_staff_only":1}):
+                                 try:
+                                        if seq_name['metadata']['visible_to_staff_only'] == True:
+                                            continue 
+                                 except:
+                                         pass
+  
+                                 seq_id=insert_modlist((seq_name["metadata"]["display_name"].encode('utf-8')),stype,seq_id,chp_id)
+                                 for vertical in seq_name["definition"]["children"]:
+                                       vtype= vertical.split('/')[4]
+                                       vert_id = vertical.split('/')[5]
+
+                                       if (vtype== "vertical"):
+                                        for vert_name in collection.find({ "_id.course":csr,"_id.name":vert_id},{"metadata.display_name":1,  "metadata.start":1,  "metadata.due":1, "definition.children":1,"_id.name":1, "metadata.visible_to_staff_only":1}):
+                                           try:
+                                                  if vert_name['metadata']['visible_to_staff_only'] == True:
+                                                      continue 
+                                           except:
+                                                  pass
+  
+                                           vert_id=insert_modlist((vert_name["metadata"]["display_name"].encode('utf-8')),vtype,vert_id,seq_id)
+                                           for module in vert_name["definition"]["children"]:
+                                                mtype= module.split('/')[4]
+                                                mod_id = module.split('/')[5]
+                                                for mod_name in collection.find({ "_id.course":csr,"_id.name":mod_id},{"metadata.display_name":1,  "metadata.start":1,  "metadata.due":1, "_id.name":1, "metadata.visible_to_staff_only":1}):
+                                                    try:
+                                                        if mod_name['metadata']['visible_to_staff_only'] == True:
+                                                                  continue 
+                                                    except:
+                                                        pass
+  
+                                                    try:
+                                                         mod_id=insert_modlist((mod_name["metadata"]["display_name"].encode('utf-8')),mtype,mod_id,vert_id)
+                                                    except:
+                                                         None
+                                                         #print "                   4",mod_id,mtype
+
+
+
+####### start of get_grades_report() #########
+
+def get_grades_report(course_id):
+ try:
+      courseobj = edxcourses.objects.get(courseid = course_id)
+ except Exception as e:
+      print "ERROR occured",str(e.message),str(type(e))  
+      return [-1,-1]
+ count=0
+ sections=[];update_gradestable=0;insert_gradestable=0
+ heading=["RollNumber","Username","Email","Grade <br>100%"]
+ try:  
+   grades_obj=gradepolicy.objects.filter(courseid=courseobj).order_by('id')
+   for gradetype in grades_obj:
+      count=0
+      evaluation_objs=evaluations.objects.filter(course_id=courseobj.id,type=gradetype.type).values('sectionid','grade_weight','total_marks').distinct().order_by("type","due_date")
+      for evaluation_obj in evaluation_objs:
+        sections.append([evaluation_obj['sectionid'],evaluation_obj['grade_weight']])
+        count=count+1
+        try:
+           header=headings.objects.get(section=evaluation_obj['sectionid'])
+        except Exception as e:
+           print "Error :Missing Evaluation",str(e.message),str(type(e)),"evaluation",evaluation_obj['sectionid']
+
+        headings_short_label=header.heading.split(',')[3].strip('Total <br>')  
+        total_mark=float(headings_short_label.strip('MM:'))
+        evaluation_obj['total_marks']=total_mark
+        evaluation_objs=evaluations.objects.filter(course_id=courseobj.id,type=gradetype.type).update(total_marks=total_mark)
+        heading.append(str(gradetype.short_label+str(count).zfill(2))+"<br>"+str(headings_short_label))
+   heading=",".join(map(str,heading))
+   try:
+      header_objs=headings.objects.get(section=courseobj.course)
+      header_objs.heading=heading
+      header_objs.save()
+   except:
+      header_objs=headings(section=courseobj.course,heading=heading)  
+      header_objs.save()
+   studentdetails_obj=studentDetails.objects.filter(courseid=courseobj.courseid)
+   for studentdetails in studentdetails_obj:
+     grade=0;total=[]
+     for section in sections:
+        markstable_obj=markstable.objects.get(section=str(section[0]),stud=studentdetails.id)  
+        if markstable_obj.total =="NA":
+           total.append(str(markstable_obj.total))
+           grade=grade+0.0
+        else:
+            grade=grade+float(float(markstable_obj.total)/total_mark * float(section[1]))
+            total.append(float(markstable_obj.total))
+     rounded_grade=round((grade*100),2)
+     res=",".join(map(str, total))
+     try:
+        gradestable_obj=gradestable.objects.get(stud=studentdetails,course=courseobj.course)
+        gradestable_obj.stud=studentdetails
+        gradestable_obj.course=courseobj.course
+        gradestable_obj.grade=rounded_grade
+        gradestable_obj.eval=res
+        gradestable_obj.save() 
+        update_gradestable+=1    
+     except:
+        gradestable_obj=gradestable(stud=studentdetails,course=courseobj.course,grade=rounded_grade,eval=res)
+        gradestable_obj.save()
+        insert_gradestable+=1 
+   return [insert_gradestable,update_gradestable]
+ except Exception as e:
+          print "Error - %s,(%s) edxcourse object for %s doesnot exists"%(str(e.message),str(type(e)), courseobj.courseid)
+          return [-1,-1]    
+     
+
+########### end of get_grades_report() #############
+     
+
+########### end of get_grades_report() #############
+ 
+
+def print_get_gradestable_status(grades_table_status):
+   if grades_table_status[0]!=-1:
+       print "Total inserted student grades records are",grades_table_status[0]
+       print "Total updated student grades records are",grades_table_status[1]
+
+def generate_emails():
+      
+       FROM = "bmwsupport@iitbombayx.in"
+       TO = ["bmwsoftwareteam@cse.iitb.ac.in","workshopmanagers@cse.iitb.ac.in"] # must be a list
+       #CC = ["bmwsoftwareteam@cse.iitb.ac.in"] # email id as CC
+       SUBJECT = "Bmwinfo Sync Script Status"
+       runtime = datetime.now()
+       TEXT = """The script ran sucessfully on %s. Please note this doesnot mean that IITBombayX data was refreshed.""" %(runtime)
+             
+       # Prepare actual message
+
+       message = """\
+       From: %s
+       To: %s
+       Subject: %s
+
+       %s
+       """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
+       #msg = EmailMultiAlternatives(SUBJECT, message, FROM, TO, cc=CC) # if cc is required
+       msg = EmailMultiAlternatives(SUBJECT, message, FROM, TO)
+       msg.send(fail_silently=False)
+
+
 
 def main(argv):
         init()
-       
+        curtime = datetime.now()
         course_id=""
+        
         for course in courses:
-           course_id=get_course_detail(course)
-                 
-           if (course_id != "-1") :
-                 
-                 #status=get_student_course_enrollment(course_id)
-                 #result=fetch_evaluations(course_id) 
-                 #grade=get_student_grades(course_id) 
-                 outlist=evaldata(course_id)
-                 #print_report(status,course_id,result)
-                 #print_student_grade_status(grade,outlist)
-                 
+         try:
+           course_obj=edxcourses.objects.get(course=course)
+         except Exception as e:
+           print "Error occured",str(e.message),str(type(e))
+         try:
+           ahead_date=course_obj.courseend + timedelta(days=7)
+         except:
+           ahead_date="9999-12-31 24:00:00"
+         try:
+           coursestart=str(course_obj.coursestart)
+         except:
+           coursestart="1111-01-01 24:00:00"
+         try:
+           enrollend=str(course_obj.enrollend)
+         except:
+           enrollend="9999-12-31 24:00:00" 
+         if coursestart < str(curtime):
+            if str(curtime) < str(ahead_date):
+                  course_id=get_course_detail(course)
+                  if (course_id != "-1") :
+                    if str(curtime) < enrollend :
+                      status=get_student_course_enrollment(course_id)
+                    else:
+                      print "Enrollment is closed"
+                    
+                    result=fetch_evaluations(course_id) 
+                    grade=get_student_grades(course_id)
+                    outlist=evaldata(course_id)
+                    grades_table_status=get_grades_report(course_id)
+                    module=course_modules(course)
+                    try:
+                       print_report(status,course_id,result)
+                    except Exception as e:
+                      print "Enrollment has closed ",str(e.message),str(type(e))
+                      
+                    print_student_grade_status(grade,outlist)
+                    print_get_gradestable_status(grades_table_status)
+                    
+            else:
+                    print "Course has been closed"
+        update_deleted_modules()
+        generate_emails()
+
                  
 
 if __name__ == "__main__":
