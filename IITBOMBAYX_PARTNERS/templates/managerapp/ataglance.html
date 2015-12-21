@@ -1,0 +1,182 @@
+{% extends "base2.html" %}
+{% block header %}
+<header>
+{% for i in monthinci %}
+<h2><b>IITBombayx at a Glance as on {{i.1}}</b></h2>
+</header>
+{% endfor %}
+{% endblock %}
+{% block body_block %}
+
+<div class="row" align="right"><a href="/iitbxhome/"> Home </a></div>
+<br>
+
+
+<table class="table" width=50%>
+  <tr>      
+ <td align=left><b>{{TotalStats.0}}</b> Learners</td>
+ </tr>
+ <tr>      
+ <td align=left>{{TotalStats.3}}<br> (<b>{{TotalStats.1}}</b> States and U.T and <b>{{TotalStats.2}}</b> Cities) </td>
+ </tr>
+
+     <tr>
+      	
+        <td align=left><b>{{TotalStats.4}}</b> Enrollments</td>
+     </tr>
+   
+<tr>
+      	
+        <td align=left> <b> {{total.BlendedStudents}} </b> Blended Students from <b>{{total.numberofClasses}}</b> classes, <b>{{total.numberofInstitutes}}</b> Participating Institutes   </td>
+     </tr>
+
+
+<tr>   
+    <td align=left><b>{{TotalStats.5}}</b> IITBombayX Partners ({{TotalStats.6}})</td>
+          
+  </tr>
+  
+<tr>   
+    <td align=left><b>{{TotalStats.7}}</b> Certificates generated</td>
+          
+  </tr>    
+       
+      
+</table>
+<br>
+   <h2><b>Blended Courses Summary Report</b></h2>
+      <table class ="table">
+      <tr>
+      <td align=center><b>S.No</b></td>
+      <td align=center><b>Course code</b></td>
+      <td align=center><b>Total Learners</b></td> 
+      <td align=center><b>Blended Students</b></td>
+      <td align=center><b>Other Learners</b></td>
+      <td align=center><b>Number of Classes</b></td>
+      <td align=center><b>Number of Institutes</b></td>
+      </tr>
+      {% for i in iitbxdata %}
+      <tr>
+      <td>{{forloop.counter}}</td>
+      <td align=center>{{i.0}}</td>
+      <td align=center>{{i.1}}</td>
+      <td align=center>{{i.2}}</td>
+      <td align=center>{{i.3}}</td>
+      <td align=center>{{i.4}}</td>
+      <td align=center>{{i.5}}</td>
+      </tr>
+      {% endfor %}
+   
+      <tr>
+      <td align=center><b></b></td>
+      <td align=center><b>{{total.course}}</b></td>
+      <td align=center><b>{{total.TotalLearners}}</b></td> 
+      <td align=center><b>{{total.BlendedStudents}}</b></td>
+      <td align=center><b>{{total.OtherLearners}}</b></td>
+      <td align=center><b>{{total.numberofClasses}}</b></td>
+      <td align=center><b>{{total.numberofInstitutes}}</b></td>
+      </tr>
+
+      </table>
+
+   <h2><b>Demographics Summary Report</b></h2>
+     <h3><b>Rural Urban Distribution</b></h3>
+      <table class ="table">
+      <tr>
+      <td align=center></td>
+      <td align=center><b>Rural</b></td>
+      <td align=center><b>Semi-urban</b></td> 
+      <td align=center><b>Urban</b></td>
+      </tr>
+       <tr>
+      <td align=center><b>No.</b></td>
+      <td align=center>{{urb.0}}</td>
+      <td align=center>{{urb.1}}</td>
+      <td align=center>{{urb.2}}</td>
+      </tr>
+      <tr>
+      <td align=center><b>%</b></td>
+      <td align=center>{{urb.3}}</td>
+      <td align=center>{{urb.4}}</td>
+      <td align=center>{{urb.5}}</td>
+      </tr>
+
+   </table>  
+<br> 
+
+     <h3><b>Male Female Distribution</b></h3>
+      <table class ="table">
+      <tr>
+      <td align=center></td>
+      <td align=center><b>Male</b></td>
+      <td align=center><b>Female</b></td> 
+      </tr>
+       <tr>
+      <td align=center><b>No.</b></td>
+      <td align=center>{{mcount.1}}</td>
+      <td align=center>{{mcount.0}}</td>
+      </tr>
+      <tr>
+      <td align=center><b>%</b></td>
+      <td align=center>{{mcount.3}}</td>
+      <td align=center>{{mcount.2}}</td>
+      </tr>
+
+   </table> 
+<br> 
+
+    <h3><b>Education</b></h3>
+      <table class ="table"> 
+      <tr>
+      <td align=center></td>
+      <td align=center><b>Undergraduate</b></td>
+      <td align=center><b>Graduate</b></td> 
+      <td align=center><b>Postgraduate</b></td>
+      <td align=center><b>Doctorate</b></td>
+      </tr>
+      <tr>
+      <td align=center><b>No.</b></td>
+      <td align=center>{{edu.0}}</td>
+      <td align=center>{{edu.1}}</td>
+      <td align=center>{{edu.2}}</td>
+      <td align=center>{{edu.3}}</td>
+      </tr>
+      <tr>
+      <td align=center><b>%</b></td>
+      <td align=center>{{edu.4}}</td>
+      <td align=center>{{edu.5}}</td>
+      <td align=center>{{edu.6}}</td>
+      <td align=center>{{edu.7}}</td>
+      </tr>
+      </table>
+
+<br>
+    <h3><b>Age</b></h3>
+      <table class ="table"> 
+      <tr>
+      <td align=center></td>
+      <td align=center><b>Under18</b></td>
+      <td align=center><b>18-25</b></td> 
+      <td align=center><b>25-60</b></td>
+      <td align=center><b>Above 60</b></td>
+      </tr>
+     
+      <tr>
+      <td align=center><b>No.</b></td>
+      <td align=center>{{agesumm.0}}</td>
+      <td align=center>{{agesumm.1}}</td>
+      <td align=center>{{agesumm.2}}</td>
+      <td align=center>{{agesumm.3}}</td>
+      </tr>
+      <tr>
+      <td align=center><b>%</b></td>
+      <td align=center>{{agesumm.4}}</td>
+      <td align=center>{{agesumm.5}}</td>
+      <td align=center>{{agesumm.6}}</td>
+      <td align=center>{{agesumm.7}}</td>
+      </tr>
+
+      </table>
+
+
+{% endblock %}

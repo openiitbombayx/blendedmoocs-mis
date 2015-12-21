@@ -1,0 +1,197 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header><h2><b>Enrollment Details - Day - wise </b> </h3></header>
+
+
+<div class="row" >
+<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursename}}</h4>
+	</div>
+
+</div>
+<br>
+<head>
+
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+<script type='text/javascript'>
+ 
+
+$(document).ready(function () {
+
+function exportTableToCSV($table, filename) {
+var $headers = $table.find('tr:has(th)')
+,$rows = $table.find('tr:has(td)')
+// Temporary delimiter characters unlikely to be typed by keyboard
+// This is to avoid accidentally splitting the actual contents
+,tmpColDelim = String.fromCharCode(11) // vertical tab character
+,tmpRowDelim = String.fromCharCode(0) // null character
+// actual delimiter characters for CSV format
+,colDelim = '","'
+,rowDelim = '"\r\n"';
+// Grab text from table into CSV formatted string
+var csv = '"';
+csv += formatRows($headers.map(grabRow));
+csv += rowDelim;
+csv += formatRows($rows.map(grabRow)) + '"';
+// Data URI
+var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+$(this)
+.attr({
+'download': filename
+,'href': csvData
+//,'target' : '_blank' //if you want it to open in a new window
+});
+//------------------------------------------------------------
+// Helper Functions
+//------------------------------------------------------------
+// Format the output so it has the appropriate delimiters
+function formatRows(rows){
+return rows.get().join(tmpRowDelim)
+.split(tmpRowDelim).join(rowDelim)
+.split(tmpColDelim).join(colDelim);
+}
+// Grab and format a row from the table
+function grabRow(i,row){
+var $row = $(row);
+//for some reason $cols = $row.find('td') || $row.find('th') won't work...
+var $cols = $row.find('td');
+if(!$cols.length) $cols = $row.find('th');
+return $cols.map(grabCol)
+.get().join(tmpColDelim);
+}
+// Grab and format a column from the table
+function grabCol(j,col){
+var $col = $(col),
+$text = $col.text();
+return $text.replace('"', '""'); // escape double quotes
+}
+}
+// This must be a hyperlink
+
+   $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData>table'), '{{report_name}}.csv']);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+
+
+
+
+
+ $(document).ready(function(){
+//$("#td3").hide();
+//$("#td4").hide();
+ $('td:nth-child(3)').hide();
+  $('td:nth-child(4)').hide();
+  $('#dvd1').hide();
+  $('#click1').on('click', function() {   // check for changes
+                   
+                      
+                         $('td:nth-child(2)').hide();
+                         $('td:nth-child(3)').show();
+                         $('td:nth-child(4)').show();
+                         $('#dvd1').show();
+
+                        
+                  });
+
+
+})
+</script>
+ <style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+</head>
+
+{% endblock %}
+{% block body_block %}
+<div class="row">
+<div class="col-md-10"><a href="#" class="export" >Download CSV</a></div>
+<div class="col-md-1"><a href="/instructor_course_report/{{courseid}}/" >Reports </a></div>
+</div>
+<br>
+<div class="row" id="dvd1">
+<div class="col-md-10"></div>
+<div class="col-md-1"><a href="/manager/coursedailyreport/{{courseid}}/" >Summary </a></div>
+</div>
+
+
+
+<div id="dvData">
+<table cellspacing="5" cellpadding="5" border="1" style="width:60%" align="center" class="table table-hover">
+<tr>
+{% for title in heading %}
+<th>{{title}}
+</th>
+{% endfor %}
+</tr>
+{% for row in reports %}
+<tr>
+{% for col in row  %}
+<td>{{col}}</td>
+{% endfor %}
+</tr>
+
+{% endfor %}
+</table>
+
+
+
+      <table class ="table" width="60%" border=2 >
+      <tr>
+      <!--td align="left">S.No</td-->
+              
+      <td align="center" ><b>Date</b></td> 
+      <td align="center" > <b> <a href="#"  id="click1" style="font-weight:bold" title="The sum of users either students , instructors and its support staff"> Enrolled Users  </a></b></td>
+      <td align="center" id="td3"><b>Students</b> </td>
+      <td align="center" id="td4"><b>Staff </b> </td>
+      <td align="center" > <b>Unenrolled Users </b></td>
+      <td align="center" ><b> <a href="#" title="All the users in the system (Enrolled Users + Unenrolled Users)" style="font-weight:bold;color: black;"  background-color="transparent" >Total Users </a> </b></td>
+      <td align="center"><b>Cumulative</b> </td>
+      </tr  id="td5">
+      {% for i in report %}
+      <tr>
+      <!--td>{{forloop.counter}}</td-->
+      <td  width="20%" align="center" >{{i.0}}</td>
+       <td align="center" >{{i.5}}</td>   
+        <td align="center" >{{i.6}}</td>    
+      <td align="center">{{i.1}}</td>
+      <td align="center">{{i.2}}</td>
+      <td align="center">{{i.3}}</td>
+      <td align="center" >{{i.4}}</td>
+     
+      </tr>
+      {% endfor %}
+       <tr>
+       <td align="center"> <b>Grand Total </b> </td>
+       <td align="center"><b>{{sumenrolled}}</b> </td>
+        <td align="center"><b>{{sumstudents}}</b> </td>
+   
+         <td align="center"><b>{{sumstaff}} </b></td>   
+        <td align="center"><b>{{sumunenrolled}}</b> </td>
+        <td align="center"><b>{{sumtotal}}</b> </td>
+        <td align="center"> </td>
+        
+       </tr> 
+      </table>
+
+</div>
+
+ 
+
+
+
+
+{% endblock %}
+

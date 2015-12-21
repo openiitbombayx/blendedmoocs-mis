@@ -1,10 +1,3 @@
-'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
-Copyright (C) 2015  BMWinfo 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
-You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
-
-
 from django.conf.urls import url
 
 from . import views
@@ -54,7 +47,31 @@ urlpatterns = [
     url(r'^courseadminhome/$', 'SIP.views.courseadminhome',name='courseadminhome'),
     url(r'^manualupload/$','SIP.views.manualupload',name='manualupload'),
     url(r'^facultygenericinterface/(?P<courseid>[\w{}\.\-\/]{1,40})/$','SIP.views.facultygenericinterface',name='facultygenericinterface'),
+    url(r'^iitbxhome/$', 'SIP.views.iitbxhome',name='iitbxhome'),
+    url(r'^ataglance/$', 'SIP.views.ataglance',name='ataglance'),
+    url(r'^iitbxactivity/$', 'SIP.views.iitbxactivity',name='iitbxactivity'),
 
+
+    url(r'^home/$', 'iitbx.views.home',name='home'),
+    url(r'coursedesc/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+)$', 'iitbx.views.coursedesc', name='coursedesc'),
+    url(r'^participantdetails/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+)/$','iitbx.views.studentdetails',name='studentdetails'),
+    url(r'^coursedetails/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+)/$','iitbx.views.coursedetails',name='coursedetails'),
+    url(r'^systemreports/(?P<courseid>[\w{}\.\-\/]{1,40})/$','iitbx.views.systemreports',name='systemreports'),
+    url(r'^genevalstatus/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/(?P<evalflag>[0-9])/$','iitbx.views.genevalstatus',name='evalstatus'),
+    url(r'^genstudentstatus/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/(?P<report>[0-9])/$','iitbx.views.genstudentstatus',name='genstudentstatus'),
+    url(r'^genevaluation/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/(?P<evalflag>[0-9])/$','iitbx.views.genevaluation',name='genevaluation'),
+    url(r'^genquizdata/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/$','iitbx.views.genquizdata',name='genquizdata'),
+    url(r'^downloadgenquizcsv/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/$','iitbx.views.downloadgenquizcsv',name='downloadgenquizcsv'),
+    url(r'^gengrades/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/$','iitbx.views.gengrades_report',name='gengrades_report'),
+    url(r'^downloadgengradecsv/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/$','iitbx.views.downloadgengradecsv',name='downloadgengradecsv'),
+    
+    url(r'^genevaluationoption/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/(?P<evalflag>[0-9])/$','managerapp.views.genevaluationoption',name='genevaluationoption'),
+   url(r'^genquizanswers/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/$','managerapp.views.genquizanswers',name='genquizanswers'),
+   url(r'^genevaluationoption/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/(?P<evalflag>[0-9])/$','managerapp.views.genevaluationoption',name='genevaluationoption'),
+   url(r'^genquizanswers/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/$','managerapp.views.genquizanswers',name='genquizanswers'),
+
+   url(r'^evaluationoption/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/(?P<instituteidid>[0-9]+)/(?P<evalflag>[0-9])/$','SIP.views.evaluationoption',name='evaluationoption'),
+   url(r'^quizanswers/(?P<courseid>[\w{}\.\-\/]{1,40})/(?P<pid>[0-9]+|-[0-9])/(?P<instituteidid>[0-9]+)/$','SIP.views.quizanswers',name='quizanswers'),
 
 
  ]

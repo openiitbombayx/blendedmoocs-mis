@@ -1,0 +1,28 @@
+{% extends "base2.html" %}
+{% block header %}
+<header>
+<h2>IITBombayX Superuser - Non-Blended</h2>
+</header>
+{% endblock %}
+{% block body_block %}
+   <p><h2> User Summary </h2> </p>
+ <table>
+<tr><td>  <a href="/manager/usersummary/" class="enter-course">User Summary Report</a></td></tr>
+ <tr><td><a href="/manager/registrationsummary/" class="enter-course">User Summary Report-Month-Wise</a></td><tr>
+</table>  
+ <p><h2> Active Courses List </h2> </p>
+      <table  class="table" cellspacing="2" cellpadding="5" style="width:80%;" align="left" >
+      <tr>
+        <th>CourseID</th><th>CourseName</th><th>CourseStartdate</th><th>CourseEnddate</th>
+      </tr>
+
+      {% for i in courselist %}
+      <tr>
+       <td><a href="/instructor_course_report/{{i.0}}"> {{ i.0 }}</a></td>
+       <td >{{ i.1 }}</td>
+       <td>{{ i.2}}</td>
+       <td>{{ i.3}}</td>
+      </tr> 
+     {% endfor %}
+      </table>
+{% endblock %}

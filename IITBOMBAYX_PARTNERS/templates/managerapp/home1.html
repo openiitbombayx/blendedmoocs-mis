@@ -1,0 +1,43 @@
+{% extends "base2.html" %}
+{% block header %}
+<header>
+<h2>IITBombayX Users Report</h2>
+</header>
+{% endblock %}
+{% block body_block %}
+<div class="row" align="right"><a href="/home/">Reports </a></div>
+<p><h2><b>Users Summary Report</b></h2> </p>
+
+Total users in the system = {{total}}<br>
+Total users who have activated the account = {{active}}<br>
+Total users who have Logged into the system = {{LoggedIn}}<br>
+Total users who have enrolled for the courses = {{ SingleCourse|add:MultipleCourse }}<br>
+
+Number of users who have joined IITBombayX = {{total}}<br>
+Number of active users who have joined IITBombayX = {{active}}<br>
+Number of users who have not activated IITBombayX Account =  {{notactive}}<br>
+
+<p><h2><b>Recent Users Summary Report</b></h2> </p>
+
+Number of active users who have joined IITBombayX -Current Year ({{year}}) = {{Cur_Year}}<br>
+Number of active users who have joined IITBombayX -Current Quarter ({{quartername}}) = {{Cur_Quarter}}<br>
+Number of active users who have joined IITBombayX -Current Month ({{mname}}) = {{Cur_Month}}<br>
+Number of active users who have joined IITBombayX -Current Week ({{weekno}}) = {{Cur_Week}}<br>
+Number of active users who joined IITBombayX -Yesterday ({{lastday}}) = {{Yesterday}}<br>
+
+<p><h2><b>Login Status Summary Report</b></h2> </p>
+
+Number of active users who have not Logged In even once = {{NeverLogged}}<br>
+Number of active users who have logged In once or more  = {{LoggedIn}}<br>
+Number of active user login -Current Year ({{year}}) = {{ActiveCurYear}}<br>
+Number of active user login -Current Month ({{mname}}) = {{ActiveCurMonth}}<br>
+Number of active user login -Current Week ({{weekno}}) = {{ActiveCurWeek}}<br>
+Number of active user login -Yesterday ({{lastday}})= {{ActiveYesterday}}<br>
+
+<p><h2><b>Course Enrollment -Summary Report</b></h2></p>
+
+Number of active users who have not enrolled for any course  = {{NoEnrollment}}<br>
+Number of active users who have enrolled for a single course = {{SingleCourse}}<br>
+Number of active users who have enrolled for more than one course = {{MultipleCourse}}<br>
+
+{% endblock %}

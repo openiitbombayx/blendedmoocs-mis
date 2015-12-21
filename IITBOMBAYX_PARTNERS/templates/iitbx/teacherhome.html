@@ -1,0 +1,56 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header><h2>Course Detail for {{course}} </h2></header>
+
+
+{% endblock %}
+{% block body_block %}
+  
+   	<li class="course-item">
+    	<article class="course">
+        <a href="" class="cover">
+        <img src="{{course.image}}" alt="Course Cover Image">
+        </a>
+ 	<section class="info">
+     	 <hgroup>
+        <h2 class="university">IITBombayX</h2>
+        <h3>
+            <a href="">{{courseid}}</a>
+        </h3>
+      </hgroup>
+
+<br><br>
+<table   cellspacing="0" width="100%"  >  
+    <tr><td > <a href="/coursedetails/{{courseid}}/{{pid}}/" class="enter-course">Course  Details</a><br><br><br><br></td>
+<td> <a href="/participantdetails/{{courseid}}/{{pid}}/" class="enter-course">Participants' Details</a></td></tr>
+     <tr><td > <a href="/manager/courseenrrollment/{{courseid}}/" class="enter-course">Course enrollment Details</a><br><br><br><br></td> </tr>
+  
+
+<tr><td ></br><center><h2>Evaluation</h2></center></td></tr>
+
+  <tr> <td> <a href="/genevaluation/{{courseid}}/{{pid}}/0" class="enter-course">Evaluation Details </a><br><br><br><br></td> <td ><a href="/genevalstatus/{{courseid}}/{{pid}}/0" class="enter-course">Evaluation Status</td>   
+
+    </tr>
+    <tr>
+ <td> <a href="/gengrades/{{courseid}}/{{pid}}/{{instituteid}}/0" class="enter-course">Grade Details</a></td>
+ </tr>     
+      </table>
+        
+      </section>
+     
+</article>
+
+</li>
+		
+          <h4 style="color:red">{{message}}</h4>      
+      {% endblock %}      
+            
+
+
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Evaluation Report</font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+{% autoescape off %}
+
+<br><br>
+
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{selectedinstitute}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+ {% if stud_rec %}
+	<div  class ="col-md-4 " align="right">
+	<h4><a href = '/downloadgenquizcsv/{{courseid}}/{{pid}}/'>Download</a></h4>
+	</div>
+{% endif %}
+	<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{course}}</h4>
+
+	</div>
+      <div class ="col-md-8">
+	<h4><b>Evaluation:</b> {{secname}}</h4>
+ 
+	</div>
+<div  class ="col-md-4 " align="right">
+	<h4><a href = '/genevaluation/{{courseid}}/{{pid}}/0'>Change Evaluation</a></h4>
+	</div>
+</div>
+</br>
+<style>
+
+
+.table td,.table th ,.table tr,.table thread .table tbody {
+    border: 1px solid black;
+}
+</style>
+
+ {% if stud_rec %}
+<br>
+<div class="row" align = "center">
+<b>Total number of  records : {{stud_rec|length}}</b>
+</div>
+<br>
+<br>
+<div class="table-responsive">
+ <table id="example" class="table" border="1"  cellspacing="0" width="100%" >
+    <thead> 
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+ <tr align = "left" >
+   <td align="center"  >
+  <b>S.No</b>
+</td>
+  {% ifequal pid "-1" %}
+  {% for i in headings %}
+    {% if forloop.counter == 2 %}
+         <td align="center"  >
+  <b> Teacher</b>
+</td>
+        <td align="center"  >
+  <b> {{i}}</b>
+</td>
+
+{% else %}
+ <td align="center"  >
+  <b> {{i}}</b>
+</td>
+{% endif %}
+ {% endfor %}
+
+{% else %}
+
+{% for i in headings %}
+    
+ <td align="center"  >
+  <b> {{i}}</b>
+</td>
+
+ {% endfor %}
+
+{% endifequal %}
+</tr>
+   </thead>
+<tbody >
+ {% ifequal pid "-1" %}
+{% for i in stud_rec %}
+     <tr align = "left">
+     <td align=center >  {{forloop.counter}}</td>
+     {% for j in i %}  
+          {% ifequal forloop.counter 5 %}
+                {% for k in j %} 
+                   <td align=center >  {{k}}</td>
+                {% endfor %}
+          {% else %}
+      
+             <td align=center >  {{j}}</td>
+          {% endifequal %}
+     {% endfor %}
+     </tr>
+{% endfor %}
+{% else %}  
+
+{% for i in stud_rec %}
+     <tr align = "left">
+     <td align=center >  {{forloop.counter}}</td>
+     {% for j in i %}  
+          {% ifequal forloop.counter 5 %}
+                {% for k in j %} 
+                   <td align=center >  {{k}}</td>
+                {% endfor %}
+          {% else %}
+      
+             <td align=center >  {{j}}</td>
+          {% endifequal %}
+     {% endfor %}
+     </tr>
+{% endfor %}
+{% endifequal %}
+</tbody>
+</table> </div>
+ {% else %}
+<div class="row" align = "center">
+<b>No record exist for selected evaluation</b>
+</div>
+{% endif %}
+<br>
+<br>
+
+  {% endautoescape %}
+
+{% endblock %}

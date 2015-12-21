@@ -49,14 +49,25 @@
 </head>
 <body>
 {% block body_block %}
+<div class="row" >
+<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{course}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursename}}</h4>
+	</div>
 
+</div>
+
+<div class="row" align="right"><a href="/home/">Home </a></div>
 {% if courselist_flag == 1 %}
 <br><table style="width:90%" cellspacing="5" cellpadding="5" align="center"><tr><td align="right"><a href="/faculty_report">Course List</a></td></tr></table>
 {% endif %}
+{% if blended_mode == 1 %}
 <br><br>
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 <tr> <td><a href = "/blendedadmin/7" >Institute-wise:Teachers' Participation Report</a></td></tr>
-<tr> <td><a href = "/blendedadmin/14" >Institute wise:Student's Participation Summary Report</a></td></tr>
+<tr> <td><a href = "/blendedadmin/14" >Institute-wise:Student's Participation Summary Report</a></td></tr>
 <tr> <td><a href = "/blendedadmin/19" >MOOC's Paticipants Profile</a></td></tr>
 
 <tr> <td><a href="/facultygenericinterface/{{course}}/" class="enter-course">Teachers' Student Association</a></td></tr>
@@ -69,6 +80,8 @@
 
 <td> <a href="/evaluation/{{course}}/{{pid}}/{{institute_id}}/0" class="enter-course">Evaluation Details </a></td></tr>
 <tr> <td><a href="/grades/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Grade Details</a></td></tr>
+<tr> <td><a href="/manager/studentdemography/{{course}}">Student Demography</a></td></tr>
+<!--<tr><td> <a href="/evaluationoption/{{course}}/{{pid}}/{{institute_id}}/0" class="enter-course">Evaluation Answers </a></td></tr>-->
 </table>
 <br>
 <br>
@@ -86,6 +99,28 @@
 {% endfor %}
 </tr>
 </table>
+{% else %}
 
+
+<br><br>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr> <td><a href="/manager/courseenrrollment/{{course}}">Course Enrollment -Summary</a></td></tr>
+<tr> <td><a href="/manager/coursedailyreport/{{course}}">Course Enrollment -Day Wise</a></td></tr>
+<tr> <td><a href="/manager/courseweeklyreport/{{course}}">Course Enrollment -Week Wise</a></td></tr>
+<tr> <td><a href="/manager/coursemonthlyreport/{{course}}">Course Enrollment -Month Wise</a></td></tr>
+<tr> <td><a href="/manager/studentdemography/{{course}}">Student Demography</a></td></tr>
+<tr><td> <a href="/coursedetails/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td>   
+</tr>
+
+<tr>
+<td> <a href="/genevaluation/{{course}}/{{pid}}/0" class="enter-course">Evaluation Details </a></td></tr>
+<tr> <td><a href="/genevalstatus/{{course}}/{{pid}}/0/" class="enter-course">Evaluation Status Details</a></td></tr>
+<tr><td> <a href="/genevaluationoption/{{course}}/{{pid}}/0" class="enter-course">Evaluation Answers </a></td></tr>
+<tr> <td><a href="/gengrades/{{course}}/{{pid}}/" class="enter-course">Grade Details</a></td></tr>
+
+</table>
+<br>
+<br>
+{% endif %}
 
 {% endblock %}

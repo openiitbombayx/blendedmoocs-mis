@@ -1,0 +1,146 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Students' Performance Report </font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+{% autoescape off %}
+
+<br><br>
+
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{institutename}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+ {% if student_record %}
+	<div  class ="col-md-4 " align="right">
+	<h4><a href = '/downloadgengradecsv/{{course}}/{{pid}}/'>Download</a> </h4>
+	</div>
+ {% endif %}
+	<div class ="col-md-8">
+	<h4><b>Course:</b> {{course}}</h4>
+
+	</div>
+
+</div>
+</br>
+ {% if student_record %}
+
+<br>
+<div class="row" align = "center">
+<b>Total number of  records : {{student_record|length}}</b>
+</div>
+<br>
+<br>
+
+<div class="table-responsive">
+
+ <table id="example" class="table table-bordered" cellspacing="0" width="100%" >
+    <thead> 
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+ <tr align = "left" >
+   <td align="center"  >
+  <b> S.No</b>
+</td>
+ {% ifequal pid -1 %}
+  {% for i in headings %}
+    {% if forloop.counter == 2 %}
+         <td align="center"  >
+  <b> Teacher</b>
+</td>
+        <td align="center"  >
+  <b> {{i}}</b>
+</td>
+
+{% else %}
+ <td align="center"  >
+  <b> {{i}}</b>
+</td>
+{% endif %}
+ {% endfor %}
+
+{% else %}
+
+{% for i in headings %}
+    
+ <td align="center"  >
+  <b> {{i}}</b>
+</td>
+
+ {% endfor %}
+
+{% endifequal %}
+
+</tr>
+   </thead>
+<tbody>
+ {% ifequal pid -1 %}
+  {% for student_details in student_record %}
+  <tr align = "left">
+      <td>{{forloop.counter}}</td>
+     {% for student_detail in student_details %}
+            {% if forloop.counter == 6 %}
+
+              {% for stud in student_detail %}
+                 <td>{{stud}}</td>
+            {% endfor %}
+               
+            {% else %}                
+
+             <td>{{student_detail}}</td>
+            {% endif %}
+      
+     {% endfor %}
+
+  </tr>
+ {% endfor %}
+{% else %}  
+{% for student_details in student_record %}
+  <tr align = "left">
+      <td>{{forloop.counter}}</td>
+     {% for student_detail in student_details %}
+            {% if forloop.counter == 5 %}
+
+              {% for stud in student_detail %}
+                 <td>{{stud}}</td>
+            {% endfor %}
+               
+            {% else %}                
+
+             <td>{{student_detail}}</td>
+            {% endif %}
+      
+     {% endfor %}
+
+  </tr>
+ {% endfor %}
+{% endifequal %}
+</tbody>
+</table> 
+</div>
+{% else %} 
+<div class="row" align = "center">
+<b>No records exist</b>
+</div>
+
+{% endif %}
+
+<br>
+<br>
+
+{% endautoescape %}
+
+{% endblock %}

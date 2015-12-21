@@ -1,0 +1,39 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header><h2>Course Detail for {{course}} </h2></header>
+
+
+{% endblock %}
+{% block body_block %}
+
+   
+
+<br><br>
+<table   cellspacing="0" width="100%"  >  
+    <tr><td > <a href="/manager/usersummary/" class="enter-course">User Summary</a><br><br><br><br></td>
+<td> <a href="/manager/registrationsummary/" class="enter-course">Registration Summary</a></td></tr>
+     <tr><td > <a href="/manager/courseenrrollment/{{courseid}}/" class="enter-course">Course enrollment Details</a><br><br><br><br></td></tr>
+  
+<!--
+<tr><td ></br><center><h2>Evaluation</h2></center></td></tr>
+
+  <tr> <td> <a href="/evaluation/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Evaluation Details </a><br><br><br><br></td> <td ><a href="/evalstatus/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Evaluation Status</td>   
+
+    </tr>
+    <tr>
+ <td> <a href="/grades/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/" class="enter-course">Grade Details</a></td>
+ </tr>   -->     
+      </table>
+        
+    
+      {% endblock %}      
+            
+
+
+
+
+
+
+
+

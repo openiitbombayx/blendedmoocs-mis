@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header><h2>Participants' Information for {{course}} </h2></header>
+
+
+{% endblock %}
+{% block body_block %}
+
+  <p><h2> Participant list </h2> </p>
+      <table class="table ">
+<tr>    
+        <td><b>S.No</b></td>
+        <td><b>Email</b></td>
+        <td><b>Username</b></td></tr>
+<br>
+      {% for i in studentdetail %}
+        <tr>
+         <td>{{forloop.counter}}</td>
+        <td>{{ i.0 }}</td>
+        <td>{{i.1}}</td>
+        </tr>
+      {% endfor %}
+</table>
+{% endblock %}

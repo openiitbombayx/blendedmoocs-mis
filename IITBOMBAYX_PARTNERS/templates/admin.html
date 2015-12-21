@@ -1,9 +1,9 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<title>Reports Admin Home</title>
+<title>Index-Reports</title>
 <header>
-<h2>Reports Admin Home</h2>
+<h2>Index-Reports</h2>
 </header>
 {% endblock %}
 {% block body_block %}
@@ -17,21 +17,30 @@
                 <div class="group group-form group-form-requiredinformation">
                 <table  cellspacing="5" cellpadding="5" border="1" class="table table-hover">
                         <tr>
-                                <td><a href = "/registrationinterface/0" >Registration Interface For Admin</a></td>
+                          <td><center><b>Group</b></center></td>
+                          <td><center><b>Name</b></center></td>
+                          <td><center><b>Description</b></center></td>
+                        </tr>
+                         <tr>
+                            <td>Admin Interface</td>    
+                            <td><a href = "/registrationinterface/0" >Registration Interface For Admin</a></td>
 
                                 <td>Registration Interface For Admin</td>
                         </tr>
                          <tr>
+                                <td>Admin Interface</td>
                                 <td><a href = "/adminuploaderinfo/" >Generic Teacher Interface For Admin</a></td>
 
                                 <td>Generic Teacher Interface For Admin</td>
                         </tr>
                         <tr>
+                               <td>Report: Teacher - Student Association</td>
                                 <td><a href = "/approvedinstitute/" >Students' Teacher Association Report</a></td>
 
                                 <td>Students' Teacher Association Report</td>
                         </tr>
                         <tr>
+                                <td>Course Details Report</td>
                                 <td><a href = "/allcourses/0/" >Course Details Report</a></td>
                               
                                 <td>Course Details Report</td>
@@ -39,7 +48,8 @@
                         {% for i in report_list %}
 
                         <tr>
-                                <td><a href = "/blendedadmin/{{i.reportid}}" >{{ i.report_title }}</a></td>
+                                 <td>{{i.category}}</td>
+                                 <td><a href = "/blendedadmin/{{i.reportid}}" >{{ i.report_title }}</a></td>
 
                                 <td>{{ i.comments }}</td>
                         </tr>

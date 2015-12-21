@@ -1,0 +1,210 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Evaluation Answers Report</font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+{% autoescape off %}
+
+
+<head>
+
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+<script type='text/javascript'>
+ 
+
+$(document).ready(function () {
+
+function exportTableToCSV($table, filename) {
+var $headers = $table.find('tr:has(th)')
+,$rows = $table.find('tr:has(td)')
+// Temporary delimiter characters unlikely to be typed by keyboard
+// This is to avoid accidentally splitting the actual contents
+,tmpColDelim = String.fromCharCode(11) // vertical tab character
+,tmpRowDelim = String.fromCharCode(0) // null character
+// actual delimiter characters for CSV format
+,colDelim = '","'
+,rowDelim = '"\r\n"';
+// Grab text from table into CSV formatted string
+var csv = '"';
+csv += formatRows($headers.map(grabRow));
+csv += rowDelim;
+csv += formatRows($rows.map(grabRow)) + '"';
+// Data URI
+var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+$(this)
+.attr({
+'download': filename
+,'href': csvData
+//,'target' : '_blank' //if you want it to open in a new window
+});
+//------------------------------------------------------------
+// Helper Functions
+//------------------------------------------------------------
+// Format the output so it has the appropriate delimiters
+function formatRows(rows){
+return rows.get().join(tmpRowDelim)
+.split(tmpRowDelim).join(rowDelim)
+.split(tmpColDelim).join(colDelim);
+}
+// Grab and format a row from the table
+function grabRow(i,row){
+var $row = $(row);
+//for some reason $cols = $row.find('td') || $row.find('th') won't work...
+var $cols = $row.find('td');
+if(!$cols.length) $cols = $row.find('th');
+return $cols.map(grabCol)
+.get().join(tmpColDelim);
+}
+// Grab and format a column from the table
+function grabCol(j,col){
+var $col = $(col),
+$text = $col.text();
+return $text.replace('"', '""'); // escape double quotes
+}
+}
+// This must be a hyperlink
+
+   $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData>table'), '{{report_name}}.csv']);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+
+
+</script>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{selectedinstitute}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+ {% if stud_rec %}
+	<div  class ="col-md-4 " align="right">
+	<h4><a href="#" class="export" >Download CSV</a></h4>
+	</div>
+{% endif %}
+	<div class ="col-md-8">
+	<h4><b>Course:</b> {{course}}</h4>
+
+	</div>
+      <div class ="col-md-8">
+	<h4><b>Evaluation:</b> {{secname}}</h4>
+ 
+	</div>
+<div  class ="col-md-4 " align="right">
+	<h4><a href = '/evaluationoption/{{courseid}}/{{pid}}/{{instituteidid}}/0'>Change Evaluation</a></h4>
+	</div>
+</div>
+</br>
+<style>
+
+
+.table td,.table th ,.table tr,.table thread .table tbody {
+    border: 1px solid black;
+}
+</style>
+
+ {% if stud_rec %}
+<br>
+<div class="row" align = "center">
+<b>Total number of  records : {{stud_rec|length}}</b>
+</div>
+<br>
+<br>
+<div class="table-responsive">
+<div id="dvData">
+<table cellspacing="5" cellpadding="5" border="1" style="width:60%" align="center" class="table table-hover">
+<tr>
+{% for title in heading %}
+<th>{{title}}
+</th>
+{% endfor %}
+</tr>
+{% for row in reports %}
+<tr>
+{% for col in row  %}
+<td>{{col}}</td>
+{% endfor %}
+</tr>
+
+{% endfor %}
+</table>
+
+ <table id="example" class="table" border="1"  cellspacing="0" width="100%" >
+    <thead> 
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+ <tr align = "left" >
+   <td align="center"  >
+  <b>S.No</b>
+</td>
+  
+{% for i in headings %}
+    
+ <td align="center"  >
+  <b> {{i}}</b>
+</td>
+
+ {% endfor %}
+
+
+</tr>
+   </thead>
+<tbody >
+
+{% for i in stud_rec %}
+     <tr align = "left">
+     <td align=center >  {{forloop.counter}}</td>
+     {% for j in i %}  
+         
+
+                   <td align=center >  {{j}}</td>
+
+     
+     {% endfor %}
+     </tr>
+{% endfor %}
+
+</tbody>
+</table> </div>
+</div>
+ {% else %}
+<div class="row" align = "center">
+<b>No record exist for selected evaluation</b>
+</div>
+{% endif %}
+<br>
+<br>
+
+  {% endautoescape %}
+
+{% endblock %}

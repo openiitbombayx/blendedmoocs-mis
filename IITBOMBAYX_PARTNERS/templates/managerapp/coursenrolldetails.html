@@ -1,0 +1,140 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+
+{% block header %}
+<header><left><h2>Course Enrollment Summary Report</h2><left></header>
+
+<style>
+td { 
+    padding: 2px;
+    
+}
+.verticalLine {
+    border-left: 1px solid #DDDDDD;
+    
+    
+}
+table { 
+    border-spacing: 10px;
+   /* border-collapse: separate;*/
+}
+</style>
+{% endblock %}
+{% block body_block %}
+<div class="row" align="right"><a href="/instructor_course_report/{{courseid}}/">Reports </a></div>
+
+<div class="row" >
+<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursedisplayname}}</h4>
+	</div>
+
+</div>
+
+
+
+<br><br>
+<div >
+<table class="table "  cellspacing="0" style="width:60%"  >
+<tr>
+<td align="left">
+	Enrollments for the course  
+	</td><td >
+	<b>{{enroll}}</b>
+    </td>
+</tr>
+
+<tr>
+<td align="left">
+	Student enroll for the course  
+	</td><td >
+	<b>{{totalstudent}}</b>
+    </td>
+</tr>
+<tr>
+<td align="left"">
+	Unenrollments  for the course 
+	</td>
+     <td>
+	<b>{{unenroll}}</b>
+  </td>
+</tr>
+
+
+
+<tr>
+<td align="left""> 
+	Enrollments before the course start date
+	</td><td>
+	<b>{{beforestartenroll}}</b>
+    </td>
+</tr>
+ <tr>
+<td align="left""> 
+	Enrollments after the course start date
+	</td><td>
+	<b>{{afterstartenroll}}</b>
+    </td>
+</tr>
+
+<tr>
+<td align="left""> 
+	Unenrollments  before the course start date
+	</td><td>
+	<b>{{beforestartunenroll}}</b>
+    </td>
+</tr>
+ <tr>
+<td align="left""> 
+	Unenrollments  after the course start date
+	</td><td>
+	<b>{{afterstartunenroll}}</b>
+    </td>
+</tr>
+
+
+  <tr>
+<td align="left""> 
+	Students accessed any course
+	</td><td>
+	<b>{{course}}</b>
+    </td>
+</tr>
+   
+ <tr>
+<td align="left""> 
+	Students accessed any video
+	</td><td>
+	<b>{{video}}</b>
+    </td>
+</tr>
+ <tr>
+<td align="left""> 
+	Students accessed any problem
+	</td><td>
+	<b>{{problem}}</b>
+    </td>
+</tr>
+ <tr>
+<td align="left""> 
+	Students accessed any graded problem
+	</td><td>
+	<b>{{gradedproblem}}</b>
+    </td>
+</tr>
+
+
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+{% endblock %} 

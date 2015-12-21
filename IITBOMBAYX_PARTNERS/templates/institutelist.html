@@ -61,9 +61,10 @@ $.ajax({
            success: function(result)
                  {
                     console.log(result);
-                    var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>"+"<option value='All Teachers'>All Teachers</option>"; 
-                        
-                    var teams =  result ;
+                    var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>" ; 
+                        listItems +=   "<option value='All Teachers'>"   + "All Teacher " + "</option>"
+                                            
+                    var teams =  result[0] ;
 
                      console.log(teams);
                     if (teams.length==0){ alert(" Selected Teacher has not Enrolled for any Courses !!!");
@@ -298,7 +299,7 @@ $(document).ready(function () {
 <tr>
 	
 	<th scope="row">
-	<h4><b>Course:</b> </th><td> {{course}}</h4></td>
+	<h4><b>Course Id:</b> </th><td> {{course}}</h4></td>
 </tr>
 
 </table>

@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<title>Reports Admin Home</title>
+<header>
+<h2>Reports Admin Home</h2>
+</header>
+{% endblock %}
+{% block body_block %}
+
+                <p class="instructions">
+                <h3>Reports</h3><br><br>
+                </p>
+                        {% if errors %}
+                                <p style="color:red;"><h3 style="color:red;">{{ errors.0 }}</h3></p><br>
+                        {% endif %}
+                <div class="group group-form group-form-requiredinformation">
+                <table  cellspacing="5" cellpadding="5" border="1" class="table table-hover">
+                        <tr>
+                                <td><a href = "/registrationinterface/0" >Registration Interface For Admin</a></td>
+
+                                <td>Registration Interface For Admin</td>
+                        </tr>
+                         <tr>
+                                <td><a href = "/adminuploaderinfo/" >Generic Teacher Interface For Admin</a></td>
+
+                                <td>Generic Teacher Interface For Admin</td>
+                        </tr>
+                        <tr>
+                                <td><a href = "/approvedinstitute/" >Students' Teacher Association Report</a></td>
+
+                                <td>Students' Teacher Association Report</td>
+                        </tr>
+                        <tr>
+                                <td><a href = "/allcourses/0/" >Course Details Report</a></td>
+                              
+                                <td>Course Details Report</td>
+                        </tr>
+                        {% for i in report_list %}
+
+                        <tr>
+                                <td><a href = "/blendedadmin/{{i.reportid}}" >{{ i.report_title }}</a></td>
+
+                                <td>{{ i.comments }}</td>
+                        </tr>
+
+
+
+                        {% endfor %}
+                </table>
+                <br><br><br>
+
+                </div>
+{% endblock %}
+

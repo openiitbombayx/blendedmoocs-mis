@@ -1,10 +1,3 @@
-'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
-Copyright (C) 2015  BMWinfo 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
-You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
-
-
 # VERSION 2.1
 # DATED 20 JUNE 2015
 # TIME 10:00 AM
@@ -90,7 +83,7 @@ class edxcourses(models.Model):
     image=models.ImageField(upload_to=get_upload_image)
     instructor=models.CharField(max_length=50)
     coursesubtitle=models.TextField()
-
+    blended_mode=models.IntegerField(null=True)
 
 class gradepolicy(models.Model):
     	courseid =  models.ForeignKey(edxcourses, to_field='courseid')  #foreign key with edxcourses
@@ -314,7 +307,8 @@ class questions(models.Model):
       eval =models.ForeignKey(evaluations)
       qid =models.CharField(max_length=250) 
       q_name = models.CharField(max_length=250)    
-      q_weight= models.FloatField() 
+      q_weight= models.FloatField()
+      prob_count=models.IntegerField()
 
 class headings(models.Model):
       section=models.CharField(max_length=200)

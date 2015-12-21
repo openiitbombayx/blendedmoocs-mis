@@ -1,10 +1,3 @@
-'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
-Copyright (C) 2015  BMWinfo 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
-You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
-
-
 from django.shortcuts import render_to_response, render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.context_processors import csrf
@@ -38,6 +31,8 @@ from time import time
 from SIP.validations import *
 from django.utils import timezone
 import glob 
+from iitbx.models import *
+from managerapp.models import *
 #from easygui import *
 import csv
 import operator
@@ -132,6 +127,7 @@ def get_multi_roles(request):
         
 ##########return list of all roles of logged in peron in selected institute#####################
 def roleselect(request,institute_id,person,args):
+    args['rolename']="Super User"
     try:
         rolelist=[]
         obj = Institutelevelusers.objects.filter(instituteid=institute_id,roleid__gte=0).filter(personid=request.session['person_id']).values("roleid").distinct()
@@ -245,9 +241,6 @@ def sessiondata(request):
        pass
     args['rooturl']=ROOT_URL
     return args             
-
-
-
 ###########On root url(home page) checking If session is active then redirect to institute  select page or blended admin home page based on usertypeid  Else redirect to login page ############################# 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def sessionlogin(request):
@@ -262,7 +255,7 @@ def sessionlogin(request):
                
                if user_info.usertypeid==0:
                    
-                   return HttpResponseRedirect(blendedadminhome_)
+                   return HttpResponseRedirect(iitbxhome_)
                elif user_info.usertypeid==2:
                     
                    return HttpResponseRedirect(facultyreport_)
@@ -276,6 +269,44 @@ def sessionlogin(request):
     except:
                     
             return loginn(request)
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def iitbxhome(request):
+    args={}
+    try:
+       args['email_id']= request.session['email_id']
+       person=Personinformation.objects.get(email=request.session['email_id'])
+       args['institute']=institute=T10KT_Institute.objects.get(instituteid=person.instituteid_id)
+       args['person']=person
+       args['institutename']=institute.institutename
+       args['firstname']=person.firstname
+       args['lastname']=person.lastname
+       request.session['lastname']=person.lastname
+       request.session['institutename']=institute.institutename
+       request.session['firstname']=person.firstname
+       request.session['role_id'] =0
+       request.session['rolename']="Super User"
+       args['role_id'] =0
+       args['rolename']="Super User"
+       args['email']=request.session['email_id']
+       request.session['rcid']=T10KT_Approvedinstitute.objects.get(instituteid__instituteid=0).remotecenterid.remotecenterid
+       args['rcid']= request.session['rcid'] 
+    except Exception as e:
+          args['error_message'] = getErrorContent("person_not_exit")
+          args['error_message'] = "\n Error " + str(e.message) + str(type(e))
+          return render(request,error_,args)
+    
+
+    if request.POST:        
+        
+        institute_id = request.POST.get('institute_id')
+        print institute_id,"insti"
+        #print request.POST.get('institute_id')
+        request.session['institute_id']=request.POST.get('institute_id')#institute id set
+        
+        args['institutename']=institute.institutename
+    return render_to_response("iitbxhome.html",args)
+# end iitbxhome
 
 ###############checking credential of user and redirect to home page or login page ##########################
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -297,7 +328,8 @@ def loginn(request):
             return HttpResponseRedirect(get_multi_roles_)
 ## If the emailid does not exist,display error message
         elif (loginlist == 0):
-             return HttpResponseRedirect(blendedadminhome_)
+             print "hello"
+             return HttpResponseRedirect(iitbxhome_)
         elif (loginlist == 2):
              return HttpResponseRedirect(facultyreport_)
         elif (loginlist == 3):
@@ -1258,7 +1290,7 @@ def grades_report(request,courseid,pid,instituteidid):
     student_record=[]
     if faculty != 1:
       for clid in courselevelid:
-        student_details=studentDetails.objects.filter(teacherid=clid,courseid=courseid)
+        student_details=studentDetails.objects.filter(teacherid=clid,courseid=courseid).order_by('edxuserid__edxuserid')
         for student_detail in student_details:
            try:
               gradestable_obj=gradestable.objects.get(course=course,stud=student_detail)
@@ -1418,41 +1450,46 @@ def course_faculty(request):
 def display_instructor_report(request,course):
     
     args ={}
-    args['course']=course
+    #args['course']=course
     
     #request.session['course']=course
-    
+    course_obj=edxcourses.objects.get(courseid=course)  
 
     args['email']=request.session['email_id']
-    
-    report_list=Reports.objects.filter(usertype=2).order_by("reportid")
-    record_list=[]
-    record=[]
-    row={}
-    for report in report_list:
-       if  report.reportid.endswith("A") :
+    if (course_obj.blended_mode==1): 
+      args['institute_id']=request.session['institute_id']
+      report_list=Reports.objects.filter(usertype=2).order_by("reportid")
+      record_list=[]
+      record=[]
+      row={}
+      for report in report_list:
+        if  report.reportid.endswith("A") :
         
-        if len(record) > 0:
+         if len(record) > 0:
             row['record'] =record
             record_list.append(row)
             row={}
             record=[]
-        row['name']=report.report_title
-       record.append(report.reportid)
-    if len(record) > 0:
+         row['name']=report.report_title
+        record.append(report.reportid)
+      if len(record) > 0:
        row['record']=record
-       record_list.append(row) 
-    
+       record_list.append(row)
+       args['blended_mode']=1 
+    else:
+       record_list=[]
+       args['blended_mode']=0 
     args['firstname']=request.session['firstname']
     args['lastname']=request.session['lastname']
     args['pid']=request.session['pid']
-    args['institute_id']=request.session['institute_id']
+    #args['institute_id']=request.session['institute_id']
 
     args['institutename']=request.session['institutename']
     args['rcid']=request.session['rcid']
     args['courselist_flag']=request.session['courselist_flag']
     args['course']=course
     args['record']=record_list
+    args['coursename']=course_obj.coursename 
        
     return render(request,coursefacultyreport_,args)
 ################################ Begin Teachers Student Report module  #################################################################
@@ -1535,7 +1572,7 @@ def teacherstudent(request):
                  args['apinstitutename']=instituteid.institutename
                  edxcourse_obj=edxcourses.objects.get(course=course)
                  if  teacher=="All Teachers":
-                     student=[['Rollno','Email','Username',"Teacher"]]
+                     student=[['Rollno','Email Id','Username',"Teacher"]]
                      args['teacher']="All Teachers"
                
                      courselevel_obj=Courselevelusers.objects.filter(courseid=edxcourse_obj,instituteid=instituteid,roleid=5) 
@@ -1545,7 +1582,7 @@ def teacherstudent(request):
                        for i in teacherstudent:
                              student.append([i.roll_no,i.edxuserid.email,i.edxuserid.username,i.teacherid.personid.firstname+" "+i.teacherid.personid.lastname])
                  else:
-                     student=[['Rollno','Email','Username']]
+                     student=[['Rollno','Email Id','Username']]
                      person=Personinformation.objects.get(email=teacher)
                      args['teacher']=person.firstname +" "+person.lastname
                      courselevel_obj=Courselevelusers.objects.filter(courseid=edxcourse_obj,personid=person,instituteid=instituteid,roleid=5)
@@ -1879,7 +1916,7 @@ def evalstatus(request,courseid,pid,instituteidid,evalflag):
           person=Personinformation.objects.get(id=pid)
           args['teacher']= str(person.firstname)+' '+str(person.lastname)  
   
-    evaluation_obj=evaluations.objects.filter(course=courseobj,release_date__lte=current,due_date__lte=current).values('sectionid','sec_name').distinct().order_by('due_date')
+    evaluation_obj=evaluations.objects.filter(course=courseobj,release_date__lte=current).values('sectionid','sec_name').distinct().order_by('due_date')
 
     if evalflag==1:
         args['error_message'] = "Please select any quiz"
@@ -2041,7 +2078,7 @@ def teacherstudentlist(request,institute,course,teacher):
                  args['apinstitutename']=instituteid.institutename
                  edxcourse_obj=edxcourses.objects.get(course=course)
                  if  teacher=="All Teachers":
-                     student=[['Rollno','Email','Username',"Teacher"]]
+                     student=[['Rollno','Email Id','Username',"Teacher"]]
                      args['teacher']="All Teachers"
                
                      courselevel_obj=Courselevelusers.objects.filter(courseid=edxcourse_obj,instituteid=instituteid) 
@@ -2051,7 +2088,7 @@ def teacherstudentlist(request,institute,course,teacher):
                        for i in teacherstudent:
                              student.append([i.roll_no,i.edxuserid.email,i.edxuserid.username,i.teacherid.personid.firstname+" "+i.teacherid.personid.lastname])
                  else:
-                     student=[['Rollno','Email','Username']]
+                     student=[['Rollno','Email Id','Username']]
                      person=Personinformation.objects.get(email=teacher)
                      args['teacher']=person.firstname +" "+person.lastname
                      courselevel_obj=Courselevelusers.objects.filter(courseid=edxcourse_obj,personid=person,instituteid=instituteid)
@@ -2551,7 +2588,7 @@ def manualupload(request):
          value=request.FILES['usermanual']
          if not value.name.endswith('.pdf'):
             args['error_message'] =  "Please upload valid pdf only"
-         elif str(value) != "BM_User_Manaual.pdf":
+         elif str(value) != "BM_User_Manual.pdf":
               args['error_message'] =  "Please upload file with file name BM_User_Manaual"
          else:
               savenewfile(request.FILES['usermanual'])
@@ -2566,8 +2603,8 @@ def savenewfile(filed):
     filename = filed._get_name()
     currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
     full_path = os.path.abspath(os.path.join(os.path.dirname(__file__),os.pardir))
-    dirpath=os.path.join(full_path,'static/BM_User_Manaual.pdf')
-    newname=os.path.join(full_path,'static/BM_User_Manaual'+str(currenttime)+'.pdf',)
+    dirpath=os.path.join(full_path,'static/BM_User_Manual.pdf')
+    newname=os.path.join(full_path,'static/BM_User_Manual'+str(currenttime)+'.pdf',)
     if os.path.exists(dirpath):
                 os.rename(dirpath,newname)
     
@@ -2655,4 +2692,196 @@ def facultygenericinterface(request,courseid):
 ########################  End of faculty generic interface module   ##################################################################### 
 
 
+def studentdetails(request,courseid,pid):
+      email=request.user
+      args={}
+      student_list=AuthUser.objects.raw('''select "1" id ,au.email email,au.username username from student_courseenrollment sce , auth_user au where sce.course_id=%s and sce.user_id not in (select user_id from student_courseaccessrole scr where course_id =%s) and sce.user_id =au.id''',[courseid,courseid])
+      #student_list=mysql_csr.fetchall()
+      student_detail=[]
+      args['email']=request.user
+      args['institutename']=request.session['institutename']
+      course=edxcourses.objects.get(courseid=courseid).course
+      args['course']=course
+      for i in student_list:
+           student_detail.append([i.email,i.username])
+      args['studentdetail']=student_detail
+      return render_to_response('iitbx/participantdetails.html',args)
 
+def coursedetails(request,courseid,pid):
+    args={}
+    args['email']=request.user
+    args['institutename']=request.session['org']
+    course=edxcourses.objects.get(courseid=courseid)
+    args['coursenm']=course.coursename
+    args['course']=course.course
+    args['coursestart']=course.coursestart.date()
+    args['courseend']=course.courseend.date()
+    args['enrollstart']=course.enrollstart.date()
+    args['enrollend']=course.enrollend.date()
+    policy=[["Assignment","Total","Mandatory","Weight(%)","Comments"]]
+    criteria=[["Grade","Min %","Max %"]]
+    evaluate=[["Assignment","Assignment Type","Due Date"]]
+    try:
+        grpolicy=gradepolicy.objects.filter(courseid__courseid=courseid)
+        for gp in grpolicy:
+            if gp.drop_count==0:
+                policy.append([gp.type+' ('+ gp.short_label +')',gp.min_count,gp.min_count-gp.drop_count,(gp.weight *100),""])
+            else:
+                 policy.append([gp.type+' ('+ gp.short_label +')',gp.min_count,gp.min_count-gp.drop_count,(gp.weight * 100),"Best of "+str((gp.min_count-gp.drop_count))])
+        grcriteria=gradescriteria.objects.filter(courseid__courseid=courseid).values('cutoffs','grade').order_by('cutoffs').reverse().distinct()
+        l=len(grcriteria)
+        for  gc in range(0,len(grcriteria)):
+             # print grcriteria,gc
+              if gc==0:
+                 criteria.append([grcriteria[gc]['grade'],grcriteria[gc]['cutoffs']*100,100])
+              else:
+                 criteria.append([grcriteria[gc]['grade'],grcriteria[gc]['cutoffs']*100,grcriteria[gc-1]['cutoffs']*100])
+        evaluat=evaluations.objects.filter(course__courseid=courseid).values('sectionid','sec_name','type','due_date').order_by('sectionid').distinct()
+        for eva in evaluat:
+            evaluate.append([eva['sec_name'],eva['type'],eva['due_date']])
+
+    except Exception as e:
+           args['error_message'] ="my name is khan"
+           return render(request,error_,args)
+
+    args['evaluate']=evaluate
+    args['criteria']=criteria
+    args['policy']=policy
+    args['id'] = pid
+    return render_to_response('iitbx/coursedetails.html',args)
+
+
+
+
+############################ Begin of   Evaluation option selected module #########################################################
+
+
+def evaluationoption(request,courseid,pid,instituteidid,evalflag):
+    args =sessiondata(request)
+    
+    try:
+       courseobj = edxcourses.objects.get(courseid = courseid)
+       args['coursename']=courseobj.coursename
+       args['course']=courseobj.course
+       args['courseid']=courseid
+       t10kt_obj=T10KT_Institute.objects.get(instituteid=instituteidid)
+       args['selectedinstitute']=t10kt_obj.institutename
+       args['instituteidid']=instituteidid
+       args['pid']=pid
+    except Exception as e:
+           args['error_message'] = getErrorContent("no_IITBombayX_course")
+           args['error_message'] = "\n Error " + str(e.message) + str(type(e))
+           return render(request,error_,args)
+    person=Personinformation.objects.get(id=pid)    
+    args['teacher']= str(person.firstname)+' '+str(person.lastname)    
+    args['personid']=request.session['person_id']
+    evaluation_obj=evaluations.objects.filter(course=courseobj,release_date__lte=current).values('sectionid','sec_name').distinct().order_by('due_date')
+    if evalflag==1:
+        args['error_message'] = getErrorContent("select_quiz")+"<br>"
+    
+    args['evaluation']=evaluation_obj
+    return render(request,"evaluationoption.html",args)
+
+
+
+
+def quizanswers(request,courseid,pid,instituteidid):
+
+    args =sessiondata(request)
+    report=[]
+    header=[]
+    try:
+       secid=request.POST['quiz']
+
+       evalu=evaluations.objects.filter(sectionid=secid).values('sec_name').distinct()
+       args['secname']=evalu[0]['sec_name']
+    except Exception as e:
+           return evaluationoption(request,courseid,pid,instituteidid,1)
+
+
+    try:
+       courseobj = edxcourses.objects.get(courseid = courseid)
+       args['coursename']=courseobj.coursename
+       args['course']=courseobj.course
+       args['courseid']=courseid
+       t10kt_obj=T10KT_Institute.objects.get(instituteid=instituteidid)
+       args['selectedinstitute']=t10kt_obj.institutename
+       args['instituteidid']=instituteidid
+       args['pid']=pid
+       currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+       report_name="Evaluation Report of "+"_"+str(courseid)+" _ "+currenttime
+       person=Personinformation.objects.get(id=pid)
+       args['teacher']= str(person.firstname)+' '+str(person.lastname)
+    except Exception as e:
+           args['error_message'] ="IITBombayX course is not present."
+           args['error_message'] = "\n Error " + e.message + type(e)
+           return render(request,error_,args)
+
+    try:
+      head_str=headings.objects.get(section=secid).heading
+      heading=map(str,head_str.split(","))
+      del heading[3]
+
+    except Exception as e:
+      print str(e.message),str(type(e))
+    sqlmod=""
+    ques_dict={}
+    qidslist=[]
+    count=0
+    totalweight=0
+    evaluation_obj=questions.objects.filter(course=courseobj,eval__sectionid=secid ).exclude(q_weight=0 ).order_by('eval_id','id')
+    for evaluate in evaluation_obj:
+           if evaluate.q_weight != 0:
+              sqlmod= sqlmod +'"'+evaluate.qid+'",'
+              qidslist.append(evaluate.qid)
+           count=count+1
+           totalweight=totalweight+evaluate.q_weight
+    sqlmod=sqlmod[:-1]
+    if len(sqlmod) == 0:
+         stud_rec=[]
+    else:
+         sqlstmt= '''SELECT "1" id,student_id,username,email,module_id,concat(replace(if(ans1 like '"{%%%%',"",if(ans1 like '"i4x-%%%%' ,"",if( ans1 like '%%%%"[[%%%%',"",if(ans1 like '%%%%[{%%%%',"",ans1)))),'"',''),'\n',
+         replace(if(ans2 like '%%%%{%%%%',"",if(ans2 like 'i4x-%%%%' ,"",if( ans2 like '%%%%[[%%%%',"",if(ans2 like '%%%%[{%%%%',"",ans2)))),'"','')) answer FROM
+          (SELECT module_id, student_id,  substring_index(substring_index(substring_index(substring_index(state,'"student_answers": {"',-1), concat(REPLACE(REPLACE(REPLACE(module_id,"/","-"),":--","-"),".","_"),'_2_1": ') ,-1),'}}',1),'", "i4x',1)  ans1,
+ substring_index(substring_index(substring_index(substring_index(state,'"student_answers": {"',-1),
+ concat(REPLACE(REPLACE(REPLACE(module_id,"/","-"),":--","-"),".","_"),'_3_1": ') ,-1),'}}',1),'", "i4x',1)  ans2
+ FROM edxapp.courseware_studentmodule where module_type=%s and module_id in (%s) and course_id=%s and grade is not null ) a,
+  auth_user b where   a.student_id=b.id order by student_id''' %('"'+"problem"+'"',sqlmod,'"'+str(courseobj.courseid)+'"')
+         answersheets=AuthUser.objects.raw(sqlstmt)
+         #answersheets=AuthUser.objects.raw('''SELECT "1" id,student_id,username,email,module_id,if(state LIKE "%%choice_0%%","A",if(state LIKE "%%choice_1%%","B",if(state LIKE "%%choice_2%%","C",if(state LIKE "%%choice_3%%","D",if(state LIKE "%%choice_4%%","E","DN"))))) answer FROM edxapp.courseware_studentmodule a, auth_user b where  module_type="problem" and module_id in ('''+(sqlmod)+''') and a.student_id=b.id  and a.course_id=" '''+str(courseobj.courseid)+'''" order by student_id ''')
+         oldstudent=-1; anslist={};replist=[];stud_rec=[]
+         for answer in answersheets:
+           #print "hello"
+           if oldstudent == -1:
+               replist=[answer.student_id,answer.username,answer.email]
+               oldstudent=answer.student_id
+           #print oldstudent, answer.student_id
+           if answer.student_id == oldstudent:
+               anslist[answer.module_id]=answer.answer
+           else:
+               for qid in qidslist:
+                     if (anslist.has_key(qid)):
+                        replist.append(anslist[qid])
+                     else:
+                        replist.append('')
+               stud_rec.append(replist)
+               replist=[];anslist={}
+               oldstudent=answer.student_id
+               anslist[answer.module_id]=answer.answer
+               replist=[answer.student_id,answer.username,answer.email]
+
+         for qid in qidslist:
+            if (anslist.has_key(qid)):
+                  replist.append(anslist[qid])
+            else:
+                 replist.append('')
+         stud_rec.append(replist)
+    args['stud_rec']=stud_rec
+    #print stud_rec
+    args['headings']=heading
+    args["report_name"]=report_name
+    return render(request,"answer.html",args)
+
+
+############################ End of option selected module   ######################################################################
+      

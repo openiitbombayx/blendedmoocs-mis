@@ -1,0 +1,25 @@
+{% extends "base2.html" %}
+{% block header %}
+<header>
+<h2><b>User Summary Report - Month-wise</b></h2>
+</header>
+{% endblock %}
+{% block body_block %}
+<div class="row" align="right"><a href="/home/">Reports </a></div>
+<br>
+<br>
+      <table class ="table">
+      <tr>
+      <td>S.No</td>
+      <td>Date of Registration </td> 
+      <td>Total</td>
+      </tr>
+      {% for i in regdata %}
+      <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.0}}-{{i.1}}</td>
+      <td>{{i.2}}</td>
+      </tr>
+      {% endfor %}
+      </table>
+{% endblock %}

@@ -38,6 +38,7 @@ urlpatterns = (
    url(r'^createpassword/(?P<personid>[\w.$\-_=]+)/$',
      'SIP.views.createpass'),
    url(r'^createpasswordemail/$', 'SIP.views.createpasslink'),
+   url(r'^manager/', include('managerapp.urls'),name='managerapp'), 
      
 )
 

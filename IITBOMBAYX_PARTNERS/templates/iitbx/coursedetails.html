@@ -1,0 +1,181 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+
+{% block header %}
+<header><left><h2>{{course}}-{{coursenm}} </h2><left></header>
+
+<style>
+td { 
+    padding: 2px;
+    
+}
+.verticalLine {
+    border-left: 1px solid #DDDDDD;
+    
+    
+}
+table { 
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+</style>
+{% endblock %}
+{% block body_block %}
+<div >
+<table class="table "  cellspacing="0" width="100%"  >
+ <tr>
+ <td align = "left">
+    <h2><font size="4"><b align = "center">Important Dates<b></font></h2>
+<table  cellspacing="10" >
+<tr>
+<td align="left">
+	<b>Enrollment Start </b>
+	</td><td>
+	{{enrollstart}}
+    </td>
+</tr>
+<tr>
+<td align="left"">
+	<b>Enrollment End </b>
+	</td>
+     <td>
+	{{enrollend}}
+  </td>
+</tr>
+   <tr>
+<td align="left"">
+	<b>Classes Start </b> 
+	</td><td>
+	{{coursestart}}
+ </td>
+</tr>
+  <tr>
+<td align="left""> 
+	<b>Classes End</b>
+	</td><td>
+	{{courseend}}
+    </td>
+</tr>
+    </td>
+ </tr>	
+	</table> 
+
+ </td > 
+<td>
+<h2></h2>
+</td> 
+</tr>
+
+
+<tr  width="100%"><td  align=left  width="70%">
+
+<h2><font size="4"><b align = "center">Evaluation Policy</b></font></h2>
+
+<table   cellspacing="0">
+
+
+  {% for i in policy %}
+
+  <tr align = "left" >
+  {% for j in i %}
+  {% ifequal forloop.parentloop.counter 1%}
+   
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+
+ <td align="left"  >
+  <b> {{j}}</b>
+</td>
+
+{% else %}
+    {% if forloop.counter == 1  or  forloop.counter == 5 %}
+      <td align=left>  {{j}}</td>
+    {% else %}
+         <td align="center">  {{j}}</td>
+    {% endif %}
+
+{% endifequal %}
+ {% endfor %}
+</tr>
+ {% endfor %}
+
+</table> 
+</td><td align=left  width="30%" class="verticalLine">
+
+
+<h2><font size="4"><b align = "left">Grading Criteria</b></font></h2>
+
+
+<table  cellspacing="0" >
+
+
+  {% for i in criteria %}
+
+  <tr align = "center" >
+  {% for j in i %}
+  {% ifequal forloop.parentloop.counter 1%}
+   
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+
+ <td align="center" >
+  <b> {{j}}</b>
+</td>
+
+{% else %}
+  {% ifequal forloop.counter 1%}
+      <td align="center">  {{j}}</td>
+
+   {% else %}  
+    <td align="center">  {{j}}</td>
+    {% endifequal %}
+{% endifequal %}
+ {% endfor %}
+</tr>
+ {% endfor %}
+
+</table> 
+</td></tr>
+   
+
+<tr ><td >
+<h2><font size="4"><b align = "center" >Graded Assignments</b></font></h2>
+
+
+<table  cellspacing="0" width="120%" >
+
+
+  {% for i in evaluate %}
+
+  <tr align = "left" >
+  {% for j in i %}
+  {% ifequal forloop.parentloop.counter 1%}
+   
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+
+ <td align="center" width="30%"  >
+  <b> {{j}}</b>
+</td>
+
+{% else %}
+
+      <td align="center" width="30%">  {{j}}</td>
+
+     
+
+{% endifequal %}
+ {% endfor %}
+</tr>
+ {% endfor %}
+
+</table> 
+
+</td>
+<td width="0%"><h2></h2>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+{% endblock %} 

@@ -1,0 +1,27 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header>
+<h2><b>IITBombayx Activity</b></h2>
+</header>
+{% endblock %}
+{% block body_block %}
+
+<div class="row" align="right"><a href="/iitbxhome/"> Home </a></div>
+
+<h3><b>{{header_data.0}}</b> months since inception<br></h3>
+<h3>IITBombayX refreshed on <b>{{header_data.1}},{{header_data.2}}</b></h3>
+<br>
+<table class ="table">
+      <tr>
+
+      {% for i in total %}
+      <td align=left>{{i.0}}</td>
+      <td align=left>{{i.1}}</td>
+      <td align=left>{{i.2}}</td>
+      <td align=left>{{i.3}}</td>
+      <td align=left>{{i.4}}</td>
+      </tr>
+    {% endfor %} 
+     
+</table>
+{% endblock %}
