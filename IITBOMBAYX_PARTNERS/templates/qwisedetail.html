@@ -1,0 +1,188 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Students' List</font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+<!---download scirpt-->
+<script>
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)').filter(':visible'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        var prob = "{{qname}}"
+        var type = "{{qattempt}}"
+        var dateformated = new Date().toString().replace(/ /g,'');
+        if (parseInt(type) == 0)
+           {
+            exportTableToCSV.apply(this, [$('#dvData>table'), prob+'_not_attempted_students'+dateformated+".csv"]);
+            }
+        else
+             {        
+              exportTableToCSV.apply(this, [$('#dvData>table'), prob+'_attempted_students'+dateformated+".csv"]);
+             }
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+{% endblock %}
+{% block body_block %}
+{% autoescape off %}
+<br><br>
+
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{selectedinstitute}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+	
+	<div class ="col-md-8">
+	<h4><b>Course:</b> {{course}}</h4>
+
+	</div>
+    <div class ="col-md-8">
+	<h4><b>Assignment:</b> {{secname}}</h4>
+
+	</div>
+    <div class ="col-md-8">
+	<h4><b>Question:</b> {{qname}}</h4>
+
+	</div>
+    <div class ="col-md-6">
+{% if qattempt == "0" %}
+<h4><b>Category:</b>Students who have Not Submitted</h4>
+{% else %}
+<h4><b>Category:</b>Students who have  Submitted</h4>
+{% endif %}</div>
+    
+
+
+    <div  class ="col-md-6" align="right">
+	<h4><a href = 'javascript:history.back()'>Back to Questions Summary</a></h4>
+	</div>
+
+</div>
+<br><br>
+
+
+
+</br>
+
+<style>
+
+
+.table td,.table th ,.table tr,.table thread .table tbody {
+    border: 1px solid black;
+}
+</style>
+{% if probuserdetail %}
+<div  class ="row" align="right">
+	<h4> <b><a href="#" class="export">Download</a> </b></h4>
+	
+     
+	</div>
+<br>
+<div class="row" align = "center">
+<b>Total number of  records : {{probuserdetail|length}}</b>
+</div>
+<!--<div  class ="row" align="right">
+	<h4><a href ="{% static filename %}">Download</a></h4>
+     
+	</div>-->
+</br>
+</br>
+<div id="dvData" class="table-responsive" >
+
+ <table  class="table" border="1"  cellspacing="0" width="100%" >
+ <thead> 
+  <!--<form action = "/update" method = "post">{% csrf_token %}-->
+ <tr align = "left">
+  <td align="center"><b> S.No</b></td>
+  <td align="center"><b> Roll.No</b></td>
+<td align="center"><b>Email</b></td>
+ <td align="center"><b>Username</b></td>
+</tr>
+   </thead>
+<tbody >
+{% for i in probuserdetail %}
+     <tr align = "left">
+      <td align=center >  {{forloop.counter}}</td>
+     
+          
+                   <td align=center >  {{i.0}}</td>
+                
+             <td align=center > {{i.1}}</td>
+             <td align=center >   {{i.2}}</td>
+          
+     </tr>
+{% endfor %}
+</tbody>
+
+</table> 
+</div>
+{% else %}
+<div class="row" align=center>
+No Record Exist
+</div>
+{% endif %}
+
+<br>
+<br>
+
+  {% endautoescape %}
+
+{% endblock %}

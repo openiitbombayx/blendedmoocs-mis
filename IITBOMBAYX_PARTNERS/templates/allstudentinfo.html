@@ -1,0 +1,149 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Course-Students' Report  </font></h2></header>
+ <script>
+            $(document).ready(function(){
+    
+
+//newbegin
+
+                  $('#Course').on('change', function() {   // check for changes
+             $('#Teacher').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/courseallteachers",
+           data:{cid: $('#Course').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                    var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>" ; 
+                        listItems +=   "<option value='All Teachers'>"   + "All Teachers " + "</option>"
+                    var teams =  result[0] ;
+
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Teacher has not Enrolled for any Courses !!!");
+listItems += "<option value='noinstiute'>" + " -- " + "</option>";
+               
+                     $("#Teacher").html(listItems);
+
+                     }
+                    else{
+                        
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#Teacher").html(listItems);
+                 }}
+
+            },
+        });
+
+                  });
+
+//newend
+
+
+
+            })(this);
+         
+        </script>
+
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+<div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+<br>
+<br>
+<div >
+<form action="/allstudentinfo/" method="POST">
+{% csrf_token %}
+
+<div class ="row"  align="center">
+
+
+<b>Please select Course</b>
+
+
+</div>
+</br>
+<div class ="row" align="center">
+
+
+
+
+<select id="Course" name="Course" style="width:200px;">
+	<option value="nocourse"  >-- Select the Course --</option>
+                {% for c in courselist %}
+<option value="{{ c.id }}" >{{ c.course }}</option>
+	{% endfor %}
+              </select></div>
+
+
+
+
+
+
+
+<div class ="row">
+<div class="col-xs-6 ">
+<label for="Institute" id="instiname">{{instiname}}</label>
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+
+<div class="col-xs-6" >
+<input type="submit"  value="Students' Details"  name="coursestudentdetail">
+
+</div>
+<div class="col-xs-6 " >
+<input type="button" value="clear" onclick="location.href='/allstudentinfo/'">
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Marks per Problem"  name="courseallevaluation">
+
+</div>
+<div class="col-xs-6" >
+<input type="submit"  value="Summary of Marks"  name="courseallgrade">
+
+</div>
+
+</div>
+
+<br>
+<br>
+
+</form>  
+ </div>
+
+<br>
+<br>
+
+
+
+</br>
+
+{% endblock %}

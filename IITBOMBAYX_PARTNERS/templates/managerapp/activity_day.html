@@ -1,0 +1,190 @@
+{% extends 'base2.html' %}
+{% block header %}
+<header>
+<h2><b>IITBombayx Activity</b></h2>
+</header>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!---download scirpt-->
+<script>
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        
+        var dateformated = new Date().toString().replace(/ /g,'');
+        var ddata='#dvData>table'
+        var file='iitbxactivity_'+dateformated+".csv";
+        exportTableToCSV.apply(this, [$(ddata),file ]);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Activity report'
+        },
+        xAxis: {
+            title: { text: 'Day'},
+            categories: {{categories}}
+
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Activites of students'
+            },
+            stackLabels: {
+                enabled: false,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: false,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Pass',
+            data: {{student_pass}},
+            color: 'green'
+
+        }, {
+            name: 'Not Passed',
+            data: {{student_fail}},
+            color: 'red'
+
+        }, {
+            name: 'Others',
+            data: {{student_others}},
+            color: 'blue'
+        }]
+    });
+});
+
+
+
+
+
+
+</script>
+<!-- download script -->
+{% endblock %}
+{% block body_block %}
+<div class="row" >
+    <div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}} </h4><br>
+    </div>
+    
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursedisplayname}} </h4><br>
+	</div>
+    
+    <div class ="col-md-8">
+	<h4><b>Classes Start :</b> {{coursestart}} </h4><br>
+	</div>
+     <br>
+    <div class ="col-md-8">
+	<h4><b>Classes End :</b> {{courseend}} </h4><br>
+	</div>
+    <br>
+</div>
+
+<br>
+
+<a href="#" class="export" >Download CSV</a> </h4>
+<div class="row" align="right"><a href="/instructor_course_report/{{courseid}}/" >Reports </a></div>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="dvData"  >
+
+<table class ="table">
+     <thead>
+     <td><b>Number of Days<b></td><td><b>Number of Students</b></td><td><b>Number of students Passed</b></td><td><b>Number of students Not Passed</b></td>
+     </thead>
+     <tbody>
+      {% for i in activity_day %}
+       <tr>
+         {% for j in i %}
+            <td align=center>{{j}}</td>
+         {% endfor %}
+       </tr>
+      {% endfor %} 
+     </tbody>
+</table>
+</div>
+{% endblock %}

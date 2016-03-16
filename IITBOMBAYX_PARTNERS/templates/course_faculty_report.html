@@ -2,7 +2,7 @@
 
 {% load staticfiles %}
 {% block header %}
-<header><h2>{{course}}- List of Reports</h2></header>
+<header><h2>Course List</h2></header>
 
 
 {% endblock %}
@@ -56,36 +56,57 @@
 	<div class ="col-md-8">
 	<h4><b>Course Name :</b> {{coursename}}</h4>
 	</div>
-
+    <div class ="col-md-8">
+	<h4><b>Classes Start  :</b> {{coursestart}}</h4>
+	</div>
+    <div class ="col-md-8">
+	<h4><b>Classes End  :</b> {{courseend}}</h4>
+	</div>
 </div>
 
-<div class="row" align="right"><a href="/home/">Home </a></div>
+<div class="row" align="right"><a href="/home/0/">Home </a></div>
 {% if courselist_flag == 1 %}
-<br><table style="width:90%" cellspacing="5" cellpadding="5" align="center"><tr><td align="right"><a href="/faculty_report">Course List</a></td></tr></table>
+<br><table style="width:100%" cellspacing="5" cellpadding="5" align="center"><tr><td align="right"><a href="/faculty_report">Course List</a></td></tr></table>
 {% endif %}
+<br><font color='Red'>{{refresh}}</font>
+<br>
 {% if blended_mode == 1 %}
-<br><br>
+<h2>Enrollment Information</h2>
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr> <td><a href="/manager/courseenrrollment/{{course}}">Course Information</a></td></tr>
+<tr> <td><a href="/manager/coursedailyreport/{{course}}">Course Enrollment -Day Wise</a></td></tr>
+<tr> <td><a href="/manager/courseweeklyreport/{{course}}">Course Enrollment -Week Wise</a></td></tr>
+<tr> <td><a href="/manager/coursemonthlyreport/{{course}}">Course Enrollment -Month Wise</a></td></tr>
+</table>
+<br>
+<h2>Students Information</h2>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr><td> <a href="/studentsinformation/{{course}}/{{pid}}/" class="enter-course">Students' List</a></td></tr>
+<tr> <td><a href="/iitbx/studentprofile/{{course}}">Students' Profile with Location Details</a></td></tr>
+<tr> <td><a href="/manager/studentdemography/{{course}}">Students' Demography Summary</a></td></tr> 
+</table>
+<br>
+<h2>Assignment Information</h2>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr><td> <a href="/assignmentevaluation/{{course}}/{{pid}}/0" class="enter-course">Assignment Summary *</a></td></tr>
+<tr><td> <a href="/iitbx/problemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Problem wise Details</a></td></tr>
+</table>
+<br>
+
+
+
+<h2>Course Information</h2>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<!--<tr> <td><a href="/instilistforevalwise/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Institute's Evaluation Report </a></td></tr>
+<tr> <td><a href="/evallistforinstiwise/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Institute-Wise:Evaluation Report </a></td></tr>-->
+<tr><td> <a href="/coursedescription/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td></tr>
 <tr> <td><a href = "/blendedadmin/7" >Institute-wise:Teachers' Participation Report</a></td></tr>
 <tr> <td><a href = "/blendedadmin/14" >Institute-wise:Student's Participation Summary Report</a></td></tr>
-<tr> <td><a href = "/blendedadmin/19" >MOOC's Paticipants Profile</a></td></tr>
-
-<tr> <td><a href="/facultygenericinterface/{{course}}/" class="enter-course">Teachers' Student Association</a></td></tr>
-<tr><td> <a href="/coursedescription/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td>   
-</tr>
-<tr>
-<td> <a href="/studentsinformation/{{course}}/{{pid}}/" class="enter-course">Students' Details</a></td>
-</tr>
-<tr>
-
-<td> <a href="/evaluation/{{course}}/{{pid}}/{{institute_id}}/0" class="enter-course">Evaluation Details </a></td></tr>
-<tr> <td><a href="/grades/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Grade Details</a></td></tr>
-<tr> <td><a href="/manager/studentdemography/{{course}}">Student Demography</a></td></tr>
-<!--<tr><td> <a href="/evaluationoption/{{course}}/{{pid}}/{{institute_id}}/0" class="enter-course">Evaluation Answers </a></td></tr>-->
+<!---<tr> <td><a href="/facultygenericinterface/{{course}}/" class="enter-course">Teachers' Student Association</a></td></tr>--->
 </table>
 <br>
 <br>
-<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<!--<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 
 <tr>
 <th>Name</th><th>MOOCS</th><th>Blended Vs Non- Blended</th><th>Within Blended</th>
@@ -98,29 +119,54 @@
 <td><a href="/instructoradmin/{{rec.record.2}}/{{course}}/0">Details</a></td>
 {% endfor %}
 </tr>
-</table>
+</table> -->
 {% else %}
-
-
-<br><br>
+<h2>Enrollment Information</h2>
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
-<tr> <td><a href="/manager/courseenrrollment/{{course}}">Course Enrollment -Summary</a></td></tr>
+<tr> <td><a href="/manager/courseenrrollment/{{course}}">Course Information</a></td></tr>
 <tr> <td><a href="/manager/coursedailyreport/{{course}}">Course Enrollment -Day Wise</a></td></tr>
 <tr> <td><a href="/manager/courseweeklyreport/{{course}}">Course Enrollment -Week Wise</a></td></tr>
 <tr> <td><a href="/manager/coursemonthlyreport/{{course}}">Course Enrollment -Month Wise</a></td></tr>
-<tr> <td><a href="/manager/studentdemography/{{course}}">Student Demography</a></td></tr>
-<tr><td> <a href="/coursedetails/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td>   
-</tr>
+</table>
 
+
+<br>
+<h2>Students Information</h2>
+
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr> <td><a href="/iitbx/studentprofile/{{course}}">Students' Profile with Location</a></td></tr>
+<tr> <td><a href="/manager/studentdemography/{{course}}">Students' Demography Summary</a></td></tr>
+<tr><td><a href="/coursedetails/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td> 
+</table>
+</tr>
+{% if course == "IITBombayX/ET601Tx/2015-16" or course == "NVAforIA/PATH372.2x/2015-16" or course == "NVAforIA/PATH372.11x/2015-16" or course == "TISS/SKANI101x/2015-16" or course == "NVAforIA/PATH372.1x/2015-16" or course == "IITBombayX/SKANI101x/2016_T1" %}
+     <h2>Assignment Information</h2>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr><td> <a href="/assignmentevaluation/{{course}}/{{pid}}/0" class="enter-course">Assignment Summary *</a></td></tr>
+<tr><td> <a href="/iitbx/problemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Problem wise Details</a></td></tr>
+{% endif %}
+
+</table>
+<br>
+
+<!--
 <tr>
 <td> <a href="/genevaluation/{{course}}/{{pid}}/0" class="enter-course">Evaluation Details </a></td></tr>
 <tr> <td><a href="/genevalstatus/{{course}}/{{pid}}/0/" class="enter-course">Evaluation Status Details</a></td></tr>
 <tr><td> <a href="/genevaluationoption/{{course}}/{{pid}}/0" class="enter-course">Evaluation Answers </a></td></tr>
 <tr> <td><a href="/gengrades/{{course}}/{{pid}}/" class="enter-course">Grade Details</a></td></tr>
+-->
 
-</table>
 <br>
 <br>
 {% endif %}
+<h2>Activity Report</h2>
 
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr><td> <a href="/manager/activity_day_wise/{{course}}" class="enter-course">Activity Report - Number of Days Access *</a></td></tr>
+<tr><td> <a href="/manager/activity_date_wise/{{course}}" class="enter-course">Activity Report Date Wise *</a></td></tr>
+<tr> <td><a href="/iitbx/weeklyreport/{{course}}">Students' Activity - Weekwise *</a></td></tr>
+</table>
+
+<p><b>Note:</b> * pages take long time to load.</p>
 {% endblock %}

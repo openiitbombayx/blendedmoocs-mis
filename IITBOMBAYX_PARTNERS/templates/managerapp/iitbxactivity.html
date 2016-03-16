@@ -3,25 +3,104 @@
 <header>
 <h2><b>IITBombayx Activity</b></h2>
 </header>
+<!---download scirpt-->
+<script>
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        
+        var dateformated = new Date().toString().replace(/ /g,'');
+        var ddata='#dvData>table'
+        var file='iitbxactivity_'+dateformated+".csv";
+        exportTableToCSV.apply(this, [$(ddata),file ]);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+
+</script>
+<style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+
+<!-- download script -->
 {% endblock %}
 {% block body_block %}
-
+<a href="#" class="export" >Download CSV</a> </h4>
 <div class="row" align="right"><a href="/iitbxhome/"> Home </a></div>
-
-<h3><b>{{header_data.0}}</b> months since inception<br></h3>
-<h3>IITBombayX refreshed on <b>{{header_data.1}},{{header_data.2}}</b></h3>
-<br>
+<div id="dvData"  class="table-responsive">
 <table class ="table">
-      <tr>
-
+     
       {% for i in total %}
+      <tr>
       <td align=left>{{i.0}}</td>
-      <td align=left>{{i.1}}</td>
-      <td align=left>{{i.2}}</td>
-      <td align=left>{{i.3}}</td>
-      <td align=left>{{i.4}}</td>
+      {% if forloop.counter == 1 %}
+      <td align=right><a href="#" title="{{prevday}}" style="font-weight:bold;color: black;"  background-color="transparent" >{{i.1}}</td>
+      <td align=right><a href="#" title="{{week}}" style="font-weight:bold;color: black;"  background-color="transparent" >{{i.2}}</td>
+      <td align=right><a href="#" title="{{mname}}" style="font-weight:bold;color: black;"  background-color="transparent" >{{i.3}}</td>
+      <td align=right><a href="#" title="{{quartername}}" style="font-weight:bold;color: black;"  background-color="transparent" >{{i.4}}</td>
+      <td align=right><a href="#" title="{{currentyear}}" style="font-weight:bold;color: black;"  background-color="transparent" >{{i.5}}</td>
+      <td align=right><a href="#" title="{{header_data.0}} months" style="font-weight:bold;color: black;"  background-color="transparent" >{{i.6}}</td>
+      {% else %}
+      <td align=right>{{i.1}}</td>
+      <td align=right>{{i.2}}</td>
+      <td align=right>{{i.3}}</td>
+      <td align=right>{{i.4}}</td>
+      <td align=right>{{i.5}}</td>
+      <td align=right>{{i.6}}</td>
+     {% endif %}
       </tr>
     {% endfor %} 
      
 </table>
+</div>
 {% endblock %}

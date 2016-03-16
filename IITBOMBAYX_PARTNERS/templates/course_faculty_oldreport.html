@@ -1,0 +1,87 @@
+{% extends 'base2.html' %}
+
+{% load staticfiles %}
+{% block header %}
+<header><h2>{{course}}- List of Reports</h2></header>
+
+
+{% endblock %}
+
+<head>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <style>
+	
+	table.data,table.data td,table.data th {
+	    border: 1px solid black;
+	    border-collapse: collapse;
+	    text-align: center;
+	}
+
+	table.data {
+	    width: 100%;
+	}
+	table.data tr:nth-child(odd) {
+	   background-color: #ccc;
+	}
+	table.data tr:hover {
+		  background-color: #ffff99;
+		}
+	table.data th {
+	    height: 35px;
+	    color: #F7691F
+	}
+	table.data tr {
+	    height: 28px;
+	}
+	table.head, td, th, tr {
+		border: 0px solid black;
+		border-collapse: collapse;		
+	}
+	table.head {
+	    width: 100%;
+	    background-color: ;
+	}
+</style>
+
+
+</head>
+<body>
+{% block body_block %}
+<div class="row" >
+<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{course}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursename}}</h4>
+	</div>
+
+</div>
+
+<div class="row" align="right"><a href="/home/">Home </a></div>
+{% if courselist_flag == 1 %}
+<br><table style="width:90%" cellspacing="5" cellpadding="5" align="center"><tr><td align="right"><a href="/faculty_report">Course List</a></td></tr></table>
+{% endif %}
+{% if blended_mode == 1 %}
+<br><br>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr><td> <a href="/coursedescription/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td></tr>
+<tr><td> <a href="/evaluation/{{course}}/{{pid}}/{{institute_id}}/0" class="enter-course">Evaluation Details </a></td></tr>
+<tr> <td><a href="/grades/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Grade Details</a></td></tr>
+</table>
+<br>
+<br>
+{% else %}
+<br><br>
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<tr><td> <a href="/coursedetails/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td></tr>
+<tr><td> <a href="/geninactiveevaluation/{{course}}/{{pid}}/0" class="enter-course">Evaluation Details </a></td></tr>
+<tr> <td><a href="/geninactivegrades/{{course}}/{{pid}}/0" class="enter-course">Marksheet</a></td></tr>
+
+</table>
+<br>
+<br>
+{% endif %}
+
+{% endblock %}

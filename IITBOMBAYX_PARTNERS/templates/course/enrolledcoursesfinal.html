@@ -31,7 +31,7 @@
             <a href="/teacherslist/{{ a.courseid }}/">{{ a.course }} {{ a.coursename }}</a>
         </h3>
       </hgroup>
-       <a id="unenroll-0" class="email-settings" data-optout="False" data-course-number="FLFCS101x" data-course-id="IITBombayX/FLFCS101x/2015_FT1"  href="">Erolled Courses</a>   
+        
   </section>
 </article>
 </li>
@@ -46,11 +46,15 @@
            });
  </script>
 {% endfor %}
-
+{% if unenrollarchivedcourse or unenrollcurrentedxcourse %}
 <br><hr style = "background-color : #E6763B;">
 <h2 align="center" style = "color : red">Other Courses</h2><hr>
 <br>
-{% for a in unenrolledxcourse %}
+{% if  unenrollcurrentedxcourse %}
+<header>
+      <h2>Current Courses:</h2>
+    </header>
+{% for a in unenrollcurrentedxcourse %}
 <li class="course-item">
     <article class="course">
     <a  class="cover">
@@ -66,7 +70,7 @@
             <a href="/teacherslist/{{ a.courseid }}/">{{ a.course }} {{ a.coursename }}</a>
         </h3>
       </hgroup>
-        <a id="unenroll-0" class="email-settings" data-optout="False" data-course-number="FLFCS101x" data-course-id="IITBombayX/FLFCS101x/2015_FT1"  href="">New course</a> 
+        
   </section>
 </article>
 </li>
@@ -80,5 +84,42 @@
            });
  </script>
 {% endfor %}
+{% endif %}
+{% if unenrollarchivedcourse %}
+<header>
+      <h2>Archived Courses:</h2>
+    </header>
+{% for a in unenrollarchivedcourse %}
+<li class="course-item">
+    <article class="course">
+    <a  class="cover">
+       <img src="{{a.image}}" alt="{{ a.course }} {{ a.coursename }} Cover Image">         <!-----image ------>
+      </a>
+    <section class="info">
+      <hgroup>
+        <p class="date-block">
+        Course Started - {{ a.coursestart }}
+        </p>
+        <h2 class="university">{{ a.org }}</h2>
+        <h3>
+            <a href="/teacherslist/{{ a.courseid }}/">{{ a.course }} {{ a.coursename }}</a>
+        </h3>
+      </hgroup>
+        
+  </section>
+</article>
+</li>
+<script>
+           $( document ).ready(function() {
+               if("False" == "True"){
+                   $( "#unregister_block_course" ).click(function() {
+                       $('.disable-look-unregister').click();
+                   });
+               }
+           });
+ </script>
+{% endfor %}
+{% endif %}
 
+{% endif %}
 {% endblock %}

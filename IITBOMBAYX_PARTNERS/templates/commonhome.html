@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header><h2>Account Page</h2></header>
+<script>
+    $(function(){
+      // bind change event to select
+      $('#homechange').bind('change', function () {
+          var url = $(this).val(); // get selected value
+          if (url) { // require a URL
+              window.location = url; // redirect
+          }
+          return false;
+      });
+    });
+</script>
+
+{% endblock %}
+{% block body_block %}
+  <article class="course" >
+  <section class="info" >
+<table   cellspacing="0" width="100%"  >  
+   
+ <Select id="homechange"><option value="/">Select your home</option>
+    {% if multirole == 1 %}
+    <option value="/get_multi_roles/">Blended MOOCs</option>
+    {% endif %}
+
+  
+    {% if usertype >= 2 %} <option value="/faculty_report/">Faculty Home</option>
+
+
+    {% endif %} 
+    {% if usertype == 3 %}
+    <option value="/courseadminhome/">Content Home</option>
+    
+    {% endif %}
+    
+    
+</Select>   
+      </table>
+    </section>    
+     </article>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<p><b>Note:</b> * pages take long time to load.</p>
+      {% endblock %}      
+            
+
+
+
+
+
+
+
+

@@ -1,0 +1,191 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Deactivation of Institute Level Users </font></h2></header>
+ <script>
+            $(document).ready(function(){
+                  //begin
+                  $('#Institute').on('change', function() {   // check for changes
+             $('#headpc').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/instituteheadpc",
+           data:{id: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+ 
+                    var listItems= "<option value='noheadpc'>" + "-- Select the head or Pc -- " + "</option>";
+                    var teams =  result[1] ;
+                    var instiname='<label for="Institute" id="instiname">'+result[0]+'</label>';
+                    $("#instiname").html(instiname);
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Institute has no Head or Pc !!!");
+listItems += "<option value='noheadpc'>" + " -- " + "</option>";
+               
+                     $("#headpc").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#headpc").html(listItems);
+                 }}
+
+            },
+        });
+
+
+                  });
+              //end
+
+//newbegin
+
+                  $('#headpc').on('change', function() {   // check for changes
+                 $('#name').empty();         //  Make the city dropdown empty
+                 $('#strrole').empty();
+
+$.ajax({
+           type: "GET",
+           url:"/userinfo",
+           data:{hepcid:$('#headpc').val(),iid: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                    var pname='<label for="Institute" id="instiname"><b>Name: </b>'+result[0]+'</label>';
+                    $("#name").html(pname);
+                    var prole='<label for="Institute" id="instiname"><b>Role: </b>'+result[1]+'</label>';
+                    $("#strrole").html(prole);
+
+                    
+
+            },
+        });
+
+                  });
+
+//newend
+
+
+
+            })(this);
+         
+        </script>
+
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+<div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+<div class ="row" align="center">
+  <font color=red>{{success_message}}</font>
+</div>
+<br>
+<br>
+<div >
+<form action="/pcheadmanager/" method="POST">
+{% csrf_token %}
+
+<div class ="row">
+<div class="col-xs-6">
+<b>RCID</b>
+</div>
+<div class="col-xs-6">
+<b>Email</b>
+</div>
+
+</div>
+</br>
+<div class ="row">
+<div class="col-xs-4">
+
+<select id="Institute" name="Institute"  style="width:200px;">
+<option value="noinstitute"  >-- Select the Institute -- </option>
+                {% for institute in approvinstitute %}
+      
+
+<option value="{{ institute.1 }}" >{{ institute.0 }}</option>
+
+	{% endfor %}
+
+              </select>
+
+</div>
+
+
+
+<div class="col-xs-4">
+<select id="headpc" name="headpc" style="width:250px;">
+	<option value="">-- Select the Head or Pc --</option>
+           
+                {% for c in instiheadpc %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select></div>
+
+
+
+
+</div>
+
+<div class ="row">
+<div class="col-xs-4">
+<label for="Institute" id="instiname">{{instiname}}</label>
+</div>
+<div class="col-xs-4">
+
+<label for="name" id="name">{{name}}</label>
+</div>
+<div class="col-xs-4">
+
+<label for="strrole" id="strrole">{{strrole}}</label>
+
+</div>
+</div>
+<br>
+<br>
+<div class ="row" align="center">
+
+<div class="col-xs-4"></div><div class="col-xs-4">
+<input type="submit"  value="Deactivate"  name="deactivateheadpc" onclick="return confirm('Are you sure want to Deactivate ?');">
+</div>
+<div class="col-xs-4"></div>
+
+</div>
+<br>
+<br>
+
+<br>
+<br>
+
+</div>
+</form>  
+ </div>
+
+<br>
+<br>
+
+
+
+</br>
+
+{% endblock %}

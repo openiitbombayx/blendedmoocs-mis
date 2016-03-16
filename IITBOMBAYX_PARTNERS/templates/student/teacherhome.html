@@ -24,23 +24,25 @@
 
 <br><br>
 <table   cellspacing="0" width="100%"  >  
-    <tr><td > <a href="/coursedescription/{{course.courseid}}/{{pid}}/" class="enter-course">Course  Details</a><br><br><br><br></td>
-<td> <a href="/studentsinformation/{{course.courseid}}/{{pid}}/" class="enter-course">Students' Details</a></td></tr>
+    <tr><td > <a href="/coursedescription/{{course.courseid}}/{{pid}}/" class="enter-course">Course  Details         </a><br><br><br><br></td>
+<td> <a href="/studentsinformation/{{course.courseid}}/{{pid}}/" class="enter-course">Students' Details   </a></td></tr>
     
-    <tr>
-     {% if role_id == 5 %}
-     <td> <a href="/uploads_studentsinfo/2/{{course.courseid}}" class="enter-course">Upload Students' Info</a><br><br><br><br></td>
-     {% endif %}
+    <tr>{% if previousflag == 1 %}
+          {% if role_id == 5 %}
+     <td><center> <a href="/uploads_studentsinfo/2/{{course.courseid}}" class="enter-course">Upload Students' Info  </a><br><br><br><br></td>
+     {% endif %}{% endif %}
+     </center></tr>
+     <tr>
+     <td><Center><h2>Assignments Report</h2></center></td> 
+     </tr>
+{% if previousflag == 1 %}
+ <tr> <td> <a href="/evaluation/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Marks per Problem</a><br><br><br><br></td> <td ><a href="/evalstatus/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Students who Attempted</td>   
+
+    </tr>{% endif %}
+                <tr>
+    <td> <a href="/grades/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/" class="enter-course">Summary of Marks</a></td>
      </tr>
 
-<tr><td ></br><center><h2>Evaluation</h2></center></td></tr>
-
-  <tr> <td> <a href="/evaluation/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Evaluation Details </a><br><br><br><br></td> <td ><a href="/evalstatus/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/0" class="enter-course">Evaluation Status</td>   
-
-    </tr>
-    <tr>
- <td> <a href="/grades/{{course.courseid}}/{{pid}}/{{institute.instituteid}}/" class="enter-course">Grade Details</a></td>
- </tr>        
       </table>
         
       </section>

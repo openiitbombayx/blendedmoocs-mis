@@ -14,7 +14,9 @@
 <th>Last name</th>
 <th>Email</th>
 <th>Students' Information</th>
+{% ifequal currentflag  1 %}
 <th>Unenroll</th>
+{% endifequal  %}
 </tr>
 
 {% for teacher in teacherlist %}
@@ -23,7 +25,9 @@
 	<td>{{teacher.personid.lastname}}</td>
 	<td>{{teacher.personid.email}}</td>
         <td><a href = "/teacher/{{teacher.personid.id}}/">Show</a></td>  
+        {% ifequal currentflag  1 %}
         <td><a href = "/teacherunenroll/{{courseid}}/{{teacher.personid.id}}/" onclick="return confirm('Are you sure want to unenroll this teacher?');">Unenroll</a></td>  
+       {% endifequal %}
         </tr>             
 {% endfor %} 
 <tr align = "left">
@@ -36,8 +40,10 @@
 {% endif %}
 <br>
 <br>
+{% ifequal currentflag  1 %}
 <h2><center>click to <a href="/registrationinterface/{{role_id}}/" >Enroll  </a>  for   new   teacher.</center></h2>
 
+{% endifequal  %}
 
 {% endblock %} 
 

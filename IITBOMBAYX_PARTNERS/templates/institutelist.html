@@ -62,7 +62,7 @@ $.ajax({
                  {
                     console.log(result);
                     var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>" ; 
-                        listItems +=   "<option value='All Teachers'>"   + "All Teacher " + "</option>"
+                        listItems +=   "<option value='All Teachers'>"   + "All Teachers " + "</option>"
                                             
                     var teams =  result[0] ;
 
@@ -304,6 +304,13 @@ $(document).ready(function () {
 
 </table>
 </div>
+
+<br>
+ {% if student %}
+<div class="row" align = "center">
+<b>Total number of  records : {{student|length|add:"-1"}}</b>
+</div>
+<br>
 <div class="row">
 <a href="#" class="export">Download CSV</a>
 </div>
@@ -336,5 +343,5 @@ $(document).ready(function () {
  {% endfor %}
 
 </table> </div>
-
+{% endif %}
 {% endblock %}

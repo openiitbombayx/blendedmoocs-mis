@@ -1,8 +1,14 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<header ><h2 align=center>Students' Performance Report </font></h2></header>
-
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+<header ><h2 align=center>Summary of Marks</font></h2></header>
+<script>$(function () {
+    $("[data-toggle='tooltip']").tooltip();
+});
+</script>
 <style>
  th, td { white-space: nowrap; }
     div.dataTables_wrapper {
@@ -10,6 +16,9 @@
         
         margin-right: 0.5em;
     }
+td {
+    border:1px solid #333;
+}
 </style>
 
 {% endblock %}
@@ -27,13 +36,15 @@
 	</div>
  {% if student_record %}
 	<div  class ="col-md-4 " align="right">
-	<h4><a href = '/downloadgradecsv/{{course}}/{{pid}}/'>Download</a> </h4>
+	<h4><a href = '/downloadgradecsv/{{courseid}}/{{pid}}/'>Download CSV</a> </h4>
 	</div>
+     
  {% endif %}
 	<div class ="col-md-8">
 	<h4><b>Course:</b> {{course}}</h4>
 
 	</div>
+     
 
 </div>
 </br>
@@ -52,33 +63,33 @@
     <thead> 
   <!--<form action = "/update" method = "post">{% csrf_token %}-->
  <tr align = "left" >
-   <td align="center"  >
+   <th align="center"  >
   <b> S.No</b>
-</td>
+</th>
  {% ifequal pid -1 %}
-  {% for i in headings %}
+  {% for i in headerwithtt %}
     {% if forloop.counter == 2 %}
-         <td align="center"  >
+         <th data-original-title="{{i.1}}" data-container="body"  data-toggle="tooltip" data-placement="bottom" title="" >
   <b> Teacher</b>
-</td>
-        <td align="center"  >
-  <b> {{i}}</b>
-</td>
+</th>
+        <th align="center" data-original-title="{{i.1}}"  data-container="body"  data-toggle="tooltip" data-placement="bottom" title="">
+  <b> {{i.0}}</b>
+</th>
 
 {% else %}
- <td align="center"  >
-  <b> {{i}}</b>
-</td>
+ <th align="center" data-original-title="{{i.1}}"  data-container="body"  data-toggle="tooltip" data-placement="bottom" title="">
+  <b> {{i.0}}</b>
+</th>
 {% endif %}
  {% endfor %}
 
 {% else %}
 
-{% for i in headings %}
+{% for i in headerwithtt %}
     
- <td align="center"  >
-  <b> {{i}}</b>
-</td>
+ <th align="center"  data-original-title="{{i.1}}" data-container="body"  data-toggle="tooltip" data-placement="bottom" title="">
+  <b> {{i.0}}</b>
+</th>
 
  {% endfor %}
 

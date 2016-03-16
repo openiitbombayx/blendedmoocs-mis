@@ -1,3 +1,9 @@
+'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
+Copyright (C) 2015  BMWinfo 
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
 """IITBOMBAYX_PARTNERS URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -39,6 +45,7 @@ urlpatterns = (
      'SIP.views.createpass'),
    url(r'^createpasswordemail/$', 'SIP.views.createpasslink'),
    url(r'^manager/', include('managerapp.urls'),name='managerapp'), 
+   url(r'^iitbx/', include('iitbx.urls'),name='iitbx'),
      
 )
 
@@ -47,4 +54,3 @@ if settings.DEBUG is False:
    
    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(os.path.dirname(__file__), 'static'), 'show_indexes': settings.DEBUG}),
 ) 
-

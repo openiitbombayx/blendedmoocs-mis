@@ -1,0 +1,274 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Admin Students' Upload  </font></h2></header>
+ <script>
+            $(document).ready(function(){
+                  //begin 
+                  
+                  $('#Course').on('change', function() {   // check for changes
+             $('#Chapter').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/course_chapter",
+           data:{id: $('#Course').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    //console.log(result);
+ 
+                    var listItems= "<option value='nocourse'>" + "-- Select the Chapter -- " + "</option>";
+                    var teams =  result ;
+                    
+                     
+                    if (teams.length==0){ alert(" Selected Course has no chapter  !!!");
+ 
+                        listItems += "<option value='nochapter'>" + " -- " + "</option>";
+               
+                     $("#Chapter").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                
+                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
+
+                     $("#Chapter").html(listItems);
+                 }}
+
+            },
+        });
+
+
+                  });
+              //end
+
+//newbegin
+
+                  $('#Chapter').on('change', function() {   // check for changes
+             $('#Sequential').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/chapter_sequential",
+           data:{id: $('#Chapter').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    var listItems= "<option value='nosequential'>" + "--Select the sequential-- " + "</option>" ; 
+                        //listItems +=   "<option value='All sequential'>"   + "Allsequential " + "</option>"
+                    var teams =  result ;
+
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected chapter has no sequential  !!!");
+listItems += "<option value='nosequential'>" + " -- " + "</option>";
+               
+                     $("#Sequential").html(listItems);
+
+                     }
+                    else{
+                        
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
+
+
+                     $("#Sequential").html(listItems);
+                 }}
+
+            },
+        });
+
+                  });
+
+//newend
+
+
+//newbegin
+
+                  $('#Sequential').on('change', function() {   // check for changes
+             $('#Vertical').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/sequential_vertical",
+           data:{id: $('#Sequential').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    var listItems= "<option value='novertical'>" + "--Select the vertical-- " + "</option>" ; 
+                        //listItems +=   "<option value='All Vertical'>"   + "All Vertical " + "</option>"
+                    var teams =  result ;
+
+                    if (teams.length==0){ alert(" Selected chapter has no vertical  !!!");
+listItems += "<option value='novertical'>" + " -- " + "</option>";
+               
+                     $("#Vertical").html(listItems);
+
+                     }
+                    else{
+                        
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
+
+
+                     $("#Vertical").html(listItems);
+                 }}
+
+            },
+        });
+
+                  });
+
+//newend
+
+//newbegin
+
+                  $('#Vertical').on('change', function() {   // check for changes
+             $('#Module').empty();         //  Make the city dropdown empty
+    
+
+$.ajax({
+           type: "GET",
+           url:"/vertical_module",
+           data:{id: $('#Vertical').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    var listItems= "<option value='nomodule'>" + "--Select the Module Type-- " + "</option>" ; 
+                        //listItems +=   "<option value='All module'>"   + "All module " + "</option>"
+                    var teams =  result ;
+                    console.log(result);
+
+                    if (teams.length==0){ alert(" Selected chapter has no module  !!!");
+listItems += "<option value='nomodule'>" + " -- " + "</option>";
+               
+                     $("#Module").html(listItems);
+
+                     }
+                    else{
+                        
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
+
+
+                     $("#Module").html(listItems);
+                 }}
+
+            },
+        });
+
+                  });
+
+//newend
+
+            })(this);
+         
+        </script>
+
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+<div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+<br>
+<br>
+<div >
+<form action="//" method="POST">
+{% csrf_token %}
+
+</br>
+<div class ="row">
+<div class ="col-xs-6 col-md-4">
+<b>Course</b>
+</div>
+ <div class ="col-xs-6 col-md-4">
+<select id="Course" name="Course"  style="width:200px;">
+<option value="nocourse"  >-- Select the Course -- </option>
+                {% for course in courses %}
+      
+
+<option value="{{ course.1 }}" >{{ course.0}}</option>
+
+	{% endfor %}
+
+              </select>
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+<div class ="col-xs-6 col-md-4">
+<b>Chapter</b>
+</div>
+ <div class ="col-xs-6 col-md-4">
+
+<select id="Chapter" name="Chapter" style="width:200px;">
+	<option value="">-- Select a Chapter --</option>
+</select>
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+<div class ="col-xs-6 col-md-4">
+<b>Sequential</b>
+</div>
+ <div class ="col-xs-6 col-md-4">
+<select id="Sequential" name="Sequential" style="width:200px;">
+	<option value="">-- Select a sequential --</option>
+
+              </select>
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+<div class ="col-xs-6 col-md-4">
+<b>Vertical</b>
+</div>
+ <div class ="col-xs-6 col-md-4">
+<select id="Vertical" name="Vertical" style="width:200px;">
+	<option value="">-- Select a vertical --</option>
+
+              </select>
+</div>
+</div>
+<br>
+<br>
+<div class ="row">
+<div class ="col-xs-6 col-md-4">
+<b>Module</b>
+</div>
+ <div class ="col-xs-6 col-md-4">
+
+<select id="Module" name="Module" style="width:200px;">
+	<option value="">-- Select a Module type --</option>
+</select>
+</div>
+</div>
+
+{% endblock %}

@@ -1,3 +1,10 @@
+'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
+Copyright (C) 2015  BMWinfo 
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
+
 from .models import *
 from django.shortcuts import render_to_response, render, redirect
 from django.core.exceptions import *
@@ -82,40 +89,24 @@ def validate_login(request):
         auth.login(request,user_auth)
         userdetail = User.objects.get(username=request.POST['email'])
         user_info=Userlogin.objects.get(user=userdetail)
-        if user_info.usertypeid == 0:
-           
+        if user_info.usertypeid >=0 and user_info.usertypeid <= 10:
+                                
            request.session['email_id'] =userdetail.email
            pson=Personinformation.objects.get(email=userdetail.email)
-           request.session['person_id']=pson.id
-
-           return  0
-        elif user_info.usertypeid == 2:
-           
+           request.session['person_id']=pson.id                    
            request.session['email_id'] =userdetail.email
-           pson=Personinformation.objects.get(email=userdetail.email)
-           request.session['person_id']=pson.id
-
-           return  2
-        elif user_info.usertypeid == 3:
-           
-           request.session['email_id'] =userdetail.email
-           pson=Personinformation.objects.get(email=userdetail.email)
-           request.session['person_id']=pson.id
-           
-           return  3
-        
-        request.session['email_id'] =userdetail.email
-        user_info.nooflogins +=1
-        user_info.last_login=datetime.now()
-        user_info.status=1
-        user_info.save()
-        return 1   
+           user_info.nooflogins +=1
+           user_info.last_login=datetime.now()
+           user_info.status=1
+           user_info.save()
+           return  user_info.usertypeid   
 
     else:
 ## If password not valid, then returns -1
         return -1
         
-  except:
+  except Exception as e:
+        print e.message
 ## If email id does not exist, then returns -1
         return -1
 
@@ -160,7 +151,7 @@ def pwd_field_empty(request,args,value):
     if not args['password1'] or not args['password2'] :	
         args['message']=retrieve_error_message(module,'Pwd_empty','PASS_EMPTY')
     elif  args['password1'] != args['password2']:
-            args['message']= retrieve_error_message(module,value,'PWD_NO_MTCH')
+            args['message']= retrieve_error_message(module,value,'PWD_NOT_MTCH')
     elif filter(lambda x: x  in string.printable and  x  not in string.whitespace, args['password1']) !=args['password1']:
         args['message']= retrieve_error_message(module,value,'INV_CHAR')
     elif len(args['password1'])<6 or len(args['password1'])>30:
@@ -534,6 +525,27 @@ def ifPersonExists(email):
     else:
         return 0
 
+def ifblendedPersonExists(email,instituteid):
+    exists=0
+    count=0
+    persobj=Personinformation.objects.filter(email = email)
+    for i in persobj:
+            count=count+1
+            if i.instituteid.instituteid == instituteid:
+               exists=1
+            else:
+               exists=2
+    print count,exists
+    if count==0 and exists==0:
+            return 0
+    elif count==1 and exists==1:
+           return 1
+    elif count==1 and exists==2:
+           return -1
+    elif count>1 :
+        return -2
+    return -2
+
 #################### check if institute exist in T10KT_Institute table for login .True return institute object #####################
 def validateInstitute(institutename):
     
@@ -591,7 +603,20 @@ def validateLookup(comment,category):
             return 1
      return 0
         
+
+
+############### Return 1 if contact number validate by given regular expression #######################
+
+def validateContact(contact):
+    if len(contact) >=10 or len(contact) <=11:
+        if re.match("^(?:([789]\d{9})|([0]\d{10}))$", contact) != None:
+            return 1
+    return 0
+
+
 #############################################################
+
+
 
 def get_grades_report(courseobj,courselevelid):
    try:

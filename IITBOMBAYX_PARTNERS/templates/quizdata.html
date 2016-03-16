@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<header ><h2 align=center>Evaluation Report</font></h2></header>
+<header ><h2 align=center>Marks per Question</font></h2></header>
 
 <style>
  th, td { white-space: nowrap; }
@@ -27,7 +27,7 @@
 	</div>
  {% if stud_rec %}
 	<div  class ="col-md-4 " align="right">
-	<h4><a href = '/downloadquizcsv/{{courseid}}/{{pid}}/'>Download</a></h4>
+	<h4><a href = '/downloadquizcsv/{{courseid}}/{{pid}}/{{evalid}}'>Download</a></h4>
 	</div>
 {% endif %}
 	<div class ="col-md-8">
@@ -35,11 +35,11 @@
 
 	</div>
       <div class ="col-md-8">
-	<h4><b>Evaluation:</b> {{secname}}</h4>
+	<h4><b>Assignment:</b> {{secname}}</h4>
  
 	</div>
 <div  class ="col-md-4 " align="right">
-	<h4><a href = '/evaluation/{{courseid}}/{{pid}}/{{instituteidid}}/0'>Change Evaluation</a></h4>
+	<h4><a href = '/evaluation/{{courseid}}/{{pid}}/{{instituteidid}}/0'>View another assignment</a></h4>
 	</div>
 </div>
 </br>
@@ -104,11 +104,11 @@
      {% for j in i %}  
           {% ifequal forloop.counter 6 %}
                 {% for k in j %} 
-                   <td align=center >  {{k}}</td>
+                   <td align=center >  {% if k == "NA" %} X {% else %} {{k}} {% endif %}</td>
                 {% endfor %}
           {% else %}
       
-             <td align=center >  {{j}}</td>
+             <td align=center >  {% if j == "NA" %} X {% else %} {{j}} {% endif %}</td>
           {% endifequal %}
      {% endfor %}
      </tr>
@@ -121,11 +121,11 @@
      {% for j in i %}  
           {% ifequal forloop.counter 5 %}
                 {% for k in j %} 
-                   <td align=center >  {{k}}</td>
+                   <td align=center > {% if k == "NA" %} X {% else %} {{k}} {% endif %}</td>
                 {% endfor %}
           {% else %}
       
-             <td align=center >  {{j}}</td>
+             <td align=center > {% if j == "NA" %} X {% else %} {{j}} {% endif %}  </td>
           {% endifequal %}
      {% endfor %}
      </tr>

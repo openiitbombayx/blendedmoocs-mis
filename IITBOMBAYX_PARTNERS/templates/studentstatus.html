@@ -1,8 +1,66 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<header ><h2 align=center>Evaluation Status Report</font></h2></header>
+<header ><h2 align=center>Students who Attempted</font></h2></header>
+<!---download scirpt-->
+<script>
 
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)').filter(':visible'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        
+        var dateformated = new Date().toString().replace(/ /g,'');
+        
+        exportTableToCSV.apply(this, [$('#dvData>table'), 'problemstatusreport_'+dateformated+".csv"]);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
 <style>
  th, td { white-space: nowrap; }
     div.dataTables_wrapper {
@@ -30,35 +88,39 @@
 
 	</div>
     <div class ="col-md-8">
-	<h4><b>Evaluation:</b> {{secname}}</h4>
+	<h4><b>Assignment:</b> {{secname}}</h4>
 
 	</div>
     <div  class ="col-md-4 " align="right">
-	<h4><a href = '/evalstatus/{{courseid}}/{{pid}}/{{instituteidid}}/0'>Change Evaluation</a></h4>
+	<h4><a href = '/evalstatus/{{courseid}}/{{pid}}/{{instituteidid}}/0'>View another assignment</a></h4>
 	</div>
 
 </div>
 <br><br>
 
- <table   width="90%" >
-	<tr>
-	<h4><td>Number of students who have not attempted even one question:</td>
-</td> <td><a   href="/studentstatus/{{courseid}}/{{pid}}/{{instituteidid}}/5/" > {{NA_count}}</a></td></h4>
+ <table   width="50%" >
+        <tr>
+	<h4><td >Submitted All Problems of the Assignment :
+<a  target="_blank"  href="/studentstatus/{{courseid}}/{{pid}}/{{instituteidid}}/7/"> {{AA_count}}</a></a></td></h4>
+    </tr>
+        <tr>
+	<h4><td>Partially Submitted Assignments :
+<a target="_blank"   href="/studentstatus/{{courseid}}/{{pid}}/{{instituteidid}}/6/">{{PA_count}}</a></a></td></h4>
     </tr>
 	<tr>
-	<h4><td>Number of students who have attempted at least one but not all questions:</td>
-</td> <td> <a   href="/studentstatus/{{courseid}}/{{pid}}/{{instituteidid}}/6/">{{PA_count}}</a></a></td></h4>
+	<h4><td>No Assignment Submission:
+<a target="_blank"  href="/studentstatus/{{courseid}}/{{pid}}/{{instituteidid}}/5/" > {{NA_count}}</a></td></h4>
     </tr>
 	
-	<tr>
-	<h4><td>Number of students who have attempted all questions:</td>
-</td> <td>  <a   href="/studentstatus/{{courseid}}/{{pid}}/{{instituteidid}}/7/"> {{AA_count}}</a></a></td></h4>
-    </tr>
+	
+	
    
 </table>
 
 </br>
-
+<div  class ="row" align="center">
+<b> Problem-wise Submission Reports</b>
+</div>
 <style>
 
 
@@ -66,49 +128,58 @@
     border: 1px solid black;
 }
 </style>
-{% if stud_rec %}
+{% if problist %}
 <div  class ="row" align="right">
-	<h4><a href ="{% static filename %}">Download</a></h4>
+	<h4> <b><a href="#" class="export">Download</a> </b></h4>
+	
      
 	</div>
+<br>
+<div class="row" align = "center">
+Total number of  records : {{problist|length}}
+</div>
 </br>
 </br>
-<div id="1" class="table-responsive" >
+<div id="dvData" class="table-responsive" >
 
- <table  class="table" border="1"  cellspacing="0" width="100%" >
-    <thead> 
+ <table  class="table" border="1"  cellspacing="0" style="width:80%" >
+ <thead> 
   <!--<form action = "/update" method = "post">{% csrf_token %}-->
  <tr align = "left" >
-  <td align="center"  >
-  <b> S.No</b>
-</td>
-  {% for i in heading %}
- <td align="center"  >
-  <b> {{i}}</b>
-</td>
-
- {% endfor %}
+  <td align="center"><b>No.</b></td>
+  <td align="center"><b>Problem<br>Name</b></td>
+<td align="center"><b>#Submitted</b></td>
+ <td align="center"><b>#Not-Submitted</b></td>
 </tr>
    </thead>
 <tbody >
-{% for i in stud_rec %}
+{% for i in problist %}
      <tr align = "left">
-      <td align=center >  {{forloop.counter}}</td>
-     {% for j in i %}  
-          {% ifequal forloop.counter 5 %}
-                {% for k in j %} 
-                   <td align=center >  {{k}}</td>
-                {% endfor %}
-          {% else %}
-      
-             <td align=center >  {{j}}</td>
-          {% endifequal %}
-     {% endfor %}
+     
+                   <td align = "left" >  {{i.0}}</td>
+                   <td align = "center" >  {{i.1}}</td>
+                {% if i.2 == 0 %}
+                <td align = "right" > {{i.2}} </td>
+                {% else %}
+             <td align = "right" > <a href="/probdetail/{{courseid}}/{{instituteidid}}/{{evalid}}/{{i.4}}/{{pid}}/1/"> {{i.2}} </a></td>
+                {% endif %}
+             {% if i.3 == 0 %}
+                <td align = "right" > {{i.3}} </td>
+             {% else %}
+             
+             <td align = "right" > <a href="/probdetail/{{courseid}}/{{instituteidid}}/{{evalid}}/{{i.4}}/{{pid}}/0/">  {{i.3}}</a></td>
+             {% endif %}
+          
      </tr>
 {% endfor %}
 </tbody>
 
 </table> 
+</div>
+{% else %}
+<br>
+<div class="row" align = "center">
+ No Record Exists
 </div>
 {% endif %}
 

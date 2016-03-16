@@ -62,7 +62,7 @@ $.ajax({
                  {
                     console.log(result);
                     var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>" ; 
-                        listItems +=   "<option value='All Teachers'>"   + "All Teacher " + "</option>"
+                        listItems +=   "<option value='All Teachers'>"   + "All Teachers " + "</option>"
                     var teams =  result[0] ;
 
                      console.log(teams);
@@ -191,12 +191,12 @@ listItems += "<option value='noinstiute'>" + " -- " + "</option>";
 <br>
 <div class ="row">
 <div class="col-xs-6" >
-<input type="submit"  value="Evaluation Details"  name="evaluation">
+<input type="submit"  value="Marks per Problem"  name="evaluation">
 
 </div>
 
 <div class="col-xs-6" >
-<input type="submit"  value="Evaluation Status "  name="evaluationstatus">
+<input type="submit"  value="Students who Attempted"  name="evaluationstatus">
 
 </div>
 
@@ -205,7 +205,7 @@ listItems += "<option value='noinstiute'>" + " -- " + "</option>";
 <br>
 <div class ="row">
 <div class="col-xs-6" >
-<input type="submit"  value="Grade Details "  name="grade">
+<input type="submit"  value="Summary of Marks"  name="grade">
 
 </div>
 <div class="col-xs-6 " >
@@ -216,7 +216,7 @@ listItems += "<option value='noinstiute'>" + " -- " + "</option>";
 <br>
 <div class ="row">
 <div class="col-xs-6" >
-<input type="submit"  value="Deactivate"  name="deactivate"  onclick="return confirm('Are you sure want to Deactivate this teacher?');">
+<input type="submit"  value="Deactivate"  name="deactivate"  onclick="return confirm('Are you sure you want to Deactivate this Teacher?');">
 
 </div>
 <div class="col-xs-6" >

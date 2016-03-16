@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<header ><h2 align=center>Evaluation Details</font></h2></header>
+<header ><h2 align=center>Marks per Question</font></h2></header>
 
 <style>
  th, td { white-space: nowrap; }
@@ -41,10 +41,10 @@
 <form action="/quizdata/{{courseid}}/{{pid}}/{{instituteidid}}/" method="POST">
 {% csrf_token %}
 
-<center><b><p><font face="12"><b>Evaluation</b></font></p></b></center>
+<center><b><p><font face="12"><b>List of Assignments</b></font></p></b></center>
 </br>
 <center><select onchange="" id="quiz" name="quiz">
-  <option value="Select">Select the evaluation</option>
+  <option value="Select">Select the assignment</option>
  {% for i in evaluation %}
 
   <option value="{{i.sectionid}}" >{{i.sec_name}}</option>

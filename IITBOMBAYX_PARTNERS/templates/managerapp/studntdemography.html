@@ -2,7 +2,7 @@
 {% block header %}
 <header>
 {% for i in monthinci %}
-<h2><b>Students Demography Report </b></h2>
+<h2><b>Students' Demography Report (Self-Reported)</b></h2>
 </header>
 
 
@@ -19,8 +19,7 @@
      
  <div align=left><b>{{TotalStats.0}}</b> States and <b>{{TotalStats.1}}</b> Cities </div>
 <br>
-
-     <h3><b>Rural Urban Distribution</b></h3>
+ <table class ="table"> <tr> <td><h3><b>Rural Urban Distribution</b> (Using Uncertified Data)</h3></td><td align="right"><a href="/iitbx/postalinfo/">Pincode Classification</a></td></tr></table>
       <table class ="table">
       <tr>
       <td align=center></td>
@@ -65,14 +64,15 @@
    </table> 
 <br> 
 
-    <h3><b>Education</b></h3>
+    <h3><b>Highest Level of Education Completed</b></h3>
       <table class ="table"> 
       <tr>
       <td align=center><b></b></td>
-      <td align=center><b>Undergraduate</b></td>
-      <td align=center><b>Graduate</b></td> 
-      <td align=center><b>Postgraduate</b></td>
+      <td align=center><b>School</b></td>
+      <td align=center><b>Bachelors</b></td> 
+      <td align=center><b>Masters</b></td>
       <td align=center><b>Doctorate</b></td>
+      <td align=center><b>Others</b></td>
       </tr>
       <tr>
       <td align=center><b>No.</b></td>
@@ -80,40 +80,49 @@
       <td align=center>{{edu.1}}</td>
       <td align=center>{{edu.2}}</td>
       <td align=center>{{edu.3}}</td>
+      <td align=center>{{edu.4}}</td>
       </tr>
       <tr>
       <td align=center><b>%</b></td>
-      <td align=center>{{edu.4}}</td>
       <td align=center>{{edu.5}}</td>
       <td align=center>{{edu.6}}</td>
       <td align=center>{{edu.7}}</td>
-      </tr>
+      <td align=center>{{edu.8}}</td>
+      <td align=center>{{edu.9}}</td>
+       </tr>
       </table>
 
 <br>
     <h3><b>Age</b></h3>
       <table class ="table"> 
       <tr>
-      <td align=center><b></b></td>
+      <td align=center></td>
       <td align=center><b>Under18</b></td>
       <td align=center><b>18-25</b></td> 
-      <td align=center><b>25-60</b></td>
+      <td align=center><b>25-40</b></td>
+      <td align=center><b>40-50</b></td>
+      <td align=center><b>50-60</b></td>
       <td align=center><b>Above 60</b></td>
       </tr>
      
-      <tr>
+     <tr>
       <td align=center><b>No.</b></td>
       <td align=center>{{agesumm.0}}</td>
       <td align=center>{{agesumm.1}}</td>
       <td align=center>{{agesumm.2}}</td>
       <td align=center>{{agesumm.3}}</td>
+      <td align=center>{{agesumm.4}}</td>
+      <td align=center>{{agesumm.5}}</td>
       </tr>
       <tr>
       <td align=center><b>%</b></td>
-      <td align=center>{{agesumm.4}}</td>
-      <td align=center>{{agesumm.5}}</td>
       <td align=center>{{agesumm.6}}</td>
       <td align=center>{{agesumm.7}}</td>
+      <td align=center>{{agesumm.8}}</td>
+      <td align=center>{{agesumm.9}}</td>
+      <td align=center>{{agesumm.10}}</td>
+      <td align=center>{{agesumm.11}}</td>
+ 
       </tr>
 
       </table>

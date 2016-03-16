@@ -1,0 +1,49 @@
+{% extends 'login/indexbase.html' %}
+{% load staticfiles %}
+{% block title %}
+{% if module == "editprofile" %}
+ Edit-Profile Success 
+{% else %}
+ Registration Success 
+{% endif %}
+{% endblock %}
+ {% block header %}
+<style>
+    .error-message {
+      color: red;
+    }
+    input.ng-dirty.ng-invalid {
+      border-color: red;
+    }
+  </style>
+
+
+
+
+
+     <h1 class="title">
+{% if module == "editprofile" %}
+ <span class="title-super">Profile updated successfully.</span>
+{% else %}
+          <span class="title-super">Registration Successfull</span>
+{% endif %}
+          <span class="title-sub"></span>
+     </h1>
+{% endblock %}
+{% block form %}
+  <div class ="row" align="center">
+  <font color=red>
+{{success_message}}</font>
+{% if module == "editprofile" %}
+Click  <a href="/admineditprofile">Home</a> to continue.
+{% else %}
+Click  <a href="{{rooturl}}">Home</a> to continue.
+{% endif %}
+</div>
+{% endblock %}
+
+{% block aside %}
+<br>
+<br>
+{% endblock %}
+

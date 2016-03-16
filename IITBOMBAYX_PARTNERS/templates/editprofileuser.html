@@ -1,0 +1,255 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Update Users' Information</font></h2></header>
+ <script>
+            $(document).ready(function(){
+                  //begin
+                  $('#Institute').on('change', function(){
+                    var msg1='<div class ="row" align="center" id="emsg"><font color=red></font></div>'
+                    $("#emsg").html(msg1);
+                    $('#role').empty(); 
+                    $('#instiuser').empty();  
+                    var listItems1= "<option value='nouser'>" + "-- Select the user -- " + "</option>";
+                    $("#instiuser").html(listItems1);
+                    var listItems= "<option value='norole'>" + "-- Select the Role -- " + "</option>";
+                    $("#role").html(listItems);
+                    $.ajax({
+           type: "GET",
+           url:"/ajaxrole",
+           data:{id: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                    var instiname='<label for="Institute" id="instiname">'+result[1]+'</label>';
+                    $("#instiname").html(instiname);
+                    var listItems1= "<option value='nouser'>" + "-- Select the user -- " + "</option>";
+                     $("#instiuser").html(listItems1);
+                    var listItems= "<option value='norole'>" + "-- Select the Role -- " + "</option>";
+                    var teams =  result[0] ;
+                    
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Institute has no Role !!!");
+listItems += "<option value='norole'>" + " -- " + "</option>";
+               
+                     $("#instiuser").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c][0]+ "'>" + teams[c][1]+ "</option>";
+
+                     $("#role").html(listItems);
+                 }}
+
+            },
+        });
+                    });
+                  //end
+                  //begin
+                  $('#role').on('change', function() {   // check for changes
+             
+             $('#instiuser').empty();         //  Make the user dropdown empty
+             var listItems1= "<option value='nouser'>" + "-- Select the user -- " + "</option>";
+             $("#instiuser").html(listItems1);
+
+$.ajax({
+           type: "GET",
+           url:"/institutebmuser",
+           data:{id: $('#Institute').val(),rid: $('#role').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+ 
+                    var listItems= "<option value='nouser'>" + "-- Select the user -- " + "</option>";
+                    var teams =  result[1] ;
+                    //var instiname='<label for="Institute" id="instiname">'+result[0]+'</label>';
+                    //$("#instiname").html(instiname);
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Institute has no Head or Pc !!!");
+listItems += "<option value='nouser'>" + " -- " + "</option>";
+               
+                     $("#instiuser").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#instiuser").html(listItems);
+                 }}
+
+            },
+        });
+
+
+                  });
+              //end
+
+//newbegin
+
+                  $('#instiuser').on('change', function() {   // check for changes
+                 $('#name').empty();         //  Make the user dropdown empty
+                 $('#strrole').empty();
+
+$.ajax({
+           type: "GET",
+           url:"/userinfo",
+           data:{hepcid:$('#instiuser').val(),iid: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                    var pname='<label for="Institute" id="instiname"><b>Name: </b>'+result[0]+'</label>';
+                    $("#name").html(pname);
+                    //var prole='<label for="Institute" id="instiname"><b>Role: </b>'+result[1]+'</label>';
+                    //$("#strrole").html(prole);
+
+                    
+
+            },
+        });
+
+                  });
+
+//newend
+
+
+
+            })(this);
+         
+        </script>
+
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+{% autoescape off %}
+<div class ="row" align="center" id="emsg">
+  <font color=red>{{error_message}}</font>
+</div>
+<div class ="row" align="center">
+  <font color=red>{{success_message}}</font>
+</div>
+<br>
+<br>
+<div >
+<form action="/admineditprofile" method="GET">
+{% csrf_token %}
+
+<div class ="row">
+<div class="col-xs-4">
+<b>RCID</b>
+</div>
+<div class="col-xs-4">
+<b>Role</b>
+</div>
+<div class="col-xs-4">
+<b>Email</b>
+</div>
+
+</div>
+</br>
+<div class ="row">
+<div class="col-xs-4">
+
+<select id="Institute" name="Institute"  style="width:200px;">
+<option value="noinstitute"  >-- Select the Institute -- </option>
+                {% for institute in approvinstitute %}
+      
+
+<option value="{{ institute.1 }}" >{{ institute.0 }}</option>
+
+	{% endfor %}
+
+              </select>
+
+</div>
+
+<div class="col-xs-4">
+
+<select id="role" name="role"  style="width:200px;">
+<option value="norole"  >-- Select the Role -- </option>
+                {% for role in rolelist %}
+      
+
+<option value="{{ role.0 }}" >{{ role.1 }}</option>
+
+	{% endfor %}
+
+              </select>
+
+</div>
+
+<div class="col-xs-4">
+<select id="instiuser" name="instiuser" style="width:250px;">
+	<option value="nouser">-- Select the user --</option>
+           
+                {% for c in instiheadpc %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select></div>
+
+
+
+
+</div>
+
+<div class ="row">
+<div class="col-xs-4">
+<label for="Institute" id="instiname">{{instiname}}</label>
+</div>
+<div class="col-xs-4">
+
+<label for="name" id="name">{{name}}</label>
+</div>
+<div class="col-xs-4">
+
+<label for="strrole" id="strrole">{{strrole}}</label>
+
+</div>
+</div>
+<br>
+<br>
+<div class ="row" align="center">
+
+<div class="col-xs-4">
+<input type="submit"  value="Submit"  name="admineditprofile" >
+</div>
+<div class="col-xs-4 " ><input type="button" value="clear" id="clearbutton" onclick="location.href='/admineditprofile'">
+
+
+
+</div>
+<br>
+<br>
+
+<br>
+<br>
+
+</div>
+</form>  
+ </div>
+
+<br>
+<br>
+{% endautoescape %}
+
+{% endblock %}

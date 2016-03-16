@@ -1,8 +1,79 @@
 {% extends 'base2.html' %}
 {% block header %}
 <header>
-<p><h2>Upload Students' Information - <font color=#F7691F> {{coursename}}</font></h2></p>
+<p><h2>User Guides- Upload </h2></p>
 </header>
+<script>
+$(document).ready(function () {
+
+    var files;
+
+    $('#usermanual').on('change', prepareUpload);
+    function prepareUpload(event){
+      files = event.target.files;
+    };
+    $("#uploaduser").click(function () {
+         $('#out').empty();
+         var data = new FormData();
+jQuery.each(jQuery('#usermanual')[0].files, function(i, file) {
+    data.append('usermanual', file);
+    data.append('bmadminmanual', ['']);
+});
+        
+         $.ajax({
+            url: '/sendmanual/',  
+            type: 'POST',
+            data: data,
+            success:function(data){
+                                    var htmloutput= '<p id="out"><h5 style = "color : red">'+data+'</p>';
+                                    $('#out').html(htmloutput);
+                                }, 
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+
+//jquery for blended manual
+    var files;
+
+    $('#bmadminmanual').on('change', prepareUpload2);
+    function prepareUpload2(event){
+      files2 = event.target.files;
+    };
+    $("#uploadadmin").click(function () {
+        $('#out').empty();
+        
+         var data1 = new FormData();
+jQuery.each(jQuery('#bmadminmanual')[0].files, function(i, file) {
+    data1.append('bmadminmanual', file);
+   data1.append('usermanual', []);
+});
+  
+      
+         $.ajax({
+            url: '/sendmanual/',  
+            type: 'POST',
+            data: data1,
+            success:function(data){
+                                   console.log(data);
+                                   var htmloutput= '<p id="out"><h5 style = "color : red">'+data+'</p>';
+                                    $('#out').html(htmloutput);
+                                }, 
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+
+////
+
+
+});
+
+
+
+</script>
 {% endblock %}
 {% block body_block %}
 {% block content %}
@@ -13,22 +84,36 @@
 
 
 <div>
-<p><h6><ol> Click on browse button to select the .pdf file</h6></p></ol>
-<p><h6><ol> Click Upload File to upload the details.</h6></p></ol>
-<ol><p><h5 style = "color : red">{{error_message}}{{successmsg}}</p></ol>
-<ol><form enctype="multipart/form-data" method="post" action="/manualupload/">
+
+<ol><p id="out"><h5 style = "color : red">{{error_message}}{{successmsg}}</p></ol>
+<ol>
 
     {% csrf_token %}
     <table>
-        <tr><td>
+        <tr>
+        <td>
+            <label><b>Blended MOOCs User Guide </b> </label>
+          
+        </td>
+        <td>
             <input type="file" value="usermanual" name="usermanual" id="usermanual" /><br/>
           
+        </td><td>
+            <input type="button"  value="upload" id="uploaduser"/>
         </td></tr>
-        <tr><td>
-            <input type="submit" value="upload" id="Save"/>
+         <tr>
+           <td>
+            <label><b>Blended Course Administrator User Guide &nbsp; </b></label>
+          
+        </td>
+           <td>
+            <input type="file" value="bmadminmanual" name="bmadminmanual" id="bmadminmanual" /><br/>
+          
+        </td><td>
+            <input type="button" value="upload" id="uploadadmin"/>
         </td></tr>
     </table>
-</form></ol>
+</ol>
 </div>
 
 

@@ -4,6 +4,7 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
 
+
 """
 Django settings for IITBOMBAYX_PARTNERS project.
 
@@ -55,16 +56,16 @@ STATICFILES_FINDERS = (
 #    TEMPLATE_PATH,
 #)
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-EMAIL_HOST =''
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST ='localhost'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD =''
 EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL=""
 
-ROOT_URL = ''
+ROOT_URL = 'http://bmwinfo.iitbombayx.in/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -72,9 +73,9 @@ ROOT_URL = ''
 SECRET_KEY = 'n*gu8*if&7+lj&w=z=vn=4laj0)ypgymeg^!wisa%5slgp(f9u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -89,7 +90,13 @@ INSTALLED_APPS = (
     'SIP',
     'iitbx',
     'managerapp',
+    'tracking',
 )
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+# logout time in minutes(1unit =1minutes)
+LOGOUT_TIME = 5
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -100,6 +107,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'SIP.middleware.Suspendlogin',
+    'tracking.middleware.VisitorTrackingMiddleware',
+    'SIP.loginrestrictmiddleware.Concurrentloginrestrict',
 )
 
 ROOT_URLCONF = 'IITBOMBAYX_PARTNERS.urls'
@@ -111,6 +121,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.core.context_processors.request',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -125,17 +136,49 @@ WSGI_APPLICATION = 'IITBOMBAYX_PARTNERS.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'iitbxblended',
-        'USER': 'root',
+        'USER': '',
         'PASSWORD': '',
         'HOST': '',   # Or an IP Address that your DB is hosted on
         'PORT': '',
     }
 }
+'''
+
+DATABASES = {
+      # 'default': {
+       # 'ENGINE': 'django.db.backends.sqlite3', 
+       # 'NAME': os.path.join(BASE_DIR, 'django.sqlite3'),
+        #'USER': '',
+        #'PASSWORD': '',
+        #'HOST': '',
+        #'PORT': '',
+    #},
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'iitbxblended',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',   # Or an IP Address that your DB is hosted on
+        'PORT': '',
+    },
+     'edxapp': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'edxapp',
+        'USER':'',
+        'PASSWORD':'',
+        'HOST':'',
+        'PORT':''
+    },
+   
+}
+DATABASE_ROUTERS = [ 'managerapp.edxapprouter.EdxRouter']
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

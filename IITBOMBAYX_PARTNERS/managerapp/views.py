@@ -1,3 +1,11 @@
+'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
+Copyright (C) 2015  BMWinfo 
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
+
+
 from django.shortcuts import render
 from SIP.views import *
 from iitbx.models import *
@@ -5,6 +13,11 @@ from SIP.models import *
 from .models import *
 from datetime import datetime
 from iitbx.views import *
+import datetime
+from datetime import date, timedelta
+import time
+
+
 def usersummary(request):
     args =iitbxsessiondata(request)
     email=request.user
@@ -109,7 +122,7 @@ def courseenrrollment(request,courseid):
     startdate=edxcourse_inst.coursestart
    
     enrolldata=AuthUser.objects.raw('''SELECT "1" id, sum(enroll) "enroll",sum(unenroll) "unenroll",sum(students) "totalstudent",sum(staff) "totalstaff",sum(afterstartenroll) "afterstartenroll",sum(beforestartenroll) "beforestartenroll",sum(afterstartunenroll) "afterstartunenroll",sum(beforestartunenroll) "beforestartunenroll" FROM (
-SELECT if(A.is_active=1,1,0) "enroll",if(A.is_active=0,1,0) "unenroll", if(B.role is NULL and A.is_active=1,1,0) "students",if(B.role is not NULL and A.is_active=1,1,0) "staff",
+SELECT distinct A.user_id "uids" , if(A.is_active=1,1,0) "enroll",if(A.is_active=0,1,0) "unenroll", if(B.role is NULL and A.is_active=1,1,0) "students",if(B.role is not NULL and A.is_active=1,1,0) "staff",
 if(A.created >DATE_FORMAT(%s,"%%Y-%%m-%%d")  and A.is_active=1,1,0)"afterstartenroll",
 if(A.created <=DATE_FORMAT(%s,"%%Y-%%m-%%d")  and A.is_active=1,1,0)"beforestartenroll",
 if(A.created >DATE_FORMAT(%s,"%%Y-%%m-%%d")  and A.is_active=0,1,0)"afterstartunenroll",
@@ -127,9 +140,9 @@ FROM student_courseaccessrole B RIGHT OUTER JOIN student_courseenrollment A on A
         args['beforestartunenroll']=i.beforestartunenroll
         args['beforestartenroll']=i.beforestartenroll
 
-    coursedata=AuthUser.objects.raw('''SELECT "1" id, count(distinct course) "Course" ,count(distinct video) "Video",count(distinct problem) "problem" ,count(distinct gproblem) "gradedproblem" from
+    coursedata=AuthUser.objects.raw('''SELECT "1" id, count(distinct student_id) "Course" ,count(distinct video) "Video",count(distinct problem) "problem" ,count(distinct gproblem) "gradedproblem" from
 (
-SELECT if(module_type="course",student_id,-1) "course",if(module_type="video",student_id,-1) "video", if(module_type="problem",student_id,-1) "problem",if(module_type="problem" and grade is not null,student_id,-1) "gproblem" FROM `courseware_studentmodule` where course_id =%s) A''',[courseid])
+SELECT student_id,if(module_type="video",student_id,-1) "video", if(module_type="problem",student_id,-1) "problem",if(module_type="problem" and grade is not null,student_id,-1) "gproblem" FROM `courseware_studentmodule` where course_id =%s) A''',[courseid])
 
     for i in coursedata:
         args['course']=i.Course
@@ -149,12 +162,14 @@ SELECT if(module_type="course",student_id,-1) "course",if(module_type="video",st
 def coursedailyreport(request,courseid):
     args=iitbxsessiondata(request)
     report=[]
-    #print courseid
-    currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    #currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    args['refreshdate']=refreshdate=Lookup.updatedate()
+    date=str(refreshdate)
+    ddate= date.replace("'","")
+    redate=ddate.replace(",","")
     coursename =edxcourses.objects.get(courseid=courseid).coursename
     args['coursename']= coursename
-    report_name="Daily Report of "+"_"+str(courseid)+" _ "+currenttime 
-    #print 'report_name  is ' , report_name 
+    report_name="Daily Report of "+"_"+str(courseid)+" _ "+redate 
     sumtotal= 0
     sumstudents= 0 
     sumenrolled= 0
@@ -193,7 +208,7 @@ CROSS JOIN (SELECT @sum :=0) as dummy
            sumunenrolled+=k.Unenrolled
            sumstudents+=k.students
            sumstaff+=k.staff
-           date = datetime.strptime(str(k.tdate), "%Y-%m-%d").strftime("%d-%m-%Y") 
+           date = datetime.datetime.strptime(str(k.tdate), "%Y-%m-%d").strftime("%d-%m-%Y") 
            report.append([str(date),str(k.Enrolled),str(k.Unenrolled),str(k.Total),int(k.Id),str(k.students),str(k.staff)])
     args["report"]=report.reverse()
     args['institutename']=request.session['institutename']
@@ -211,10 +226,14 @@ CROSS JOIN (SELECT @sum :=0) as dummy
 def courseweeklyreport(request,courseid):
     args=iitbxsessiondata(request)
     report=[]
-    currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    #currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")\
+    args['refreshdate']=refreshdate=Lookup.updatedate()
+    date=str(refreshdate)
+    ddate= date.replace("'","")
+    redate=ddate.replace(",","")
     coursename =edxcourses.objects.get(courseid=courseid).coursename
     args['coursename']= coursename
-    report_name="Weekly Report of "+"_"+str(courseid)+" _ "+currenttime
+    report_name="Weekly Report of "+"_"+str(courseid)+" _ "+redate
     sumtotal= 0
     sumstudents= 0 
     sumenrolled= 0
@@ -250,7 +269,7 @@ CROSS JOIN (SELECT @sum :=0) as dummy
            sumunenrolled+=k.Unenrolled
            sumstudents+=k.students
            sumstaff+=k.staff
-           date = datetime.strptime(str(k.week), "%Y-%m-%d").strftime("%d-%m-%Y")
+           date = datetime.datetime.strptime(str(k.week), "%Y-%m-%d").strftime("%d-%m-%Y")
            report.append([str(date),str(k.Enrolled),str(k.Unenrolled),str(k.Total),int(k.Id),k.students,k.staff])
     args["report"]=report.reverse()
     args['institutename']=request.session['institutename']
@@ -271,7 +290,11 @@ def coursemonthlyreport(request,courseid):
     args['courseid']=courseid
     coursename =edxcourses.objects.get(courseid=courseid).coursename
     args['coursename']= coursename 
-    currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    #currenttime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    args['refreshdate']=refreshdate=Lookup.updatedate()
+    date=str(refreshdate)
+    ddate= date.replace("'","")
+    redate=ddate.replace(",","")
     sumtotal= 0
     sumstudents= 0
     sumenrolled= 0
@@ -279,7 +302,7 @@ def coursemonthlyreport(request,courseid):
     sumactive= 0
     sumstudents= 0
     sumstaff= 0
-    report_name="Monthly Report of "+"_"+str(courseid)+" _ "+currenttime
+    report_name="Monthly Report of "+"_"+str(courseid)+" _ "+redate
     
     sqlq='''SELECT "1" id,  @sum:=@sum+query.Total as Id, concat(month,"-",year) as month,Enrolled,Unenrolled,Total,students,staff
 FROM
@@ -371,9 +394,11 @@ from courseware_studentmodule;
     certificate=CertificatesGeneratedcertificate.objects.exclude(status="notpassing").count()
     TotalStats.append(certificate) 
 ######################################################blended##########################################################################
-    sqla='''SELECT " " id,course, count(*) "TotalLearners", sum(blended) "BlendedStudents",sum(others) "OtherLearners",count(Distinct personid_id) "numberofClasses" ,count(Distinct instituteid_id) "numberofInstitutes"
+    sqla='''SELECT  id,course,Total,Blended,Others,Classes,Institutes
+FROM
+(SELECT  id,course, count(*) "Total", sum(blended) "Blended",sum(others) "Others",count(Distinct personid_id)-1 "Classes" ,count(Distinct instituteid_id)-1 "Institutes" 
 FROM(
-select e.course,c.id,
+select e.id "id" ,e.course,c.id "a",
 if(c.personid_id!=1,1,0) blended,
 if(c.personid_id=1,1,0) others
 ,
@@ -382,26 +407,29 @@ from iitbxblended.SIP_edxcourses e ,iitbxblended.SIP_studentdetails s ,iitbxblen
 where e.blended_mode=1
 and e.courseid=s.courseid
 and s.teacherid_id=c.id
-) A group by course
-union all
-SELECT " " id,"Grand Total", count(*) "Total Learners", sum(blended) "Blended Students",sum(others) "Other Learners",count(Distinct personid_id) "# ofTeachers" ,count(Distinct instituteid_id) "# of Institutes"
-FROM(
-select e.course,c.id,
-if(c.personid_id!=1,1,0) blended,
-if(c.personid_id=1,1,0) others
-,
-c.personid_id,c.instituteid_id
-from iitbxblended.SIP_edxcourses e ,iitbxblended.SIP_studentdetails s ,iitbxblended.SIP_courselevelusers c
-where e.blended_mode=1
-and e.courseid=s.courseid
-and s.teacherid_id=c.id
+) A group by course 
+order by id desc
 ) A
+union all
+SELECT "-1" id,"Grand Total", count(*) "Total Learners", sum(blended) "Blended Students",sum(others) "Other Learners",count(Distinct personid_id)-1 "# ofTeachers" ,count(Distinct instituteid_id)-1 "# of Institutes"
+FROM(
+select e.course,c.id,
+if(c.personid_id!=1,1,0) blended,
+if(c.personid_id=1,1,0) others
+,
+c.personid_id,c.instituteid_id
+from iitbxblended.SIP_edxcourses e ,iitbxblended.SIP_studentdetails s ,iitbxblended.SIP_courselevelusers c
+where e.blended_mode=1
+and e.courseid=s.courseid
+and s.teacherid_id=c.id
+) B
 '''
 
     iitbxsummary=AuthUser.objects.raw(sqla)
     total=iitbxsummary[-1]
+    print total.course,total.Total,total.Blended,total.Others,total.Classes,total.Institutes
     for i in iitbxsummary:
-           iitbxdata.append([i.course,i.TotalLearners,i.BlendedStudents,i.OtherLearners,i.numberofClasses,i.numberofInstitutes])
+           iitbxdata.append([i.course,i.Total,i.Blended,i.Others,i.Classes,i.Institutes])
     iitbxdata.pop()
 ############################################################rural urban###################################################################
     sqld='''select "" id, a,b, round(a/c*100,2) "x" from   (SELECT count(*) a ,type b FROM iitbxblended.postalinfo a RIGHT OUTER JOIN edxapp.student_mooc_person b ON a.pincode=b.pincode and b.pincode is not null group by type) X cross join (SELECT count(*) c FROM iitbxblended.postalinfo a RIGHT OUTER JOIN edxapp.student_mooc_person b ON a.pincode=b.pincode ) Y  ;
@@ -456,46 +484,103 @@ and s.teacherid_id=c.id
 Graduates,
 PostGrads,
 Doctorates,
+Others,
 round(UnderGrad/Total*100,2) "UnderGradPer",
 round(Graduates/Total*100,2) "GraduatesPer",
 round(PostGrads/Total*100,2) "PostGradPer",
-round(Doctorates/Total*100,2) "DoctoratesPer" FROM (
-SELECT sum(if(level_of_education in ('el','hs','jhs','a'),1,0)) "UnderGrad",sum(if(level_of_education='b',1,0)) "Graduates" ,
+round(Doctorates/Total*100,2) "DoctoratesPer",
+round(Others/Total*100,2) "OthersPer" FROM (
+SELECT sum(if(level_of_education='hs',1,0)) "UnderGrad",
+sum(if(level_of_education in ('el','jhs','a'),1,0)) "Others",sum(if(level_of_education='b',1,0)) "Graduates" ,
 sum(if(level_of_education='m',1,0)) "PostGrads",
-sum(if(level_of_education='p',1,0)) "Doctorates" , sum(if(level_of_education in ('el','hs','jhs','a','b','m','p'),1,0)) Total FROM `auth_userprofile`) A
+sum(if(level_of_education='p',1,0)) "Doctorates" , sum(if(level_of_education in ('el','hs','jhs','a','b','m','p'),1,0)) Total from `auth_userprofile`) A
 '''
 
-    edu=[0]*8
+    edu=[0]*10
     educationsummary=AuthUser.objects.raw(sqlf)
     for l in educationsummary:
           edu[0]=l.UnderGrad
           edu[1]=l.Graduates
           edu[2]=l.PostGrads
           edu[3]=l.Doctorates
-          edu[4]=str(l.UnderGradPer)+"%"
-          edu[5]=str(l.GraduatesPer)+"%"
-          edu[6]=str(l.PostGradPer)+"%"
-          edu[7]=str(l.DoctoratesPer)+"%"
+          edu[4]=l.Others
+          edu[5]=str(l.UnderGradPer)+"%"
+          edu[6]=str(l.GraduatesPer)+"%"
+          edu[7]=str(l.PostGradPer)+"%"
+          edu[8]=str(l.DoctoratesPer)+"%"
+          edu[9]=str(l.OthersPer)+"%"
 
     
    
 ###############################################################Age#####################################################################
-    sqlr='''SELECT "" id,sum(if(age_group ="under 18",1,0)) "Under18",
+    sqlr='''select "" id,
+sum(if(age_group ="Under 18",1,0)) "Under18",
 sum(if(age_group ="18-25",1,0)) "Students",
-sum(if(age_group ="25-60",1,0)) "Working",
+sum(if(age_group ="25-40",1,0)) "Working1",
+sum(if(age_group ="40-50",1,0)) "Working2",
+sum(if(age_group ="50-60",1,0)) "Working3",
 sum(if(age_group ="above 60",1,0)) "Seniors"
 from
-(SELECT if( year_of_birth <1955, "above 60", if( year_of_birth <1990, "25-60", if( year_of_birth <1997, "18-25", if( year_of_birth <2015, "under 18", "ND" ) ) ) ) "age_group"
-FROM edxapp.auth_userprofile )X
+(
+SELECT if( year_of_birth <1956, "above 60", if( year_of_birth <1966, "50-60",
+ if( year_of_birth <1976, "40-50", 
+     if( year_of_birth <1991, "25-40", 
+         if(year_of_birth <1998,"18-25",
+            if(year_of_birth<1991,"Under 18","ND" )
+          )
+        ) 
+      )
+     ) 
+  ) "age_group"
+FROM edxapp.auth_userprofile
+) X;
+
 '''
     agegrp=AuthUser.objects.raw(sqlr)
     for m in agegrp:
-        agesumm=[m.Under18,m.Students,m.Working,m.Seniors]
-        tot=m.Under18+m.Students+m.Working+ m.Seniors
-        agesumm=agesumm+[str(round(m.Under18/tot*100,2))+"%",str(round(m.Students/tot*100,2))+"%",str(round(m.Working/tot*100,2))+"%",str(round(m.Seniors/tot*100,2))+"%"]
+        agesumm=[m.Under18,m.Students,m.Working1,m.Working2,m.Working3,m.Seniors]
+        tot=m.Under18+m.Students+m.Working1+m.Working2+m.Working3+ m.Seniors
+        agesumm=agesumm+[str(round(m.Under18/tot*100,2))+"%",str(round(m.Students/tot*100,2))+"%",str(round(m.Working1/tot*100,2))+"%",str(round(m.Working2/tot*100,2))+"%",str(round(m.Working3/tot*100,2))+"%",str(round(m.Seniors/tot*100,2))+"%"]
+
+
+    semtotal=[]
+    sqlquery='''select  "1" id, "Coursenumber", "CourseName", "Spring201415", "Autumn201516","Spring201516" union all select "1" id, "CS101" as "Coursenumber","Introduction to Programming" as "CourseName",sum( if(b.course='CS101.1x',1,0)) "Spring201415",
+ sum( if(b.course='CS101.1xA15',1,0)) "Autumn201516", sum(if(b.course='CS101.1xS16',1,0)) "Spring201516" from edxapp.student_courseenrollment a ,iitbxblended.SIP_edxcourses b WHERE b.courseid=a.course_id union all select "1" id, "ME209","Thermodynamics",sum(if(b.course='ME209x',1,0)) "Spring201415", sum(if(b.course='ME209xA15',1,0)) "Autumn201516", sum(if(b.course='ME209xS16',1,0)) "Spring201516" from edxapp.student_courseenrollment a,iitbxblended.SIP_edxcourses b WHERE b.courseid=a.course_id union all select "1" id, "EE210","Signals and Systems",sum( if(b.course='EE210.1x' or course_id='EE210.2x',1,0)) "Spring201415",  sum( if(b.course='EE210.1xA15',1,0)) "Autumn201516",sum( if(b.course='EE210xS16',1,0)) "Spring201516" from
+edxapp.student_courseenrollment a ,iitbxblended.SIP_edxcourses b WHERE b.courseid=a.course_id'''
+    
+    queryobj=AuthUser.objects.raw(sqlquery)
+    count=0
+    totalSpring201415=0
+    totalAutumn201516=0
+    totalSpring201516=0
+    totalcoursetotal=0
+    for i in queryobj:
+       coursetotal=0
+       count=count+1
+       if count >1:
+          coursetotal=int(i.Spring201415)+int(i.Autumn201516)+int(i.Spring201516)
+          semtotal.append([i.Coursenumber,i.CourseName,i.Spring201415,i.Autumn201516,i.Spring201516,coursetotal])
+          totalSpring201415=totalSpring201415+int(i.Spring201415)
+          totalAutumn201516=totalAutumn201516+int(i.Autumn201516)
+          totalSpring201516=totalSpring201516+int(i.Spring201516)
+          totalcoursetotal=totalcoursetotal+coursetotal
+          print i.Coursenumber,i.CourseName,i.Spring201415,i.Autumn201516,i.Spring201516 
+       else:
+          print i.Coursenumber,i.CourseName,i.Spring201415,i.Autumn201516,i.Spring201516
+    semtotal.append(["Total","",totalSpring201415,totalAutumn201516,totalSpring201516,totalcoursetotal]) 
+
+
+    sqlquery1='''SELECT count(*) "totalcount","1" id FROM `student_courseenrollment` a, iitbxblended.SIP_edxcourses b where a.course_id=b.courseid
+and is_active=1 and courseend< current_date()'''
+    
+    queryobj1=AuthUser.objects.raw(sqlquery1)
+    for i in queryobj1:
+        enrolltotal= i.totalcount
+    args['semtotal']=semtotal
     args['firstname']=request.session['firstname']
     args['lastname']=request.session['lastname']        
     args['TotalStats']=TotalStats
+    args['enrolltotal']=enrolltotal
     args['iitbxdata']=iitbxdata
     args['mcount']=mcount
     args['edu']=edu
@@ -514,16 +599,29 @@ def activityrep(request):
     args={}
     total=[]
     count=0
+    args =iitbxsessiondata(request)
+    
+    tooltip=AuthUser.objects.raw('''SELECT " " id ,DATE_FORMAT(lastday,"%%b-%%y") mname,CONCAT(DATE_FORMAT( MAKEDATE(YEAR(lastday), 1) + INTERVAL QUARTER(lastday) QUARTER  - INTERVAL    1 QUARTER,"%%b")  ," to ",
+  DATE_FORMAT(MAKEDATE(YEAR(lastday), 1) + INTERVAL QUARTER(lastday) QUARTER - INTERVAL 1 DAY ,"%%b-%%y")) "quartername",DATE_ADD(DATE_FORMAT(lastday,"%%Y-%%m-%%d"),interval -7 day ) week,year(lastday) currentyear from
+(SELECT  PERIOD_DIFF(EXTRACT(YEAR_MONTH FROM max(modified) ),
+EXTRACT(YEAR_MONTH FROM date_format('2015-01-26', "%%Y%%m%%d"))) AS months, date(max(modified)) "maxdate" ,DATE(date_add(max(modified),INTERVAL -1 day)) "lastday"
+from courseware_studentmodule ) d''')
+    for j in tooltip:
+        args['mname']=j.mname
+        args['quartername']=j.quartername
+        args['currentyear']=j.currentyear
+        args['week']=j.week
+    
     actsumm=gen_repout.objects.filter(reportid=1).order_by('id')
     for i in actsumm:
         if(count!=0):
-           total.append([i.A,i.B,i.C,i.D,i.E])
+           total.append([i.A,i.B,i.C,i.D,i.E,i.F,i.G])
         else:
-           total.append(["",i.B,i.C,i.D,i.E])
+           total.append(["",i.B,i.C,i.D,i.E,i.F,i.G])
            header=i.A 
            header_data=map(str,header.split(","))
         count=count+1
-
+    
     args['header_data']=header_data
     args['total']=total
     args['firstname']=request.session['firstname']
@@ -532,13 +630,17 @@ def activityrep(request):
     args['institutename']=request.session['institutename']
     args['rcid']= request.session['rcid']
     args['rolename']="Super User"
+    args['refreshdate']=refreshdate=Lookup.updatedate()
+    prev = datetime.datetime.strptime(refreshdate,"%b %d, '%y %I:%M %p")-datetime.timedelta(1)
+    prevday=prev.date()
+    args['prevday']=prevday  
     return render_to_response('managerapp/iitbxactivity.html',args)
 
 
 #######################################################student Demography#################################################################
 
 def studntdemography(request,courseid):
-    args={}
+    args=iitbxsessiondata(request)
     args['courseid']=courseid
     email=request.user
     TotalStats=[]
@@ -611,44 +713,64 @@ and gender is not null and gender in ('m','f') ) B''',[courseid,courseid])
               male[1]=str(k.per)+"%"
     mcount=[female[0],male[0],female[1],male[1]]
 ###############################################################Education###############################################################
-    edu=[0]*8
+    edu=[0]*10
     educationsummary=AuthUser.objects.raw('''SELECT "" id,UnderGrad,
 Graduates,
 PostGrads,
 Doctorates,
+Others,
 round(UnderGrad/Total*100,2) "UnderGradPer",
 round(Graduates/Total*100,2) "GraduatesPer",
 round(PostGrads/Total*100,2) "PostGradPer",
-round(Doctorates/Total*100,2) "DoctoratesPer" FROM (
-SELECT sum(if(level_of_education in ('el','hs','jhs','a'),1,0)) "UnderGrad",sum(if(level_of_education='b',1,0)) "Graduates" ,
+round(Doctorates/Total*100,2) "DoctoratesPer",
+round(Others/Total*100,2) "OthersPer" FROM (
+SELECT sum(if(level_of_education='hs',1,0)) "UnderGrad",
+sum(if(level_of_education in ('el','jhs','a'),1,0)) "Others",sum(if(level_of_education='b',1,0)) "Graduates" ,
 sum(if(level_of_education='m',1,0)) "PostGrads",
-sum(if(level_of_education='p',1,0)) "Doctorates" , sum(if(level_of_education in ('el','hs','jhs','a','b','m','p'),1,0)) Total FROM `auth_userprofile`   A,student_courseenrollment B where B.course_id =%s and A.user_id=B.user_id) P
-''',[courseid])
+sum(if(level_of_education='p',1,0)) "Doctorates" , sum(if(level_of_education in ('el','hs','jhs','a','b','m','p'),1,0)) Total FROM `auth_userprofile`   A,student_courseenrollment B 
+where B.course_id =%s and A.user_id=B.user_id) P''',[courseid])
 
     for l in educationsummary:
           edu[0]=l.UnderGrad
           edu[1]=l.Graduates
           edu[2]=l.PostGrads
           edu[3]=l.Doctorates
-          edu[4]=str(l.UnderGradPer)+"%"
-          edu[5]=str(l.GraduatesPer)+"%"
-          edu[6]=str(l.PostGradPer)+"%"
-          edu[7]=str(l.DoctoratesPer)+"%"
+          edu[4]=l.Others 
+          edu[5]=str(l.UnderGradPer)+"%"
+          edu[6]=str(l.GraduatesPer)+"%"
+          edu[7]=str(l.PostGradPer)+"%"
+          edu[8]=str(l.DoctoratesPer)+"%"
+          edu[9]=str(l.OthersPer)+"%"
 
     
    
 ###############################################################Age#####################################################################
-    agegrp=AuthUser.objects.raw('''SELECT "" id,sum(if(age_group ="under 18",1,0)) "Under18",
+    agegrp=AuthUser.objects.raw('''select "" id,
+sum(if(age_group ="Under 18",1,0)) "Under18",
 sum(if(age_group ="18-25",1,0)) "Students",
-sum(if(age_group ="25-60",1,0)) "Working",
+sum(if(age_group ="25-40",1,0)) "Working1",
+sum(if(age_group ="40-50",1,0)) "Working2",
+sum(if(age_group ="50-60",1,0)) "Working3",
 sum(if(age_group ="above 60",1,0)) "Seniors"
 from
-(SELECT if( year_of_birth <1955, "above 60", if( year_of_birth <1990, "25-60", if( year_of_birth <1997, "18-25", if( year_of_birth <2015, "under 18", "ND" ) ) ) ) "age_group"
-FROM edxapp.auth_userprofile X,student_courseenrollment B where B.course_id =%s and X.user_id=B.user_id) P''',[courseid])
+(
+SELECT if( year_of_birth <1956, "above 60", if( year_of_birth <1966, "50-60",
+ if( year_of_birth <1976, "40-50", 
+     if( year_of_birth <1991, "25-40", 
+         if(year_of_birth <1998,"18-25",
+            if(year_of_birth<1991,"Under 18","ND" )
+          )
+        ) 
+      )
+     ) 
+  ) "age_group"
+FROM auth_userprofile X ,student_courseenrollment B 
+where B.course_id =%s and X.user_id=B.user_id
+) P''',[courseid])
     for m in agegrp:
-        agesumm=[m.Under18,m.Students,m.Working,m.Seniors]
-        tot=m.Under18+m.Students+m.Working+ m.Seniors
-        agesumm=agesumm+[str(round(m.Under18/tot*100,2))+"%",str(round(m.Students/tot*100,2))+"%",str(round(m.Working/tot*100,2))+"%",str(round(m.Seniors/tot*100,2))+"%"]
+        agesumm=[m.Under18,m.Students,m.Working1,m.Working2,m.Working3,m.Seniors]
+        tot=m.Under18+m.Students+m.Working1+m.Working2+m.Working3+ m.Seniors
+        agesumm=agesumm+[str(round(m.Under18/tot*100,2))+"%",str(round(m.Students/tot*100,2))+"%",str(round(m.Working1/tot*100,2))+"%",str(round(m.Working2/tot*100,2))+"%", str(round(m.Working3/tot*100,2))+"%", str(round(m.Seniors/tot*100,2))+"%"]
 
     args['coursedisplayname']=edxcourse_name.coursename
     args['firstname']=request.session['firstname']
@@ -815,5 +937,56 @@ def genevaluationoption(request,courseid,pid,evalflag):
     
     args['evaluation']=evaluation_obj
     return render(request,"managerapp/genevaluationoption.html",args)
+
+
+################### Activity Dat and Date wise ##########################################
+
+def activity_day_wise(request,courseid):
+    activity_day=[];days=[];student_pass=[];student_fail=[];student_others=[]
+    args={}
+    args =iitbxsessiondata(request)
+    courseobj = edxcourses.objects.get(courseid = courseid)
+    student_data=CoursewareStudentmodule.objects.raw(''' SELECT "1" id,num_days,count(student_id) student_count,count(distinct Pass) "Pass", count(Distinct Fail) "Not_Pass" FROM (SELECT "1" id, student_id,count(distinct wedate) "num_days" ,if(c.status='downloadable',student_id,NULL) "Pass",if(c.status!='downloadable',student_id,NULL) "Fail" FROM  (SELECT student_id, DATE(IFNULL(b.created,a.modified)) wedate from  `courseware_studentmodule`a  LEFT OUTER JOIN courseware_studentmodulehistory b  ON  b.student_module_id=a.id  where  a.course_id= %s and IFNULL(b.created,a.modified) between %s and %s ORDER BY `wedate` DESC) A  LEFT OUTER JOIN  `certificates_generatedcertificate` c ON  c.user_id =A.student_id and c.course_id= %s group by student_id ) X group by num_days order by num_days DESC ''',[courseid,courseobj.coursestart,courseobj.courseend,courseid])
+    for data in student_data:
+        activity_day.append([data.num_days,data.student_count,data.Pass,data.Not_Pass])
+        days.append(int(data.num_days))
+        student_pass.append(int(data.Pass))
+        student_fail.append(int(data.Not_Pass))
+        student_others.append(int(data.student_count)-int(data.Pass)-int(data.Not_Pass))
+    days.reverse();student_pass.reverse();student_fail.reverse();student_others.reverse()
+    args['categories']=days   
+    args['student_pass']=student_pass
+    args['student_fail']=student_fail
+    args['student_others']=student_others
+    args['activity_day']=activity_day
+    args['courseid']=courseid
+    args['coursedisplayname']=courseobj.coursename
+    args['coursestart']=courseobj.coursestart.date()
+    args['courseend']=courseobj.courseend.date()
+    return render(request,"managerapp/activity_day.html",args)
+
+def activity_date_wise(request,courseid):
+    activity_date=[];dates=[];student_pass=[];student_fail=[];student_others=[]
+    args={}
+    args =iitbxsessiondata(request)
+    courseobj = edxcourses.objects.get(courseid = courseid)
+    student_data=CoursewareStudentmodule.objects.raw(''' SELECT "1" id, wedate,count(distinct student_id) student_count, count(distinct if(status = 'downloadable',student_id,-1))-1 "Pass",count(distinct if(status = 'notpassing',student_id,-1))-1 "Fail" FROM (
+SELECT "1" id, student_id,wedate ,c.status FROM  (SELECT  student_id, DATE(IFNULL(b.created,a.modified)) wedate from  `courseware_studentmodule`a  LEFT OUTER JOIN courseware_studentmodulehistory b  ON  b.student_module_id=a.id  where  a.course_id= %s and IFNULL(b.created,a.modified) between %s and %s ORDER BY `wedate` DESC) A  LEFT OUTER JOIN  `certificates_generatedcertificate` c ON  c.user_id =A.student_id and c.course_id= %s ) X group by wedate''',[courseid,courseobj.coursestart,courseobj.courseend,courseid])
+    for data in student_data:
+        activity_date.append([data.wedate,data.student_count,data.Pass,data.Fail])
+        dates.append(str(data.wedate))
+        student_pass.append(int(data.Pass))
+        student_fail.append(int(data.Fail))
+        student_others.append(int(data.student_count)-int(data.Pass)-int(data.Fail))
+    args['categories']=dates
+    args['student_passed']=student_pass
+    args['student_failed']=student_fail
+    args['student_others']=student_others
+    args['activity_date']=activity_date
+    args['courseid']=courseid
+    args['coursedisplayname']=courseobj.coursename
+    args['coursestart']=courseobj.coursestart.date()
+    args['courseend']=courseobj.courseend.date()
+    return render(request,"managerapp/activity_date.html",args)
 
 

@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<header><h2>IITBombayX Courses List</h2></header>
+<header><h2>List of Courses</h2></header>
 
 
 {% endblock %}
@@ -47,7 +47,9 @@
 </head>
 {% block body_block %}
 
+{% if list_of_courses %}
 
+<h2 style="text-transform: capitalize" >Current Courses</h2>
 <table  border="1" cellspacing="5" cellpadding="5" style="width:100%" align="center" >
 
 <tr>
@@ -66,5 +68,27 @@
 </tr>  
 {% endfor %}
 </table>
+{% endif%}
+{% if list_of_oldcourses %}
+<h2 style="text-transform: capitalize">Inactive & Non-Blended Courses</h2>
+<table  border="1" cellspacing="5" cellpadding="5" style="width:100%" align="center" >
+
+<tr>
+<th>Course</th><th>Name</th><th>Start Date</th><th>End Date</th>
+</tr>
+
+{% for courses in list_of_oldcourses %}
+<tr>
+  {%  for course in courses %}
+    {% if forloop.counter == 1%}
+      <td><a href="/instructor_course_oldreport/{{course}}">{{course}}</a></td>
+    {% else %}
+      <td>{{course}}</td>
+    {% endif %}
+  {% endfor %}
+</tr>  
+{% endfor %}
+</table>
+{% endif%}
 {% endblock %}
 

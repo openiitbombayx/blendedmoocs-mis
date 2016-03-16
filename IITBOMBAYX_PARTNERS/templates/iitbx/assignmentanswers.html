@@ -1,0 +1,305 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Assignment Status Summary</font></h2></header>
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{selectedinstitute}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+	
+	<div class ="col-md-10">
+	<h4><b>Course Id:</b> {{course}} ({{coursename}})</h4>
+
+	</div>
+        <div class ="col-md-8">
+	<h4><b>Assignment:</b> {{sectionname}} </h4>
+
+	</div>
+           <div class ="col-md-8">
+	<h4><b>Problem:</b> {{problem}} </h4>
+
+	</div>
+
+</div>
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+
+<head>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+<script type='text/javascript'>
+ 
+
+$(document).ready(function () {
+
+function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)').filter(':visible'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+// This must be a hyperlink
+
+   $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData>table'), '{{report_name}}.csv']);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+$(document).ready(function(){
+ $("#mtable2").hide();
+$('#dvdnormal').hide();
+$('#clickper').on('click', function() { 
+                          $('#per').hide();
+                          $('#mtable1').hide();
+                          $('#mtable2').show();       
+                          $('#dvdnormal').show();  
+                         
+                       });
+
+$('#click15').on('click', function() { 
+                          $('#dvdnormal').hide();
+                          $('#mtable1').show();
+                          $('#mtable2').hide();       
+                          $('#per').show();  
+                          
+                       });
+})
+
+
+
+</script>
+</head>
+<style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+
+<br>
+ <div class="row" id="per">
+ <div class="col-md-4"> <a href="#"  id="clickper" >Percentage View </a> </div>
+
+</div>
+<div class="row" id="dvdnormal">
+<div   class="col-md-4"><a href="#"  id="click15" >Normal View  </a></div>
+</div>
+
+<br>
+<div class="row">
+<div class="col-md-8"><a href="#" class="export" >Download CSV</a></div>
+<div class="row" class="col-md-4">
+<a href="javascript: window.history.go(-1)">Select another problem</a></div>
+</div>
+<br>
+
+<div class="table-responsive">
+<div id="dvData">
+<table cellspacing="5" cellpadding="5" "width:60%" align="center" class="table table-hover">
+<tr>
+{% for title in heading %}
+<th>{{title}}
+</th>
+{% endfor %}
+</tr>
+{% for row in reports %}
+<tr>
+{% for col in row  %}
+<td>{{col}}</td>
+{% endfor %}
+</tr>
+
+{% endfor %}
+</table>
+  
+    {% if test > 0 %}
+<table id="mtable1" class ="table" width="30%" border=0 >
+
+      <tr>  
+      <td align="center"><b>Part</b></td> 
+      <td align="center"><b>Option<br>Type <b> </td> 
+      <td align="center"> <b>A</b></td>
+      <td align="center"> <b>B</b> </td>
+      <td align="center"> <b>C</b>  </td>
+      <td align="center"> <b>D </b> </td>
+      {% if flag == 1 %}
+      <td align="center"> <b>E</b> </td>
+      {% endif %}
+      </tr>
+
+      {% for m in report %}  
+        
+     <tr> 
+       
+        {% if  m.1|length > 0  %}
+          {% if  -1 in m.1 %}
+          {% else %}
+               
+         <td align="center">Part{{forloop.counter}}</td>
+            {% if m.2 == 'MO' %} 
+         <td align="center"> <a href="/iitbx/assignmentmultipleoptions/{{courseid}}/{{pid}}/{{aid}}/{{forloop.counter}}/"> {{m.2}} </a></td>
+            {% else %}
+         <td align="center"> {{m.2}} </td>
+            {% endif %}
+         {% endif %}    
+          {% endif %} 
+
+      {% for i in m.0 %}
+           
+      {% if i in m.1 %}
+      {% if forloop.counter == 5 and flag == 0 %}
+        {% else %}   
+      <td align="center"> <b><font size="3" color="green">{{i}}</font></b></td>
+          {% endif %}
+  {% elif -1 in m.1 or  not m.1 %}
+     
+  {% else %}
+    {% if forloop.counter == 5 and flag == 0 %}
+        {% else %} 
+   <td align="center">{{i}}</td>
+    {% endif %}
+  {% endif %}  
+      
+      {% endfor %}
+        
+         </tr>
+       
+      {% endfor %}
+     
+</table>
+ {% else %}
+<table  class ="table" width="30%" border=1 >
+ <tr>   
+ <td align="center">Only for MCQ and MO . 
+ </td>
+  </tr>
+ </table>
+ {% endif %}
+ 
+ 
+ {% if test > 0 %}
+<table id="mtable2" class ="table" width="30%" border=0 >
+
+      <tr>  
+      <td align="center"><b>Part</b></td> 
+      <td align="center"><b>Option<br>Type <b> </td> 
+      <td align="center"> <b>A</b></td>
+      <td align="center"> <b>B</b> </td>
+      <td align="center"> <b>C</b>  </td>
+      <td align="center"> <b>D </b> </td>
+      {% if flag1 == 1 %}
+      <td align="center"> <b>E</b> </td>
+      {% endif %}
+      </tr>
+
+      {% for m in report2 %}  
+        
+     <tr> 
+       
+        {% if  m.1|length > 0  %}
+          {% if  -1 in m.1 %}
+          {% else %}
+         
+         <td align="center">Part{{forloop.counter}}</td>
+         {% if m.2 == 'MO' %} 
+         <td align="center"> <a href="/iitbx/assignmentmultipleoptions/{{courseid}}/{{pid}}/{{aid}}/{{forloop.counter}}/"> {{m.2}} </a></td>
+            {% else %}
+         <td align="center"> {{m.2}} </td>
+            {% endif %}
+         {% endif %}    
+          {% endif %} 
+
+      {% for i in m.0 %}
+           
+      {% if i in m.1 %}
+      {% if forloop.counter == 5 and flag1 == 0 %}
+        {% else %}   
+      <td align="center"> <b><font size="3" color="green">{{i}}</font></b></td>
+          {% endif %}
+  {% elif -1 in m.1 or  not m.1 %}
+     
+  {% else %}
+    {% if forloop.counter == 5 and flag1 == 0 %}
+        {% else %} 
+   <td align="center">{{i}}</td>
+    {% endif %}
+  {% endif %}  
+      
+      {% endfor %}
+        
+         </tr>
+       
+      {% endfor %}
+     
+</table>
+ {% else %}
+
+ {% endif %}
+ 
+
+
+
+
+
+</div>
+
+</div>
+<br>
+<br>
+<div align="left"><b>Note:</b> For Question Types MCQ and MO only <br> MCQ = Multiple Choice Question <br> MO = Multiple Options(More than one answer is correct.)  </div>
+{% endautoescape %}
+
+{% endblock %}

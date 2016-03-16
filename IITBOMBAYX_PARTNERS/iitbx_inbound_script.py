@@ -1,6 +1,13 @@
+'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
+Copyright (C) 2015  BMWinfo 
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
+
 #!/usr/bin/env python
+
 from iitbx_settings import *
-global question_types
 question_types=["<choiceresponse>","<optionresponse>","<multiplechoiceresponse>","<numericalresponse ","<stringresponse ","<drag_and_drop_input","<imageresponse","<formularesponse","<customresponse","<jsmeresponse>","<schematicresponse>"]
 def init():
 
@@ -23,11 +30,12 @@ def mongo_openconnection():
      collection = db.modulestore
      return collection
 
+@transaction.atomic
 def delete_grade_information(cid):
        gradepolicy.objects.filter(courseid=cid).delete()
        gradescriteria.objects.filter(courseid=cid).delete()
 
-#@transaction.atomic
+@transaction.atomic
 
 def get_course_detail(csr):
      collection=mongo_openconnection()
@@ -69,7 +77,7 @@ def get_course_detail(csr):
            except:
                    course_enroll_start= course_end + timedelta(days=-1)      
 
-           ahead_date=course_end+ timedelta(days=30)
+           ahead_date=course_end+ timedelta(days=num_days)
            delta= ahead_date-course_end
            if  ( ahead_date-curtime ).days > 0:
                 try:
@@ -101,7 +109,7 @@ def get_course_detail(csr):
                       try:
                          delete_grade_information(course_id)
                          if (get_grade_policy_criteria(course_obj) == -1) :
-                            return -1
+                             print "Issue in getting grade policy and criteria"
                       except Exception as e:
                           print "Error %s,(%s) - Update on %s. Contact Software team."%(e.message,str(type(e)),course_id)
                           return "-1"
@@ -110,17 +118,17 @@ def get_course_detail(csr):
                     
                     course_obj.save()
                     if( get_grade_policy_criteria(course_obj) == -1):
-                          return "-1"
+                        print "Issue in getting grade policy and criteria"
                 if blended == "1":
                    try:       
                        if (insert_admin_courseleveluser(course_id) == -1):
-                          return "-1"     
+                          print "Issue in inserting admin courseleveluser"
                    except Exception as e:
                        print "Error %s,(%s) insert of course level users on %s. Contact Software team."%(e.message,str(type(e)),course_id)
                        return "-1"
      return course_id
 
-#@transaction.atomic
+@transaction.atomic
 def get_grade_policy_criteria(course_obj):
   
   collection=mongo_openconnection()
@@ -145,9 +153,10 @@ def get_grade_policy_criteria(course_obj):
 
      return 0
   except Exception as e:
-     print "Error %s - Fetching grade criteria and Policy from mongodb for course "%(e.message,course_obj.courseid)
+     print "Error %s - Fetching grade criteria and Policy from mongodb for course %s "%(e.message,course_obj.courseid)
      return -1
 
+@transaction.atomic
 def insert_admin_courseleveluser(courseid):
     
     try:
@@ -166,6 +175,7 @@ def insert_admin_courseleveluser(courseid):
          pass # No modification required for courselevelusers
       else:   #insert default teacher with personid=1 and instituteid=0 in courselevelusers table
         person_obj=Personinformation.objects.get(id=1)
+        print instituteid, person_obj.email
         course_level_obj=Courselevelusers(personid=person_obj,instituteid=instituteid,courseid=course_obj,roleid=5,startdate="2005-01-01",enddate="4712-12-31")
         course_level_obj.save()
         return 0
@@ -176,7 +186,7 @@ def insert_admin_courseleveluser(courseid):
 
 
 
-#@transaction.atomic
+@transaction.atomic
 def get_student_course_enrollment(course):
     try:
         edx_course_obj=edxcourses.objects.get(courseid=course)
@@ -257,6 +267,7 @@ def get_student_course_enrollment(course):
           continue 
     return [insertuser,insertstudent,updatestudent,erroruser,errorstudent,errorupdate]  
 
+@transaction.atomic
 def fetch_evaluations(course_id):
      collection=mongo_openconnection()
      inserted_vertical_count=0
@@ -283,15 +294,18 @@ def fetch_evaluations(course_id):
             grade_weight=grade_type.weight/(grade_type.min_count -grade_type.drop_count)     
          except:
             grade_weight=grade_type.weight
-         for sequential in collection.find({"_id.category":"sequential", "_id.course":course, "metadata.graded":True, "metadata.format":grade_type.type}, {"metadata.display_name":1, "metadata.format":1,  "metadata.start.getDate()":1,  "metadata.due.getDate()":1, "definition.children":1,"_id.name":1}):
+         for sequential in collection.find({"_id.category":"sequential", "_id.course":course, "metadata.graded":True, "metadata.format":grade_type.type}, {"metadata.display_name":1, "metadata.format":1,  "metadata.start":1,  "metadata.due":1, "definition.children":1,"_id.name":1}):
                         sequential_id=sequential["_id"]["name"]    #sectionid
                         seq_name=sequential["metadata"]["display_name"].encode('utf-8')    #sec_name
                         try:
                           
+                                                    
                           due_date=datetime(*map(int, re.split('[^\d]', sequential["metadata"]["due"])[:-1]))
+                          
                           
                         except:
                           due_date=runtime
+
                        
                         try:
                           
@@ -311,7 +325,7 @@ def fetch_evaluations(course_id):
                                     vertical_name= vdetails["metadata"]["display_name"] 
                                     
                                     try:
-                                         evaluations_obj=evaluations.objects.get(subsec_id=vertical_id)
+                                         evaluations_obj=evaluations.objects.get(subsec_id=vertical_id,course=edx_course_obj)
                                          evaluations_obj.sec_name=seq_name
                                          evaluations_obj.release_date=release_date
                                          evaluations_obj.due_date=due_date=due_date
@@ -345,7 +359,7 @@ def fetch_evaluations(course_id):
      del_list=update_deleted_evaluations(edx_course_obj)
      return [inserted_vertical_count,inserted_problem_count,updated_problem_count,error_vertical_count,error_problem_count,    error_updated_count,del_list[1],del_list[0]] 
 
-
+@transaction.atomic
 def fetch_gen_evaluations(course_id):
      collection=mongo_openconnection()
      inserted_vertical_count=0
@@ -402,7 +416,7 @@ def fetch_gen_evaluations(course_id):
                                     vertical_name= vdetails["metadata"]["display_name"].encode('utf-8')
                                     
                                     try:
-                                         evaluations_obj=gen_evaluations.objects.get(subsec_id=vertical_id)
+                                         evaluations_obj=gen_evaluations.objects.get(subsec_id=vertical_id,course=edx_course_obj)
                                          evaluations_obj.sec_name=str(seq_name)
                                          evaluations_obj.release_date=release_date
                                          evaluations_obj.due_date=due_date=due_date
@@ -438,7 +452,7 @@ def fetch_gen_evaluations(course_id):
      return [inserted_vertical_count,inserted_problem_count,updated_problem_count,error_vertical_count,error_problem_count,    error_updated_count,del_list[1],del_list[0]] 
 
 
-   
+@transaction.atomic   
 def update_deleted_evaluations(edx_course_obj):
     del_ques =0
     del_eval =0
@@ -498,7 +512,7 @@ def update_deleted_evaluations(edx_course_obj):
 
 
 
-
+@transaction.atomic
 def update_deleted_gen_evaluations(edx_course_obj):
     del_ques =0
     del_eval =0
@@ -554,7 +568,7 @@ def update_deleted_gen_evaluations(edx_course_obj):
            del_eval=del_eval+1
     return [del_ques,del_eval]
 
-
+@transaction.atomic
 def fetch_questions(vertical_id,course,course_id,edx_course_obj,gtype,problist,evaluations):
      inserted_problem_count =0
      updated_problem_count =0 
@@ -620,6 +634,7 @@ def fetch_questions(vertical_id,course,course_id,edx_course_obj,gtype,problist,e
  
      return [inserted_problem_count,updated_problem_count,error_problem_count,error_updated_count,weight]
 
+@transaction.atomic
 def fetch_gen_questions(vertical_id,course,course_id,edx_course_obj,gtype,problist,evaluations):
      inserted_problem_count =0
      updated_problem_count =0 
@@ -656,10 +671,8 @@ def fetch_gen_questions(vertical_id,course,course_id,edx_course_obj,gtype,probli
                                 weight=problemdet["metadata"]["weight"]
                                 
                             except Exception as e:
-                                global question_types
                                 for type in question_types:
                                     weight+=definition_data.count(type)
-                            global question_types
                             count=0
                             for type in question_types:
                                     count+=definition_data.count(type)
@@ -688,10 +701,7 @@ def fetch_gen_questions(vertical_id,course,course_id,edx_course_obj,gtype,probli
  
      return [inserted_problem_count,updated_problem_count,error_problem_count,error_updated_count,weight]
 
-
-
-
-
+@transaction.atomic
 
 def get_student_grades(course_id):
     insert_count=0
@@ -722,7 +732,7 @@ r.maxgrade = b.max_grade WHERE b.module_id = a.qid AND b.course_id='%s' AND b.gr
     
     return [insert_count,update_count]
 
-
+@transaction.atomic
 def evaldata(course_id):
      
      runtime = datetime.now()
@@ -809,7 +819,7 @@ def evaldata(course_id):
 
 
 
-
+@transaction.atomic
 def gen_evaldata(course_id):
      
      runtime = datetime.now()
@@ -975,7 +985,8 @@ def print_student_grade_status(result,outlist):
     if (outlist[0]!= -1):
        print "Total inserted student marks records are",outlist[0]
        print "Total updated student marks records are",outlist[1]      
-     
+
+@transaction.atomic    
 def insert_modlist(disnm,motype,moid,rel_id):
     try:
        mod_obj = course_modlist.objects.get(module_id=moid)
@@ -991,7 +1002,7 @@ def insert_modlist(disnm,motype,moid,rel_id):
        coursemod.save()
        return coursemod.id
  
-
+@transaction.atomic
 def deleted_module(module):
     try:
           module_detail=collection.find({"_id.name":module.module_id})
@@ -1009,7 +1020,8 @@ def deleted_module(module):
           return 0
     except:
       return 0
-    
+
+@transaction.atomic    
 def update_deleted_modules():
     modules_deleted =0
     modules_list=course_modlist.objects.exclude(module_type__in=["course","chapter","sequential","vertical"])
@@ -1033,7 +1045,7 @@ def update_deleted_modules():
            modules_deleted +=deleted_module(course)
     print "Number of modules deleted=",modules_deleted
 
-    
+@transaction.atomic   
 def course_modules(csr):
     for csr_name in collection.find({"_id.course":csr,"_id.category":"course"} ,{"metadata.display_name":1, "metadata.visible_to_staff_only":1}):
         try:
@@ -1099,7 +1111,7 @@ def course_modules(csr):
 
 
 ####### start of get_grades_report() #########
-
+@transaction.atomic
 def get_grades_report(course_id):
  print course_id
  try:
@@ -1109,7 +1121,8 @@ def get_grades_report(course_id):
       return [-1,-1]
  count=0
  sections=[];update_gradestable=0;insert_gradestable=0;dropcount_dict={};gradetype_weight={}
- heading=["RollNumber","Username","Email Id","Grade <br>100%"]
+ heading=["RollNumber","Username","Email Id","Progress <br>in %"]
+ tooltip=[]
  try:  
    grades_obj=gradepolicy.objects.filter(courseid=courseobj).order_by('id')
    for gradetype in grades_obj:
@@ -1117,7 +1130,7 @@ def get_grades_report(course_id):
 
       dropcount_dict[gradetype.type]=gradetype.min_count-gradetype.drop_count
       gradetype_weight[gradetype.type]=gradetype.weight
-      evaluation_objs=evaluations.objects.filter(course_id=courseobj.id,type=gradetype.type).values('sectionid','grade_weight','total_marks','type').distinct().order_by("type","due_date")
+      evaluation_objs=evaluations.objects.filter(course_id=courseobj.id,type=gradetype.type).values('sectionid','grade_weight','total_marks','type','sec_name').distinct().order_by("type","due_date")
       for evaluation_obj in evaluation_objs:
        
         count=count+1
@@ -1132,7 +1145,11 @@ def get_grades_report(course_id):
         sections.append([evaluation_obj['sectionid'],evaluation_obj['grade_weight'],evaluation_obj['type'],total_marks])
         evaluation_objs=evaluations.objects.filter(course_id=courseobj.id,type=gradetype.type).update(total_marks=total_marks)
         heading.append(str(gradetype.short_label+str(count).zfill(2))+"<br>"+str(headings_short_label))
+        tooltip.append(evaluation_obj['sec_name'])
    heading=",".join(map(str,heading))
+   tooltip=",".join(map(str,tooltip))
+   tt='TT'+str(courseobj.course)
+   
    try:
       header_objs=headings.objects.get(section=courseobj.course)
       header_objs.heading=heading
@@ -1140,8 +1157,16 @@ def get_grades_report(course_id):
    except:
       header_objs=headings(section=courseobj.course,heading=heading)  
       header_objs.save()
+   
+   try:
+      header_objs=headings.objects.get(section=tt)
+      header_objs.heading=tooltip
+      header_objs.save()
+   except:
+      header_objs=headings(section=tt,heading=tooltip)  
+      header_objs.save()
    #iitbx_auth_user_objs=iitbx_auth_user.objects.get(edxuserid="589") #for CS101.1xA15 589,3033
-   #iitbx_auth_user_objs=iitbx_auth_user.objects.get(edxuserid="34630") # for EE210.1xA15
+   #iitbx_auth_user_objs=iitbx_auth_user.objects.get(edxuserid="77764") # for EE210.1xA15
    #studentdetails_obj=studentDetails.objects.filter(courseid=courseobj.courseid,edxuserid=iitbx_auth_user_objs)
    studentdetails_obj=studentDetails.objects.filter(courseid=courseobj.courseid)
    for studentdetails in studentdetails_obj:
@@ -1231,7 +1256,7 @@ def print_get_gradestable_status(grades_table_status):
 def generate_emails():
       
        FROM = "bmwsupport@iitbombayx.in"
-       TO = ["bmwsoftwareteam@cse.iitb.ac.in","workshopmanagers@cse.iitb.ac.in"] # must be a list
+       TO = ["bmwsoftwareteam@cse.iitb.ac.in","workshopmanagers@cse.iitb.ac.in","sheweta@cse.iitb.ac.in"] # must be a list
        #CC = ["bmwsoftwareteam@cse.iitb.ac.in"] # email id as CC
        SUBJECT = "Bmwinfo Sync Script Status"
        runtime = datetime.now()
@@ -1250,6 +1275,9 @@ def generate_emails():
        msg = EmailMultiAlternatives(SUBJECT, message, FROM, TO)
        msg.send(fail_silently=False)
 
+
+
+@transaction.atomic
 def gen_grades(course_id):
 ####### start of get_grades_report() #########
  curtime = datetime.now()
@@ -1260,7 +1288,7 @@ def gen_grades(course_id):
       return [-1,-1]
  count=0
  sections=[];update_gradestable=0;insert_gradestable=0;dropcount_dict={};gradetype_weight={}
- heading=["UserId","Username","Email Id","Grade <br>100%"]
+ heading=["UserId","Username","Email Id","Progress <br>in %"]
  sectionl=[]
  try:  
    grades_obj=gradepolicy.objects.filter(courseid=courseobj).exclude(weight=0).order_by('id')
@@ -1382,7 +1410,7 @@ def gen_grades(course_id):
 ########### end of get_grades_report() #############
 
 ##################################################start of iitbxactivity############################################################
-
+@transaction.atomic
 def iitbxactivity():
     try:
        cnx=dbedxapp_openconnection()
@@ -1391,7 +1419,7 @@ def iitbxactivity():
       print "Error  %s,(%s) -Establishing mysql connection"%(e.message,str(type(e)))
       return [-1]
     
-    mysql_csr.execute('''SELECT "" id ,months,DATE_FORMAT(maxdate,"%b.%d,%Y") mxdate,lastday, DATE_FORMAT(lastday,"%b-%y") mname,CONCAT(DATE_FORMAT( MAKEDATE(YEAR(lastday), 1) + INTERVAL QUARTER(lastday) QUARTER  - INTERVAL    1 QUARTER,"%b")  ," to ",
+    mysql_csr.execute('''SELECT " " id ,months,DATE_FORMAT(maxdate,"%b.%d,%Y") mxdate,lastday, DATE_FORMAT(lastday,"%b-%y") mname,CONCAT(DATE_FORMAT( MAKEDATE(YEAR(lastday), 1) + INTERVAL QUARTER(lastday) QUARTER  - INTERVAL    1 QUARTER,"%b")  ," to ",
   DATE_FORMAT(MAKEDATE(YEAR(lastday), 1) + INTERVAL QUARTER(lastday) QUARTER - INTERVAL 1 DAY ,"%b-%y")) "quartername",DATE_ADD(DATE_FORMAT(lastday,"%Y-%m-%d"),interval -7 day ) week, week(lastday) weekno, month(lastday) monthno, quarter(lastday)  quarterno,
  MAKEDATE(YEAR(lastday), 1) + INTERVAL QUARTER(lastday) QUARTER  
                                        - INTERVAL    1 QUARTER  firstday
@@ -1421,7 +1449,7 @@ from courseware_studentmodule ) d
              report_obj.E=quarternm
              report_obj.save()
     except:
-             report_obj=gen_repout(reportid=1,num_cols=5,A=heading,B="Last days",C="Last 7 days",D=i[4],E=i[5])
+             report_obj=gen_repout(reportid=1,num_cols=5,A=heading,B="Last days",C="Last 7 days",D=monthnm,E=quarternm)
              report_obj.save()   
             
     mysql_csr.execute('''SELECT " " id,sum(lusers) "clusers",sum(wusers) "cwusers",sum(musers) "cmusers",sum(qusers) "cqusers",
@@ -1615,13 +1643,12 @@ select student_id, course_id,
 ###############################################end of iitbxactivity#################################################################
 
 
-
 def main(argv):
         init()
         collection=mongo_openconnection()
         curtime = datetime.now()
         course_id=""
-
+        
         for course in collection.distinct("_id.course"):
          print course
          course_id=get_course_detail(course)
@@ -1629,7 +1656,7 @@ def main(argv):
            try:
              course_obj=edxcourses.objects.get(course=course)
              try:
-                ahead_date=course_obj.courseend + timedelta(days=30)
+                ahead_date=course_obj.courseend + timedelta(days=num_days)
              except:
                 ahead_date="9999-12-31 24:00:00"
              try:
@@ -1671,6 +1698,20 @@ def main(argv):
         generate_emails()
                                                    
 
+'''
+def main(argv):
+         init()
+         collection=mongo_openconnection()
+         curtime = datetime.now()
+         course_id=""
+         #for course in collection.distinct("_id.course"):
+         course_id=get_course_detail("ME209xA15")
+         #print course_id
+         result=fetch_evaluations(course_id)             
+         grade=get_student_grades(course_id)
+         outlist=evaldata("IITBombayX/ME209xA15/2015_T1")
+         grade=get_grades_report("IITBombayX/ME209xA15/2015_T1")
+'''
 if __name__ == "__main__":
     main(sys.argv[1:])
 

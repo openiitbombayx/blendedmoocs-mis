@@ -1,7 +1,17 @@
-{% extends 'login/indexbase.html' %}
+{% extends 'login/registerbase2.html' %}
 {% load staticfiles %}
 {% block title %} Registration Interface {% endblock %}
  {% block header %}
+<style>
+    .error-message {
+      color: red;
+    }
+    input.ng-dirty.ng-invalid {
+      border-color: red;
+    }
+  </style>
+<script src="{% static 'js/angular.js' %}"></script>  
+
  <script>
             $(document).ready(function(){
 
@@ -10,7 +20,7 @@
                   $('#Institute').on('change', function() {   // check for changes
                    $.ajax({
                           type: "GET",
-           url:"/instiname",
+           url:"/reginstiname",
            data:{id: $('#Institute').val()},
            contentType: "application/json; charset=utf-8",
            datatype: 'json',
@@ -68,8 +78,6 @@
 
 
 
-
-<img src="{% static 'images/iitbxheader.png' %}"/>
      <h1 class="title">
           <span class="title-super">Fill Form</span>
           <span class="title-sub">to create user account </span>
@@ -77,7 +85,8 @@
 {% endblock %}
 {% block form %}
 {% autoescape off %}
-<form role="form" id="login-form" method="post" action="/register/{{role}}/" > {% csrf_token %}
+<div ng-app="">
+<form role="form" id="login-form" name="myform" method="post" action="/register/{{role}}/" novalidate> {% csrf_token %}
      <div class ="row" align="center">
   <font color=red>{{error_message}}{{success_message}}</font>
 </div>
@@ -91,7 +100,7 @@
 {% for institute in approvinstitute %}
       
 
-<option value="{{ institute.1 }}" >{{ institute.0 }}</option>
+<option value="{{ institute.1 }}"  selected='selected' >{{ institute.0 }}</option>
 
 	{% endfor %}
 {% else %}
@@ -99,7 +108,11 @@
                 {% for institute in approvinstitute %}
       
 
+       {% if rcidval == institute.1 %}
+<option value="{{institute.1 }}"  selected='selected' >{{ institute.0 }}</option>
+{% else %}
 <option value="{{ institute.1 }}" >{{ institute.0 }}</option>
+{% endif %}
 
 	{% endfor %}
 {% endifequal %}
@@ -113,27 +126,94 @@
 
 
 
-                    <li class="field required text" id="field-email">
+                    <li class="field required text" id="field-firstname">
                          <label for="firstname">Firstname</label>
-                         <input class="" id="firstname" name="firstname" value="" placeholder="example: Firstname" required="" aria-required="true" aria-described-by="firstname-tip" type="firstname" >
+                         <input class="" id="firstname" name="firstname" ng-init="firstname= '{{mfirstname}}'"  ng-model="firstname"  ng-pattern="/^[A-Za-z][\.\]?[a-zA-Z]+$/"  value="{{mfirstname}}" placeholder="example: Firstname" required="" aria-required="true" aria-described-by="firstname-tip" type="text" >
+                      <span class="error-message" ng-show="myform.firstname.$touched && myform.firstname.$invalid">Enter valid First Name.
+</span>
                     </li>
                     <li class="field required text" id="field-lastname">
                          <label for="lastname">Lastname</label>
-                         <input class="" id="lastname" name="lastname" value="" placeholder="example: lastname" required="" aria-required="true" aria-described-by="lastname-tip" type="lastname" >
+                         <input class="" id="lastname" name="lastname" ng-init="lastname='{{mlastname}}'" ng-model="lastname"  ng-pattern="/^[A-Za-z][\.\]?[a-zA-Z]+$/" value="{{mlastname}}" placeholder="example: lastname" required="" aria-required="true" aria-described-by="lastname-tip" type="text" >
+                         <span class="error-message" ng-show="myform.lastname.$touched && myform.lastname.$invalid">Enter valid Last Name.
+</span>
                     </li>
                     <li class="field required text" id="field-email">
                          <label for="email">Email</label>
-                         <input class="" id="email" name="email" value="" placeholder="example: username@domain.com" required="" aria-required="true" aria-described-by="email-tip" type="email" >
+                         <input class="" id="email" name="email" ng-trim="true" ng-init="email='{{memailval}}'" value="{{memailval}}" ng-model="email" ng-pattern="/^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$/" placeholder="example: username@domain.com" required="" aria-required="true" aria-described-by="email-tip" type="email" >
+                         <span class="error-message" ng-show="myform.email.$touched && myform.email.$invalid">Enter valid Email without whitespace.
+</span>
                     </li>
+
+
+<!--begin change -->
+                   <li class="field required text" id="field-gender">
+                         <label for="gender">Gender</label>
+                        <select id="gender" name="gender"  style="width:240px;">
+<option value="-1"  >-- Select your Gender -- </option>
+                {% for gen in genderlist %}
+     {% if gender == gen.0 %}
+<option value="{{gen.0 }}"  selected='selected' >{{ gen.1 }}</option>
+{% else %}
+<option value="{{ gen.0 }}" >{{gen.1 }}</option>
+{% endif %}
+	{% endfor %}
+
+              </select>
+                    </li>
+                      <li class="field required text" id="field-qualification">
+                         <label for="qualification">Qualification</label>
+                        <select id="qualification" name="qualification"  style="width:240px;">
+<option value="-1"  >-- Select your Qualification -- </option>
+                {% for qualifydata in qualificationlist %}
+      
+               {% if qualification == qualifydata.0 %}
+<option value="{{qualifydata.0 }}"  selected='selected' >{{ qualifydata.1 }}</option>
+{% else %}
+<option value="{{qualifydata.0 }}" >{{ qualifydata.1 }}</option>
+{% endif %}
+
+
+	{% endfor %}
+
+              </select>
+                    </li>
+
+  <li class="field required text" id="field-department">
+                         <label for="department">Department</label>
+                        <select id="department" name="department"  style="width:240px;">
+<option value="-1"  >-- Select your Department -- </option>
+                {% for departdata in departmentlist %}
+      {% if department == departdata.0 %}
+      <option value="{{ departdata.0 }}" selected='selected' >{{ departdata.1 }}</option>
+      {% else %}
+<option value="{{ departdata.0 }}"  >{{ departdata.1 }}</option>
+{% endif %}
+	{% endfor %}
+
+              </select>
+                    </li>
+
+  <li class="field required text" id="field-contactno">
+                         <label for="contactno">Telephone</label>
+                      <!--   <input class="" id="contactno" name="contactno" value="" placeholder="example: 9898121212" required="" aria-required="true" aria-described-by="lastname-tip" type="number"   min="1" max="5" >  /^\d{10}$/-->
+<input type="text" name="contactno" ng-init="contactno='{{mcontactno}}'" ng-model="contactno"  ng-pattern=" /^(?:([789]\d{9})|([0]\d{10}))$/" placeholder="example: 9xxxxxxxxx or 0xxxxxxxxxx" value="{{mcontactno}}"/>
+<span class="error-message" ng-show="myform.contactno.$touched && myform.contactno.$invalid">Number is  invalid .It should be 10 digit number Only.
+</span>
+                    </li>
+<!--end change -->
+
                     <li class="field required text" id="field-designation">
                          <label for="designation">Designation</label>
-                        <select id="designation" name="designation"  style="width:200px;">
+                        <select id="designation" name="designation"  style="width:240px;">
 <option value="-1"  >-- Select the Designation -- </option>
-                {% for designation in designationlist %}
-      
+                {% for design in designationlist %}
+      {% if designationval == design.0 %}
+<option value="{{design.0 }}"  selected='selected' >{{ design.1 }}</option>
+{% else %}
 
-<option value="{{ designation.0 }}" >{{ designation.1 }}</option>
-
+<option value="{{ design.0 }}" >{{ design.1 }}</option>
+{% endif %}
 	{% endfor %}
 
               </select>
@@ -141,7 +221,7 @@
 
                       <li class="field required text" id="field-role">
                          <label for="role">Role</label>
-                        <select id="role" name="role"  style="width:200px;">
+                        <select id="role" name="role"  style="width:240px;">
 {% ifequal rolelist|length 1 %}
 {% for role in rolelist %}
       
@@ -152,9 +232,13 @@
 {% else %}
 <option value="-1"  >-- Select the Role -- </option>
                 {% for role in rolelist %}
-      
-
+       {% if roleval == role.0 %}
+<option value="{{role.0 }}"  selected='selected' >{{ role.1 }}</option>
+{% else %}
 <option value="{{ role.0 }}" >{{ role.1 }}</option>
+{% endif %}
+
+
 
 	{% endfor %}
 {% endifequal %}
@@ -163,7 +247,8 @@
                    
                         <li class="field required text" id="field-course">
                          <label for="course">Course</label>
-                        <select id="course" name="course"  style="width:200px;">
+                        <select id="course" name="course"  style="width:240px;">
+{% if courselist %}
 {% ifequal approvinstitute|length 1 %}
 {% for course in courselist %}
       
@@ -177,10 +262,13 @@
                 {% for course in courselist %}
       
 
-<option value="{{ course.id }}" >{{ course.course }}</option>
+<option value="{{ course.id }}" >{{ course.courseid }}</option>
 
 	{% endfor %}
 {% endifequal %}
+{% else %}
+<option value="-2"  >-- No course avilable now -- </option>
+{% endif %}
               </select>
                     </li>
                    
@@ -192,6 +280,15 @@
           <button name="submit" type="submit" id="submit" class="action action-primary action-update login-button">Create User Account</button>
      </div>
 </form>
+<br>
+<br>
+<div class="row">
+
+<b>Note-</b> This information is being gathered only from analytical and statistical purpose. The data will not be shared with any other
+agencies._</div>
+</div>
+<br>
+</br>
 {% endautoescape  %}
 {% endblock %}
 

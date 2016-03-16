@@ -5,13 +5,77 @@
 <h2><b>IITBombayx at a Glance as on {{i.1}}</b></h2>
 </header>
 {% endfor %}
+
+
+<!---download scirpt-->
+<script>
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        
+        var dateformated = new Date().toString().replace(/ /g,'');
+        var ddata='#dvData>table'
+        var file='ataglance_'+dateformated+".csv";
+        exportTableToCSV.apply(this, [$(ddata),file ]);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+<!-- download script -->
+
 {% endblock %}
 {% block body_block %}
-
-<div class="row" align="right"><a href="/iitbxhome/"> Home </a></div>
+<a href="#" class="export" >Download CSV</a> </h4>
+<div  class="table-responsive" align="right"><a href="/iitbxhome/"> Home </a></div>
 <br>
 
-
+<div id="dvData"  class="table-responsive">
 <table class="table" width=50%>
   <tr>      
  <td align=left><b>{{TotalStats.0}}</b> Learners</td>
@@ -27,7 +91,7 @@
    
 <tr>
       	
-        <td align=left> <b> {{total.BlendedStudents}} </b> Blended Students from <b>{{total.numberofClasses}}</b> classes, <b>{{total.numberofInstitutes}}</b> Participating Institutes   </td>
+        <td align=left> <b> {{total.Blended}} </b> Blended Students from <b>{{total.Classes}}</b> classes, <b>{{total.Institutes}}</b> Participating Institutes   </td>
      </tr>
 
 
@@ -41,10 +105,53 @@
           
   </tr>    
        
+<tr>   
+    <td align=left>Learners enrolled for completed courses  : <b>{{enrolltotal}}</b> </td>
+          
+  </tr> 
       
 </table>
 <br>
-   <h2><b>Blended Courses Summary Report</b></h2>
+<table class ="table"> <tr> <td><h2><b>Engineering Courses Summary</b></h2></td></tr></table>
+      <table class ="table">
+      <tr>
+      
+      <td align=center><b>Course Number</b></td>
+      <td align=center><b>Course Name</b></td> 
+      <td align=center><b>Spring 2014-15</b></td>
+      <td align=center><b>Autumn 2015-16</b></td>
+      <td align=center><b>Spring 2015-16*</b></td>
+      <td align=center><b>Total</b></td>
+      </tr>
+      {% for i in semtotal %}
+      {% if forloop.counter == 4 %}
+       <tr>
+      
+      <td align=center><b>{{i.0}}</b></td>
+      <td align=center><b>{{i.1}}</b></td>
+      <td align=center><b>{{i.2}}</b></td>
+      <td align=center><b>{{i.3}}</b></td>
+      <td align=center><b>{{i.4}}</b></td>
+      <td align=center><b>{{i.5}}</b></td>
+      </tr>
+      {% else %}
+      <tr>
+      
+      <td align=center>{{i.0}}</td>
+      <td align=center>{{i.1}}</td>
+      <td align=center>{{i.2}}</td>
+      <td align=center>{{i.3}}</td>
+      <td align=center>{{i.4}}</td>
+      <td align=center><b>{{i.5}}</b></td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+   
+      
+
+      </table>
+<br>
+  <table class ="table"> <tr> <td><h2><b>Blended Courses Summary Report</b></h2></td></tr></table>
       <table class ="table">
       <tr>
       <td align=center><b>S.No</b></td>
@@ -70,17 +177,17 @@
       <tr>
       <td align=center><b></b></td>
       <td align=center><b>{{total.course}}</b></td>
-      <td align=center><b>{{total.TotalLearners}}</b></td> 
-      <td align=center><b>{{total.BlendedStudents}}</b></td>
-      <td align=center><b>{{total.OtherLearners}}</b></td>
-      <td align=center><b>{{total.numberofClasses}}</b></td>
-      <td align=center><b>{{total.numberofInstitutes}}</b></td>
+      <td align=center><b>{{total.Total}}</b></td> 
+      <td align=center><b>{{total.Blended}}</b></td>
+      <td align=center><b>{{total.Others}}</b></td>
+      <td align=center><b>{{total.Classes}}</b></td>
+      <td align=center><b>{{total.Institutes}}</b></td>
       </tr>
 
       </table>
 
-   <h2><b>Demographics Summary Report</b></h2>
-     <h3><b>Rural Urban Distribution</b></h3>
+   <table class ="table"> <tr> <td><h2><b>Demographics Summary Report</b> (Self-Reported)</b></h2></td></tr></table>
+     <table class ="table"> <tr> <td><h3><b>Rural Urban Distribution</b> (Using Uncertified Data)</h3></td><td><a href="/iitbx/postalinfo/">Pincode Classification</a></td></tr></table>
       <table class ="table">
       <tr>
       <td align=center></td>
@@ -104,7 +211,7 @@
    </table>  
 <br> 
 
-     <h3><b>Male Female Distribution</b></h3>
+     <table class ="table"> <tr> <td><h3><b>Male Female Distribution</b></h3></td></tr></table>
       <table class ="table">
       <tr>
       <td align=center></td>
@@ -125,14 +232,15 @@
    </table> 
 <br> 
 
-    <h3><b>Education</b></h3>
+ <table class ="table"> <tr> <td>  <h3><b>Highest Level of Education Completed</b></h3></td></tr></table>
       <table class ="table"> 
       <tr>
       <td align=center></td>
-      <td align=center><b>Undergraduate</b></td>
-      <td align=center><b>Graduate</b></td> 
-      <td align=center><b>Postgraduate</b></td>
+      <td align=center><b>School</b></td>
+      <td align=center><b>Bachelors</b></td> 
+      <td align=center><b>Masters</b></td>
       <td align=center><b>Doctorate</b></td>
+      <td align=center><b>Others</b></td>
       </tr>
       <tr>
       <td align=center><b>No.</b></td>
@@ -140,24 +248,29 @@
       <td align=center>{{edu.1}}</td>
       <td align=center>{{edu.2}}</td>
       <td align=center>{{edu.3}}</td>
+      <td align=center>{{edu.4}}</td>
       </tr>
       <tr>
       <td align=center><b>%</b></td>
-      <td align=center>{{edu.4}}</td>
       <td align=center>{{edu.5}}</td>
       <td align=center>{{edu.6}}</td>
       <td align=center>{{edu.7}}</td>
+      <td align=center>{{edu.8}}</td>
+      <td align=center>{{edu.9}}</td>
+
       </tr>
       </table>
 
 <br>
-    <h3><b>Age</b></h3>
+    <table class ="table"> <tr> <td> <h3><b>Age</b></h3></td></tr></table>
       <table class ="table"> 
       <tr>
       <td align=center></td>
       <td align=center><b>Under18</b></td>
       <td align=center><b>18-25</b></td> 
-      <td align=center><b>25-60</b></td>
+      <td align=center><b>25-40</b></td>
+      <td align=center><b>40-50</b></td>
+      <td align=center><b>50-60</b></td>
       <td align=center><b>Above 60</b></td>
       </tr>
      
@@ -167,16 +280,21 @@
       <td align=center>{{agesumm.1}}</td>
       <td align=center>{{agesumm.2}}</td>
       <td align=center>{{agesumm.3}}</td>
+      <td align=center>{{agesumm.4}}</td>
+      <td align=center>{{agesumm.5}}</td>
       </tr>
       <tr>
       <td align=center><b>%</b></td>
-      <td align=center>{{agesumm.4}}</td>
-      <td align=center>{{agesumm.5}}</td>
       <td align=center>{{agesumm.6}}</td>
       <td align=center>{{agesumm.7}}</td>
+      <td align=center>{{agesumm.8}}</td>
+      <td align=center>{{agesumm.9}}</td>
+      <td align=center>{{agesumm.10}}</td>
+      <td align=center>{{agesumm.11}}</td>
+ 
       </tr>
 
       </table>
 
-
+</div>
 {% endblock %}

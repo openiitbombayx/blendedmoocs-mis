@@ -1,3 +1,10 @@
+'''The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
+Copyright (C) 2015  BMWinfo 
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
+
+
 # VERSION 2.1
 # DATED 20 JUNE 2015
 # TIME 10:00 AM
@@ -35,12 +42,12 @@ from django.core.exceptions import ValidationError
 from django.utils.timezone import *
 from django.contrib.auth.models import User
 
-def validate_file_extension(value):
-    if not value.name.endswith('.csv'):
-        raise ValidationError('Error : Extension should be .csv only')
+#def validate_file_extension(value):
+ #   if not value.endswith('.csv'):
+  #      raise ValidationError('Error : Extension should be .csv only')
 def validate_image_extension(value):
     img=['.jpeg','.png']
-    if not value.name.endswith(img):
+    if not value.endswith(img):
         raise ValidationError('Error : Extension should be .jpeg or .png only')
 
 
@@ -61,6 +68,9 @@ class Lookup(models.Model): # remove T10KT , make it just Lookup
 	description=models.CharField(max_length=100, null=False)
 	comment=models.CharField(max_length=100,null=True)
 	is_active = models.BooleanField(default=1)
+        @classmethod
+        def updatedate(cls):
+             return cls.objects.get(category = 'RefreshDate',code=1).description
 
 class  iitbx_auth_user(models.Model):   
     edxuserid = models.IntegerField(primary_key=True)
@@ -359,7 +369,18 @@ class course_modlist(models.Model):
     display_name= models.CharField(max_length=200)
     module_type= models.CharField(max_length=200)
     module_id= models.CharField(max_length=200)
+    startdate=models.DateTimeField()
+    duedate=models.DateTimeField()
+    long_name=models.CharField(max_length=300)
+    course =models.IntegerField()
     related_id= models.IntegerField()
+    order=models.IntegerField()
+    visible_to_staff_only=models.IntegerField() 
+    graded=models.IntegerField() 
+    questions=models.IntegerField()
+    maxmarks=models.IntegerField()
+    hasproblems=models.IntegerField()
+    gradetype=models.CharField(max_length=100)
 
 
 

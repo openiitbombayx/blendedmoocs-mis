@@ -24,11 +24,11 @@
 <table class="table table-hover">
 
  
-    <tr><td>Total number of Students to be Marked:  {{totalrecords}} </td></tr>
+    <tr><td>Total Number of Students Tagged in your Class:  {{totalrecords}} </td></tr>
 
-<tr><td>Number of Students Marked : {{validcount}}</td><td><a href="/downloadcsv/1">Marked Students </a></td></tr>
-<tr><td>Number of Students Already Marked: {{ignorecount}}</td><td> <a href="/downloadcsv/2">Already Marked Students </a></td></tr>
-<tr><td>Number of Students Unmarked: {{invalidcount}}</td><td> <a href="/downloadcsv/3">Unmarked Students</a></td></tr>
+<tr><td>No. of Students Tagged: {{validcount}}</td><td><a href="/downloadcsv/1">Students Tagged Currently</a></td></tr>
+<tr><td>No. of Students Tagged Previously: {{ignorecount}}</td><td> <a href="/downloadcsv/2">Students Tagged Previously</a></td></tr>
+<tr><td>No. of Students not validated by the system: {{invalidcount}}</td><td> <a href="/downloadcsv/3">Students Not Validated</a></td></tr>
 
 </table>
 {% endblock %}
@@ -36,10 +36,10 @@
 {% block body_block %}
 
   
-
+{% if invalidcount > 0 %}
 <div class="container">
 <BR>
-<h4><center><B>Unmarked Students' Report</B></center></h4>
+<h4><center><B>Students Not Validated</B></center></h4>
 <br>
 <div>
   
@@ -74,6 +74,7 @@
   </table>
 </div>
 </div>
+{% endif %}
 
 
 {% endblock %}

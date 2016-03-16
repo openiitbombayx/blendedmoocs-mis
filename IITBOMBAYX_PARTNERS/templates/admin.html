@@ -1,65 +1,73 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<title>Index-Reports</title>
+<title>Blended Course Administrator</title>
 <header>
-<h2>Index-Reports</h2>
+<h2>Blended Course Administrator</h2>
 </header>
 {% endblock %}
 {% block body_block %}
 
-                <p class="instructions">
-                <h3>Reports</h3><br><br>
-                </p>
+                {% if usertype == 10 or usertype == 0 %}
+                <h2>Support Administrator - Users</h2>
+                
                         {% if errors %}
                                 <p style="color:red;"><h3 style="color:red;">{{ errors.0 }}</h3></p><br>
                         {% endif %}
                 <div class="group group-form group-form-requiredinformation">
                 <table  cellspacing="5" cellpadding="5" border="1" class="table table-hover">
-                        <tr>
-                          <td><center><b>Group</b></center></td>
-                          <td><center><b>Name</b></center></td>
-                          <td><center><b>Description</b></center></td>
+                         <tr>
+                            <td><a href = "/registrationinterface/0" >User Registration</a></td>
+                            <td>Registration Interface for Participating Institutes, Program Coordinators and Teachers</td>       
                         </tr>
                          <tr>
-                            <td>Admin Interface</td>    
-                            <td><a href = "/registrationinterface/0" >Registration Interface For Admin</a></td>
-
-                                <td>Registration Interface For Admin</td>
+                            <td><a href = "/admineditprofile" >Update Users' Information </a></td>
+                            <td>Interface to Update Participating Institute Users' Profile </td>       
+                        </tr>
+                        <tr>
+                            <td><a href = "/pcheadmanager/" >Remove Institute Level Users</a></td>
+                            <td>Interface for Deactivation of Heads and Program Coordinators</td>       
+                        </tr>
+                 </table>       
+                     <h2>Support Administrator - Courses</h2>
+                
+                        {% if errors %}
+                                <p style="color:red;"><h3 style="color:red;">{{ errors.0 }}</h3></p><br>
+                        {% endif %}
+                <div class="group group-form group-form-requiredinformation">
+                <table  cellspacing="5" cellpadding="5" border="1" class="table table-hover">
+                                               <tr>
+                                <td><a href = "/allcourses/0/" >Course Details</a></td>
+                                <td>As seen by Teachers</td>
+                        </tr>
+           
+                         <tr>
+                            <td><a href = "/adminuploaderinfo/" >Students' Information</a></td>
+                            <td>Participating Students Information - Teachers' Point of View</td>
                         </tr>
                          <tr>
-                                <td>Admin Interface</td>
-                                <td><a href = "/adminuploaderinfo/" >Generic Teacher Interface For Admin</a></td>
-
-                                <td>Generic Teacher Interface For Admin</td>
+                             <td><a href = "/allstudentinfo/" >All Students' Information</a></td>
+                            <td>Participating Students Information - for all Remote Centers.</td>       
                         </tr>
-                        <tr>
-                               <td>Report: Teacher - Student Association</td>
-                                <td><a href = "/approvedinstitute/" >Students' Teacher Association Report</a></td>
-
-                                <td>Students' Teacher Association Report</td>
-                        </tr>
-                        <tr>
-                                <td>Course Details Report</td>
-                                <td><a href = "/allcourses/0/" >Course Details Report</a></td>
-                              
-                                <td>Course Details Report</td>
-                        </tr>
-                        {% for i in report_list %}
-
-                        <tr>
-                                 <td>{{i.category}}</td>
-                                 <td><a href = "/blendedadmin/{{i.reportid}}" >{{ i.report_title }}</a></td>
-
-                                <td>{{ i.comments }}</td>
-                        </tr>
-
-
-
-                        {% endfor %}
-                </table>
-                <br><br><br>
-
+                       
+                 </table>
+                {% endif %}
+                {% if usertype == 9 or usertype == 0 %}
+                     <h2>Reports Manager</h2>
+                    {% for i in report_list %}
+                          <h3>{{i.0}} </h3>
+                          <br>
+                          <table  cellspacing="5" cellpadding="5" border="1" class="table table-hover">
+                           {% for j in i.1 %}
+                           <tr> 
+                          
+                           <td><a href = "/blendedadmin/{{j.0}}" >{{ j.1 }}</a></td>
+                           <td>{{j.2}}</td>
+                           </tr>
+                           {% endfor %}
+                         </table>
+                    {% endfor %}
+                {% endif %}
                 </div>
 {% endblock %}
 

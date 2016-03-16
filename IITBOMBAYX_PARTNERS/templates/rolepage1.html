@@ -20,7 +20,7 @@
 {% endif %}
 {% if not flag %}
 
-{% if rolelist %}
+{% if rolelen > 0 %}
 <header>
       <h2>Select Role:</h2>
     </header>
@@ -32,15 +32,29 @@
     </header>
 {% endif %}
 {% endif %}
+{% if instiroles %}
+{% for i in instiroles %}
+	{% if not i.2 %} 
+     <h2> <a href="/set_role/{{i.1}}/0/0" class="cover">{{i.0}}</a></h2>
+{% endif %}
+<br>
+<br>
+	{% endfor %}
+{% endif %}
+<div class="my-courses">
+{% if ccclrolelist %}
+<header>
+      <h2>Current Courses:</h2>
+    </header>
 
-{% for i in rolelist %}
+{% for i in ccclrolelist %}
 	{% if not i.2 %} 
      <h2> <a href="/set_role/{{i.1}}/0/0" class="cover">{{i.0}}</a></h2>
 	{% else %}
 	
- <header>
+
       <h2>  <a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}">{{i.0}}: {{i.2.coursename}}</a></h2>
-    </header>
+    
 
       <ul class="listing-courses">
         
@@ -83,6 +97,62 @@
 <br>
 <br>
 {% endfor %}
+{% endif %}
+</div>
+<div  class="my-courses">
+{% if arcclrolelist %}
+<header>
+      <h2>Archived Courses:</h2>
+    </header>
+
+{% for i in arcclrolelist %}
+	
+	
+
+      <h2>  <a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}">{{i.0}}: {{i.2.coursename}}</a></h2>
+  
+
+      <ul class="listing-courses">
+        
+			
+<li class="course-item">
+    <article class="course">
+    
+           
+        <a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}" class="cover">
+        <img src="{{ i.2.image }}" alt="Course Cover Image">
+      </a>
+
+    <section class="info">
+      <hgroup>
+       
+        <h3>
+            <a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}">{{i.2.courseid}}</a>
+        </h3>
+      </hgroup>
+<h3>
+<a href="/set_role/{{i.1}}/{{i.2.courseid}}/{{i.2.id}}" class="unenroll" >
+          {{i.0}}
+        </a></h3>
+<!--
+          <p align = "right">
+          <a href="/upload/2/" class="enter-course">Upload Students</a>&nbsp &nbsp &nbsp
+          &nbsp <a href="/parse/{{course}}" class="enter-course">Student Details</a>
+            
+         </p>-->
+             </section>
+</article>
+
+</li>
+		
+
+
+
+
+<br>
+<br>
+{% endfor %}
+{% endif %}</div>
 {% endblock %}
 {% block email %}{{email}}{% endblock %}
 

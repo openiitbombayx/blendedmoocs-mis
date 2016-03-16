@@ -1,6 +1,7 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
+<header ><h2 align=center>Students who Attempted</font></h2></header>
 
 <style>
  th, td { white-space: nowrap; }
@@ -40,10 +41,10 @@
 <form action="/studentstatus/{{courseid}}/{{pid}}/{{instituteidid}}/0/" method="POST">
 {% csrf_token %}
 
-<center><b><p><font face="12"><b>Evaluation</b></font></p></b></center>
+<center><b><p><font face="12"><b>List of Assignments</b></font></p></b></center>
 </br>
 <center><select onchange="" id="status" name="status">
-  <option value="Select">Select the evaluation</option>
+  <option value="Select">Select the assignment</option>
  {% for i in evaluation %}
 
   <option value="{{i.sectionid}}" >{{i.sec_name}}</option>

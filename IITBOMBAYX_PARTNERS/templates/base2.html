@@ -11,7 +11,7 @@
   	<script src="{% static 'js/dash2.js' %}"></script>
 
       <title>
-       Dashboard | IITBombayX
+       IITBombayX-MIS
       </title>
 	
 	{% block script %}
@@ -47,10 +47,10 @@
 
 </style>
 
- <header class="global " aria-label="Global Navigation">
+ <header class="global " aria-label="Global Navigation" style="z-index:9999;">
     <nav><!--<b>Blended Moocs</b></br>-->
     <h1 class="logo">
-      <a href="{{rooturl}}">
+      <a href="/">
         
   <img src="{% static 'images/swayamlogo_header.png' %}" alt="Home Page" height="50">
 
@@ -71,10 +71,10 @@
     
       
     </ol>
-    <ol class="user">
+    <ol class="user" >
 
-      <li class="primary">
-        <a href="{{rooturl}}" class="user-link">
+      <li class="primary" >
+        <a href="/" class="user-link" >
           
       
           {%  block name  %}{{ firstname }} {{ lastname }}{% endblock %}</br>
@@ -82,13 +82,16 @@
           
         
       
-        <a href="#" class="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr">More options dropdown</span> ▾</a>
-        <ul class="dropdown-menu" aria-label="More Options" role="menu">
+        <a href="#" class="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="sr">More options dropdown</span> ▾</a>
+        <ul class="dropdown-menu" aria-label="More Options" role="menu" >
           	<li>
 	<a href="/get_multi_roles/">Change Role</a>
 	</li>
 
             <li><a href="/changepassword/">Change Password</a></li> 
+             <li>
+          <a href="/editprofile">Edit Profile</a>  
+        </li>
           
           <li><a href="/logout" role="menuitem">Log Out</a></li>
         </ul>
@@ -102,7 +105,7 @@
     <div class="content-wrapper" id="content">
 
 
-<section class="container dashboard" id="dashboard-main">
+<section class="container dashboard" id="dashboard-main" >
 
   <section class="profile-sidebar">
 
@@ -127,15 +130,30 @@
           <span class="title">Email
           </span> <span class="data" >{% block email %}{{email}}{% endblock %}</span>
         </li>
-        <li>
-          <span ><a href={% static 'BM_User_Manaual.pdf' %} target=_blank>User Manual</a></span>    
+        {% if refreshdate %}
+         <li class="info--email">
+          <span class="title">Updated on
+          </span> <span class="data" >{{refreshdate}} IST</span>
         </li>
+{% endif %}
+        {% if role_id == 1 %}
+        <li>
+          <span ><a href={% static 'Blended Course Administrator.pdf' %} target=_blank>User Manual</a></span>    
+        </li>
+        
+        
+        {% else %}
+        <li>
+          <span ><a href={% static 'BM_User_Manual.pdf' %} target=_blank>User Manual</a></span>    
+        </li>
+        {% endif %}
         <li>
           <span ><a href={% static 'FAQs.pdf' %} target=_blank>FAQs</a></span>    
         </li>
-        <li>
+       <!-- <li>
           <span ><a href="https://iitbombayx.in" target=_blank>IITBombayX</a></span>
-        </li>
+        </li>-->
+        
 
 	
 	

@@ -1,0 +1,175 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Assignment Status Summary</font></h2></header>
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{selectedinstitute}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+	
+	<div class ="col-md-10">
+	<h4><b>Course Id:</b> {{course}} ({{coursename}})</h4>
+
+	</div>
+        <div class ="col-md-8">
+	<h4><b>Assignment:</b> {{sectionname}} </h4>
+
+	</div>
+           <div class ="col-md-8">
+	<h4><b>Problem:</b> {{problem}} </h4>
+        </div>
+           <div class ="col-md-8">
+	<h4><b>Part :</b> Part {{part}} </h4>
+	</div>
+
+</div>
+
+
+<head>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+<script type='text/javascript'>
+ 
+
+$(document).ready(function () {
+
+function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)').filter(':visible'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+// This must be a hyperlink
+
+   $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData>table'), '{{report_name}}.csv']);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+
+
+
+</script>
+</head>
+<style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+<br>
+
+
+<br>
+<div class="row">
+<div class="col-md-8"><a href="#" class="export" >Download CSV</a></div>
+<div class="row" class="col-md-4">
+<a href="javascript: window.history.go(-1)" >Select another problem</a></div>
+</div>
+
+
+<br>
+
+<div class="table-responsive">
+<div id="dvData">
+<table cellspacing="5" cellpadding="5" "width:60%" align="center" class="table table-hover">
+<tr>
+{% for title in heading %}
+<th>{{title}}
+</th>
+{% endfor %}
+</tr>
+{% for row in reports %}
+<tr>
+{% for col in row  %}
+<td>{{col}}</td>
+{% endfor %}
+</tr>
+
+{% endfor %}
+</table>
+  
+    
+ <table class ="table" width="40%" border=0 >
+      <tr>
+      <td align="center">S.No</td>
+              
+      <td align="right" ><b>Count</b></td> 
+      <td align="left"></td>
+      <td align="left"><b>Choice</b> </td>
+      </tr  >
+      {% for i in report %}
+        
+      <tr>
+      <td align="center">{{forloop.counter}}</td>
+      <td   align="right" >{{i.0}}</td>
+       <td align="left"></td>
+        {%if i.2 == 1 %}
+        <td align="left"><b><font size="3" color="green">{{i.1}} </font> </b></td>
+       {% else %}
+             <td align="left">{{i.1}} </td>
+            {% endif %}
+      </tr>
+      {% endfor %}
+      
+      </table>
+</div>
+</div>
+{% endautoescape %}
+
+{% endblock %}
