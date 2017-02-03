@@ -1,0 +1,271 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Problem wise Details</font></h2></header>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/isatcss/normalize.css' %}">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/isatcss/bootstrap.css' %}">
+	<!-- Owl -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/isatcss/owl.css' %}">
+	<!-- Animate.css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/isatcss/animate.css' %}">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/isatfonts/font-awesome-4.1.0/css/font-awesome.min.css' %}">
+	<!-- Elegant Icons -->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/isatfonts/eleganticons/et-icons.css' %}">
+	<!-- Main style -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/isatcss/cardio.css' %}">	
+	<!-- Add IntroJs styles -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/isatcss/introjs.css' %}">
+<!---download scirpt-->
+
+<script src="{% static 'js/isatjs/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/isatjs/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/isatjs/wow.min.js' %}"></script>
+<script src="{% static 'js/isatjs/typewriter.js' %}"></script>
+<script src="{% static 'js/isatjs/jquery.onepagenav.js' %}"></script>
+
+<script src="{% static 'js/isatjs/intro-text.js' %}"></script>
+<script src="{% static 'js/isatjs/intro.js' %}"></script>
+
+
+<!-- The code bit from iSAT html -->
+<!-- for testing in div embed -->
+
+<script src="{% static 'js/isatjs/d3.min.js' %}"></script>
+<script src="{% static 'js/isatjs/biPartiteMOD.js' %}"></script>
+<script src="{% static 'js/isatjs/tps-exp.js' %}"></script>
+<script src="{% static 'js/isatjs/dump-TPSexp.js' %}"></script>
+
+<script src="{% static 'js/isatjs/jquery.cookie.js' %}"></script>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        margin-right: 0.5em;}
+</style>
+<script>
+$(document).ready(function(){  //begin
+                               $('#quiz').on('change', function() 
+                               {   // check for changes
+                                   $('#Problem').empty();         //  Make the city dropdown empty
+                                   $.ajax({
+                                             type: "GET",
+                                             url:"/iitbx/problemwisedata",
+                                             data:{id: $('#quiz').val()},
+                                             contentType: "application/json; charset=utf-8",
+                                             datatype: 'json',
+                                             success: function(result)
+                                                     {
+                                                       var listItems="<option value=''>"+"--Select the Problem--"+"</option>";
+                                                       var teams =  result ;
+                                                       var problemname='<label for="Problem" id="problemname">'+result[0]+'</label>';
+                                                       $("#problemname").html(problemname);
+                                                       if (teams.length==0)
+                                                       { 
+                                                         alert(" Selected Course has no Problems !!!");
+                                                         listItems += "<option value=''>" + " -- " + "</option>";
+                                                         $("#Problem").html(listItems);
+                                                       }
+                                                       else
+                                                       { 
+                                                         var last_valid_selection = null;
+                                                         for(var c=0; c<teams.length; c++)
+                                                         {
+                                                           listItems += "<option value='" + teams[c][0]+ "'>" + teams[c][1]+ "</option>";
+                                                           $("#Problem1").html(listItems);
+                                                           $("#Problem2").html(listItems);
+                                                         }
+                                                       }
+                                                     },
+                                          });
+                               });//end
+//start
+ $('#problem_button').on('click', function() 
+                               { 
+                                   $('#generated_table').empty(); 
+                                   var list=[]
+                                   $.ajax({
+                                             type: "GET",
+                                             url:"/iitbx/problemcompare_report/{{courseid}}/{{pid}}/",
+                                             data:{problem1:$('#Problem1').val(),problem2:$('#Problem2').val()},
+                                             contentType: "application/json; charset=utf-8",
+                                             datatype: 'json',
+                                             success: function(result)
+                                                     {
+                                                        var teams = result[0];
+                                                        var quiz = result[1];
+                                                        var error = result[2];
+                                                        var status = result[3];
+                                                        var trHTML="";
+                                                        var problem1="";
+                                                        var problem2="";
+                                                        var problem1=$('#Problem1').val();
+                                                        var problem2=$('#Problem2').val();
+                                                        if (error !="")
+                                                        {
+                                                                 alert(error);
+                                                        }
+                                                        else  
+                                                        {
+                                                           $('#generated_table').empty(); 
+                                                           var thead='<thead><tr><td>'+quiz[0]+'&darr;'+quiz[1]+'&rarr;</td><td><b>Full Correct</b></td><td><b>Partial Correct</b></td><td><b>Incorrect</b></td><td><b>Not Attempted</b></td></tr></thead>';
+                                                           var row=""
+                                                           for (i = 0; i < teams.length; i++) 
+                                                           {         
+                                                                  var col='<td><b>'+status[i]+'</b></td>';
+                                                                  for(j=0; j < teams[i].length ; j++ )
+                                                                  {
+                                                                      col+='<td>'+teams[i][j]+'</td>' ;
+                                                                  }
+                                                                row+='<tr>'+col+'</tr>';
+                                                          }
+                                                         $('#generated_table').append(thead+'<tbody>'+row+'<tbody>');
+                                                       }
+                                                   },
+                                          });
+                               });
+//end
+//start
+ $('#graphbutton').on('click', function() 
+                               { 
+                                   $.ajax({
+                                             type: "GET",
+                                             url:"/iitbx/problemcomparegraph/{{courseid}}/{{pid}}",
+                                             data:{problem1:$('#Problem1').val(),problem2:$('#Problem2').val()},
+                                             contentType: "application/json; charset=utf-8",
+                                             datatype: 'json',
+                                             success: function(result)
+                                                    {  
+  var res=result[0] 
+  
+  var tpsexp=res
+        
+         parseCSV(tpsexp,3);
+                                                    
+                                                        
+                                                   },
+                                          });
+                                         
+                               });
+//end
+//start
+ $('#clear_button').on('click', function() 
+                               { 
+                                   $('#generated_table').empty(); 
+                                   $('#quiz option:eq(0)').attr('selected','selected');
+                                   $('#Problem1 option:eq(0)').attr('selected','selected');
+                                   $('#Problem2 option:eq(0)').attr('selected','selected');
+                               });
+//end
+                            }); 
+//start
+  $( document ).ready(function() 
+  {
+    $('#generated_table').empty(); 
+    $('#quiz option:eq(0)').attr('selected','selected');
+    $('#Problem1 option:eq(0)').attr('selected','selected');
+    $('#Problem2 option:eq(0)').attr('selected','selected');
+  });
+//end
+
+</script>
+{% endblock %}
+{% block body_block %}
+{% autoescape off %}
+<br><br>
+<div class="row" >
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{selectedinstitute}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+	<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{course}}</h4>
+	</div>
+</div>
+<div class="row" align="right"><a href="/instructor_course_report/{{courseid}}/">Reports</a></div>
+  <div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+</br>
+<div class="table-responsive">
+<form action="" method="POST"  >
+{% csrf_token %}
+<center><b><p><font face="12"><b>List of Assignments</b></font></p></b></center>
+</br>
+<center><select  id="quiz" name="quiz">
+  <option value="Select">-- Select the assignment --</option>
+ {% for i in evaluation %}
+  <option value="{{i.id}}" >{{i.sec_name}}</option>
+{% endfor %}
+</center></select>
+<br> <br> <br>
+<center><b><p><font face="12"><b>List of Problems</b></font></p></b></center>
+</br>
+<select id="Problem1" name="Problem"  >
+<option value=""  >-- Select a Problem -- </option>
+</select>
+<select id="Problem2" name="Problem"  >
+<option value=""  >-- Select a Problem -- </option>
+</select>
+<br><br>
+<table cellspacing="2" width=50%>
+<tr><td align="center"><input id= "problem_button" type=button value="Submit"></td>
+<td align="center"><input id= "clear_button" type=button value="Clear"></td></tr>
+</table>
+  <div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+ <div class ="row" align="center">
+<input id= "graphbutton" type=button value="Graph">
+ </div>
+</form>  
+ </div>
+<br>
+<br>
+<div class="row" align="right" >
+<table id="generated_table" class="table" cellspacing="0" width="100%">
+
+</table>
+<div class="row"><section id="SATisfy" class="section" >
+<div class="col-lg-9" id="tabpage_23"></div>
+<div class="col-lg-3"><div class="col-md-3" data-step="2" data-intro="Pattern finding tools" data-position="to<div class="row-fluid text-center"><h5 class="light muted">Explicate Patterns</h5></div>
+					<div class="row-fluid">
+						<button id="align3" class="col-md-12 patternbtn align3" data-step="3" data-intro="Cohort which is aligned to the stratum in each phase" data-position="top"><i class="icon fa fa-group "></i> Aligned across 3 phases <i class="icon fa fa-group "></i> </button>
+					</div>
+					<div class="row-fluid">
+						<button id="starBurst" class="col-md-6 patternbtn align2 favor"><i class="icon  fa fa-thumbs-up"></i> Star Bursting</button>
+						<button id="slide" class="col-md-6 patternbtn align2 unfavor"><i class="icon  fa fa-thumbs-down"></i> Sliding</button>
+					</div><div class="row-fluid">
+						<button id="align2" class="col-md-12 patternbtn align2"><i class="icon fa fa-user "></i> Aligned between 2 phases <i class="icon fa fa-user "></i></button>
+					</div>
+					<div class="row-fluid">
+						<button id="switch" class="col-md-6 patternbtn align2"><i class="icon fa fa-random"> Switches</i></button>
+						<button id="returnP" class="col-md-6 patternbtn align3"><i class="icon fa fa-rotate-left"> Returns</i></button>
+					</div>
+					<div class="row-fluid">
+						<button id="voidS" class="col-md-12 patternbtn align2"><i class="icon fa fa-circle-o-notch"> Voids in transitions</i></button>
+					</div>
+					<div class="row-fluid">
+
+						<button id="attr" class="col-md-6 patternbtn ser"><i class="icon fa fa-magnet"> Attracted to?</i></button>
+						<button id="ePattern" class="col-md-6 patternbtn ser"><i class="icon fa fa-search"></i> Specific Pattern</button>
+					</div></div>
+
+
+
+
+
+
+
+
+
+
+</div></section></div>
+</div>
+
+{% endautoescape %}
+{% endblock %}

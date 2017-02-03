@@ -4,7 +4,6 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
 
-
 from .models import *
 from django.shortcuts import render_to_response, render, redirect
 from django.core.exceptions import *
@@ -164,7 +163,7 @@ def pwd_field_empty(request,args,value):
 ################################ Check email format for Automate registration script input email ###################################
 def validateEmail(email):
     if len(email) > 4:
-        if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", email) != None:
+        if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,5}|[0-9]{1,5})(\\]?)$", email) != None:
             return 1
     return 0
 
@@ -256,27 +255,38 @@ def validatefileinfo(request,courseid,fname,teacher_id):
        currentfile = uploadedfiles.objects.get(filename = fname)
     except DoesNotExist:
        message = getErrorContent("invalidfilename")
-       
        return
-   
     fo=open(fname,'rb')    
     reader = csv.reader(fo)
     heading= next(reader)
     heading[0]=heading[0].replace(" ","")
     heading[1]=heading[1].replace(" ","")
     heading[2]=heading[2].replace(" ","")
-    
     if (heading[0]== "RollNumber") and  heading[1] == "UserName" and heading[2]== "Email" :  
+
        try:
            
            courseobj= edxcourses.objects.get(courseid = courseid)
        except DoesNotExist:
            message = getErrorContent("invalidcourse")
-           
+                
            return
        try:
+           
            courselevelobj=Courselevelusers.objects.get(personid=Personinformation.objects.get(id=teacher_id),courseid=edxcourses.objects.get(courseid = courseid))
-           default_teacher=Courselevelusers.objects.get(personid=Personinformation.objects.get(id=1),courseid=edxcourses.objects.get(courseid = courseid)) 
+           #print "teacher_id"
+           #Start of org changes
+           #default_teacher=Courselevelusers.objects.get(personid=Personinformation.objects.get(id=1),courseid=edxcourses.objects.get(courseid = courseid)) 
+           
+           if (courseobj.org=="IITBombayX" or courseobj.org=="IITBombay"):
+             print "5"
+             default_email=iitbx_default
+           else:
+             
+             default_email=iimbx_default            
+           
+           default_teacher=Courselevelusers.objects.get(personid=Personinformation.objects.get(email=default_email),courseid=edxcourses.objects.get(courseid = courseid)) 
+           
        except Exception as e:
            args={}
            args['error_message'] = getErrorContent("not_valid_teacher")
@@ -285,7 +295,8 @@ def validatefileinfo(request,courseid,fname,teacher_id):
     else:
       
        message = getErrorContent("invalidheading")
-       return;
+       context={"error":message}
+       return context;
     #Check if the records are correct
     for line in reader:
         recordno+=1
@@ -350,7 +361,7 @@ def validatefileinfo(request,courseid,fname,teacher_id):
         interface_obj = student_interface(fileid = currentfile ,recordno = recordno,roll_no = rollnum,email = email , username = user , error_message = message,status=status) 
         interface_obj.save()
         line=[]  
-    context = {'validcount':validcount,'invalidcount':invalidcount,'ignorecount':ignorecount,'totalrecords':recordno}    
+    context = {'validcount':validcount,'invalidcount':invalidcount,'ignorecount':ignorecount,'totalrecords':recordno,'error':''}    
     errorreport = student_interface.objects.filter(fileid = currentfile).exclude(error_message="")
     context.update({'errorreport':errorreport})
     return context

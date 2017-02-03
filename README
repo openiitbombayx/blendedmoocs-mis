@@ -1,7 +1,10 @@
 Information System for IITBombayX Blended MOOCs
 
-The Information System for Blended MOOCs combines the benefits of MOOCs on IITBombayX with the conventional teaching-learning process at the various partnering institutes. This system envisages the factoring of MOOCs marks in the grade computed for a student of that subject, in a regular degree program. 
-Copyright (C) 2015  BMWinfo 
+A few years ago, the online learning world was abuzz with a new revolutionary concept – MOOC i.e. Massive Online Open Courses. But, soon this new approach started to fizzle out, as it had its own share of inherent issues which have been well documented. The need to find a solution led to the adoption of a new approach of Blended MOOCs, wherein the students would learn “online” but would also be guided by their own teachers inside the classroom.
+Working on the same principle, IITBombayX (https://iitbombayx.in) is the online eXtension educational service of IIT Bombay. It offers a Blended model to Indian students, which combines the benefits of a high quality MOOC, and the advantage of face-to-face learning, and mentoring by their own teachers.
+There are around 60 institutes participating in the program.It adds an additional task for the  teacher is to be a facilitator to collect weekly updates on assignments completed on MOOCs course from students.After collecting the data, they have to collate the data and include in the grading system. To reduce the role of teacher as Facilitator, A teacher's dashboard was introduced. This system is called as Information System for IITBombayX Blended MOOCs.
+
+Copyright (C) 2015  BMWinfo
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.
@@ -13,14 +16,18 @@ Write to: Dr.Deepak B. Phatak,  Professor,
           Department of CSE, Kanwal Rekhi Bldg,
           Indian Institute of Technology, Bombay,
           Mumbai,India 400076.
-          
+
 To install the software following are the requirements:
-Operating System: Ubuntu 12.04 and upper version
+Operating System: Ubuntu 12.04 and higher version
 Software Required:
 1) Django 1.8.2
 2) MySQL-python 1.2.5
 3) beautifulsoup4
 4) Pillow 1.7.8
+5) pymongo
+6) django_compressor
+7) python-dateutil
+8) pytz
 
 Need to change settings in project to run on your system:
 1) bmwinfo/IITBOMBAYX_PARTNERS/iitbx_settings.py:
@@ -32,7 +39,24 @@ To run project on system required commands:
 1) python manage.py syncdb
 2) python manage.py makemigrations
 3) python manage.py migrate
-4) Run all the sql files from SQL folder on MySQL iitbxblended database.
-5) python manage.py collectstatic 
+4) Run the sql files from SQL folder on MySQL iitbxblended database.
+5) python manage.py collectstatic
 6) python manage.py runserver
 
+Demo installation contain:
+
+1) The installation includes the Demo Course for Ideal Engineering College and its users.
+A default admin user is created with installation.
+A Demo Course (IITBombay/DC101/2015_25) is created in Blended MOOCs Program.
+Dummy User Information for demo course is
+Email: premkumar@iei.edu, sitadevi@iei.edu and their password is :blended
+
+2) There are 3 user guides included in the package.
+     Blended MOOCs Users from Participating Institutes
+     Blended Course Administrators
+     MOOCs Course Instructors
+
+3) The software is a Role Based Software
+    For partnering institutes, there are 3 roles (Head, Program Coordinator,Teachers)
+    For Blended Course Administrators, there are 2 roles (Administrator,Report Manger)
+    For the MOOCs Instructors , there is a separate Role for Instructor

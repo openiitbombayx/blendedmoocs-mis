@@ -25,13 +25,13 @@
  */
 /* FONT PATH
  * -------------------------- */
-@font-face {
+/*@font-face {
   font-family: 'FontAwesome';
   src: url("/static/fonts/vendor/fontawesome-webfont.5ae23ad29b67.eot?v=3.2.1");
   src: url("/static/fonts/vendor/fontawesome-webfont.5ae23ad29b67.eot?#iefix&v=3.2.1") format('embedded-opentype'), url("/static/fonts/vendor/fontawesome-webfont.b683029bafe0.woff?v=3.2.1") format('woff'), url("/static/fonts/vendor/fontawesome-webfont.8cca2f02b0af.ttf?v=3.2.1") format('truetype'), url("/static/fonts/vendor/fontawesome-webfont.f99a231ed57e.svg#fontawesomeregular?v=3.2.1") format('svg');
   font-weight: normal;
   font-style: normal;
-}
+}/*
 /* FONT AWESOME CORE
  * -------------------------- */
 [class^="icon-"],

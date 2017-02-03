@@ -127,6 +127,10 @@ class T10KT_Remotecenter(models.Model):
 	city=models.CharField(max_length=100)
 	instituteid=models.ForeignKey(T10KT_Institute) #changes made here
 	autonomous=models.BooleanField(default=1)
+    # Added for IIMBx Blended MOOCs Partner
+	org=models.CharField(max_length=10,default='IITBombayX')
+
+
 
 class T10KT_Approvedinstitute(models.Model):
 	remotecenterid=models.ForeignKey(T10KT_Remotecenter,null=True)
@@ -341,6 +345,8 @@ class Reports(models.Model):
 	comments=models.CharField(max_length=200)
 	category=models.CharField(max_length=30)
 	rel_rep_id=models.IntegerField()
+    # Added for IIMBx Blended MOOCs Partner
+	org=models.CharField(max_length=10,default='IITBombayX')
 	
 
 
@@ -381,6 +387,20 @@ class course_modlist(models.Model):
     maxmarks=models.IntegerField()
     hasproblems=models.IntegerField()
     gradetype=models.CharField(max_length=100)
+    discussion_id=models.CharField(max_length=100)
+
+class Sectionlevelusers(models.Model):
+    personid=models.ForeignKey(Personinformation, unique=False) # remove unique from here
+    instituteid=models.ForeignKey(T10KT_Institute)
+    courseid=models.ForeignKey(edxcourses)
+    section_name=models.CharField(max_length=100)
+    sec=models.ForeignKey(course_modlist)
+    roleid=models.IntegerField()
+    startdate=models.DateField(default=timezone.now,null=False)
+    enddate=models.DateField(4712-12-31)     #Give a fix date 31/Dec/4712
+
+
+
 
 
 

@@ -1,0 +1,130 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Invited Participant Status Report</font></h2></header>
+    <h4><b>Course Id:</b> {{courseid}}</h4><br>
+	<h4><b>Course Name :</b> {{coursedisplayname}}</h4><br>
+    <h4><b>Classes Start :</b> {{coursestart}}</h4><br>
+    <h4><b>Classes End :</b> {{courseend}}</h4>
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 0px;
+        
+        margin-right: 0.0em;
+    }
+
+table {
+  border-collapse: inherit;
+  border-spacing: 50px 0;
+}
+
+td {
+  padding: 10px 0;
+}
+</style>
+
+
+<style type="text/css">
+/**
+ * Override feedback icon position
+ * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+ */
+#dateRangeForm .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+</style>
+
+  <meta charset="utf-8">
+  
+
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css">
+
+  
+  <script>
+  $(function() {
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  </script>
+
+
+
+<script >
+$(document).ready(function() {
+    var datetablevar=document.getElementById("datetable");
+    datetablevar.style.display="none";
+    $('input[type=radio][name=invited]').change(function() {
+        if (this.value == "1") {
+            datetablevar.style.display="none";
+        }
+        else if (this.value =="0") {
+           datetablevar.style.display="block";
+        }
+    });
+});
+</script>
+{% endblock %}
+{% block body_block %}
+
+<form action="/iitbx/invited_participant/{{courseid}}/" method="POST">
+{% csrf_token %}
+<div class="row" align="right"><a href="/instructor_course_report/{{courseid}}/">Report</a></div>
+<br>
+<table  align=center cellspacing=100px>
+<tr>
+        <td align=center><label><input type="radio" name="invited" value="1" checked="checked">All Students</label></td>
+        <td align=center><label><input type="radio" name="invited" value="0">Date Range</label></td>
+   </tr>
+</table>   
+<div  id="datetable">
+
+<div class="row" style="text-align:center">Invited Date</div>
+<br>
+<table  align=center>
+
+<tr>
+  <td ><label for="from">From</label></td>
+  <td ><input type="text" id="from" name="from" ></td>
+  <td ><label for="to" >To</label></td>
+  <td ><input type="text" id="to" name="to"><td>
+</tr>
+<tr>
+
+
+</tr>
+</table>
+<br>
+<div class="row" style="text-align:center">
+<input type="button" value="clear"  id="clearbutton" onclick="location.href='/iitbx/inviteduserlist/{{courseid}}/'">
+
+</div>
+</div>
+
+
+
+{% autoescape off %}
+<br><br><br>
+<div class="row" style="text-align:center">
+<input type="submit" value="Submit">
+
+</div>
+</form>
+
+{% endautoescape off %}
+{% endblock %}

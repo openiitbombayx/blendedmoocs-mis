@@ -1,0 +1,71 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header>
+<h2>Assignment Details</h2>
+
+</header>
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+
+<head>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+
+</head>
+<style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+
+<br>
+
+
+<table  cellpadding="404" width="80%" class="table table-bordered" >
+<tr>
+<td align="center" width="30%"><b></b>
+</td>
+<td align="left" width="30%"><b>Graded</b>
+</td>
+<td align="left" width="30%" ><b>Non-Graded</b><br>
+</td>
+</tr>
+
+<!--tr><td> &nbsp;</td><td> &nbsp;</td></tr-->
+
+<tr>
+<td> Assignments </td>
+<td> <a href="/assignmentevaluation/{{course}}/{{pid}}/0" > Details *</a></td>
+<td><a href="/iitbx/nongradedevaluation/{{course}}/{{pid}}/0" >Details *</a><br></br></td> </tr>
+<!--tr><td> &nbsp;</td><td> &nbsp;</td><td> &nbsp;</td></tr-->
+
+<tr>
+<td> </td>
+<td> <a href="/iitbx/assignmentmarksdata/{{course}}/{{pid}}/0" class="enter-course"> Summary</a></td>
+<td> &emsp; <br></br></td>
+</tr>
+<!--tr><td> &nbsp;</td><td> &nbsp;</td><td> &nbsp;</td></tr-->
+<tr>
+<td> Problem </td>
+<td> <a href="/iitbx/problemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Details *</a></td>
+<td> <a href="/iitbx/nongradedproblemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course"> Details *</a><br></br></td> </tr>
+<!--tr><td> &nbsp;</td><td> &nbsp;</td></tr-->
+<tr>
+<td>Comparison </td>
+<td> <a href="/iitbx/problemwiseevaluation_comparision/{{course}}/{{pid}}/0" class="enter-course">Problem wise Details</a></td>
+<td> &nbsp;</td></tr>
+<!--tr><td> &nbsp;</td>
+<td> &nbsp;</td>
+<td>
+</tr-->
+</table>
+
+
+{% endautoescape %}
+
+{% endblock %}

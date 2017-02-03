@@ -4,7 +4,6 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
 
-
 import pymongo
 import MySQLdb
 import argparse,re,datetime
@@ -12,9 +11,11 @@ import sys, getopt,os
 import django
 import time
 from django.db import transaction
-from datetime import date, timedelta
+from datetime import date, timedelta,datetime
 from collections import *
 import collections
+import dateutil.parser
+from django.utils import timezone
 #Please add the full project folder pwd
 #project_dir="bmwinfo/IITBOMBAYX_PARTNERS"
 project_dir=os.path.dirname(os.path.realpath(__file__))
@@ -31,9 +32,10 @@ from iitbx.models import *
 from managerapp.models import *
 
 mysql_host="localhost"
-#please enter mysq username password
+#please enter mysql username password
 user=""
 passwd=""
-mysql_schema="edxapp"
+mysql_schema=""
 mongodb='mongodb://localhost:27017/'
-courses=["i4x/IITBombayX/CS101.1xA15/2015_T1","i4x/IITBombayX/ME209xA15/2015_T1","i4x/IITBombayX/EE210.1xA15/2015_T1","i4x/IITBombayX/CS101.1xS16/2016_T1","i4x/IITBombayX/EE210xS16/2016_T1","i4x/IITBombayX/ME209xS16/2016_T1","i4x/IITBombayX/HS791xS16/2016_T1"]
+
+courses=["IITBombay/DC101/2015_25"] # add course name here

@@ -1,0 +1,90 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header><h2>Course List</h2></header>
+<head>
+ 
+
+
+</head>
+{% endblock %}
+{% block body_block %}
+<div class="row" >
+<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{course}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursename}}</h4>
+	</div>
+      
+    <div class ="col-md-8">
+	<h4><b>Classes Start  :</b> {{coursestart}}</h4>
+	</div>
+    <div class ="col-md-8">
+	<h4><b>Classes End  :</b> {{courseend}}</h4>
+	</div>
+</div>
+
+<br><br><br>
+  <article class="course" >
+  <section class="info" >
+
+
+<table   cellspacing="0" width="100%" border=0 >  {% if blended_mode == 1 %}
+
+
+    <tr>
+     
+     <td id="enrollment"><a href="/instructor_course_report/{{course}}/?showdiv=enrollment"   class="enter-course" >Enrollment Information</a><br><br><br><br></td>
+     <td id="student"><a href="/instructor_course_report/{{course}}/?showdiv=student"  class="enter-course" >Students Information</a><br><br><br><br></td>
+    </tr>
+  
+   <tr>
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=assignment"   class="enter-course">Assignment Information</a><br><br><br><br></td>
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=course"   class="enter-course">Course Information</a><br><br><br><br></td>
+ </tr>  
+
+
+ <tr>
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=blendedstudent"   class="enter-course">Blended Students Information</a><br><br><br><br></td>
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=activity"  class="enter-course">Activity Report</a><br><br><br><br></td>
+ </tr>  
+<!--tr>
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=discussion"  class="enter-course">Discussion Forum Data</a><br><br><br><br></td>
+  <td> &emsp; </td>
+ </tr-->  
+  {% else %}
+
+ <tr >
+     
+     <td ><a href="/instructor_course_report/{{course}}/?showdiv=enrollment"  class="enter-course">Enrollment Information</a><br><br><br><br></td>
+     <td ><a href="/instructor_course_report/{{course}}/?showdiv=student"   class="enter-course">Students Information</a><br><br><br><br></td>
+    </tr>
+  
+   <tr>
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=assignment"  class="enter-course">Assignment Information</a><br><br><br><br></td>
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=activity"    class="enter-course">Activity Report</a><br><br><br><br></td>
+ </tr>  
+
+
+ <!--tr>
+
+ <td> <a href="/instructor_course_report/{{course}}/?showdiv=discussion" onclick="showhide('discussion')" class="enter-course">Discussion Forum Data</a><br><br><br><br></td>
+ <td> </td>
+ </tr-->  
+
+
+   {% endif %}
+          
+      </table>
+    </section>    
+     </article>
+
+      {% endblock %}      
+            
+
+
+
+
+
+

@@ -70,7 +70,7 @@
 </table>
 {% endif%}
 {% if list_of_oldcourses %}
-<h2 style="text-transform: capitalize">Inactive & Non-Blended Courses</h2>
+<h2 style="text-transform: capitalize">Archived Courses List</h2>
 <table  border="1" cellspacing="5" cellpadding="5" style="width:100%" align="center" >
 
 <tr>
@@ -81,7 +81,7 @@
 <tr>
   {%  for course in courses %}
     {% if forloop.counter == 1%}
-      <td><a href="/instructor_course_oldreport/{{course}}">{{course}}</a></td>
+      <td><a href="/instructor_course_report/{{course}}">{{course}}</a></td>
     {% else %}
       <td>{{course}}</td>
     {% endif %}

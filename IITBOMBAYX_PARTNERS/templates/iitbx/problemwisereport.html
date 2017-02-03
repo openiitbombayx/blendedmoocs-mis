@@ -1,0 +1,242 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Problem wise Detail Report</font></h2></header>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}}</h4>
+       </div>
+	
+	
+	<div class ="col-md-10">
+	<h4><b>Course Name:</b> {{coursedisplayname}}</h4>
+
+	</div>
+        <div class ="col-md-8">
+	<h4><b>Course Startdate:</b> {{coursestart}} </h4>
+
+	</div>
+           <div class ="col-md-8">
+	<h4><b>Course Enddate:</b> {{courseend}} </h4>
+
+	</div>
+         <div class ="col-md-8">
+	<h4><b>Section:</b> {{chapter}} </h4>
+
+	</div>
+           <div class ="col-md-8">
+	<h4><b>Subsection:</b> {{sequential}} </h4>
+
+	</div>
+        <div class ="col-md-8">
+	<h4><b>Unit:</b> {{problem}} </h4>
+
+	</div>
+</div>
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+<script>$(function () {
+    $("[data-toggle='tooltip']").tooltip();
+});
+</script>
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+
+<head>
+
+
+<script type='text/javascript'>
+ 
+
+$(document).ready(function () {
+
+function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)').filter(':visible'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+// This must be a hyperlink
+
+   $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData>table'), '{{report_name}}.csv']);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+
+
+
+</script>
+
+</head>
+<style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+
+<br>
+
+
+<br>
+<div class="row">
+<div class="col-md-8"><a href="#" class="export" >Download CSV</a></div>
+<div class="row" class="col-md-4">
+<a href="javascript:window.location = document.referrer;" >Select another problem</a></div>
+</div>
+<br>
+
+<div class="table-responsive">
+<div id="dvData">
+<table cellspacing="5" cellpadding="5" "width:60%" align="center" class="table table-hover">
+<tr>
+{% for title in heading %}
+<th>{{title}}
+</th>
+{% endfor %}
+</tr>
+{% for row in reports %}
+<tr>
+{% for col in row  %}
+<td>{{col}}</td>
+{% endfor %}
+</tr>
+
+{% endfor %}
+</table>
+    
+   
+<table  class ="table" width="70%" border=0 >
+         
+      <tr>  
+      <td width="5%" align="center"><b>Sl.No </b></td>
+      <td width="5%" align="center"><b>Userid</b></td> 
+      <td width="5%" align="left"><b>Email <b> </td> 
+      <td width="5%" align="left"> <b>Username</b></td>
+      <td width="5%" align="left"> <b>Part1</b> </td>
+       {% if fla == 1 %} 
+      <td width="5%" align="left"><b>Part2</b></td>
+       {% endif %}
+         {% if fla1 == 1 %} 
+      <td width="5%" align="left"> <b>Part3</b> </td>
+        {% endif %}
+          {% if fla2 == 1 %}      
+      <td width="5%" align="left"> <b>Part4</b> </td>
+         {% endif %}
+         {% if fla3 == 1 %} 
+      <td width="5%" align="left"><b>Part5</b></td>
+          {% endif %}
+           {% if fla4 == 1 %} 
+      <td width="5%" align="left"> <b>Part6</b> </td>
+             {% endif %} 
+           {% if fla5 == 1 %} 
+      <td width="5%" align="center"> <b>Part7</b> </td>
+            {% endif %}
+           {% if fla6 == 1 %} 
+      <td width="5%" align="center"><b>Part8</b></td>
+           {% endif %}
+           {% if fla7 == 1 %} 
+      <td width="5%" align="center"> <b>Part9</b> </td>
+           {% endif %}
+            {% if fla8 == 1 %} 
+      <td width="5%" align="center"> <b>Part10</b> </td>
+         {% endif %}
+     </tr>
+
+     {% for i in summary %}  
+        
+     <tr> 
+       <td align="center">{{forloop.counter}}</td>
+       <td align="center">{{i.0}}</td>
+       <td align="left" >{{i.1}}</td>
+        <td align="left">{{i.2}}</td>
+       <td data-original-title="{{i.3}}" data-container="body"  data-toggle="tooltip" data-placement="top" title="" >{{i.3}}</td>
+      
+        {% if fla == 1 %} 
+        <td  data-original-title="{{i.4}}" data-container="body"  data-toggle="tooltip" data-placement="top" title="">{{i.4}}</td>
+          {% endif %}
+          {% if fla1 == 1 %}
+       <td data-original-title="{{i.5}}" data-container="body"  data-toggle="tooltip" data-placement="top" title="" >{{i.5}}</td>
+            {% endif %}
+          {% if fla2 == 1 %}
+        <td data-original-title="{{i.6}}" data-container="body"  data-toggle="tooltip" data-placement="top" title=""> {{i.6}} </td>
+            {% endif %}
+         {% if fla3 == 1 %} 
+      <td align="left">{{i.7}}</td>
+          {% endif %}
+        {% if fla4 == 1 %} 
+      <td align="left">{{i.8}} </td> 
+          {% endif %}
+           {% if fla5 == 1 %} 
+       <td align="center"> {{i.9}} </td>
+      <td align="center">{{i.10}}</td>
+      <td align="center"> {{i.11}} </td> 
+     <td align="center"> {{i.12}} </td>
+          {% endif  %} 
+      </tr>
+          {% endfor %}   
+     
+</table>
+ 
+ 
+ 
+</div>
+
+</div>
+<br>
+<br>
+
+{% endautoescape %}
+
+{% endblock %}

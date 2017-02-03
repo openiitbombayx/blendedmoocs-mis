@@ -1,0 +1,82 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Course-Students' Report  </font></h2></header>
+ 
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+<div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+<br>
+<br>
+<div >
+{% csrf_token %}
+
+</br>
+<form action="/facultyallstudentinfo/{{courseid}}/" method="POST">
+{% csrf_token %}
+<div class ="row" align="center">
+
+<input type="hidden"  id="Course" name="Course" value={{courseid}}></div></div>
+
+
+
+
+
+
+
+<div class ="row">
+<div class="col-xs-6 ">
+<label for="Institute" id="instiname">{{instiname}}</label>
+</div>
+</div>
+<br>
+<br>
+
+
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Marks per Problem"  name="courseallevaluation">
+
+</div>
+<div class="col-xs-6" >
+<input type="submit"  value="Summary of Marks"  name="courseallgrade">
+
+</div>
+
+</div>
+
+<br>
+<br>
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Students' Details"  name="coursestudentdetail">
+
+</div>
+<!--
+<div class="col-xs-6 " >
+<input type="button" value="clear" onclick="location.href='/facultyallstudentinfo/{{courseid}}'">
+</div>-->
+</div>
+</form>  
+ </div>
+
+<br>
+<br>
+
+
+
+</br>
+
+{% endblock %}

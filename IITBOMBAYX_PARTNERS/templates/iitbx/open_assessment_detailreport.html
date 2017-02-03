@@ -1,0 +1,233 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Open Assessment Detail Report</font></h2></header>
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}}</h4>
+    </div>
+	
+	
+	<div class ="col-md-10">
+	<h4><b>Course Name:</b> {{coursedisplayname}}</h4>
+
+	</div>
+        <div class ="col-md-8">
+	<h4><b>Course Startdate:</b> {{coursestart}} </h4>
+
+	</div>
+           <div class ="col-md-8">
+	<h4><b>Course Enddate:</b> {{courseend}} </h4>
+
+	</div>
+       
+
+</div>
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+
+<head>
+
+
+<script>
+ 
+$(document).ready(function(){
+//newbegin
+$('#Chapter').on('change', function() { // check for changes
+                                        $('#Sequential').empty();
+                                        
+                                        $.ajax({
+                                                    type: "GET",
+                                                    url:"/iitbx/open_assessment_sequential",
+                                                    data:{id: $('#Chapter').val()},
+                                                    
+                                                    contentType: "application/json; charset=utf-8",
+                                                    datatype: 'json',
+                                                    success: function(result)
+                                                             {
+                                                              $('#Chapter option:eq(0)').attr("disabled", true);
+                                                              var listItems="<option value='nosequential'>"+"--Select the Sub-Section--"+"</option>"; 
+                                                              var teams =  result[0] ;
+                                                              var display = result[1];
+                                                              if (teams.length==0)
+                                                              { 
+                                                                   alert(" Selected chapter has no section  !!!");
+                                                                   listItems += "<option value='nosequential'>" + " -- " + "</option>";
+                                                                   $("#Sequential").html(listItems);
+                                                              }
+                                                              else
+                                                              {
+                                                                  for(var c=0; c<teams.length; c++)
+                                                                  {
+                                                                    listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
+                                                                    $("#Sequential").html(listItems);
+                                                                  }
+                                                               }
+                                                              $('#openassessment').empty();
+                                                              $('#openassessment').append( '<option value="">-- Select a openassessment --</option>');
+                                                             },
+                                               });
+                                      });
+$('#Sequential').on('change', function() {  // check for changes
+                                            $('#openassessment').empty(); 
+                                            $.ajax({
+                                                       type: "GET",
+                                                       url:"/iitbx/open_assessment_unittype/",
+                                                       data:{id: $('#Sequential').val()},
+                                                       contentType: "application/json; charset=utf-8",
+                                                       datatype: 'json',
+                                                       success: function(result)
+                                                       {   
+                                                           $('#Sequential option:eq(0)').attr("disabled", true);
+                                                           var listItems= "<option value='no_openassessment'>" + "--Select the openassessment-- " + "</option>" ; 
+                                                           var error = result[1];
+                                                           if (error.length == 0)
+                                                           {
+                                                               var teams =  result[0] ;
+                                                              if (teams.length==0)
+                                                              { 
+                                                                 alert(" Selected chapter has no subsection !!!");
+                                                              }
+                                                              else
+                                                              {
+                                                                for(var key in teams)
+                                                                {   
+                                                                    listItems += "<option value='" + teams[key] + "'>" + key + "</option>";
+                                                                }
+                                                              }
+                                                           }
+                                                           else
+                                                           {
+                                                                 alert(error);
+                                                           }
+                                                           $("#openassessment").html(listItems);
+                                                       },
+                                                   });
+                                         });
+//newend
+
+//start
+ $('#clear_button').on('click', function() 
+                               { 
+                                   $('#Chapter option:eq(0)').attr('selected','selected');
+                                   $('#Sequential').empty();
+                                   $('#openassessment').empty();
+                                   $('#Sequential').append( '<option value="">-- Select a Sub-Section --</option>');
+                                   $('#openassessment').append( '<option value="">-- Select a openassessment --</option>');
+                               });
+//end
+//start
+  $( document ).ready(function() 
+  {
+      $('#Chapter option:eq(0)').attr('selected','selected');
+      $('#Sequential option:eq(0)').attr('selected','selected');
+      $('#openassessment option:eq(0)').attr('selected','selected');
+  });
+//end
+
+//start
+ $('#form').submit(function(){ 
+                                         if($('#openassessment').val()=="no_openassessment")
+                                         {
+                                            alert("Select a different Sub Section");
+                                            document.form.action ="";
+                                         }
+                                         else
+                                         {
+                                            var openassessment = $( "#openassessment option:selected" ).text()
+                                             $('<input >').attr('type', 'hidden')
+                                                          .attr('name', "openassessment_name")
+                                                          .attr('value', openassessment)
+                                                          .appendTo('#form');
+                                         }  return true;
+                               });
+//end
+
+});
+
+</script>
+</head>
+<style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+
+<br>
+
+
+<br>
+<div class="table-responsive">
+<form id="form" name="form"  action="/iitbx/openassessment_report/{{courseid}}/" method="POST" >
+{% csrf_token %}
+<table width='80%' >
+<tr><td align=center colspan=4><b>-- Select the Module --</b><br><br></td></tr>
+
+<tr>
+<td>
+<div class ="col-xs-4 col-md-3">
+
+<select id="Chapter" name="Chapter" style="width:200px;">
+	                    <option value="">-- Select a Section --</option>
+                            {% for course in chapters %}
+                                  <option value="{{ course.1 }}" >{{ course.0}}</option>
+	                    {% endfor %}
+</select>
+</div>
+
+</td>
+
+<td>
+<div class ="col-xs-4 col-md-3">
+<select id="Sequential" name="Sequential" style="width:200px;">
+<option value="">-- Select a Sub-Section --</option>
+</select>
+</div>
+</td>
+<td>
+<div class ="col-xs-4 col-md-3">
+<select id="openassessment" name="openassessment" style="width:200px;">
+<option value="">-- Select a open assessment  --</option>
+</select>
+</div>
+</td>
+</tr>
+<tr>
+<td width="30%" align = center><b>Section</b></td>
+<td width="30%" align = center><b>Sub-Section</b></td>
+<td width="30%" align = center ><b>Open Assessment </b> <br><br></td>
+<br>
+</tr>
+<tr >
+<td> &emsp; </td>
+<td align=center >
+<br>
+
+  <input type="submit" value = "submit" id = "submitbtn" >
+
+&emsp;
+  <input id= "clear_button" type=button value="Clear">
+</td>
+<td> &emsp; </td>
+</tr>
+
+
+</table>
+ </form>
+</div>  
+{% endautoescape %}
+
+{% endblock %}

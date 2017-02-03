@@ -6,49 +6,35 @@
 
 
 {% endblock %}
-
-<head>
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-  <script src="{% static 'js/jquery.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js'%}"></script>
-  <style>
-	
-	table.data,table.data td,table.data th {
-	    border: 1px solid black;
-	    border-collapse: collapse;
-	    text-align: center;
-	}
-
-	table.data {
-	    width: 100%;
-	}
-	table.data tr:nth-child(odd) {
-	   background-color: #ccc;
-	}
-	table.data tr:hover {
-		  background-color: #ffff99;
-		}
-	table.data th {
-	    height: 35px;
-	    color: #F7691F
-	}
-	table.data tr {
-	    height: 28px;
-	}
-	table.head, td, th, tr {
-		border: 0px solid black;
-		border-collapse: collapse;		
-	}
-	table.head {
-	    width: 100%;
-	    background-color: ;
-	}
-</style>
-
-
-</head>
-<body>
 {% block body_block %}
+<head>
+<script>
+function getUrlVars() {
+var vars = {};
+var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+vars[key] = value;
+});
+
+return vars;
+
+}
+
+function getUrldata(){
+var fis= getUrlVars()["showdiv"];
+//alert(fis);
+document.getElementById(fis).style.display = "block";
+}
+window.onload=getUrldata;
+</script>
+</head>
+
+
+
+
+
+<body>
+
+
 <div class="row" >
 <div class ="col-md-8">
 	<h4><b>Course Id:</b> {{course}}</h4>
@@ -57,10 +43,10 @@
 	<h4><b>Course Name :</b> {{coursename}}</h4>
 	</div>
     <div class ="col-md-8">
-	<h4><b>Classes Start  :</b> {{coursestart}}</h4>
+	<h4><b>Classes Start:</b> {{coursestart}}</h4>
 	</div>
     <div class ="col-md-8">
-	<h4><b>Classes End  :</b> {{courseend}}</h4>
+	<h4><b>Classes End:</b> {{courseend}}</h4>
 	</div>
 </div>
 
@@ -71,40 +57,80 @@
 <br><font color='Red'>{{refresh}}</font>
 <br>
 {% if blended_mode == 1 %}
-<h2>Enrollment Information</h2>
+ <div id="enrollment"  style="display: none"> <h2>Enrollment Information</h2> 
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 <tr> <td><a href="/manager/courseenrrollment/{{course}}">Course Information</a></td></tr>
 <tr> <td><a href="/manager/coursedailyreport/{{course}}">Course Enrollment -Day Wise</a></td></tr>
 <tr> <td><a href="/manager/courseweeklyreport/{{course}}">Course Enrollment -Week Wise</a></td></tr>
 <tr> <td><a href="/manager/coursemonthlyreport/{{course}}">Course Enrollment -Month Wise</a></td></tr>
+<tr><td><a href = "/iitbx/inviteduserlist/{{course}}/" >Invited Participants Status</a></td></tr>
 </table>
-<br>
-<h2>Students Information</h2>
+</div>
+
+<div id="student" style="display: none"><h2>Students Information</h2>
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 <tr><td> <a href="/studentsinformation/{{course}}/{{pid}}/" class="enter-course">Students' List</a></td></tr>
 <tr> <td><a href="/iitbx/studentprofile/{{course}}">Students' Profile with Location Details</a></td></tr>
 <tr> <td><a href="/manager/studentdemography/{{course}}">Students' Demography Summary</a></td></tr> 
 </table>
-<br>
-<h2>Assignment Information</h2>
+</div>
+
+<div id="assignment" style="display: none">
+<h2>Assignment Information</h2> 
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
-<tr><td> <a href="/assignmentevaluation/{{course}}/{{pid}}/0" class="enter-course">Assignment Summary *</a></td></tr>
-<tr><td> <a href="/iitbx/problemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Problem wise Details</a></td></tr>
+<tr><td> <a href="/iitbx/gradesumary/{{course}}/" class="enter-course">Grade Summary Report</a></td></tr>
+<tr><td> <a href="/iitbx/assignmentdetails/{{course}}/{{pid}}/" class="enter-course">Assignment Details</a></td></tr>
+<!--tr><td> <a href="/iitbx/assignmentmarksdata/{{course}}/{{pid}}/0" class="enter-course">Graded Assignment Marks Summary</a></td></tr>
+<tr><td> <a href="/assignmentevaluation/{{course}}/{{pid}}/0" class="enter-course">Graded Assignment Details *</a></td></tr>
+<tr><td> <a href="/iitbx/problemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Graded assignments - Problem wise Details</a></td></tr>
+<tr><td> <a href="/iitbx/problemwiseevaluation_comparision/{{course}}/{{pid}}/0" class="enter-course">Problem wise Details Comparision</a></td></tr>
+<tr><td> <a href="/iitbx/nongradedevaluation/{{course}}/{{pid}}/0" class="enter-course">Non Graded Assignment Details *</a></td></tr>
+<tr><td> <a href="/iitbx/nongradedproblemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Non Graded Assignments- Problem wise Details *</a></td></tr-->
+
 </table>
-<br>
+
+</div>
+
+ 
 
 
-
-<h2>Course Information</h2>
+<div id="course" style="display: none"><h2>Course Information</h2> 
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 <!--<tr> <td><a href="/instilistforevalwise/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Institute's Evaluation Report </a></td></tr>
 <tr> <td><a href="/evallistforinstiwise/{{course}}/{{pid}}/{{institute_id}}/" class="enter-course">Institute-Wise:Evaluation Report </a></td></tr>-->
 <tr><td> <a href="/coursedescription/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td></tr>
+{% if org == "IITBombayX" %}
 <tr> <td><a href = "/blendedadmin/7" >Institute-wise:Teachers' Participation Report</a></td></tr>
 <tr> <td><a href = "/blendedadmin/14" >Institute-wise:Student's Participation Summary Report</a></td></tr>
+
+{% else %}
+<tr> <td><a href = "/blendedadmin/1007" >Institute-wise:Teachers' Participation Report</a></td></tr>
+<tr> <td><a href = "/blendedadmin/1014" >Institute-wise:Student's Participation Summary Report</a></td></tr>
+
+{% endif %}
+
 <!---<tr> <td><a href="/facultygenericinterface/{{course}}/" class="enter-course">Teachers' Student Association</a></td></tr>--->
 </table>
-<br>
+</div>
+
+<div id="blendedstudent" style="display: none"><a name="blendedstudent" > 
+<h2>Blended Students Information</h2> </a>
+                
+                <div class="group group-form group-form-requiredinformation">
+                <table  cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+           
+                         <tr>
+                            <td><a href = "/facultyuploaderinfo/{{course}}" >Students' Information</a></td>
+                            <td>Participating Students Information - Teachers' Point of View</td>
+                        </tr>
+                         <tr>
+                             <td><a href = "/facultyallstudentinfo/{{course}}" >All Students' Information</a></td>
+                            <td>Participating Students Information - for all Remote Centers.</td>       
+                        </tr>
+                       
+                      </table>
+                 </div>
+</div>
 <br>
 <!--<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 
@@ -121,17 +147,20 @@
 </tr>
 </table> -->
 {% else %}
-<h2>Enrollment Information</h2>
+<div id="enrollment" style="display: none">
+<h2>Enrollment Information</h2> 
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 <tr> <td><a href="/manager/courseenrrollment/{{course}}">Course Information</a></td></tr>
 <tr> <td><a href="/manager/coursedailyreport/{{course}}">Course Enrollment -Day Wise</a></td></tr>
 <tr> <td><a href="/manager/courseweeklyreport/{{course}}">Course Enrollment -Week Wise</a></td></tr>
 <tr> <td><a href="/manager/coursemonthlyreport/{{course}}">Course Enrollment -Month Wise</a></td></tr>
+<tr><td><a href = "/iitbx/inviteduserlist/{{course}}/" >Invited Participants Status</a></td></tr>
 </table>
+</div>
 
 
-<br>
-<h2>Students Information</h2>
+<div id="student" style="display: none">
+<h2>Students Information</h2> 
 
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 <tr> <td><a href="/iitbx/studentprofile/{{course}}">Students' Profile with Location</a></td></tr>
@@ -139,15 +168,28 @@
 <tr><td><a href="/coursedetails/{{course}}/{{pid}}/" class="enter-course">Course  Details</a></td> 
 </table>
 </tr>
-{% if course == "IITBombayX/ET601Tx/2015-16" or course == "NVAforIA/PATH372.2x/2015-16" or course == "NVAforIA/PATH372.11x/2015-16" or course == "TISS/SKANI101x/2015-16" or course == "NVAforIA/PATH372.1x/2015-16" or course == "IITBombayX/SKANI101x/2016_T1" %}
-     <h2>Assignment Information</h2>
+</div>
+<div id="assignment" style="display: none">
+ <h2>Assignment Information</h2> 
+
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
-<tr><td> <a href="/assignmentevaluation/{{course}}/{{pid}}/0" class="enter-course">Assignment Summary *</a></td></tr>
-<tr><td> <a href="/iitbx/problemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Problem wise Details</a></td></tr>
-{% endif %}
+<tr><td><a href="/iitbx/closed_courses_grades_report/{{course}}">Grades *</a></td></tr>
+<tr><td> <a href="/iitbx/closedcoursegrade/{{course}}/" class="enter-course">Grade Summary Report</a></td></tr>
+<tr><td> <a href="/iitbx/assignmentdetails/{{course}}/{{pid}}/" class="enter-course">Assignment Details</a></td></tr>
+<!--tr><td> <a href="/iitbx/assignmentmarksdata/{{course}}/{{pid}}/0" class="enter-course">Graded Assignment Marks Summary</a></td></tr>
+<tr><td> <a href="/assignmentevaluation/{{course}}/{{pid}}/0" class="enter-course">Graded Assignment Details *</a></td></tr>
+<tr><td> <a href="/iitbx/problemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Graded assignments - Problem wise Details</a></td></tr>
+<tr><td> <a href="/iitbx/problemwiseevaluation_comparision/{{course}}/{{pid}}/0" class="enter-course">Problem wise Details Comparision</a></td></tr>
+
+
+<tr><td> <a href="/iitbx/nongradedevaluation/{{course}}/{{pid}}/0" class="enter-course">Non Graded Assignment Details *</a></td></tr>
+<tr><td> <a href="/iitbx/nongradedproblemwiseevaluation/{{course}}/{{pid}}/0" class="enter-course">Non Graded Assignments- Problem wise Details *</a></td></tr-->
 
 </table>
-<br>
+
+</div>
+
+
 
 <!--
 <tr>
@@ -157,16 +199,35 @@
 <tr> <td><a href="/gengrades/{{course}}/{{pid}}/" class="enter-course">Grade Details</a></td></tr>
 -->
 
-<br>
-<br>
+
+
 {% endif %}
+<div id="activity" style="display: none" >
 <h2>Activity Report</h2>
 
 <table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
 <tr><td> <a href="/manager/activity_day_wise/{{course}}" class="enter-course">Activity Report - Number of Days Access *</a></td></tr>
 <tr><td> <a href="/manager/activity_date_wise/{{course}}" class="enter-course">Activity Report Date Wise *</a></td></tr>
 <tr> <td><a href="/iitbx/weeklyreport/{{course}}">Students' Activity - Weekwise *</a></td></tr>
+<tr><td><a href="/iitbx/course_chapter/{{course}}">Course Module Report *</a></td></tr>
+<tr><td><a href="/iitbx/problemwisedetailsreport/{{course}}">Problemwise Detail Report *</a></td></tr>
+<tr><td><a href="/iitbx/surveydetailreport/{{course}}">Survey Detail Report</a></td></tr>
+<tr><td><a href="/iitbx/polldetailreport/{{course}}">Poll Detail Report</a></td></tr>
+<tr><td><a href="/iitbx/open_assessment_detailreport/{{course}}">Open Assessment Detail Report</a></td></tr>
 </table>
+</div>
+
+<div id="discussion" style="display: none">
+<h2>Discusssion Forum Information</h2> 
+<table cellspacing="5" cellpadding="5" border="1" style="width:90%" align="center" class="table table-hover">
+<!--<tr><td> <a href="/iitbx/discussionforumdata/{{course}}/" class="enter-course">Discussion Forum Data </a></td></tr>-->
+<tr><td> <a href="/iitbx/discussionforum_user_participation_count/{{course}}/" class="enter-course">Discussion Forum User Participation Count </a></td></tr>
+<tr><td> <a href="/iitbx/discussionforum_user_date_wise_count/{{course}}/" class="enter-course">Discussion Forum Date wise User Participation Count </a></td></tr>
+
+</table>
+</div>
+
+
 
 <p><b>Note:</b> * pages take long time to load.</p>
 {% endblock %}

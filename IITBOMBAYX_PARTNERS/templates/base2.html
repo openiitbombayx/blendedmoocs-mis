@@ -6,10 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="{% static 'css/dash.css' %}">
+  	
+{% load compress %}
+{% compress js %}
   	<script src="{% static 'js/dash1.js' %}"></script>
   	<script src="{% static 'js/dash2.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lms-main_vendor.js' %}" charset="utf-8"></script>
 
+  <script type="text/javascript" src="{% static 'js/require-config-lms.js' %}"></script>
+{% endcompress %}
       <title>
        IITBombayX-MIS
       </title>
@@ -18,25 +23,35 @@
 	{% endblock %}
 
 
-  <script type="text/javascript" src="{% static 'js/a' %}"></script>
+  {% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="{% static 'css/dash.css' %}">
+<link href="{% static 'css/mis-vendor-min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/mis-app-min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/mis-extend1-min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/mis-extend2-min.css' %}" rel="stylesheet" type="text/css">
+<style>
+.wrapper-footer{
+padding-top:16px;
 
-  <link rel="icon" type="image/x-icon" href="https://iitbombayx.in/static/themes/iitbombayx-theme/images/favicon.22b053d5ddae.ico">
+}
 
-      <link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
-  
+.wrapper-footer footer .references{
+margin-top:0px;
+}
 
-    <link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
-  
+.wrapper-footer footer .colophon .nav-colophon li a {
+        border-bottom:none !important;
+	color:#3D3E3F;
+}
 
-    <link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
-  
 
-    <link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
-    
-    <script type="text/javascript" src="{% static 'js/lms-main_vendor.js' %}" charset="utf-8"></script>
+.wrapper-footer footer{
+width:960px;
+margin:auto;
+}
 
-  <script type="text/javascript" src="{% static 'js/require-config-lms.js' %}"></script>
-
+{% endcompress %}
 </head>
 
 <body class="ltr view-dashboard is-authenticated lang_en">
@@ -136,18 +151,23 @@
           </span> <span class="data" >{{refreshdate}} IST</span>
         </li>
 {% endif %}
-        {% if role_id == 1 %}
+         {% if manualtype == 3 %}
         <li>
-          <span ><a href={% static 'Blended Course Administrator.pdf' %} target=_blank>User Manual</a></span>    
+          <span ><a href={% static 'manualuploaddir/Blended course manager.pdf' %} target=_blank>User Manual</a></span>    
         </li>
+        {% elif role_id == 1 %}
+        <li>
+          <span ><a href={% static 'manualuploaddir/Blended Course Administrator.pdf' %} target=_blank>User Manual</a></span>    
+        </li> 
         
         
         {% else %}
         <li>
-          <span ><a href={% static 'BM_User_Manual.pdf' %} target=_blank>User Manual</a></span>    
+          <span ><a href={% static 'manualuploaddir/BM_User_Manual.pdf' %} target=_blank>User Manual</a></span>    
         </li>
         {% endif %}
         <li>
+        
           <span ><a href={% static 'FAQs.pdf' %} target=_blank>FAQs</a></span>    
         </li>
        <!-- <li>
@@ -187,28 +207,7 @@
 </section>
     
     </div>
-<style>
-.wrapper-footer{
-padding-top:16px;
 
-}
-
-.wrapper-footer footer .references{
-margin-top:0px;
-}
-
-.wrapper-footer footer .colophon .nav-colophon li a {
-        border-bottom:none !important;
-	color:#3D3E3F;
-}
-
-
-.wrapper-footer footer{
-width:960px;
-margin:auto;
-}
-
-</style>
 
 
 <div class="wrapper wrapper-footer" style="width:auto;">
@@ -240,13 +239,14 @@ margin:auto;
 
 
   </div>
-
-  <script>window.baseUrl = "/static/";</script>
+{% load compress %}
+{% compress js %}
+ <script>window.baseUrl = "/static/";</script>
     
     <script type="text/javascript" src="{% static 'js/lms-application.js' %}" charset="utf-8"></script>
    
     <script type="text/javascript" src="{% static 'js/lms-modules.js' %}" charset="utf-8"></script>
   
     <script type="text/javascript" src="{% static 'js/dashboard.js' %}" charset="utf-8"></script>
-
+{% endcompress %}
 <div id="lean_overlay"></div><div id="reader-feedback" class="sr" style="display:none" aria-hidden="false" aria-atomic="true" aria-live="assertive"></div></body></html>

@@ -1,0 +1,195 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Poll Detail Report</font></h2></header>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}}</h4>
+       </div>
+	
+	
+	<div class ="col-md-10">
+	<h4><b>Course Name:</b> {{coursedisplayname}}</h4>
+
+	</div>
+        <div class ="col-md-8">
+	<h4><b>Course Startdate:</b> {{coursestart}} </h4>
+
+	</div>
+           <div class ="col-md-8">
+	<h4><b>Course Enddate:</b> {{courseend}} </h4>
+
+	</div>
+         <div class ="col-md-8">
+	<h4><b>Section:</b> {{chapter}} </h4>
+
+	</div>
+           <div class ="col-md-8">
+	<h4><b>Subsection:</b> {{sequential}} </h4>
+
+	</div>
+        <div class ="col-md-8">
+	<h4><b>Poll:</b> {{problem}} </h4>
+
+	</div>
+</div>
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+<script>$(function () {
+    $("[data-toggle='tooltip']").tooltip();
+});
+</script>
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+
+<head>
+
+
+<script type='text/javascript'>
+ 
+
+$(document).ready(function () {
+
+function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)').filter(':visible'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+// This must be a hyperlink
+
+   $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData>table'), '{{report_name}}.csv']);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+
+
+
+</script>
+
+</head>
+<style>
+label {
+display: inline-block;
+width: 5em;
+}
+
+</style>
+
+<br>
+
+
+<br>
+<div class="row">
+<div class="col-md-8"><a href="#" class="export" >Download CSV</a></div>
+<div class="row" class="col-md-4">
+<a href="javascript:window.location = document.referrer;" >Select different Poll</a></div>
+</div>
+<br>
+
+<div class="table-responsive">
+<div id="dvData">
+<table cellspacing="5" cellpadding="5" "width:60%" align="center" class="table table-hover">
+<tr>
+{% for title in heading %}
+<th>{{title}}
+</th>
+{% endfor %}
+</tr>
+{% for row in reports %}
+<tr>
+{% for col in row  %}
+<td>{{col}}</td>
+{% endfor %}
+</tr>
+
+{% endfor %}
+</table>
+    
+   
+<table  class ="table" width="70%" border=1 >
+         
+      <tr>  
+      <td width="5%" align="center"><b>Sl.No </b></td>
+      <td width="5%" align="center"><b>User Id </b></td>
+      <td width="5%" align="center"><b>User Name</b></td> 
+      <td width="5%" align="left"><b>Email Id <b> </td> 
+      <td width="5%" align="left"><a href="#" title="{{note}}" style="font-weight:bold;color: black;"  background-color="transparent" > <b>Option</b></td>
+     </tr>
+
+     {% for i in summary %}  
+        
+     <tr> 
+       <td align="center">{{forloop.counter}}</td>
+       <td align="center">{{i.0}}</td>
+       <td align="left" >{{i.1}}</td>
+       <td align="left">{{i.2}}</td>
+       <td align="left">{{i.3}}</td>
+       
+       
+     </tr>
+     {% endfor %}   
+     
+</table>
+ 
+ 
+ 
+</div>
+
+</div>
+<br>
+<br>
+
+{% endautoescape %}
+
+{% endblock %}

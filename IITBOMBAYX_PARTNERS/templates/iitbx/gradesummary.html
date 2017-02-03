@@ -1,0 +1,139 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+
+<header ><h2 align=center>Grade Summary Report</font></h2></header>
+
+<style>
+ td {
+    border:1px solid #333;
+   
+}
+
+
+</style>
+<!---download scirpt-->
+<script>
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace(/"/g, '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        
+        var dateformated = new Date().toString().replace(/ /g,'');
+        var ddata='#dvData>table'
+        var file='Course_enrollment_summary'+dateformated+".csv";
+        exportTableToCSV.apply(this, [$(ddata),file ]);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
+});
+</script>
+
+<!-- download script -->
+{% endblock %}
+{% block body_block %}
+
+<div class="row" >
+    <div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}} </h4>
+    </div>
+    
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursedisplayname}} </h4>
+	</div>
+    
+    <div class ="col-md-8">
+	<h4><b>Classes Start :</b> {{coursestart}} </h4>
+	</div>
+     <br>
+    <div class ="col-md-8">
+	<h4><b>Classes End :</b> {{courseend}} </h4>
+	</div>
+    <br>
+</div>
+
+<br>
+
+<div class="row">
+<div class="row" align="right"><a href="/instructor_course_report/{{courseid}}/" >Reports </a></div>
+ <div class="col-md-10"><a href="#" class="export" >Download CSV</a></div>
+</div>
+<br>
+{% autoescape off %}
+<div class="table-responsive">
+<div id="dvData">
+<table class ="table" style="width:70%" >
+   <col width="100px">
+   <col width="100px">
+   <col width="100px">
+   <col width="100px">
+   
+     <tr>
+      <td  align=Center><b>Grade</b></td>
+      <td  align=Center><b>Minimum (%)</b></td>
+      <td  align=Center><b>Maximum (%)</b></td>
+      <td  align=Center><b>Students </b></td>
+     </tr>
+      
+      {% for i in summary %}
+       <tr>
+      <td  align=Center>{{i.0}}</td>
+      <td  align=right >{{i.1}}</td>
+      <td  align=right>{{i.2}}</td>
+      <td  align=right>{{i.3}}</td>
+       </tr>
+    {% endfor %} 
+       <tr>
+         
+         <td colspan="3"  align=right><b>Total Students Passed</b></td>
+         <td  align=right><b>{{total}}</b></td>
+      </tr>
+</table>
+</div>
+</div>
+{% endautoescape %}
+{% endblock %}

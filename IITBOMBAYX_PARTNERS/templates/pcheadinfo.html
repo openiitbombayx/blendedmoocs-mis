@@ -6,7 +6,9 @@
             $(document).ready(function(){
                   //begin
                   $('#Institute').on('change', function() {   // check for changes
-             $('#headpc').empty();         //  Make the city dropdown empty
+                  $('#headpc option:eq(0)').attr('selected','selected');      
+                  $("#name").empty();
+                  $("#strrole").empty();
     
 
 $.ajax({
@@ -24,21 +26,20 @@ $.ajax({
                     var instiname='<label for="Institute" id="instiname">'+result[0]+'</label>';
                     $("#instiname").html(instiname);
                      console.log(teams);
-                    if (teams.length==0){ alert(" Selected Institute has no Head or Pc !!!");
-listItems += "<option value='noheadpc'>" + " -- " + "</option>";
-               
-                     $("#headpc").html(listItems);
-
-                     }
+                    if (teams.length==0){
+                                            alert(" Selected Institute has no Head or Pc !!!");
+                                            listItems = "<option value='noheadpc'>" + " -- " + "</option>";
+                                            $("#headpc").html(listItems);
+                    }
                     else{
-                    for(var c=0; c<teams.length; c++){
+                    for (var key in teams){
                          
-                
-                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+                       listItems += "<option value='" +key+ "'>" + teams[key]+ "</option>";
+                       $("#headpc").html(listItems);
 
-                     $("#headpc").html(listItems);
-                 }}
-
+                 }
+                 }
+                 $('#message').empty(); 
             },
         });
 
@@ -49,13 +50,13 @@ listItems += "<option value='noheadpc'>" + " -- " + "</option>";
 //newbegin
 
                   $('#headpc').on('change', function() {   // check for changes
-                 $('#name').empty();         //  Make the city dropdown empty
+                 $('#name').empty();         
                  $('#strrole').empty();
 
 $.ajax({
            type: "GET",
            url:"/userinfo",
-           data:{hepcid:$('#headpc').val(),iid: $('#Institute').val()},
+           data:{role_id:$('#headpc').val(),iid: $('#Institute').val(),hepcid:$('#headpc option:selected').text()},
            contentType: "application/json; charset=utf-8",
            datatype: 'json',
            success: function(result)
@@ -74,6 +75,36 @@ $.ajax({
                   });
 
 //newend
+
+
+//start
+ $('#form').submit(function(){ 
+                                         if($('#headpc').val()=="noheadpc")
+                                         {
+                                            alert("Select a different Institute");
+                                            document.form.action ="";
+                                         }
+                                         else
+                                         {
+                                            var headpc = $( "#headpc option:selected" ).text()
+                                             $('<input >').attr('type', 'hidden')
+                                                          .attr('name', "headpc_name")
+                                                          .attr('value', headpc)
+                                                          .appendTo('#form');
+                                         }  return true;
+                               });
+//end
+
+//start
+  $( document ).ready(function() 
+  {
+      $('#instiname').empty(); 
+      $('#name').empty();
+      $('#strrole').empty(); 
+      $('#headpc option:eq(0)').attr('selected','selected');
+      $('#Institute option:eq(0)').attr('selected','selected');
+  });
+//end
 
 
 
@@ -96,13 +127,13 @@ $.ajax({
 <div class ="row" align="center">
   <font color=red>{{error_message}}</font>
 </div>
-<div class ="row" align="center">
+<div id = "message" class ="row" align="center">
   <font color=red>{{success_message}}</font>
 </div>
 <br>
 <br>
 <div >
-<form action="/pcheadmanager/" method="POST">
+<form id = form action="/pcheadmanager/" method="POST">
 {% csrf_token %}
 
 <div class ="row">
@@ -166,7 +197,7 @@ $.ajax({
 <div class ="row" align="center">
 
 <div class="col-xs-4"></div><div class="col-xs-4">
-<input type="submit"  value="Deactivate"  name="deactivateheadpc" onclick="return confirm('Are you sure want to Deactivate ?');">
+<input type="submit" id = submitbtn value="Deactivate"  name="deactivateheadpc" onclick="return confirm('Are you sure want to Deactivate ?');">
 </div>
 <div class="col-xs-4"></div>
 

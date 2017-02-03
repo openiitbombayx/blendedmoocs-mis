@@ -9,10 +9,6 @@
 </header>
 {% endblock %}
 {% block body_block %}
- 
-{% if bflag == "0" %}
-<a href="/courseenrollment/">Course Enrollment Summary</a>
-{% endif %}
 
  <p><h2> Current Courses List </h2> </p>
       <table  class="table" " style="width:100%;" align="left" >
@@ -22,7 +18,7 @@
 
       {% for i in currentcourselist %}
       <tr>
-       <td><a href="/instructor_course_report/{{i.0}}"> {{ i.0 }}</a></td>
+       <td><a href="/instructor_course_intro/{{i.0}}"> {{ i.0 }}</a></td>
        <td >{{ i.1 }}</td>
        <td style="width:100px;">{{ i.2}}</td>
        <td style="width:100px;">{{ i.3}}</td>
@@ -39,7 +35,7 @@
 
       {% for i in archivedcourselist %}
       <tr>
-       <td><a href="/instructor_course_report/{{i.0}}"> {{ i.0 }}</a></td>
+       <td><a href="/instructor_course_intro/{{i.0}}"> {{ i.0 }}</a></td>
        <td >{{ i.1 }}</td>
        <td style="width:100px;">{{ i.2}}</td>
        <td style="width:100px;">{{ i.3}}</td>

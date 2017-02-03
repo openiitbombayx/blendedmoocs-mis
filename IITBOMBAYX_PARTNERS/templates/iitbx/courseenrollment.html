@@ -5,15 +5,12 @@
 <header ><h2 align=center>Course Enrollment Summary </font></h2></header>
 
 <style>
- th, td { white-space: nowrap; }
-    div.dataTables_wrapper {
-        width: 1050px;
-        
-        margin-right: 0.5em;
-    }
-td {
+ td {
     border:1px solid #333;
+   
 }
+
+
 </style>
 <!---download scirpt-->
 <script>
@@ -82,29 +79,45 @@ $(document).ready(function () {
 
 <div class="row">
  <div class="col-md-10"><a href="#" class="export" >Download CSV</a></div>
+<div  class="table-responsive" align="right"><a href="/iitbx/managerhome/"> Home </a></div>
 </div>
 <br>
 {% autoescape off %}
 <div class="table-responsive">
 <div id="dvData">
-<table class ="table">
+<table class ="table" style="width:100%" >
+   <col width="150px">
+   <col width="250px">
+   <col width="150px">
+   <col width="150px">
+   <col width="220px">
+   
      <tr>
-      <td align=left><b>Course</b></td>
-      <td align=left><b>Name</b></td>
-      <td align=left><b>Start Date</b></td>
-      <td align=left><b>End Date</b></td>
-      <td align=left><b>Students<br>Enrolled</b></td>
+      <td  align=left ><b>Course</b></td>
+      <td  align=left><b>Name</b></td>
+      <td  align=left><b>Start Date</b></td>
+      <td  align=left><b>End Date</b></td>
+      <td  align=left><b>Students Enrolled</b></td>
      </tr>
-      <tr>
+      
       {% for i in enroll_detail %}
-      <td align=left>{{i.0}}</td>
-      <td align=left>{{i.1}}</td>
-      <td align=left>{{i.2}}</td>
-      <td align=left>{{i.3}}</td>
-      <td align=right>{{i.4}}</td>
+       <tr>
+      <td  align=left >{{i.0}}</td>
+      <td  align=left >{{i.1}}</td>
+      <td  align=left>{{i.2}}</td>
+      <td  align=left>{{i.3}}</td>
+      <td  align=right>{{i.4}}</td>
       
       </tr>
     {% endfor %} 
+    <tr>   
+         <td colspan="4"  align=right><b>Total Enrollment</b></td>
+         <td  align=right><b>{{totalsum}}</b></td>
+      </tr>
+       
+       
+       
+       
 </table>
 </div>
 </div>

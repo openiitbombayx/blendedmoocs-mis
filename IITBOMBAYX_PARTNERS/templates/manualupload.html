@@ -18,6 +18,7 @@ $(document).ready(function () {
 jQuery.each(jQuery('#usermanual')[0].files, function(i, file) {
     data.append('usermanual', file);
     data.append('bmadminmanual', ['']);
+    data.append('bmcoursemanagermanual',[]);
 });
         
          $.ajax({
@@ -48,6 +49,7 @@ jQuery.each(jQuery('#usermanual')[0].files, function(i, file) {
 jQuery.each(jQuery('#bmadminmanual')[0].files, function(i, file) {
     data1.append('bmadminmanual', file);
    data1.append('usermanual', []);
+   data1.append('bmcoursemanagermanual',[]);
 });
   
       
@@ -66,8 +68,38 @@ jQuery.each(jQuery('#bmadminmanual')[0].files, function(i, file) {
         });
     });
 
-////
+//// for course manager manual
+var files;
 
+    $('#bmcoursemanagermanual').on('change', prepareUpload1);
+    function prepareUpload1(event){
+      files1 = event.target.files;
+    }; 
+    $("#uploadmanager").click(function () { 
+         $('#out').empty();
+         var data2 = new FormData();
+jQuery.each(jQuery('#bmcoursemanagermanual')[0].files, function(i, file) {
+    data2.append('bmcoursemanagermanual', file);
+    data2.append('bmadminmanual', []);
+    data2.append('usermanual', []);
+});
+        
+         $.ajax({
+            url: '/sendmanual/',  
+            type: 'POST',
+            data: data2,
+            success:function(data){
+                                    var htmloutput= '<p id="out"><h5 style = "color : red">'+data+'</p>';
+                                    $('#out').html(htmloutput);
+                                }, 
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+
+//jquery for blended manual
+///
 
 });
 
@@ -111,6 +143,18 @@ jQuery.each(jQuery('#bmadminmanual')[0].files, function(i, file) {
           
         </td><td>
             <input type="button" value="upload" id="uploadadmin"/>
+        </td></tr>
+
+<tr>
+           <td>
+            <label><b>Blended Course Manager User Guide &nbsp; </b></label>
+          
+        </td>
+           <td>
+            <input type="file" value="bmcoursemanagermanual" name="bmcoursemanagermanual" id="bmcoursemanagermanual" /><br/>
+          
+        </td><td>
+            <input type="button" value="upload" id="uploadmanager"/>
         </td></tr>
     </table>
 </ol>

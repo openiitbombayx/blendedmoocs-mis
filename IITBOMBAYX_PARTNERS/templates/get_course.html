@@ -1,185 +1,244 @@
 {% extends 'base2.html' %}
 {% load staticfiles %}
 {% block header %}
-<header ><h2 align=center>Admin Students' Upload  </font></h2></header>
+<header ><h2 align=center>Course Module Report</h2></header>
  <script>
-            $(document).ready(function(){
-                  //begin 
-                  
-                  $('#Course').on('change', function() {   // check for changes
-             $('#Chapter').empty();         //  Make the city dropdown empty
-    
-
-$.ajax({
-           type: "GET",
-           url:"/course_chapter",
-           data:{id: $('#Course').val()},
-           contentType: "application/json; charset=utf-8",
-           datatype: 'json',
-           success: function(result)
-                 {
-                    //console.log(result);
- 
-                    var listItems= "<option value='nocourse'>" + "-- Select the Chapter -- " + "</option>";
-                    var teams =  result ;
-                    
-                     
-                    if (teams.length==0){ alert(" Selected Course has no chapter  !!!");
- 
-                        listItems += "<option value='nochapter'>" + " -- " + "</option>";
-               
-                     $("#Chapter").html(listItems);
-
-                     }
-                    else{
-                    for(var c=0; c<teams.length; c++){
-                
-                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
-
-                     $("#Chapter").html(listItems);
-                 }}
-
-            },
-        });
-
-
-                  });
-              //end
-
+$(document).ready(function(){
 //newbegin
-
-                  $('#Chapter').on('change', function() {   // check for changes
-             $('#Sequential').empty();         //  Make the city dropdown empty
-    
-
-$.ajax({
-           type: "GET",
-           url:"/chapter_sequential",
-           data:{id: $('#Chapter').val()},
-           contentType: "application/json; charset=utf-8",
-           datatype: 'json',
-           success: function(result)
-                 {
-                    var listItems= "<option value='nosequential'>" + "--Select the sequential-- " + "</option>" ; 
-                        //listItems +=   "<option value='All sequential'>"   + "Allsequential " + "</option>"
-                    var teams =  result ;
-
-                     console.log(teams);
-                    if (teams.length==0){ alert(" Selected chapter has no sequential  !!!");
-listItems += "<option value='nosequential'>" + " -- " + "</option>";
-               
-                     $("#Sequential").html(listItems);
-
-                     }
-                    else{
-                        
-                    for(var c=0; c<teams.length; c++){
-                         
-                
-                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
-
-
-                     $("#Sequential").html(listItems);
-                 }}
-
-            },
-        });
-
-                  });
-
+$('#Chapter').on('change', function() { // check for changes
+                                        $('#Sequential').empty();
+                                        
+                                        $.ajax({
+                                                    type: "GET",
+                                                    url:"/iitbx/chapter_sequential",
+                                                    data:{id: $('#Chapter').val()},
+                                                    contentType: "application/json; charset=utf-8",
+                                                    datatype: 'json',
+                                                    success: function(result)
+                                                             {
+                                                              $('#Chapter option:eq(0)').attr("disabled", true);
+                                                              var listItems="<option value='nosequential'>"+"--Select the Sub-Section--"+"</option>"; 
+                                                              var teams =  result[0] ;
+                                                              var display = result[1];
+                                                              $('#chapter_id').empty();
+                                                              $('#sequential_id').empty();
+                                                              $('#type_id').empty();
+                                                              $('#unit_id').empty();
+                                                              $('#generated_table').empty(); 
+                                                              $('#chapter_id').append('<h4 ><b>Section:</b>'+display+' </h4>');
+                                                              if (teams.length==0)
+                                                              { 
+                                                                   alert(" Selected chapter has no section  !!!");
+                                                                   listItems += "<option value='nosequential'>" + " -- " + "</option>";
+                                                                   $("#Sequential").html(listItems);
+                                                              }
+                                                              else
+                                                              {
+                                                                  for(var c=0; c<teams.length; c++)
+                                                                  {
+                                                                    listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
+                                                                    $("#Sequential").html(listItems);
+                                                                  }
+                                                               }
+                                                              $('#UnitType').empty();
+                                                              $('#Unit').empty();
+                                                              $('#UnitType').append( '<option value="">-- Select a Unit Type --</option>');
+                                                              $('#Unit').append( '<option value="">-- Select a Unit --</option>');
+                                                             },
+                                               });
+                                      });
+//newend
+//newbegin
+$('#Sequential').on('change', function() {  // check for changes
+                                            $('#UnitType').empty();         
+                                            $.ajax({
+                                                       type: "GET",
+                                                       url:"/iitbx/sequential_unittype",
+                                                       data:{id: $('#Sequential').val()},
+                                                       contentType: "application/json; charset=utf-8",
+                                                       datatype: 'json',
+                                                       success: function(result)
+                                                       {   
+                                                           $('#Sequential option:eq(0)').attr("disabled", true);
+                                                           var listItems= "<option value='novertical'>" + "--Select the Unit-- " + "</option>" ; 
+                                                           var teams =  result[0] ;
+                                                           var display = result[1];
+                                                           $('#generated_table').empty(); 
+                                                           $('#sequential_id').empty();
+                                                           $('#type_id').empty();
+                                                           $('#unit_id').empty();
+                                                           $('#sequential_id').append('<h4 ><b>Sub-Section:</b>'+display+' </h4>');
+                                                           if (teams.length==0)
+                                                           { 
+                                                               alert(" Selected chapter has no subsection !!!");
+                                                               listItems += "<option value='novertical'>" + " -- " + "</option>";
+                                                               $("#UnitType").html(listItems);
+                                                           }
+                                                           else
+                                                           {
+                                                                for(var key in teams)
+                                                                {
+                                                                    listItems += "<option value='" + key + "'>" + key + "</option>";
+                                                                    $("#UnitType").html(listItems);
+                                                                }
+                                                           }
+                                                           $('#Unit').empty();
+                                                           $('#Unit').append( '<option value="">-- Select a Unit --</option>');
+                                                       },
+                                                   });
+                                         });
+//newend
+//newbegin
+$('#UnitType').on('change', function() {   // check for changes
+                                         $('#Unit').empty();         
+                                         $.ajax({
+                                                   type: "GET",
+                                                   url:"/iitbx/vertical_module",
+                                                   data:{id: $('#UnitType').val(),sequential: $('#Sequential').val()},
+                                                   contentType: "application/json; charset=utf-8",
+                                                   datatype: 'json',
+                                                   success: function(result)
+                                                            {
+                                                             $('#UnitType option:eq(0)').attr("disabled", true);
+                                                             var listItems= "<option value='novertical'>" + "--Select the Unit--" + "</option>" ; 
+                                                             var teams =  result[0] ;
+                                                             var display = result[1];
+                                                             $('#generated_table').empty(); 
+                                                             $('#type_id').empty();
+                                                             $('#unit_id').empty();
+                                                             $('#type_id').append('<h4 ><b>Unit Type:</b>'+display+' </h4>');
+                                                             if (teams.length==0)
+                                                             {
+                                                               alert(" Selected chapter has no Unit type  !!!");
+                                                               listItems += "<option value='novertical'>" + " -- " + "</option>";
+                                                               $("#Unit").html(listItems);
+                                                             }
+                                                             else
+                                                             {
+                                                               for(var keys in teams)
+                                                               {
+                                                                    listItems += "<option value='" + teams[keys] + "'>" + keys + "</option>";
+                                                                    $("#Unit").html(listItems);
+                                                               }
+                                                             }
+                                                            },
+                                                });
+                                       }
+                 );
+//newend
+//newbegin
+$('#Unit').on('change', function() {   // check for changes
+                                         $.ajax({
+                                                   type: "GET",
+                                                   url:"/iitbx/display_type",
+                                                   data:{id: $('#Unit').val()},
+                                                   contentType: "application/json; charset=utf-8",
+                                                   datatype: 'json',
+                                                   success: function(result)
+                                                            {
+                                                             $('#Unit option:eq(0)').attr("disabled", true);
+                                                             var display = result;
+                                                             $('#generated_table').empty(); 
+                                                             $('#unit_id').empty();
+                                                             if (display.length == 0)
+                                                             {
+                                                              $('#unit_id').append('<h4 ><b>Unit:</b>'+$( "#Unit option:selected" ).text()+'</h4>');
+                                                             }
+                                                             else
+                                                             {
+                                                            $('#unit_id').append('<h4 ><b>Unit:</b>'+display+' </h4>');
+                                                             }
+                                                            },
+                                                });
+                                       }
+                 );
 //newend
 
-
-//newbegin
-
-                  $('#Sequential').on('change', function() {   // check for changes
-             $('#Vertical').empty();         //  Make the city dropdown empty
-    
-
-$.ajax({
-           type: "GET",
-           url:"/sequential_vertical",
-           data:{id: $('#Sequential').val()},
-           contentType: "application/json; charset=utf-8",
-           datatype: 'json',
-           success: function(result)
-                 {
-                    var listItems= "<option value='novertical'>" + "--Select the vertical-- " + "</option>" ; 
-                        //listItems +=   "<option value='All Vertical'>"   + "All Vertical " + "</option>"
-                    var teams =  result ;
-
-                    if (teams.length==0){ alert(" Selected chapter has no vertical  !!!");
-listItems += "<option value='novertical'>" + " -- " + "</option>";
-               
-                     $("#Vertical").html(listItems);
-
-                     }
-                    else{
-                        
-                    for(var c=0; c<teams.length; c++){
-                         
-                
-                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
-
-
-                     $("#Vertical").html(listItems);
-                 }}
-
-            },
-        });
-
-                  });
-
-//newend
-
-//newbegin
-
-                  $('#Vertical').on('change', function() {   // check for changes
-             $('#Module').empty();         //  Make the city dropdown empty
-    
-
-$.ajax({
-           type: "GET",
-           url:"/vertical_module",
-           data:{id: $('#Vertical').val()},
-           contentType: "application/json; charset=utf-8",
-           datatype: 'json',
-           success: function(result)
-                 {
-                    var listItems= "<option value='nomodule'>" + "--Select the Module Type-- " + "</option>" ; 
-                        //listItems +=   "<option value='All module'>"   + "All module " + "</option>"
-                    var teams =  result ;
-                    console.log(result);
-
-                    if (teams.length==0){ alert(" Selected chapter has no module  !!!");
-listItems += "<option value='nomodule'>" + " -- " + "</option>";
-               
-                     $("#Module").html(listItems);
-
-                     }
-                    else{
-                        
-                    for(var c=0; c<teams.length; c++){
-                         
-                
-                       listItems += "<option value='" + teams[c][1]+ "'>" + teams[c][0]+ "</option>";
-
-
-                     $("#Module").html(listItems);
-                 }}
-
-            },
-        });
-
-                  });
-
-//newend
+//new start
+$('#problem_button').on('click', function() 
+                               { 
+                                   $('#generated_table').empty(); 
+                                   var list=[]
+                                   var chapter_val = $('#Chapter').val();
+                                   var sequential_val = $('#Sequential').val();
+                                   var type_val = $('#UnitType').val();
+                                   var unit_val = $('#Unit').val();
+                                   if ( chapter_val =="" || sequential_val =="" || type_val == "" || unit_val == "" )
+                                                        {
+                                                            alert("Please select all Values");
+                                                        }
+                                   $.ajax({
+                                             type: "GET",
+                                             url:"/iitbx/problem_compare",
+                                             data:{chapter:$('#Chapter').val(),sequential:$('#Sequential').val(),type:$('#UnitType').val(),unit:$('#Unit').val()},
+                                             contentType: "application/json; charset=utf-8",
+                                             datatype: 'json',
+                                             success: function(result)
+                                                     {
+                                                        var summary = result[0];
+                                                        var message = result[1];
+                                                        var display = result[2];
+                                                        var trHTML="";
+                                                        if (message !=" ")
+                                                        {
+                                                                 alert(message);
+                                                        }
+                                                        else  
+                                                        {
+                                                           $('#generated_table').empty(); 
+                                                           var thead='<thead><tr><td><b>No. of Times accessed</b></td><td><b>No. of Students</b></td></tr></thead>';
+                                                           var row=""
+                                                           for (i = 0; i < summary.length; i++) 
+                                                           {         
+                                                                  var col='';
+                                                                  for(j=0; j < summary[i].length ; j++ )
+                                                                  {   
+                                                                      col+='<td>'+summary[i][j]+'</td>' ;
+                                                                  }
+                                                       
+                                                                row+='<tr>'+col+'</tr>';
+                                                          }
+                                                         $('#generated_table').append(thead+'<tbody>'+row+'<tbody>');
+                                                       }
+                                                   },
+                                          });
+                               });
+//new end
+//start
+ $('#clear_button').on('click', function() 
+                               { 
+                                   $('#generated_table').empty(); 
+                                   $('#chapter_id').empty();
+                                   $('#sequential_id').empty();
+                                   $('#type_id').empty();
+                                   $('#unit_id').empty();
+                                   $('#Chapter option:eq(0)').attr('selected','selected');
+                                   $('#Sequential').empty();
+                                   $('#UnitType').empty();
+                                   $('#Unit').empty();
+                                   $('#Sequential').append( '<option value="">-- Select a Sub-Section --</option>');
+                                   $('#UnitType').append( '<option value="">-- Select a Unit Type --</option>');
+                                   $('#Unit').append( '<option value="">-- Select a Unit --</option>');
+                               });
+//end
+//start
+  $( document ).ready(function() 
+  {
+      $('#generated_table').empty(); 
+      $('#chapter_id').empty();
+      $('#sequential_id').empty();
+      $('#type_id').empty();
+      $('#unit_id').empty();
+      $('#Chapter option:eq(0)').attr('selected','selected');
+      $('#Sequential option:eq(0)').attr('selected','selected');
+      $('#UnitType option:eq(0)').attr('selected','selected');
+      $('#Unit option:eq(0)').attr('selected','selected');
+  });
+//end
 
             })(this);
-         
+
         </script>
-
-
 <style>
  th, td { white-space: nowrap; }
     div.dataTables_wrapper {
@@ -197,78 +256,104 @@ listItems += "<option value='nomodule'>" + " -- " + "</option>";
 <br>
 <br>
 <div >
-<form action="//" method="POST">
+<form action="" method="POST">
 {% csrf_token %}
-
 </br>
-<div class ="row">
-<div class ="col-xs-6 col-md-4">
-<b>Course</b>
-</div>
- <div class ="col-xs-6 col-md-4">
-<select id="Course" name="Course"  style="width:200px;">
-<option value="nocourse"  >-- Select the Course -- </option>
-                {% for course in courses %}
-      
-
-<option value="{{ course.1 }}" >{{ course.0}}</option>
-
-	{% endfor %}
-
-              </select>
+<div class="row" >
+    <div class ="col-md-8">
+	<h4><b>Course Id:</b> {{courseid}}</h4>
+    </div>
+    
+	<div class ="col-md-8">
+	<h4><b>Course Name :</b> {{coursedisplayname}}</h4>
+	</div>
+    
+    <div class ="col-md-8">
+	<h4><b>Classes Start :</b> {{coursestart}}</h4>
+    </div>
+    <br>
+    <div class ="col-md-8">
+	<h4><b>Classes End :</b> {{courseend}}</h4>
+    </div>
+    <br>
 </div>
 </div>
 <br>
-<br>
-<div class ="row">
-<div class ="col-xs-6 col-md-4">
-<b>Chapter</b>
-</div>
- <div class ="col-xs-6 col-md-4">
+<TABLE>
+<tr><td align=center colspan=4><b>-- Select the Module --</b><br><br></td></tr>
+
+<tr>
+<td>
+<div class ="col-xs-4 col-md-3">
 
 <select id="Chapter" name="Chapter" style="width:200px;">
-	<option value="">-- Select a Chapter --</option>
+	                    <option value="">-- Select a Section --</option>
+                            {% for course in chapters %}
+                                  <option value="{{ course.1 }}" >{{ course.0}}</option>
+	                    {% endfor %}
 </select>
 </div>
-</div>
-<br>
-<br>
-<div class ="row">
-<div class ="col-xs-6 col-md-4">
-<b>Sequential</b>
-</div>
- <div class ="col-xs-6 col-md-4">
+
+</td>
+<td>
+<div class ="col-xs-4 col-md-3">
 <select id="Sequential" name="Sequential" style="width:200px;">
-	<option value="">-- Select a sequential --</option>
-
-              </select>
-</div>
-</div>
-<br>
-<br>
-<div class ="row">
-<div class ="col-xs-6 col-md-4">
-<b>Vertical</b>
-</div>
- <div class ="col-xs-6 col-md-4">
-<select id="Vertical" name="Vertical" style="width:200px;">
-	<option value="">-- Select a vertical --</option>
-
-              </select>
-</div>
-</div>
-<br>
-<br>
-<div class ="row">
-<div class ="col-xs-6 col-md-4">
-<b>Module</b>
-</div>
- <div class ="col-xs-6 col-md-4">
-
-<select id="Module" name="Module" style="width:200px;">
-	<option value="">-- Select a Module type --</option>
+<option value="">-- Select a Sub-Section --</option>
 </select>
 </div>
-</div>
+</td>
+<td>
+ <div class ="col-xs-4 col-md-3">
+<select id="UnitType" name="UnitType" style="width:200px;">
+<option value="">-- Select a Unit Type  --</option>
 
+              </select>
+</div>
+</td>
+<td>
+<div class ="col-xs-4 col-md-3">
+<select id="Unit" name="Unit" style="width:200px;">
+<option value="">-- Select a Unit  --</option>
+</select>
+</div>
+</td>
+</tr>
+<tr>
+<td align = center><b>Section</b></td>
+<td align = center><b>Sub-Section</b></td>
+<td align = center ><b>Unit Type</b></td>
+<td align = center ><b>Unit</b></td>
+</tr>
+<table>
+<br>
+<br>
+<center>
+<div class="row" align = "center">
+<div class="col-xs-4 col-md-3" float=left >
+  <input type="button" value = "submit" id = "problem_button" >
+</div>
+<div class="col-xs-4 col-md-3" float=right>
+  <input id= "clear_button" type=button value="Clear">
+</div>
+</div>
+</center>
+<br><br><br><br>
+</form>
+<div class="row" >
+        <div class ="col-md-8" id = "chapter_id">
+       </div>
+	<div class ="col-md-8" id = "sequential_id">
+	</div>
+        <div class ="col-md-8" id = "type_id">
+        </div>
+        <br>
+        <div class ="col-md-8" id = "unit_id">
+        </div>
+        <br>
+</div>
+<br>
+<div id="dvData" class="table-responsive">
+ <table id="generated_table" class="table table-bordered" cellspacing="0" width="100%" >
+</table> 
+</div>
 {% endblock %}

@@ -8,7 +8,7 @@
 {% endblock %}
 {% block body_block %}
 
-                {% if usertype == 10 or usertype == 0 %}
+                {% if usertype == 9 or usertype == 0 %}
                 <h2>Support Administrator - Users</h2>
                 
                         {% if errors %}
@@ -28,6 +28,10 @@
                             <td><a href = "/pcheadmanager/" >Remove Institute Level Users</a></td>
                             <td>Interface for Deactivation of Heads and Program Coordinators</td>       
                         </tr>
+                  <!--     <tr>
+                            <td><a href = "/userweeklysession/" >System User Weekly Access Report</a></td>
+                            <td>Report for tracking user access to system on week basis.</td>       
+                        </tr> -->
                  </table>       
                      <h2>Support Administrator - Courses</h2>
                 
@@ -49,10 +53,14 @@
                              <td><a href = "/allstudentinfo/" >All Students' Information</a></td>
                             <td>Participating Students Information - for all Remote Centers.</td>       
                         </tr>
+                        <tr>
+                             <td><a href = "/invited_userlist/0/" >Invited Participants Status</a></td>
+                             <td>Invited Participants Information -at course level</td>       
+                        </tr>
                        
                  </table>
-                {% endif %}
-                {% if usertype == 9 or usertype == 0 %}
+                 {% endif %}
+                {% if usertype == 9 or usertype == 0 or usertype == 10 %}
                      <h2>Reports Manager</h2>
                     {% for i in report_list %}
                           <h3>{{i.0}} </h3>
@@ -68,6 +76,9 @@
                          </table>
                     {% endfor %}
                 {% endif %}
+           
                 </div>
+
+                
 {% endblock %}
 

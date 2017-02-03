@@ -8,29 +8,12 @@
        {% block title %}{% endblock %}
 </title>
 <link rel="icon" type="image/x-icon" href="">
-<link href="{% static 'css/lms-style-vendor.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/lms-style-app.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/lms-style-app-extend1.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/lms-style-app-extend2.css' %}" rel="stylesheet" type="text/css">
-<script src="{% static 'js/jquery-1.11.3.js' %}"></script>
-<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-<!-- ******************************************Begin JavaScript**************************************** -->
-<SCRIPT TYPE="text/javascript"> 
-function submitenter(input,e) { 
-var keycode;
- if (window.event) keycode = window.event.keyCode;
- else if (e) keycode = e.which; 
-else return true; if (keycode == 13) { input.form.submit(); 
-return false; }
- else return true; }
-</SCRIPT> 
-
-{% block script %}{% endblock %}
-<!-- ******************************************End JavaScript**************************************** -->
-
-
-<!-- ******************************************Begin Style**************************************** -->
-{% block style %}{% endblock %}
+{% load compress %}
+{% compress css %}
+<link href="{% static 'css/mis-vendor-min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/mis-app-min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/mis-extend1-min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/mis-extend2-min.css' %}" rel="stylesheet" type="text/css">
 <style>
  .wrapper-footer footer .colophon-about img, .view-login
 .wrapper-footer footer .colophon-about img {
@@ -71,6 +54,30 @@ width:960px;
 margin:auto;
 }
 </style>
+{% endcompress %}
+{% load compress %}
+{% compress js %}
+<!--<script src="{% static 'js/jquery-1.11.3.js' %}"></script>
+<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>-->
+<script src="{% static 'js/mis-jquery-1.11.3.min.js' %}"></script>
+<!-- ******************************************Begin JavaScript**************************************** -->
+<SCRIPT TYPE="text/javascript"> 
+function submitenter(input,e) { 
+var keycode;
+ if (window.event) keycode = window.event.keyCode;
+ else if (e) keycode = e.which; 
+else return true; if (keycode == 13) { input.form.submit(); 
+return false; }
+ else return true; }
+</SCRIPT> 
+{% endcompress %}
+{% block script %}{% endblock %}
+<!-- ******************************************End JavaScript**************************************** -->
+
+
+<!-- ******************************************Begin Style**************************************** -->
+{% block style %}{% endblock %}
+
 <!-- ******************************************End JavaScript**************************************** -->
 
 </head>
@@ -112,7 +119,7 @@ margin:auto;
 
 <div class="wrapper wrapper-footer" style="width:auto;">
  <footer style="width:90%;">
-    <div class="colophon" style="width:43%">
+    <div class="colophon" style="width:45%">
       <nav class="nav-colophon" style="margin-bottom:20px;">
    <ol>
           <li class="nav-colophon-01">         

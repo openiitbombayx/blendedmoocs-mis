@@ -308,7 +308,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 }
 
 .treeview .hitarea {
-	background: url("/static/css/vendor/images/treeview-default.8566196eba22.gif") -64px -25px no-repeat;
 	height: 16px;
 	width: 16px;
 	margin-left: -16px;
@@ -334,13 +333,13 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 
 .treeview .hover { color: red; cursor: pointer; }
 
-.treeview li { background: url("/static/css/vendor/images/treeview-default-line.5e3c0e0c48f4.gif") 0 0 no-repeat; }
+/*.treeview li { background: url("/static/css/vendor/images/treeview-default-line.5e3c0e0c48f4.gif") 0 0 no-repeat; }*/
 .treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
 
 .treeview .expandable-hitarea { background-position: -80px -3px; }
 
 .treeview li.last { background-position: 0 -1766px }
-.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url("/static/css/vendor/images/treeview-default.8566196eba22.gif"); }  
+/*.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url("/static/css/vendor/images/treeview-default.8566196eba22.gif"); }*/  
 .treeview li.lastCollapsable { background-position: 0 -111px }
 .treeview li.lastExpandable { background-position: -32px -67px }
 
@@ -404,26 +403,26 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .ui-widget { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 1.1em; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 1em; }
-.ui-widget-content { border: 1px solid #dddddd; background: #eeeeee url("/static/css/vendor/ui-lightness/images/ui-bg_highlight-soft_100_eeeeee_1x100.384c3f17709b.png") 50% top repeat-x; color: #333333; }
+.ui-widget-content { border: 1px solid #dddddd;  color: #333333; }
 .ui-widget-content a { color: #333333; }
-.ui-widget-header { border: 1px solid #e78f08; background: #f6a828 url("/static/css/vendor/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.58d2cd501e01.png") 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
+.ui-widget-header { border: 1px solid #e78f08;  color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #cccccc; background: #f6f6f6 url("/static/css/vendor/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.5f1847175ba1.png") 50% 50% repeat-x; font-weight: bold; color: #1c94c4; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #cccccc;  font-weight: bold; color: #1c94c4; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #1c94c4; text-decoration: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #fbcb09; background: #fdf5ce url("/static/css/vendor/ui-lightness/images/ui-bg_glass_100_fdf5ce_1x400.d26e8f463195.png") 50% 50% repeat-x; font-weight: bold; color: #c77405; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #fbcb09; font-weight: bold; color: #c77405; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #c77405; text-decoration: none; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #fbd850; background: #ffffff url("/static/css/vendor/ui-lightness/images/ui-bg_glass_65_ffffff_1x400.e5a8f32e28fd.png") 50% 50% repeat-x; font-weight: bold; color: #eb8f00; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #fbd850;font-weight: bold; color: #eb8f00; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #eb8f00; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
 /* Interaction Cues
 ----------------------------------*/
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #fed22f; background: #ffe45c url("/static/css/vendor/ui-lightness/images/ui-bg_highlight-soft_75_ffe45c_1x100.b806658954cb.png") 50% top repeat-x; color: #363636; }
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #fed22f; color: #363636; }
 .ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
-.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #b81900 url("/static/css/vendor/ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.95f9cceeb9d7.png") 50% 50% repeat; color: #ffffff; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; color: #ffffff; }
 .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #ffffff; }
 .ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #ffffff; }
 .ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
@@ -434,14 +433,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 ----------------------------------*/
 
 /* states and images */
-.ui-icon { width: 16px; height: 16px; background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_222222_256x240.ebe6b6902a40.png"); }
-.ui-widget-content .ui-icon {background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_222222_256x240.ebe6b6902a40.png"); }
-.ui-widget-header .ui-icon {background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_ffffff_256x240.342bc03f6264.png"); }
-.ui-state-default .ui-icon { background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_ef8c08_256x240.ef9a6ccfe3b1.png"); }
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_ef8c08_256x240.ef9a6ccfe3b1.png"); }
-.ui-state-active .ui-icon {background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_ef8c08_256x240.ef9a6ccfe3b1.png"); }
-.ui-state-highlight .ui-icon {background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_228ef1_256x240.79f41c0765e9.png"); }
-.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url("/static/css/vendor/ui-lightness/images/ui-icons_ffd27a_256x240.ab8c30acc0e3.png"); }
 
 /* positioning */
 .ui-icon-carat-1-n { background-position: 0 0; }
@@ -631,8 +622,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
 
 /* Overlays */
-.ui-widget-overlay { background: #666666 url("/static/css/vendor/ui-lightness/images/ui-bg_diagonals-thick_20_666666_40x40.f040b255ca13.png") 50% 50% repeat; opacity: .50;filter:Alpha(Opacity=50); }
-.ui-widget-shadow { margin: -5px 0 0 -5px; padding: 5px; background: #000000 url("/static/css/vendor/ui-lightness/images/ui-bg_flat_10_000000_40x100.c18cd01623c7.png") 50% 50% repeat-x; opacity: .20;filter:Alpha(Opacity=20); -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }/*!
+.ui-widget-overlay { filter:Alpha(Opacity=50); }
+.ui-widget-shadow { margin: -5px 0 0 -5px; padding: 5px; opacity: .20;filter:Alpha(Opacity=20); -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }/*!
  * jQuery UI Resizable 1.8.22
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)

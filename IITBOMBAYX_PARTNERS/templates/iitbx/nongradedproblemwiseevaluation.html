@@ -1,0 +1,127 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Non Graded Problem wise Details</font></h2></header>
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+<script>
+            $(document).ready(function(){
+                  //begin
+                  $('#quiz').on('change', function() {   // check for changes
+             $('#Problem').empty();         //  Make the city dropdown empty
+  
+
+$.ajax({
+           type: "GET",
+           url:"/iitbx/nongradedproblemwisedata",
+           data:{id: $('#quiz').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+                      
+                    var listItems= "<option value='noproblem'>" + "-- Select the Problem -- " + "</option>";
+                    var teams =  result ;
+                    
+                    var problemname='<label for="Problem" id="problemname">'+result[0]+'</label>';
+                    $("#problemname").html(problemname);
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Course has no Problems !!!");
+                     listItems += "<option value='noproblem'>" + " -- " + "</option>";
+               
+                     $("#Problem").html(listItems);
+
+                     }
+                    else{
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c][0]+ "'>" + teams[c][1]+ "</option>";
+
+                     $("#Problem").html(listItems);
+                 }}
+
+            },
+        });
+
+
+                  });});
+              //end
+
+</script>
+{% endblock %}
+{% block body_block %}
+
+{% autoescape off %}
+<br><br>
+<div class="row">
+	<div class ="col-md-8">
+	<h4><b>Institute:</b> {{selectedinstitute}}</h4>
+    </div>
+	<div class ="col-md-8">
+	<h4><b>Teacher:</b> {{teacher}}</h4>
+	</div>
+	
+	<div class ="col-md-8">
+	<h4><b>Course Id:</b> {{course}}</h4>
+
+	</div>
+
+
+</div>
+<div class="row" align="right"><a href="/instructor_course_report/{{courseid}}/">Reports </a></div>
+
+  <div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+</br>
+<div class="table-responsive">
+<form action="/iitbx/nongradedproblemwisedetails/{{courseid}}/{{pid}}/" method="POST">
+{% csrf_token %}
+
+<center><b><p><font face="12"><b>List of Assignments</b></font></p></b></center>
+</br>
+
+<center><select  id="quiz" name="quiz">
+  <option value="Select">-- Select the assignment --</option>
+ {% for i in evaluation %}
+
+  <option value="{{i.id}}" >{{i.sec_name}}</option>
+
+{% endfor %}
+
+
+</center></select>
+<br> <br> <br>
+
+
+<center><b><p><font face="12"><b>List of Problems</b></font></p></b></center>
+</br>
+<center><select id="Problem" name="Problem"  >
+<option value=""  >-- Select the Problem -- </option>
+      {% for c in problems %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select> </center>
+
+         
+
+
+<br><br>
+<input type="submit" value="Submit">
+</form>  
+ </div>
+<br>
+<br>
+
+{% endautoescape %}
+
+{% endblock %}

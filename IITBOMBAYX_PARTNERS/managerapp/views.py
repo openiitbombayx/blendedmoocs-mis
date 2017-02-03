@@ -4,8 +4,6 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <http://www.gnu.org/licenses>.'''
 
-
-
 from django.shortcuts import render
 from SIP.views import *
 from iitbx.models import *
@@ -946,7 +944,7 @@ def activity_day_wise(request,courseid):
     args={}
     args =iitbxsessiondata(request)
     courseobj = edxcourses.objects.get(courseid = courseid)
-    student_data=CoursewareStudentmodule.objects.raw(''' SELECT "1" id,num_days,count(student_id) student_count,count(distinct Pass) "Pass", count(Distinct Fail) "Not_Pass" FROM (SELECT "1" id, student_id,count(distinct wedate) "num_days" ,if(c.status='downloadable',student_id,NULL) "Pass",if(c.status!='downloadable',student_id,NULL) "Fail" FROM  (SELECT student_id, DATE(IFNULL(b.created,a.modified)) wedate from  `courseware_studentmodule`a  LEFT OUTER JOIN courseware_studentmodulehistory b  ON  b.student_module_id=a.id  where  a.course_id= %s and IFNULL(b.created,a.modified) between %s and %s ORDER BY `wedate` DESC) A  LEFT OUTER JOIN  `certificates_generatedcertificate` c ON  c.user_id =A.student_id and c.course_id= %s group by student_id ) X group by num_days order by num_days DESC ''',[courseid,courseobj.coursestart,courseobj.courseend,courseid])
+    student_data=CoursewareStudentmodule.objects.raw(''' SELECT "1" id,num_days,count(student_id) student_count,count(distinct Pass) "Pass", count(Distinct Fail) "Not_Pass" FROM (SELECT "1" id, student_id,count(distinct wedate) "num_days" ,if(c.status='downloadable',student_id,NULL) "Pass",if(c.status!='downloadable',student_id,NULL) "Fail" FROM  (SELECT student_id, DATE(IFNULL(b.created,a.modified)) wedate from  `courseware_studentmodule`a  LEFT OUTER JOIN courseware_studentmodulehistory b  ON  b.student_module_id=a.id  where  a.course_id= %s and IFNULL(b.created,a.modified) between %s and %s and a.student_id not in (select user_id FROM edxapp.student_courseaccessrole where course_id = %s ) ORDER BY `wedate` DESC) A  LEFT OUTER JOIN  `certificates_generatedcertificate` c ON  c.user_id =A.student_id and c.course_id= %s  group by student_id ) X group by num_days order by num_days DESC ''',[courseid,courseobj.coursestart,courseobj.courseend,courseid,courseid])
     for data in student_data:
         activity_day.append([data.num_days,data.student_count,data.Pass,data.Not_Pass])
         days.append(int(data.num_days))
@@ -971,7 +969,7 @@ def activity_date_wise(request,courseid):
     args =iitbxsessiondata(request)
     courseobj = edxcourses.objects.get(courseid = courseid)
     student_data=CoursewareStudentmodule.objects.raw(''' SELECT "1" id, wedate,count(distinct student_id) student_count, count(distinct if(status = 'downloadable',student_id,-1))-1 "Pass",count(distinct if(status = 'notpassing',student_id,-1))-1 "Fail" FROM (
-SELECT "1" id, student_id,wedate ,c.status FROM  (SELECT  student_id, DATE(IFNULL(b.created,a.modified)) wedate from  `courseware_studentmodule`a  LEFT OUTER JOIN courseware_studentmodulehistory b  ON  b.student_module_id=a.id  where  a.course_id= %s and IFNULL(b.created,a.modified) between %s and %s ORDER BY `wedate` DESC) A  LEFT OUTER JOIN  `certificates_generatedcertificate` c ON  c.user_id =A.student_id and c.course_id= %s ) X group by wedate''',[courseid,courseobj.coursestart,courseobj.courseend,courseid])
+SELECT "1" id, student_id,wedate ,c.status FROM  (SELECT  student_id, DATE(IFNULL(b.created,a.modified)) wedate from  `courseware_studentmodule`a  LEFT OUTER JOIN courseware_studentmodulehistory b  ON  b.student_module_id=a.id  where  a.course_id= %s and IFNULL(b.created,a.modified) between %s and %s and a.student_id not in (select user_id FROM edxapp.student_courseaccessrole where course_id = %s ) ORDER BY `wedate` DESC) A  LEFT OUTER JOIN  `certificates_generatedcertificate` c ON  c.user_id =A.student_id and c.course_id= %s ) X group by wedate''',[courseid,courseobj.coursestart,courseobj.courseend,courseid,courseid])
     for data in student_data:
         activity_date.append([data.wedate,data.student_count,data.Pass,data.Fail])
         dates.append(str(data.wedate))

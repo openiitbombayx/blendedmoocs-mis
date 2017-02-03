@@ -1,0 +1,175 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+{% block header %}
+<header ><h2 align=center>Faculty Students' Information  </font></h2></header>
+ <script>
+            $(document).ready(function(){
+                  //begin
+        
+
+//newbegin
+
+                  $('#Institute').on('change', function() {   // check for changes
+             $('#Teacher').empty();         //  Make the city dropdown empty
+
+
+$.ajax({
+           type: "GET",
+           url:"/courseteachers",
+           data:{cid: $('#Course').val(),iid: $('#Institute').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 {
+                    console.log(result);
+
+                        
+                    var teams =  result[0] ;
+
+                     console.log(teams);
+                    if (teams.length==0){ alert(" Selected Institute has no Teacher Enrolled for this Courses !!!");
+listItems = "<option value='noteacherexist'>" + " -- " + "</option>";
+               
+                     $("#Teacher").html(listItems);
+
+                     }
+                    else{
+                                            var listItems= "<option value='noteacher'>" + "--Select the Teacher-- " + "</option>" ; 
+                        listItems +=   "<option value='All Teachers'>"   + "All Teachers " + "</option>"
+                    for(var c=0; c<teams.length; c++){
+                         
+                
+                       listItems += "<option value='" + teams[c]+ "'>" + teams[c]+ "</option>";
+
+                     $("#Teacher").html(listItems);
+                 }}
+
+            },
+        });
+
+                  });
+
+//newend
+
+
+
+            })(this);
+         
+        </script>
+
+
+<style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 1050px;
+        
+        margin-right: 0.5em;
+    }
+</style>
+
+{% endblock %}
+{% block body_block %}
+<div class ="row" align="center">
+  <font color=red>{{error_message}}</font>
+</div>
+<br>
+<br>
+<div >
+<form action="/facultyuploaderinfo/{{courseid}}/" method="POST">
+{% csrf_token %}
+
+<div class ="row">
+<div class="col-xs-6 col-sm-3">
+<b>RCID</b>
+</div>
+
+<div class="col-xs-6 col-sm-3">
+<b>Teacher</b>
+</div>
+<div class="col-xs-6 col-sm-3">
+
+</div>
+<div class="col-xs-6 col-sm-3">
+</div>
+</div>
+</br>
+<div class ="row">
+<div class="col-xs-6 col-sm-3">
+
+<select id="Institute" name="Institute"  style="width:200px;">
+<option value="noinstitute"  >-- Select the Institute -- </option>
+                {% for institute in approvinstitute %}
+      
+
+<option value="{{ institute.1 }}" >{{ institute.0 }}</option>
+
+	{% endfor %}
+
+              </select>
+
+</div>
+
+
+
+
+<div class="col-xs-6 col-sm-3">
+<select id="Teacher" name="Teacher" style="width:200px;">
+	<option value="">-- Select the Teacher --</option>
+           
+                {% for c in courseteacher %}
+<option value="{{ c }}" >{{ c }}</option>
+	{% endfor %}
+              </select></div>
+
+
+<div class="col-xs-6 col-sm-3">
+<input type="hidden"  id="Course" name="Course" value={{courseid}}></div>
+
+</div>
+
+<div class ="row">
+<div class="col-xs-6 ">
+<label for="Institute" id="instiname">{{instiname}}</label>
+</div>
+</div>
+<br>
+<br>
+
+<br>
+<br>
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Marks per Problem"  name="evaluation">
+
+</div>
+
+<div class="col-xs-6" >
+<input type="submit"  value="Students' Details"  name="teacherstudent">
+
+</div>
+
+</div>
+<br>
+<br>
+<div class ="row">
+<div class="col-xs-6" >
+<input type="submit"  value="Summary of Marks"  name="grade">
+
+</div>
+<div class="col-xs-6 " >
+<input type="button" value="clear" onclick="location.href='/facultyuploaderinfo/{{courseid}}/'">
+</div>
+</div>
+<br>
+<br>
+</form>  
+ </div>
+
+<br>
+<br>
+
+
+
+</br>
+
+{% endblock %}
