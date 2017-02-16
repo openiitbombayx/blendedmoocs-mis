@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2017 at 01:59 PM
+-- Generation Time: Feb 16, 2017 at 11:19 AM
 -- Server version: 5.7.13-0ubuntu0.16.04.2
 -- PHP Version: 7.0.14-2+deb.sury.org~xenial+1
 
@@ -127,576 +127,576 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (64, 'Can add student details', 22, 'add_studentdetails'),
 (65, 'Can change student details', 22, 'change_studentdetails'),
 (66, 'Can delete student details', 22, 'delete_studentdetails'),
-(67, 'Can add uploadedfiles', 23, 'add_uploadedfiles'),
-(68, 'Can change uploadedfiles', 23, 'change_uploadedfiles'),
-(69, 'Can delete uploadedfiles', 23, 'delete_uploadedfiles'),
-(70, 'Can add page content', 24, 'add_pagecontent'),
-(71, 'Can change page content', 24, 'change_pagecontent'),
-(72, 'Can delete page content', 24, 'delete_pagecontent'),
-(73, 'Can add email content', 25, 'add_emailcontent'),
-(74, 'Can change email content', 25, 'change_emailcontent'),
-(75, 'Can delete email content', 25, 'delete_emailcontent'),
-(76, 'Can add error content', 26, 'add_errorcontent'),
-(77, 'Can change error content', 26, 'change_errorcontent'),
-(78, 'Can delete error content', 26, 'delete_errorcontent'),
-(79, 'Can add student_interface', 27, 'add_student_interface'),
-(80, 'Can change student_interface', 27, 'change_student_interface'),
-(81, 'Can delete student_interface', 27, 'delete_student_interface'),
-(82, 'Can add requested users', 28, 'add_requestedusers'),
-(83, 'Can change requested users', 28, 'change_requestedusers'),
-(84, 'Can delete requested users', 28, 'delete_requestedusers'),
-(85, 'Can add performance_interface', 29, 'add_performance_interface'),
-(86, 'Can change performance_interface', 29, 'change_performance_interface'),
-(87, 'Can delete performance_interface', 29, 'delete_performance_interface'),
-(88, 'Can add reports', 30, 'add_reports'),
-(89, 'Can change reports', 30, 'change_reports'),
-(90, 'Can delete reports', 30, 'delete_reports'),
-(91, 'Can add mail_interface', 31, 'add_mail_interface'),
-(92, 'Can change mail_interface', 31, 'change_mail_interface'),
-(93, 'Can delete mail_interface', 31, 'delete_mail_interface'),
-(94, 'Can add evaluations', 32, 'add_evaluations'),
-(95, 'Can change evaluations', 32, 'change_evaluations'),
-(96, 'Can delete evaluations', 32, 'delete_evaluations'),
-(97, 'Can add questions', 33, 'add_questions'),
-(98, 'Can change questions', 33, 'change_questions'),
-(99, 'Can delete questions', 33, 'delete_questions'),
-(100, 'Can add result', 34, 'add_result'),
-(101, 'Can change result', 34, 'change_result'),
-(102, 'Can delete result', 34, 'delete_result'),
-(103, 'Can add coursefaculty', 35, 'add_coursefaculty'),
-(104, 'Can change coursefaculty', 35, 'change_coursefaculty'),
-(105, 'Can delete coursefaculty', 35, 'delete_coursefaculty'),
-(106, 'Can add markstable', 36, 'add_markstable'),
-(107, 'Can change markstable', 36, 'change_markstable'),
-(108, 'Can delete markstable', 36, 'delete_markstable'),
-(109, 'Can add headings', 37, 'add_headings'),
-(110, 'Can change headings', 37, 'change_headings'),
-(111, 'Can delete headings', 37, 'delete_headings'),
-(112, 'Can add interfaces', 38, 'add_interfaces'),
-(113, 'Can change interfaces', 38, 'change_interfaces'),
-(114, 'Can delete interfaces', 38, 'delete_interfaces'),
-(115, 'Can add course_modlist', 39, 'add_course_modlist'),
-(116, 'Can change course_modlist', 39, 'change_course_modlist'),
-(117, 'Can delete course_modlist', 39, 'delete_course_modlist'),
-(118, 'Can add gradestable', 40, 'add_gradestable'),
-(119, 'Can change gradestable', 40, 'change_gradestable'),
-(120, 'Can delete gradestable', 40, 'delete_gradestable'),
-(121, 'Can add gen_evaluations', 41, 'add_gen_evaluations'),
-(122, 'Can change gen_evaluations', 41, 'change_gen_evaluations'),
-(123, 'Can delete gen_evaluations', 41, 'delete_gen_evaluations'),
-(124, 'Can add gen_questions', 42, 'add_gen_questions'),
-(125, 'Can change gen_questions', 42, 'change_gen_questions'),
-(126, 'Can delete gen_questions', 42, 'delete_gen_questions'),
-(127, 'Can add gen_markstable', 43, 'add_gen_markstable'),
-(128, 'Can change gen_markstable', 43, 'change_gen_markstable'),
-(129, 'Can delete gen_markstable', 43, 'delete_gen_markstable'),
-(130, 'Can add gen_gradestable', 44, 'add_gen_gradestable'),
-(131, 'Can change gen_gradestable', 44, 'change_gen_gradestable'),
-(132, 'Can delete gen_gradestable', 44, 'delete_gen_gradestable'),
-(133, 'Can add gen_headings', 45, 'add_gen_headings'),
-(134, 'Can change gen_headings', 45, 'change_gen_headings'),
-(135, 'Can delete gen_headings', 45, 'delete_gen_headings'),
-(136, 'Can add assessment aiclassifier', 46, 'add_assessmentaiclassifier'),
-(137, 'Can change assessment aiclassifier', 46, 'change_assessmentaiclassifier'),
-(138, 'Can delete assessment aiclassifier', 46, 'delete_assessmentaiclassifier'),
-(139, 'Can add assessment aiclassifierset', 47, 'add_assessmentaiclassifierset'),
-(140, 'Can change assessment aiclassifierset', 47, 'change_assessmentaiclassifierset'),
-(141, 'Can delete assessment aiclassifierset', 47, 'delete_assessmentaiclassifierset'),
-(142, 'Can add assessment aigradingworkflow', 48, 'add_assessmentaigradingworkflow'),
-(143, 'Can change assessment aigradingworkflow', 48, 'change_assessmentaigradingworkflow'),
-(144, 'Can delete assessment aigradingworkflow', 48, 'delete_assessmentaigradingworkflow'),
-(145, 'Can add assessment aitrainingworkflow', 49, 'add_assessmentaitrainingworkflow'),
-(146, 'Can change assessment aitrainingworkflow', 49, 'change_assessmentaitrainingworkflow'),
-(147, 'Can delete assessment aitrainingworkflow', 49, 'delete_assessmentaitrainingworkflow'),
-(148, 'Can add a aitrainingworkflow training', 50, 'add_aaitrainingworkflowtraining'),
-(149, 'Can change a aitrainingworkflow training', 50, 'change_aaitrainingworkflowtraining'),
-(150, 'Can delete a aitrainingworkflow training', 50, 'delete_aaitrainingworkflowtraining'),
-(151, 'Can add assessment assessment', 51, 'add_assessmentassessment'),
-(152, 'Can change assessment assessment', 51, 'change_assessmentassessment'),
-(153, 'Can delete assessment assessment', 51, 'delete_assessmentassessment'),
-(154, 'Can add assessment assessmentfeedback', 52, 'add_assessmentassessmentfeedback'),
-(155, 'Can change assessment assessmentfeedback', 52, 'change_assessmentassessmentfeedback'),
-(156, 'Can delete assessment assessmentfeedback', 52, 'delete_assessmentassessmentfeedback'),
-(157, 'Can add a assessmentfeedback assessments', 53, 'add_aassessmentfeedbackassessments'),
-(158, 'Can change a assessmentfeedback assessments', 53, 'change_aassessmentfeedbackassessments'),
-(159, 'Can delete a assessmentfeedback assessments', 53, 'delete_aassessmentfeedbackassessments'),
-(160, 'Can add assessment assessmentfeedback options', 54, 'add_assessmentassessmentfeedbackoptions'),
-(161, 'Can change assessment assessmentfeedback options', 54, 'change_assessmentassessmentfeedbackoptions'),
-(162, 'Can delete assessment assessmentfeedback options', 54, 'delete_assessmentassessmentfeedbackoptions'),
-(163, 'Can add assessment assessmentfeedbackoption', 55, 'add_assessmentassessmentfeedbackoption'),
-(164, 'Can change assessment assessmentfeedbackoption', 55, 'change_assessmentassessmentfeedbackoption'),
-(165, 'Can delete assessment assessmentfeedbackoption', 55, 'delete_assessmentassessmentfeedbackoption'),
-(166, 'Can add assessment assessmentpart', 56, 'add_assessmentassessmentpart'),
-(167, 'Can change assessment assessmentpart', 56, 'change_assessmentassessmentpart'),
-(168, 'Can delete assessment assessmentpart', 56, 'delete_assessmentassessmentpart'),
-(169, 'Can add assessment criterion', 57, 'add_assessmentcriterion'),
-(170, 'Can change assessment criterion', 57, 'change_assessmentcriterion'),
-(171, 'Can delete assessment criterion', 57, 'delete_assessmentcriterion'),
-(172, 'Can add assessment criterionoption', 58, 'add_assessmentcriterionoption'),
-(173, 'Can change assessment criterionoption', 58, 'change_assessmentcriterionoption'),
-(174, 'Can delete assessment criterionoption', 58, 'delete_assessmentcriterionoption'),
-(175, 'Can add assessment peerworkflow', 59, 'add_assessmentpeerworkflow'),
-(176, 'Can change assessment peerworkflow', 59, 'change_assessmentpeerworkflow'),
-(177, 'Can delete assessment peerworkflow', 59, 'delete_assessmentpeerworkflow'),
-(178, 'Can add assessment peerworkflowitem', 60, 'add_assessmentpeerworkflowitem'),
-(179, 'Can change assessment peerworkflowitem', 60, 'change_assessmentpeerworkflowitem'),
-(180, 'Can delete assessment peerworkflowitem', 60, 'delete_assessmentpeerworkflowitem'),
-(181, 'Can add assessment rubric', 61, 'add_assessmentrubric'),
-(182, 'Can change assessment rubric', 61, 'change_assessmentrubric'),
-(183, 'Can delete assessment rubric', 61, 'delete_assessmentrubric'),
-(184, 'Can add assessment studenttrainingworkflow', 62, 'add_assessmentstudenttrainingworkflow'),
-(185, 'Can change assessment studenttrainingworkflow', 62, 'change_assessmentstudenttrainingworkflow'),
-(186, 'Can delete assessment studenttrainingworkflow', 62, 'delete_assessmentstudenttrainingworkflow'),
-(187, 'Can add assessment studenttrainingworkflowitem', 63, 'add_assessmentstudenttrainingworkflowitem'),
-(188, 'Can change assessment studenttrainingworkflowitem', 63, 'change_assessmentstudenttrainingworkflowitem'),
-(189, 'Can delete assessment studenttrainingworkflowitem', 63, 'delete_assessmentstudenttrainingworkflowitem'),
-(190, 'Can add assessment trainingexample', 64, 'add_assessmenttrainingexample'),
-(191, 'Can change assessment trainingexample', 64, 'change_assessmenttrainingexample'),
-(192, 'Can delete assessment trainingexample', 64, 'delete_assessmenttrainingexample'),
-(193, 'Can add a trainingexample options selected', 65, 'add_atrainingexampleoptionsselected'),
-(194, 'Can change a trainingexample options selected', 65, 'change_atrainingexampleoptionsselected'),
-(195, 'Can delete a trainingexample options selected', 65, 'delete_atrainingexampleoptionsselected'),
-(196, 'Can add auth group', 66, 'add_authgroup'),
-(197, 'Can change auth group', 66, 'change_authgroup'),
-(198, 'Can delete auth group', 66, 'delete_authgroup'),
-(199, 'Can add auth group permissions', 67, 'add_authgrouppermissions'),
-(200, 'Can change auth group permissions', 67, 'change_authgrouppermissions'),
-(201, 'Can delete auth group permissions', 67, 'delete_authgrouppermissions'),
-(202, 'Can add auth permission', 68, 'add_authpermission'),
-(203, 'Can change auth permission', 68, 'change_authpermission'),
-(204, 'Can delete auth permission', 68, 'delete_authpermission'),
-(205, 'Can add auth registration', 69, 'add_authregistration'),
-(206, 'Can change auth registration', 69, 'change_authregistration'),
-(207, 'Can delete auth registration', 69, 'delete_authregistration'),
-(208, 'Can add auth user', 70, 'add_authuser'),
-(209, 'Can change auth user', 70, 'change_authuser'),
-(210, 'Can delete auth user', 70, 'delete_authuser'),
-(211, 'Can add auth user groups', 71, 'add_authusergroups'),
-(212, 'Can change auth user groups', 71, 'change_authusergroups'),
-(213, 'Can delete auth user groups', 71, 'delete_authusergroups'),
-(214, 'Can add auth user user permissions', 72, 'add_authuseruserpermissions'),
-(215, 'Can change auth user user permissions', 72, 'change_authuseruserpermissions'),
-(216, 'Can delete auth user user permissions', 72, 'delete_authuseruserpermissions'),
-(217, 'Can add auth userprofile', 73, 'add_authuserprofile'),
-(218, 'Can change auth userprofile', 73, 'change_authuserprofile'),
-(219, 'Can delete auth userprofile', 73, 'delete_authuserprofile'),
-(220, 'Can add bulk email courseauthorization', 74, 'add_bulkemailcourseauthorization'),
-(221, 'Can change bulk email courseauthorization', 74, 'change_bulkemailcourseauthorization'),
-(222, 'Can delete bulk email courseauthorization', 74, 'delete_bulkemailcourseauthorization'),
-(223, 'Can add bulk email courseemail', 75, 'add_bulkemailcourseemail'),
-(224, 'Can change bulk email courseemail', 75, 'change_bulkemailcourseemail'),
-(225, 'Can delete bulk email courseemail', 75, 'delete_bulkemailcourseemail'),
-(226, 'Can add bulk email courseemailtemplate', 76, 'add_bulkemailcourseemailtemplate'),
-(227, 'Can change bulk email courseemailtemplate', 76, 'change_bulkemailcourseemailtemplate'),
-(228, 'Can delete bulk email courseemailtemplate', 76, 'delete_bulkemailcourseemailtemplate'),
-(229, 'Can add bulk email optout', 77, 'add_bulkemailoptout'),
-(230, 'Can change bulk email optout', 77, 'change_bulkemailoptout'),
-(231, 'Can delete bulk email optout', 77, 'delete_bulkemailoptout'),
-(232, 'Can add celery taskmeta', 78, 'add_celerytaskmeta'),
-(233, 'Can change celery taskmeta', 78, 'change_celerytaskmeta'),
-(234, 'Can delete celery taskmeta', 78, 'delete_celerytaskmeta'),
-(235, 'Can add celery tasksetmeta', 79, 'add_celerytasksetmeta'),
-(236, 'Can change celery tasksetmeta', 79, 'change_celerytasksetmeta'),
-(237, 'Can delete celery tasksetmeta', 79, 'delete_celerytasksetmeta'),
-(238, 'Can add certificates certificatewhitelist', 80, 'add_certificatescertificatewhitelist'),
-(239, 'Can change certificates certificatewhitelist', 80, 'change_certificatescertificatewhitelist'),
-(240, 'Can delete certificates certificatewhitelist', 80, 'delete_certificatescertificatewhitelist'),
-(241, 'Can add certificates generatedcertificate', 81, 'add_certificatesgeneratedcertificate'),
-(242, 'Can change certificates generatedcertificate', 81, 'change_certificatesgeneratedcertificate'),
-(243, 'Can delete certificates generatedcertificate', 81, 'delete_certificatesgeneratedcertificate'),
-(244, 'Can add circuit servercircuit', 82, 'add_circuitservercircuit'),
-(245, 'Can change circuit servercircuit', 82, 'change_circuitservercircuit'),
-(246, 'Can delete circuit servercircuit', 82, 'delete_circuitservercircuit'),
-(247, 'Can add course action state coursererunstate', 83, 'add_courseactionstatecoursererunstate'),
-(248, 'Can change course action state coursererunstate', 83, 'change_courseactionstatecoursererunstate'),
-(249, 'Can delete course action state coursererunstate', 83, 'delete_courseactionstatecoursererunstate'),
-(250, 'Can add course creators coursecreator', 84, 'add_coursecreatorscoursecreator'),
-(251, 'Can change course creators coursecreator', 84, 'change_coursecreatorscoursecreator'),
-(252, 'Can delete course creators coursecreator', 84, 'delete_coursecreatorscoursecreator'),
-(253, 'Can add course groups courseusergroup', 85, 'add_coursegroupscourseusergroup'),
-(254, 'Can change course groups courseusergroup', 85, 'change_coursegroupscourseusergroup'),
-(255, 'Can delete course groups courseusergroup', 85, 'delete_coursegroupscourseusergroup'),
-(256, 'Can add course groups courseusergroup users', 86, 'add_coursegroupscourseusergroupusers'),
-(257, 'Can change course groups courseusergroup users', 86, 'change_coursegroupscourseusergroupusers'),
-(258, 'Can delete course groups courseusergroup users', 86, 'delete_coursegroupscourseusergroupusers'),
-(259, 'Can add c groups courseusergrouppartitiongroup', 87, 'add_cgroupscourseusergrouppartitiongroup'),
-(260, 'Can change c groups courseusergrouppartitiongroup', 87, 'change_cgroupscourseusergrouppartitiongroup'),
-(261, 'Can delete c groups courseusergrouppartitiongroup', 87, 'delete_cgroupscourseusergrouppartitiongroup'),
-(262, 'Can add course modes coursemode', 88, 'add_coursemodescoursemode'),
-(263, 'Can change course modes coursemode', 88, 'change_coursemodescoursemode'),
-(264, 'Can delete course modes coursemode', 88, 'delete_coursemodescoursemode'),
-(265, 'Can add course modes coursemodesarchive', 89, 'add_coursemodescoursemodesarchive'),
-(266, 'Can change course modes coursemodesarchive', 89, 'change_coursemodescoursemodesarchive'),
-(267, 'Can delete course modes coursemodesarchive', 89, 'delete_coursemodescoursemodesarchive'),
-(268, 'Can add courseware course subject', 90, 'add_coursewarecoursesubject'),
-(269, 'Can change courseware course subject', 90, 'change_coursewarecoursesubject'),
-(270, 'Can delete courseware course subject', 90, 'delete_coursewarecoursesubject'),
-(271, 'Can add courseware offlinecomputedgrade', 91, 'add_coursewareofflinecomputedgrade'),
-(272, 'Can change courseware offlinecomputedgrade', 91, 'change_coursewareofflinecomputedgrade'),
-(273, 'Can delete courseware offlinecomputedgrade', 91, 'delete_coursewareofflinecomputedgrade'),
-(274, 'Can add courseware offlinecomputedgradelog', 92, 'add_coursewareofflinecomputedgradelog'),
-(275, 'Can change courseware offlinecomputedgradelog', 92, 'change_coursewareofflinecomputedgradelog'),
-(276, 'Can delete courseware offlinecomputedgradelog', 92, 'delete_coursewareofflinecomputedgradelog'),
-(277, 'Can add courseware organization', 93, 'add_coursewareorganization'),
-(278, 'Can change courseware organization', 93, 'change_coursewareorganization'),
-(279, 'Can delete courseware organization', 93, 'delete_coursewareorganization'),
-(280, 'Can add courseware studentmodule', 94, 'add_coursewarestudentmodule'),
-(281, 'Can change courseware studentmodule', 94, 'change_coursewarestudentmodule'),
-(282, 'Can delete courseware studentmodule', 94, 'delete_coursewarestudentmodule'),
-(283, 'Can add courseware studentmodulehistory', 95, 'add_coursewarestudentmodulehistory'),
-(284, 'Can change courseware studentmodulehistory', 95, 'change_coursewarestudentmodulehistory'),
-(285, 'Can delete courseware studentmodulehistory', 95, 'delete_coursewarestudentmodulehistory'),
-(286, 'Can add courseware subject', 96, 'add_coursewaresubject'),
-(287, 'Can change courseware subject', 96, 'change_coursewaresubject'),
-(288, 'Can delete courseware subject', 96, 'delete_coursewaresubject'),
-(289, 'Can add courseware xmodulestudentinfofield', 97, 'add_coursewarexmodulestudentinfofield'),
-(290, 'Can change courseware xmodulestudentinfofield', 97, 'change_coursewarexmodulestudentinfofield'),
-(291, 'Can delete courseware xmodulestudentinfofield', 97, 'delete_coursewarexmodulestudentinfofield'),
-(292, 'Can add courseware xmodulestudentprefsfield', 98, 'add_coursewarexmodulestudentprefsfield'),
-(293, 'Can change courseware xmodulestudentprefsfield', 98, 'change_coursewarexmodulestudentprefsfield'),
-(294, 'Can delete courseware xmodulestudentprefsfield', 98, 'delete_coursewarexmodulestudentprefsfield'),
-(295, 'Can add courseware xmoduleuserstatesummaryfield', 99, 'add_coursewarexmoduleuserstatesummaryfield'),
-(296, 'Can change courseware xmoduleuserstatesummaryfield', 99, 'change_coursewarexmoduleuserstatesummaryfield'),
-(297, 'Can delete courseware xmoduleuserstatesummaryfield', 99, 'delete_coursewarexmoduleuserstatesummaryfield'),
-(298, 'Can add dark lang darklangconfig', 100, 'add_darklangdarklangconfig'),
-(299, 'Can change dark lang darklangconfig', 100, 'change_darklangdarklangconfig'),
-(300, 'Can delete dark lang darklangconfig', 100, 'delete_darklangdarklangconfig'),
-(301, 'Can add django admin log', 101, 'add_djangoadminlog'),
-(302, 'Can change django admin log', 101, 'change_djangoadminlog'),
-(303, 'Can delete django admin log', 101, 'delete_djangoadminlog'),
-(304, 'Can add django comment client permission', 102, 'add_djangocommentclientpermission'),
-(305, 'Can change django comment client permission', 102, 'change_djangocommentclientpermission'),
-(306, 'Can delete django comment client permission', 102, 'delete_djangocommentclientpermission'),
-(307, 'Can add django comment client permission roles', 103, 'add_djangocommentclientpermissionroles'),
-(308, 'Can change django comment client permission roles', 103, 'change_djangocommentclientpermissionroles'),
-(309, 'Can delete django comment client permission roles', 103, 'delete_djangocommentclientpermissionroles'),
-(310, 'Can add django comment client role', 104, 'add_djangocommentclientrole'),
-(311, 'Can change django comment client role', 104, 'change_djangocommentclientrole'),
-(312, 'Can delete django comment client role', 104, 'delete_djangocommentclientrole'),
-(313, 'Can add django comment client role users', 105, 'add_djangocommentclientroleusers'),
-(314, 'Can change django comment client role users', 105, 'change_djangocommentclientroleusers'),
-(315, 'Can delete django comment client role users', 105, 'delete_djangocommentclientroleusers'),
-(316, 'Can add django content type', 106, 'add_djangocontenttype'),
-(317, 'Can change django content type', 106, 'change_djangocontenttype'),
-(318, 'Can delete django content type', 106, 'delete_djangocontenttype'),
-(319, 'Can add django openid auth association', 107, 'add_djangoopenidauthassociation'),
-(320, 'Can change django openid auth association', 107, 'change_djangoopenidauthassociation'),
-(321, 'Can delete django openid auth association', 107, 'delete_djangoopenidauthassociation'),
-(322, 'Can add django openid auth nonce', 108, 'add_djangoopenidauthnonce'),
-(323, 'Can change django openid auth nonce', 108, 'change_djangoopenidauthnonce'),
-(324, 'Can delete django openid auth nonce', 108, 'delete_djangoopenidauthnonce'),
-(325, 'Can add django openid auth useropenid', 109, 'add_djangoopenidauthuseropenid'),
-(326, 'Can change django openid auth useropenid', 109, 'change_djangoopenidauthuseropenid'),
-(327, 'Can delete django openid auth useropenid', 109, 'delete_djangoopenidauthuseropenid'),
-(328, 'Can add django session', 110, 'add_djangosession'),
-(329, 'Can change django session', 110, 'change_djangosession'),
-(330, 'Can delete django session', 110, 'delete_djangosession'),
-(331, 'Can add django site', 111, 'add_djangosite'),
-(332, 'Can change django site', 111, 'change_djangosite'),
-(333, 'Can delete django site', 111, 'delete_djangosite'),
-(334, 'Can add djcelery crontabschedule', 112, 'add_djcelerycrontabschedule'),
-(335, 'Can change djcelery crontabschedule', 112, 'change_djcelerycrontabschedule'),
-(336, 'Can delete djcelery crontabschedule', 112, 'delete_djcelerycrontabschedule'),
-(337, 'Can add djcelery intervalschedule', 113, 'add_djceleryintervalschedule'),
-(338, 'Can change djcelery intervalschedule', 113, 'change_djceleryintervalschedule'),
-(339, 'Can delete djcelery intervalschedule', 113, 'delete_djceleryintervalschedule'),
-(340, 'Can add djcelery periodictask', 114, 'add_djceleryperiodictask'),
-(341, 'Can change djcelery periodictask', 114, 'change_djceleryperiodictask'),
-(342, 'Can delete djcelery periodictask', 114, 'delete_djceleryperiodictask'),
-(343, 'Can add djcelery periodictasks', 115, 'add_djceleryperiodictasks'),
-(344, 'Can change djcelery periodictasks', 115, 'change_djceleryperiodictasks'),
-(345, 'Can delete djcelery periodictasks', 115, 'delete_djceleryperiodictasks'),
-(346, 'Can add djcelery taskstate', 116, 'add_djcelerytaskstate'),
-(347, 'Can change djcelery taskstate', 116, 'change_djcelerytaskstate'),
-(348, 'Can delete djcelery taskstate', 116, 'delete_djcelerytaskstate'),
-(349, 'Can add djcelery workerstate', 117, 'add_djceleryworkerstate'),
-(350, 'Can change djcelery workerstate', 117, 'change_djceleryworkerstate'),
-(351, 'Can delete djcelery workerstate', 117, 'delete_djceleryworkerstate'),
-(352, 'Can add edxval coursevideo', 118, 'add_edxvalcoursevideo'),
-(353, 'Can change edxval coursevideo', 118, 'change_edxvalcoursevideo'),
-(354, 'Can delete edxval coursevideo', 118, 'delete_edxvalcoursevideo'),
-(355, 'Can add edxval encodedvideo', 119, 'add_edxvalencodedvideo'),
-(356, 'Can change edxval encodedvideo', 119, 'change_edxvalencodedvideo'),
-(357, 'Can delete edxval encodedvideo', 119, 'delete_edxvalencodedvideo'),
-(358, 'Can add edxval profile', 120, 'add_edxvalprofile'),
-(359, 'Can change edxval profile', 120, 'change_edxvalprofile'),
-(360, 'Can delete edxval profile', 120, 'delete_edxvalprofile'),
-(361, 'Can add edxval subtitle', 121, 'add_edxvalsubtitle'),
-(362, 'Can change edxval subtitle', 121, 'change_edxvalsubtitle'),
-(363, 'Can delete edxval subtitle', 121, 'delete_edxvalsubtitle'),
-(364, 'Can add edxval video', 122, 'add_edxvalvideo'),
-(365, 'Can change edxval video', 122, 'change_edxvalvideo'),
-(366, 'Can delete edxval video', 122, 'delete_edxvalvideo'),
-(367, 'Can add embargo embargoedcourse', 123, 'add_embargoembargoedcourse'),
-(368, 'Can change embargo embargoedcourse', 123, 'change_embargoembargoedcourse'),
-(369, 'Can delete embargo embargoedcourse', 123, 'delete_embargoembargoedcourse'),
-(370, 'Can add embargo embargoedstate', 124, 'add_embargoembargoedstate'),
-(371, 'Can change embargo embargoedstate', 124, 'change_embargoembargoedstate'),
-(372, 'Can delete embargo embargoedstate', 124, 'delete_embargoembargoedstate'),
-(373, 'Can add embargo ipfilter', 125, 'add_embargoipfilter'),
-(374, 'Can change embargo ipfilter', 125, 'change_embargoipfilter'),
-(375, 'Can delete embargo ipfilter', 125, 'delete_embargoipfilter'),
-(376, 'Can add external auth externalauthmap', 126, 'add_externalauthexternalauthmap'),
-(377, 'Can change external auth externalauthmap', 126, 'change_externalauthexternalauthmap'),
-(378, 'Can delete external auth externalauthmap', 126, 'delete_externalauthexternalauthmap'),
-(379, 'Can add foldit puzzlecomplete', 127, 'add_folditpuzzlecomplete'),
-(380, 'Can change foldit puzzlecomplete', 127, 'change_folditpuzzlecomplete'),
-(381, 'Can delete foldit puzzlecomplete', 127, 'delete_folditpuzzlecomplete'),
-(382, 'Can add foldit score', 128, 'add_folditscore'),
-(383, 'Can change foldit score', 128, 'change_folditscore'),
-(384, 'Can delete foldit score', 128, 'delete_folditscore'),
-(385, 'Can add instructor task instructortask', 129, 'add_instructortaskinstructortask'),
-(386, 'Can change instructor task instructortask', 129, 'change_instructortaskinstructortask'),
-(387, 'Can delete instructor task instructortask', 129, 'delete_instructortaskinstructortask'),
-(388, 'Can add licenses coursesoftware', 130, 'add_licensescoursesoftware'),
-(389, 'Can change licenses coursesoftware', 130, 'change_licensescoursesoftware'),
-(390, 'Can delete licenses coursesoftware', 130, 'delete_licensescoursesoftware'),
-(391, 'Can add licenses userlicense', 131, 'add_licensesuserlicense'),
-(392, 'Can change licenses userlicense', 131, 'change_licensesuserlicense'),
-(393, 'Can delete licenses userlicense', 131, 'delete_licensesuserlicense'),
-(394, 'Can add linkedin linkedin', 132, 'add_linkedinlinkedin'),
-(395, 'Can change linkedin linkedin', 132, 'change_linkedinlinkedin'),
-(396, 'Can delete linkedin linkedin', 132, 'delete_linkedinlinkedin'),
-(397, 'Can add lms xblock xblockasidesconfig', 133, 'add_lmsxblockxblockasidesconfig'),
-(398, 'Can change lms xblock xblockasidesconfig', 133, 'change_lmsxblockxblockasidesconfig'),
-(399, 'Can delete lms xblock xblockasidesconfig', 133, 'delete_lmsxblockxblockasidesconfig'),
-(400, 'Can add notes note', 134, 'add_notesnote'),
-(401, 'Can change notes note', 134, 'change_notesnote'),
-(402, 'Can delete notes note', 134, 'delete_notesnote'),
-(403, 'Can add notifications articlesubscription', 135, 'add_notificationsarticlesubscription'),
-(404, 'Can change notifications articlesubscription', 135, 'change_notificationsarticlesubscription'),
-(405, 'Can delete notifications articlesubscription', 135, 'delete_notificationsarticlesubscription'),
-(406, 'Can add notify notification', 136, 'add_notifynotification'),
-(407, 'Can change notify notification', 136, 'change_notifynotification'),
-(408, 'Can delete notify notification', 136, 'delete_notifynotification'),
-(409, 'Can add notify notificationtype', 137, 'add_notifynotificationtype'),
-(410, 'Can change notify notificationtype', 137, 'change_notifynotificationtype'),
-(411, 'Can delete notify notificationtype', 137, 'delete_notifynotificationtype'),
-(412, 'Can add notify settings', 138, 'add_notifysettings'),
-(413, 'Can change notify settings', 138, 'change_notifysettings'),
-(414, 'Can delete notify settings', 138, 'delete_notifysettings'),
-(415, 'Can add notify subscription', 139, 'add_notifysubscription'),
-(416, 'Can change notify subscription', 139, 'change_notifysubscription'),
-(417, 'Can delete notify subscription', 139, 'delete_notifysubscription'),
-(418, 'Can add oauth2 accesstoken', 140, 'add_oauth2accesstoken'),
-(419, 'Can change oauth2 accesstoken', 140, 'change_oauth2accesstoken'),
-(420, 'Can delete oauth2 accesstoken', 140, 'delete_oauth2accesstoken'),
-(421, 'Can add oauth2 client', 141, 'add_oauth2client'),
-(422, 'Can change oauth2 client', 141, 'change_oauth2client'),
-(423, 'Can delete oauth2 client', 141, 'delete_oauth2client'),
-(424, 'Can add oauth2 grant', 142, 'add_oauth2grant'),
-(425, 'Can change oauth2 grant', 142, 'change_oauth2grant'),
-(426, 'Can delete oauth2 grant', 142, 'delete_oauth2grant'),
-(427, 'Can add oauth2 provider trustedclient', 143, 'add_oauth2providertrustedclient'),
-(428, 'Can change oauth2 provider trustedclient', 143, 'change_oauth2providertrustedclient'),
-(429, 'Can delete oauth2 provider trustedclient', 143, 'delete_oauth2providertrustedclient'),
-(430, 'Can add oauth2 refreshtoken', 144, 'add_oauth2refreshtoken'),
-(431, 'Can change oauth2 refreshtoken', 144, 'change_oauth2refreshtoken'),
-(432, 'Can delete oauth2 refreshtoken', 144, 'delete_oauth2refreshtoken'),
-(433, 'Can add psychometrics psychometricdata', 145, 'add_psychometricspsychometricdata'),
-(434, 'Can change psychometrics psychometricdata', 145, 'change_psychometricspsychometricdata'),
-(435, 'Can delete psychometrics psychometricdata', 145, 'delete_psychometricspsychometricdata'),
-(436, 'Can add r midcoursereverificationwindow', 146, 'add_rmidcoursereverificationwindow'),
-(437, 'Can change r midcoursereverificationwindow', 146, 'change_rmidcoursereverificationwindow'),
-(438, 'Can delete r midcoursereverificationwindow', 146, 'delete_rmidcoursereverificationwindow'),
-(439, 'Can add shoppingcart certificateitem', 147, 'add_shoppingcartcertificateitem'),
-(440, 'Can change shoppingcart certificateitem', 147, 'change_shoppingcartcertificateitem'),
-(441, 'Can delete shoppingcart certificateitem', 147, 'delete_shoppingcartcertificateitem'),
-(442, 'Can add shoppingcart coupon', 148, 'add_shoppingcartcoupon'),
-(443, 'Can change shoppingcart coupon', 148, 'change_shoppingcartcoupon'),
-(444, 'Can delete shoppingcart coupon', 148, 'delete_shoppingcartcoupon'),
-(445, 'Can add shoppingcart couponredemption', 149, 'add_shoppingcartcouponredemption'),
-(446, 'Can change shoppingcart couponredemption', 149, 'change_shoppingcartcouponredemption'),
-(447, 'Can delete shoppingcart couponredemption', 149, 'delete_shoppingcartcouponredemption'),
-(448, 'Can add shoppingcart courseregcodeitem', 150, 'add_shoppingcartcourseregcodeitem'),
-(449, 'Can change shoppingcart courseregcodeitem', 150, 'change_shoppingcartcourseregcodeitem'),
-(450, 'Can delete shoppingcart courseregcodeitem', 150, 'delete_shoppingcartcourseregcodeitem'),
-(451, 'Can add s courseregcodeitemannotation', 151, 'add_scourseregcodeitemannotation'),
-(452, 'Can change s courseregcodeitemannotation', 151, 'change_scourseregcodeitemannotation'),
-(453, 'Can delete s courseregcodeitemannotation', 151, 'delete_scourseregcodeitemannotation'),
-(454, 'Can add shoppingcart courseregistrationcode', 152, 'add_shoppingcartcourseregistrationcode'),
-(455, 'Can change shoppingcart courseregistrationcode', 152, 'change_shoppingcartcourseregistrationcode'),
-(456, 'Can delete shoppingcart courseregistrationcode', 152, 'delete_shoppingcartcourseregistrationcode'),
-(457, 'Can add shoppingcart donation', 153, 'add_shoppingcartdonation'),
-(458, 'Can change shoppingcart donation', 153, 'change_shoppingcartdonation'),
-(459, 'Can delete shoppingcart donation', 153, 'delete_shoppingcartdonation'),
-(460, 'Can add shoppingcart donationconfiguration', 154, 'add_shoppingcartdonationconfiguration'),
-(461, 'Can change shoppingcart donationconfiguration', 154, 'change_shoppingcartdonationconfiguration'),
-(462, 'Can delete shoppingcart donationconfiguration', 154, 'delete_shoppingcartdonationconfiguration'),
-(463, 'Can add shoppingcart invoice', 155, 'add_shoppingcartinvoice'),
-(464, 'Can change shoppingcart invoice', 155, 'change_shoppingcartinvoice'),
-(465, 'Can delete shoppingcart invoice', 155, 'delete_shoppingcartinvoice'),
-(466, 'Can add shoppingcart order', 156, 'add_shoppingcartorder'),
-(467, 'Can change shoppingcart order', 156, 'change_shoppingcartorder'),
-(468, 'Can delete shoppingcart order', 156, 'delete_shoppingcartorder'),
-(469, 'Can add shoppingcart orderitem', 157, 'add_shoppingcartorderitem'),
-(470, 'Can change shoppingcart orderitem', 157, 'change_shoppingcartorderitem'),
-(471, 'Can delete shoppingcart orderitem', 157, 'delete_shoppingcartorderitem'),
-(472, 'Can add shoppingcart paidcourseregistration', 158, 'add_shoppingcartpaidcourseregistration'),
-(473, 'Can change shoppingcart paidcourseregistration', 158, 'change_shoppingcartpaidcourseregistration'),
-(474, 'Can delete shoppingcart paidcourseregistration', 158, 'delete_shoppingcartpaidcourseregistration'),
-(475, 'Can add s paidcourseregistrationannotation', 159, 'add_spaidcourseregistrationannotation'),
-(476, 'Can change s paidcourseregistrationannotation', 159, 'change_spaidcourseregistrationannotation'),
-(477, 'Can delete s paidcourseregistrationannotation', 159, 'delete_spaidcourseregistrationannotation'),
-(478, 'Can add shoppingcart registrationcoderedemption', 160, 'add_shoppingcartregistrationcoderedemption'),
-(479, 'Can change shoppingcart registrationcoderedemption', 160, 'change_shoppingcartregistrationcoderedemption'),
-(480, 'Can delete shoppingcart registrationcoderedemption', 160, 'delete_shoppingcartregistrationcoderedemption'),
-(481, 'Can add south migrationhistory', 161, 'add_southmigrationhistory'),
-(482, 'Can change south migrationhistory', 161, 'change_southmigrationhistory'),
-(483, 'Can delete south migrationhistory', 161, 'delete_southmigrationhistory'),
-(484, 'Can add splash splashconfig', 162, 'add_splashsplashconfig'),
-(485, 'Can change splash splashconfig', 162, 'change_splashsplashconfig'),
-(486, 'Can delete splash splashconfig', 162, 'delete_splashsplashconfig'),
-(487, 'Can add student anonymoususerid', 163, 'add_studentanonymoususerid'),
-(488, 'Can change student anonymoususerid', 163, 'change_studentanonymoususerid'),
-(489, 'Can delete student anonymoususerid', 163, 'delete_studentanonymoususerid'),
-(490, 'Can add student courseaccessrole', 164, 'add_studentcourseaccessrole'),
-(491, 'Can change student courseaccessrole', 164, 'change_studentcourseaccessrole'),
-(492, 'Can delete student courseaccessrole', 164, 'delete_studentcourseaccessrole'),
-(493, 'Can add student courseenrollment', 165, 'add_studentcourseenrollment'),
-(494, 'Can change student courseenrollment', 165, 'change_studentcourseenrollment'),
-(495, 'Can delete student courseenrollment', 165, 'delete_studentcourseenrollment'),
-(496, 'Can add student courseenrollmentallowed', 166, 'add_studentcourseenrollmentallowed'),
-(497, 'Can change student courseenrollmentallowed', 166, 'change_studentcourseenrollmentallowed'),
-(498, 'Can delete student courseenrollmentallowed', 166, 'delete_studentcourseenrollmentallowed'),
-(499, 'Can add student dashboardconfiguration', 167, 'add_studentdashboardconfiguration'),
-(500, 'Can change student dashboardconfiguration', 167, 'change_studentdashboardconfiguration'),
-(501, 'Can delete student dashboardconfiguration', 167, 'delete_studentdashboardconfiguration'),
-(502, 'Can add student loginfailures', 168, 'add_studentloginfailures'),
-(503, 'Can change student loginfailures', 168, 'change_studentloginfailures'),
-(504, 'Can delete student loginfailures', 168, 'delete_studentloginfailures'),
-(505, 'Can add student mooc city', 169, 'add_studentmooccity'),
-(506, 'Can change student mooc city', 169, 'change_studentmooccity'),
-(507, 'Can delete student mooc city', 169, 'delete_studentmooccity'),
-(508, 'Can add student mooc person', 170, 'add_studentmoocperson'),
-(509, 'Can change student mooc person', 170, 'change_studentmoocperson'),
-(510, 'Can delete student mooc person', 170, 'delete_studentmoocperson'),
-(511, 'Can add student mooc state', 171, 'add_studentmoocstate'),
-(512, 'Can change student mooc state', 171, 'change_studentmoocstate'),
-(513, 'Can delete student mooc state', 171, 'delete_studentmoocstate'),
-(514, 'Can add student passwordhistory', 172, 'add_studentpasswordhistory'),
-(515, 'Can change student passwordhistory', 172, 'change_studentpasswordhistory'),
-(516, 'Can delete student passwordhistory', 172, 'delete_studentpasswordhistory'),
-(517, 'Can add student pendingemailchange', 173, 'add_studentpendingemailchange'),
-(518, 'Can change student pendingemailchange', 173, 'change_studentpendingemailchange'),
-(519, 'Can delete student pendingemailchange', 173, 'delete_studentpendingemailchange'),
-(520, 'Can add student pendingnamechange', 174, 'add_studentpendingnamechange'),
-(521, 'Can change student pendingnamechange', 174, 'change_studentpendingnamechange'),
-(522, 'Can delete student pendingnamechange', 174, 'delete_studentpendingnamechange'),
-(523, 'Can add student usersignupsource', 175, 'add_studentusersignupsource'),
-(524, 'Can change student usersignupsource', 175, 'change_studentusersignupsource'),
-(525, 'Can delete student usersignupsource', 175, 'delete_studentusersignupsource'),
-(526, 'Can add student userstanding', 176, 'add_studentuserstanding'),
-(527, 'Can change student userstanding', 176, 'change_studentuserstanding'),
-(528, 'Can delete student userstanding', 176, 'delete_studentuserstanding'),
-(529, 'Can add student usertestgroup', 177, 'add_studentusertestgroup'),
-(530, 'Can change student usertestgroup', 177, 'change_studentusertestgroup'),
-(531, 'Can delete student usertestgroup', 177, 'delete_studentusertestgroup'),
-(532, 'Can add student usertestgroup users', 178, 'add_studentusertestgroupusers'),
-(533, 'Can change student usertestgroup users', 178, 'change_studentusertestgroupusers'),
-(534, 'Can delete student usertestgroup users', 178, 'delete_studentusertestgroupusers'),
-(535, 'Can add submissions score', 179, 'add_submissionsscore'),
-(536, 'Can change submissions score', 179, 'change_submissionsscore'),
-(537, 'Can delete submissions score', 179, 'delete_submissionsscore'),
-(538, 'Can add submissions scoresummary', 180, 'add_submissionsscoresummary'),
-(539, 'Can change submissions scoresummary', 180, 'change_submissionsscoresummary'),
-(540, 'Can delete submissions scoresummary', 180, 'delete_submissionsscoresummary'),
-(541, 'Can add submissions studentitem', 181, 'add_submissionsstudentitem'),
-(542, 'Can change submissions studentitem', 181, 'change_submissionsstudentitem'),
-(543, 'Can delete submissions studentitem', 181, 'delete_submissionsstudentitem'),
-(544, 'Can add submissions submission', 182, 'add_submissionssubmission'),
-(545, 'Can change submissions submission', 182, 'change_submissionssubmission'),
-(546, 'Can delete submissions submission', 182, 'delete_submissionssubmission'),
-(547, 'Can add survey surveyanswer', 183, 'add_surveysurveyanswer'),
-(548, 'Can change survey surveyanswer', 183, 'change_surveysurveyanswer'),
-(549, 'Can delete survey surveyanswer', 183, 'delete_surveysurveyanswer'),
-(550, 'Can add survey surveyform', 184, 'add_surveysurveyform'),
-(551, 'Can change survey surveyform', 184, 'change_surveysurveyform'),
-(552, 'Can delete survey surveyform', 184, 'delete_surveysurveyform'),
-(553, 'Can add track trackinglog', 185, 'add_tracktrackinglog'),
-(554, 'Can change track trackinglog', 185, 'change_tracktrackinglog'),
-(555, 'Can delete track trackinglog', 185, 'delete_tracktrackinglog'),
-(556, 'Can add user api usercoursetag', 186, 'add_userapiusercoursetag'),
-(557, 'Can change user api usercoursetag', 186, 'change_userapiusercoursetag'),
-(558, 'Can delete user api usercoursetag', 186, 'delete_userapiusercoursetag'),
-(559, 'Can add user api userorgtag', 187, 'add_userapiuserorgtag'),
-(560, 'Can change user api userorgtag', 187, 'change_userapiuserorgtag'),
-(561, 'Can delete user api userorgtag', 187, 'delete_userapiuserorgtag'),
-(562, 'Can add user api userpreference', 188, 'add_userapiuserpreference'),
-(563, 'Can change user api userpreference', 188, 'change_userapiuserpreference'),
-(564, 'Can delete user api userpreference', 188, 'delete_userapiuserpreference'),
-(565, 'Can add vs softwaresecurephotoverification', 189, 'add_vssoftwaresecurephotoverification'),
-(566, 'Can change vs softwaresecurephotoverification', 189, 'change_vssoftwaresecurephotoverification'),
-(567, 'Can delete vs softwaresecurephotoverification', 189, 'delete_vssoftwaresecurephotoverification'),
-(568, 'Can add wiki article', 190, 'add_wikiarticle'),
-(569, 'Can change wiki article', 190, 'change_wikiarticle'),
-(570, 'Can delete wiki article', 190, 'delete_wikiarticle'),
-(571, 'Can add wiki articleforobject', 191, 'add_wikiarticleforobject'),
-(572, 'Can change wiki articleforobject', 191, 'change_wikiarticleforobject'),
-(573, 'Can delete wiki articleforobject', 191, 'delete_wikiarticleforobject'),
-(574, 'Can add wiki articleplugin', 192, 'add_wikiarticleplugin'),
-(575, 'Can change wiki articleplugin', 192, 'change_wikiarticleplugin'),
-(576, 'Can delete wiki articleplugin', 192, 'delete_wikiarticleplugin'),
-(577, 'Can add wiki articlerevision', 193, 'add_wikiarticlerevision'),
-(578, 'Can change wiki articlerevision', 193, 'change_wikiarticlerevision'),
-(579, 'Can delete wiki articlerevision', 193, 'delete_wikiarticlerevision'),
-(580, 'Can add wiki articlesubscription', 194, 'add_wikiarticlesubscription'),
-(581, 'Can change wiki articlesubscription', 194, 'change_wikiarticlesubscription'),
-(582, 'Can delete wiki articlesubscription', 194, 'delete_wikiarticlesubscription'),
-(583, 'Can add wiki attachment', 195, 'add_wikiattachment'),
-(584, 'Can change wiki attachment', 195, 'change_wikiattachment'),
-(585, 'Can delete wiki attachment', 195, 'delete_wikiattachment'),
-(586, 'Can add wiki attachmentrevision', 196, 'add_wikiattachmentrevision'),
-(587, 'Can change wiki attachmentrevision', 196, 'change_wikiattachmentrevision'),
-(588, 'Can delete wiki attachmentrevision', 196, 'delete_wikiattachmentrevision'),
-(589, 'Can add wiki image', 197, 'add_wikiimage'),
-(590, 'Can change wiki image', 197, 'change_wikiimage'),
-(591, 'Can delete wiki image', 197, 'delete_wikiimage'),
-(592, 'Can add wiki imagerevision', 198, 'add_wikiimagerevision'),
-(593, 'Can change wiki imagerevision', 198, 'change_wikiimagerevision'),
-(594, 'Can delete wiki imagerevision', 198, 'delete_wikiimagerevision'),
-(595, 'Can add wiki reusableplugin', 199, 'add_wikireusableplugin'),
-(596, 'Can change wiki reusableplugin', 199, 'change_wikireusableplugin'),
-(597, 'Can delete wiki reusableplugin', 199, 'delete_wikireusableplugin'),
-(598, 'Can add wiki reusableplugin articles', 200, 'add_wikireusablepluginarticles'),
-(599, 'Can change wiki reusableplugin articles', 200, 'change_wikireusablepluginarticles'),
-(600, 'Can delete wiki reusableplugin articles', 200, 'delete_wikireusablepluginarticles'),
-(601, 'Can add wiki revisionplugin', 201, 'add_wikirevisionplugin'),
-(602, 'Can change wiki revisionplugin', 201, 'change_wikirevisionplugin'),
-(603, 'Can delete wiki revisionplugin', 201, 'delete_wikirevisionplugin'),
-(604, 'Can add wiki revisionpluginrevision', 202, 'add_wikirevisionpluginrevision'),
-(605, 'Can change wiki revisionpluginrevision', 202, 'change_wikirevisionpluginrevision'),
-(606, 'Can delete wiki revisionpluginrevision', 202, 'delete_wikirevisionpluginrevision'),
-(607, 'Can add wiki simpleplugin', 203, 'add_wikisimpleplugin'),
-(608, 'Can change wiki simpleplugin', 203, 'change_wikisimpleplugin'),
-(609, 'Can delete wiki simpleplugin', 203, 'delete_wikisimpleplugin'),
-(610, 'Can add wiki urlpath', 204, 'add_wikiurlpath'),
-(611, 'Can change wiki urlpath', 204, 'change_wikiurlpath'),
-(612, 'Can delete wiki urlpath', 204, 'delete_wikiurlpath'),
-(613, 'Can add workflow assessmentworkflow', 205, 'add_workflowassessmentworkflow'),
-(614, 'Can change workflow assessmentworkflow', 205, 'change_workflowassessmentworkflow'),
-(615, 'Can delete workflow assessmentworkflow', 205, 'delete_workflowassessmentworkflow'),
-(616, 'Can add workflow assessmentworkflowstep', 206, 'add_workflowassessmentworkflowstep'),
-(617, 'Can change workflow assessmentworkflowstep', 206, 'change_workflowassessmentworkflowstep'),
-(618, 'Can delete workflow assessmentworkflowstep', 206, 'delete_workflowassessmentworkflowstep'),
-(619, 'Can add gen_temp', 207, 'add_gen_temp'),
-(620, 'Can change gen_temp', 207, 'change_gen_temp'),
-(621, 'Can delete gen_temp', 207, 'delete_gen_temp'),
-(622, 'Can add gen_repout', 208, 'add_gen_repout'),
-(623, 'Can change gen_repout', 208, 'change_gen_repout'),
-(624, 'Can delete gen_repout', 208, 'delete_gen_repout'),
-(625, 'Can add visitor', 209, 'add_visitor'),
-(626, 'Can change visitor', 209, 'change_visitor'),
-(627, 'Can delete visitor', 209, 'delete_visitor'),
-(628, 'Can add Untracked User-Agent', 210, 'add_untrackeduseragent'),
-(629, 'Can change Untracked User-Agent', 210, 'change_untrackeduseragent'),
-(630, 'Can delete Untracked User-Agent', 210, 'delete_untrackeduseragent'),
-(631, 'Can add Banned IP', 211, 'add_bannedip'),
-(632, 'Can change Banned IP', 211, 'change_bannedip'),
-(633, 'Can delete Banned IP', 211, 'delete_bannedip'),
-(637, 'Can add sectionlevelusers', 213, 'add_sectionlevelusers'),
-(638, 'Can change sectionlevelusers', 213, 'change_sectionlevelusers'),
-(639, 'Can delete sectionlevelusers', 213, 'delete_sectionlevelusers');
+(67, 'Can add coursefaculty', 23, 'add_coursefaculty'),
+(68, 'Can change coursefaculty', 23, 'change_coursefaculty'),
+(69, 'Can delete coursefaculty', 23, 'delete_coursefaculty'),
+(70, 'Can add uploadedfiles', 24, 'add_uploadedfiles'),
+(71, 'Can change uploadedfiles', 24, 'change_uploadedfiles'),
+(72, 'Can delete uploadedfiles', 24, 'delete_uploadedfiles'),
+(73, 'Can add page content', 25, 'add_pagecontent'),
+(74, 'Can change page content', 25, 'change_pagecontent'),
+(75, 'Can delete page content', 25, 'delete_pagecontent'),
+(76, 'Can add email content', 26, 'add_emailcontent'),
+(77, 'Can change email content', 26, 'change_emailcontent'),
+(78, 'Can delete email content', 26, 'delete_emailcontent'),
+(79, 'Can add error content', 27, 'add_errorcontent'),
+(80, 'Can change error content', 27, 'change_errorcontent'),
+(81, 'Can delete error content', 27, 'delete_errorcontent'),
+(82, 'Can add student_interface', 28, 'add_student_interface'),
+(83, 'Can change student_interface', 28, 'change_student_interface'),
+(84, 'Can delete student_interface', 28, 'delete_student_interface'),
+(85, 'Can add requested users', 29, 'add_requestedusers'),
+(86, 'Can change requested users', 29, 'change_requestedusers'),
+(87, 'Can delete requested users', 29, 'delete_requestedusers'),
+(88, 'Can add performance_interface', 30, 'add_performance_interface'),
+(89, 'Can change performance_interface', 30, 'change_performance_interface'),
+(90, 'Can delete performance_interface', 30, 'delete_performance_interface'),
+(91, 'Can add markstable', 31, 'add_markstable'),
+(92, 'Can change markstable', 31, 'change_markstable'),
+(93, 'Can delete markstable', 31, 'delete_markstable'),
+(94, 'Can add gradestable', 32, 'add_gradestable'),
+(95, 'Can change gradestable', 32, 'change_gradestable'),
+(96, 'Can delete gradestable', 32, 'delete_gradestable'),
+(97, 'Can add evaluations', 33, 'add_evaluations'),
+(98, 'Can change evaluations', 33, 'change_evaluations'),
+(99, 'Can delete evaluations', 33, 'delete_evaluations'),
+(100, 'Can add questions', 34, 'add_questions'),
+(101, 'Can change questions', 34, 'change_questions'),
+(102, 'Can delete questions', 34, 'delete_questions'),
+(103, 'Can add headings', 35, 'add_headings'),
+(104, 'Can change headings', 35, 'change_headings'),
+(105, 'Can delete headings', 35, 'delete_headings'),
+(106, 'Can add result', 36, 'add_result'),
+(107, 'Can change result', 36, 'change_result'),
+(108, 'Can delete result', 36, 'delete_result'),
+(109, 'Can add reports', 37, 'add_reports'),
+(110, 'Can change reports', 37, 'change_reports'),
+(111, 'Can delete reports', 37, 'delete_reports'),
+(112, 'Can add mail_interface', 38, 'add_mail_interface'),
+(113, 'Can change mail_interface', 38, 'change_mail_interface'),
+(114, 'Can delete mail_interface', 38, 'delete_mail_interface'),
+(115, 'Can add interfaces', 39, 'add_interfaces'),
+(116, 'Can change interfaces', 39, 'change_interfaces'),
+(117, 'Can delete interfaces', 39, 'delete_interfaces'),
+(118, 'Can add course_modlist', 40, 'add_course_modlist'),
+(119, 'Can change course_modlist', 40, 'change_course_modlist'),
+(120, 'Can delete course_modlist', 40, 'delete_course_modlist'),
+(121, 'Can add sectionlevelusers', 41, 'add_sectionlevelusers'),
+(122, 'Can change sectionlevelusers', 41, 'change_sectionlevelusers'),
+(123, 'Can delete sectionlevelusers', 41, 'delete_sectionlevelusers'),
+(124, 'Can add gen_evaluations', 42, 'add_gen_evaluations'),
+(125, 'Can change gen_evaluations', 42, 'change_gen_evaluations'),
+(126, 'Can delete gen_evaluations', 42, 'delete_gen_evaluations'),
+(127, 'Can add gen_questions', 43, 'add_gen_questions'),
+(128, 'Can change gen_questions', 43, 'change_gen_questions'),
+(129, 'Can delete gen_questions', 43, 'delete_gen_questions'),
+(130, 'Can add gen_markstable', 44, 'add_gen_markstable'),
+(131, 'Can change gen_markstable', 44, 'change_gen_markstable'),
+(132, 'Can delete gen_markstable', 44, 'delete_gen_markstable'),
+(133, 'Can add gen_gradestable', 45, 'add_gen_gradestable'),
+(134, 'Can change gen_gradestable', 45, 'change_gen_gradestable'),
+(135, 'Can delete gen_gradestable', 45, 'delete_gen_gradestable'),
+(136, 'Can add gen_headings', 46, 'add_gen_headings'),
+(137, 'Can change gen_headings', 46, 'change_gen_headings'),
+(138, 'Can delete gen_headings', 46, 'delete_gen_headings'),
+(139, 'Can add gen_temp', 47, 'add_gen_temp'),
+(140, 'Can change gen_temp', 47, 'change_gen_temp'),
+(141, 'Can delete gen_temp', 47, 'delete_gen_temp'),
+(142, 'Can add gen_repout', 48, 'add_gen_repout'),
+(143, 'Can change gen_repout', 48, 'change_gen_repout'),
+(144, 'Can delete gen_repout', 48, 'delete_gen_repout'),
+(145, 'Can add assessment aiclassifier', 49, 'add_assessmentaiclassifier'),
+(146, 'Can change assessment aiclassifier', 49, 'change_assessmentaiclassifier'),
+(147, 'Can delete assessment aiclassifier', 49, 'delete_assessmentaiclassifier'),
+(148, 'Can add assessment aiclassifierset', 50, 'add_assessmentaiclassifierset'),
+(149, 'Can change assessment aiclassifierset', 50, 'change_assessmentaiclassifierset'),
+(150, 'Can delete assessment aiclassifierset', 50, 'delete_assessmentaiclassifierset'),
+(151, 'Can add assessment aigradingworkflow', 51, 'add_assessmentaigradingworkflow'),
+(152, 'Can change assessment aigradingworkflow', 51, 'change_assessmentaigradingworkflow'),
+(153, 'Can delete assessment aigradingworkflow', 51, 'delete_assessmentaigradingworkflow'),
+(154, 'Can add assessment aitrainingworkflow', 52, 'add_assessmentaitrainingworkflow'),
+(155, 'Can change assessment aitrainingworkflow', 52, 'change_assessmentaitrainingworkflow'),
+(156, 'Can delete assessment aitrainingworkflow', 52, 'delete_assessmentaitrainingworkflow'),
+(157, 'Can add a aitrainingworkflow training', 53, 'add_aaitrainingworkflowtraining'),
+(158, 'Can change a aitrainingworkflow training', 53, 'change_aaitrainingworkflowtraining'),
+(159, 'Can delete a aitrainingworkflow training', 53, 'delete_aaitrainingworkflowtraining'),
+(160, 'Can add assessment assessment', 54, 'add_assessmentassessment'),
+(161, 'Can change assessment assessment', 54, 'change_assessmentassessment'),
+(162, 'Can delete assessment assessment', 54, 'delete_assessmentassessment'),
+(163, 'Can add assessment assessmentfeedback', 55, 'add_assessmentassessmentfeedback'),
+(164, 'Can change assessment assessmentfeedback', 55, 'change_assessmentassessmentfeedback'),
+(165, 'Can delete assessment assessmentfeedback', 55, 'delete_assessmentassessmentfeedback'),
+(166, 'Can add a assessmentfeedback assessments', 56, 'add_aassessmentfeedbackassessments'),
+(167, 'Can change a assessmentfeedback assessments', 56, 'change_aassessmentfeedbackassessments'),
+(168, 'Can delete a assessmentfeedback assessments', 56, 'delete_aassessmentfeedbackassessments'),
+(169, 'Can add assessment assessmentfeedback options', 57, 'add_assessmentassessmentfeedbackoptions'),
+(170, 'Can change assessment assessmentfeedback options', 57, 'change_assessmentassessmentfeedbackoptions'),
+(171, 'Can delete assessment assessmentfeedback options', 57, 'delete_assessmentassessmentfeedbackoptions'),
+(172, 'Can add assessment assessmentfeedbackoption', 58, 'add_assessmentassessmentfeedbackoption'),
+(173, 'Can change assessment assessmentfeedbackoption', 58, 'change_assessmentassessmentfeedbackoption'),
+(174, 'Can delete assessment assessmentfeedbackoption', 58, 'delete_assessmentassessmentfeedbackoption'),
+(175, 'Can add assessment assessmentpart', 59, 'add_assessmentassessmentpart'),
+(176, 'Can change assessment assessmentpart', 59, 'change_assessmentassessmentpart'),
+(177, 'Can delete assessment assessmentpart', 59, 'delete_assessmentassessmentpart'),
+(178, 'Can add assessment criterion', 60, 'add_assessmentcriterion'),
+(179, 'Can change assessment criterion', 60, 'change_assessmentcriterion'),
+(180, 'Can delete assessment criterion', 60, 'delete_assessmentcriterion'),
+(181, 'Can add assessment criterionoption', 61, 'add_assessmentcriterionoption'),
+(182, 'Can change assessment criterionoption', 61, 'change_assessmentcriterionoption'),
+(183, 'Can delete assessment criterionoption', 61, 'delete_assessmentcriterionoption'),
+(184, 'Can add assessment peerworkflow', 62, 'add_assessmentpeerworkflow'),
+(185, 'Can change assessment peerworkflow', 62, 'change_assessmentpeerworkflow'),
+(186, 'Can delete assessment peerworkflow', 62, 'delete_assessmentpeerworkflow'),
+(187, 'Can add assessment peerworkflowitem', 63, 'add_assessmentpeerworkflowitem'),
+(188, 'Can change assessment peerworkflowitem', 63, 'change_assessmentpeerworkflowitem'),
+(189, 'Can delete assessment peerworkflowitem', 63, 'delete_assessmentpeerworkflowitem'),
+(190, 'Can add assessment rubric', 64, 'add_assessmentrubric'),
+(191, 'Can change assessment rubric', 64, 'change_assessmentrubric'),
+(192, 'Can delete assessment rubric', 64, 'delete_assessmentrubric'),
+(193, 'Can add assessment studenttrainingworkflow', 65, 'add_assessmentstudenttrainingworkflow'),
+(194, 'Can change assessment studenttrainingworkflow', 65, 'change_assessmentstudenttrainingworkflow'),
+(195, 'Can delete assessment studenttrainingworkflow', 65, 'delete_assessmentstudenttrainingworkflow'),
+(196, 'Can add assessment studenttrainingworkflowitem', 66, 'add_assessmentstudenttrainingworkflowitem'),
+(197, 'Can change assessment studenttrainingworkflowitem', 66, 'change_assessmentstudenttrainingworkflowitem'),
+(198, 'Can delete assessment studenttrainingworkflowitem', 66, 'delete_assessmentstudenttrainingworkflowitem'),
+(199, 'Can add assessment trainingexample', 67, 'add_assessmenttrainingexample'),
+(200, 'Can change assessment trainingexample', 67, 'change_assessmenttrainingexample'),
+(201, 'Can delete assessment trainingexample', 67, 'delete_assessmenttrainingexample'),
+(202, 'Can add a trainingexample options selected', 68, 'add_atrainingexampleoptionsselected'),
+(203, 'Can change a trainingexample options selected', 68, 'change_atrainingexampleoptionsselected'),
+(204, 'Can delete a trainingexample options selected', 68, 'delete_atrainingexampleoptionsselected'),
+(205, 'Can add auth group', 69, 'add_authgroup'),
+(206, 'Can change auth group', 69, 'change_authgroup'),
+(207, 'Can delete auth group', 69, 'delete_authgroup'),
+(208, 'Can add auth group permissions', 70, 'add_authgrouppermissions'),
+(209, 'Can change auth group permissions', 70, 'change_authgrouppermissions'),
+(210, 'Can delete auth group permissions', 70, 'delete_authgrouppermissions'),
+(211, 'Can add auth permission', 71, 'add_authpermission'),
+(212, 'Can change auth permission', 71, 'change_authpermission'),
+(213, 'Can delete auth permission', 71, 'delete_authpermission'),
+(214, 'Can add auth registration', 72, 'add_authregistration'),
+(215, 'Can change auth registration', 72, 'change_authregistration'),
+(216, 'Can delete auth registration', 72, 'delete_authregistration'),
+(217, 'Can add auth user', 73, 'add_authuser'),
+(218, 'Can change auth user', 73, 'change_authuser'),
+(219, 'Can delete auth user', 73, 'delete_authuser'),
+(220, 'Can add auth user groups', 74, 'add_authusergroups'),
+(221, 'Can change auth user groups', 74, 'change_authusergroups'),
+(222, 'Can delete auth user groups', 74, 'delete_authusergroups'),
+(223, 'Can add auth user user permissions', 75, 'add_authuseruserpermissions'),
+(224, 'Can change auth user user permissions', 75, 'change_authuseruserpermissions'),
+(225, 'Can delete auth user user permissions', 75, 'delete_authuseruserpermissions'),
+(226, 'Can add auth userprofile', 76, 'add_authuserprofile'),
+(227, 'Can change auth userprofile', 76, 'change_authuserprofile'),
+(228, 'Can delete auth userprofile', 76, 'delete_authuserprofile'),
+(229, 'Can add bulk email courseauthorization', 77, 'add_bulkemailcourseauthorization'),
+(230, 'Can change bulk email courseauthorization', 77, 'change_bulkemailcourseauthorization'),
+(231, 'Can delete bulk email courseauthorization', 77, 'delete_bulkemailcourseauthorization'),
+(232, 'Can add bulk email courseemail', 78, 'add_bulkemailcourseemail'),
+(233, 'Can change bulk email courseemail', 78, 'change_bulkemailcourseemail'),
+(234, 'Can delete bulk email courseemail', 78, 'delete_bulkemailcourseemail'),
+(235, 'Can add bulk email courseemailtemplate', 79, 'add_bulkemailcourseemailtemplate'),
+(236, 'Can change bulk email courseemailtemplate', 79, 'change_bulkemailcourseemailtemplate'),
+(237, 'Can delete bulk email courseemailtemplate', 79, 'delete_bulkemailcourseemailtemplate'),
+(238, 'Can add bulk email optout', 80, 'add_bulkemailoptout'),
+(239, 'Can change bulk email optout', 80, 'change_bulkemailoptout'),
+(240, 'Can delete bulk email optout', 80, 'delete_bulkemailoptout'),
+(241, 'Can add celery taskmeta', 81, 'add_celerytaskmeta'),
+(242, 'Can change celery taskmeta', 81, 'change_celerytaskmeta'),
+(243, 'Can delete celery taskmeta', 81, 'delete_celerytaskmeta'),
+(244, 'Can add celery tasksetmeta', 82, 'add_celerytasksetmeta'),
+(245, 'Can change celery tasksetmeta', 82, 'change_celerytasksetmeta'),
+(246, 'Can delete celery tasksetmeta', 82, 'delete_celerytasksetmeta'),
+(247, 'Can add certificates certificatewhitelist', 83, 'add_certificatescertificatewhitelist'),
+(248, 'Can change certificates certificatewhitelist', 83, 'change_certificatescertificatewhitelist'),
+(249, 'Can delete certificates certificatewhitelist', 83, 'delete_certificatescertificatewhitelist'),
+(250, 'Can add certificates generatedcertificate', 84, 'add_certificatesgeneratedcertificate'),
+(251, 'Can change certificates generatedcertificate', 84, 'change_certificatesgeneratedcertificate'),
+(252, 'Can delete certificates generatedcertificate', 84, 'delete_certificatesgeneratedcertificate'),
+(253, 'Can add circuit servercircuit', 85, 'add_circuitservercircuit'),
+(254, 'Can change circuit servercircuit', 85, 'change_circuitservercircuit'),
+(255, 'Can delete circuit servercircuit', 85, 'delete_circuitservercircuit'),
+(256, 'Can add course action state coursererunstate', 86, 'add_courseactionstatecoursererunstate'),
+(257, 'Can change course action state coursererunstate', 86, 'change_courseactionstatecoursererunstate'),
+(258, 'Can delete course action state coursererunstate', 86, 'delete_courseactionstatecoursererunstate'),
+(259, 'Can add course creators coursecreator', 87, 'add_coursecreatorscoursecreator'),
+(260, 'Can change course creators coursecreator', 87, 'change_coursecreatorscoursecreator'),
+(261, 'Can delete course creators coursecreator', 87, 'delete_coursecreatorscoursecreator'),
+(262, 'Can add course groups courseusergroup', 88, 'add_coursegroupscourseusergroup'),
+(263, 'Can change course groups courseusergroup', 88, 'change_coursegroupscourseusergroup'),
+(264, 'Can delete course groups courseusergroup', 88, 'delete_coursegroupscourseusergroup'),
+(265, 'Can add course groups courseusergroup users', 89, 'add_coursegroupscourseusergroupusers'),
+(266, 'Can change course groups courseusergroup users', 89, 'change_coursegroupscourseusergroupusers'),
+(267, 'Can delete course groups courseusergroup users', 89, 'delete_coursegroupscourseusergroupusers'),
+(268, 'Can add c groups courseusergrouppartitiongroup', 90, 'add_cgroupscourseusergrouppartitiongroup'),
+(269, 'Can change c groups courseusergrouppartitiongroup', 90, 'change_cgroupscourseusergrouppartitiongroup'),
+(270, 'Can delete c groups courseusergrouppartitiongroup', 90, 'delete_cgroupscourseusergrouppartitiongroup'),
+(271, 'Can add course modes coursemode', 91, 'add_coursemodescoursemode'),
+(272, 'Can change course modes coursemode', 91, 'change_coursemodescoursemode'),
+(273, 'Can delete course modes coursemode', 91, 'delete_coursemodescoursemode'),
+(274, 'Can add course modes coursemodesarchive', 92, 'add_coursemodescoursemodesarchive'),
+(275, 'Can change course modes coursemodesarchive', 92, 'change_coursemodescoursemodesarchive'),
+(276, 'Can delete course modes coursemodesarchive', 92, 'delete_coursemodescoursemodesarchive'),
+(277, 'Can add courseware course subject', 93, 'add_coursewarecoursesubject'),
+(278, 'Can change courseware course subject', 93, 'change_coursewarecoursesubject'),
+(279, 'Can delete courseware course subject', 93, 'delete_coursewarecoursesubject'),
+(280, 'Can add courseware offlinecomputedgrade', 94, 'add_coursewareofflinecomputedgrade'),
+(281, 'Can change courseware offlinecomputedgrade', 94, 'change_coursewareofflinecomputedgrade'),
+(282, 'Can delete courseware offlinecomputedgrade', 94, 'delete_coursewareofflinecomputedgrade'),
+(283, 'Can add courseware offlinecomputedgradelog', 95, 'add_coursewareofflinecomputedgradelog'),
+(284, 'Can change courseware offlinecomputedgradelog', 95, 'change_coursewareofflinecomputedgradelog'),
+(285, 'Can delete courseware offlinecomputedgradelog', 95, 'delete_coursewareofflinecomputedgradelog'),
+(286, 'Can add courseware organization', 96, 'add_coursewareorganization'),
+(287, 'Can change courseware organization', 96, 'change_coursewareorganization'),
+(288, 'Can delete courseware organization', 96, 'delete_coursewareorganization'),
+(289, 'Can add courseware studentmodule', 97, 'add_coursewarestudentmodule'),
+(290, 'Can change courseware studentmodule', 97, 'change_coursewarestudentmodule'),
+(291, 'Can delete courseware studentmodule', 97, 'delete_coursewarestudentmodule'),
+(292, 'Can add courseware studentmodulehistory', 98, 'add_coursewarestudentmodulehistory'),
+(293, 'Can change courseware studentmodulehistory', 98, 'change_coursewarestudentmodulehistory'),
+(294, 'Can delete courseware studentmodulehistory', 98, 'delete_coursewarestudentmodulehistory'),
+(295, 'Can add courseware subject', 99, 'add_coursewaresubject'),
+(296, 'Can change courseware subject', 99, 'change_coursewaresubject'),
+(297, 'Can delete courseware subject', 99, 'delete_coursewaresubject'),
+(298, 'Can add courseware xmodulestudentinfofield', 100, 'add_coursewarexmodulestudentinfofield'),
+(299, 'Can change courseware xmodulestudentinfofield', 100, 'change_coursewarexmodulestudentinfofield'),
+(300, 'Can delete courseware xmodulestudentinfofield', 100, 'delete_coursewarexmodulestudentinfofield'),
+(301, 'Can add courseware xmodulestudentprefsfield', 101, 'add_coursewarexmodulestudentprefsfield'),
+(302, 'Can change courseware xmodulestudentprefsfield', 101, 'change_coursewarexmodulestudentprefsfield'),
+(303, 'Can delete courseware xmodulestudentprefsfield', 101, 'delete_coursewarexmodulestudentprefsfield'),
+(304, 'Can add courseware xmoduleuserstatesummaryfield', 102, 'add_coursewarexmoduleuserstatesummaryfield'),
+(305, 'Can change courseware xmoduleuserstatesummaryfield', 102, 'change_coursewarexmoduleuserstatesummaryfield'),
+(306, 'Can delete courseware xmoduleuserstatesummaryfield', 102, 'delete_coursewarexmoduleuserstatesummaryfield'),
+(307, 'Can add dark lang darklangconfig', 103, 'add_darklangdarklangconfig'),
+(308, 'Can change dark lang darklangconfig', 103, 'change_darklangdarklangconfig'),
+(309, 'Can delete dark lang darklangconfig', 103, 'delete_darklangdarklangconfig'),
+(310, 'Can add django admin log', 104, 'add_djangoadminlog'),
+(311, 'Can change django admin log', 104, 'change_djangoadminlog'),
+(312, 'Can delete django admin log', 104, 'delete_djangoadminlog'),
+(313, 'Can add django comment client permission', 105, 'add_djangocommentclientpermission'),
+(314, 'Can change django comment client permission', 105, 'change_djangocommentclientpermission'),
+(315, 'Can delete django comment client permission', 105, 'delete_djangocommentclientpermission'),
+(316, 'Can add django comment client permission roles', 106, 'add_djangocommentclientpermissionroles'),
+(317, 'Can change django comment client permission roles', 106, 'change_djangocommentclientpermissionroles'),
+(318, 'Can delete django comment client permission roles', 106, 'delete_djangocommentclientpermissionroles'),
+(319, 'Can add django comment client role', 107, 'add_djangocommentclientrole'),
+(320, 'Can change django comment client role', 107, 'change_djangocommentclientrole'),
+(321, 'Can delete django comment client role', 107, 'delete_djangocommentclientrole'),
+(322, 'Can add django comment client role users', 108, 'add_djangocommentclientroleusers'),
+(323, 'Can change django comment client role users', 108, 'change_djangocommentclientroleusers'),
+(324, 'Can delete django comment client role users', 108, 'delete_djangocommentclientroleusers'),
+(325, 'Can add django content type', 109, 'add_djangocontenttype'),
+(326, 'Can change django content type', 109, 'change_djangocontenttype'),
+(327, 'Can delete django content type', 109, 'delete_djangocontenttype'),
+(328, 'Can add django openid auth association', 110, 'add_djangoopenidauthassociation'),
+(329, 'Can change django openid auth association', 110, 'change_djangoopenidauthassociation'),
+(330, 'Can delete django openid auth association', 110, 'delete_djangoopenidauthassociation'),
+(331, 'Can add django openid auth nonce', 111, 'add_djangoopenidauthnonce'),
+(332, 'Can change django openid auth nonce', 111, 'change_djangoopenidauthnonce'),
+(333, 'Can delete django openid auth nonce', 111, 'delete_djangoopenidauthnonce'),
+(334, 'Can add django openid auth useropenid', 112, 'add_djangoopenidauthuseropenid'),
+(335, 'Can change django openid auth useropenid', 112, 'change_djangoopenidauthuseropenid'),
+(336, 'Can delete django openid auth useropenid', 112, 'delete_djangoopenidauthuseropenid'),
+(337, 'Can add django session', 113, 'add_djangosession'),
+(338, 'Can change django session', 113, 'change_djangosession'),
+(339, 'Can delete django session', 113, 'delete_djangosession'),
+(340, 'Can add django site', 114, 'add_djangosite'),
+(341, 'Can change django site', 114, 'change_djangosite'),
+(342, 'Can delete django site', 114, 'delete_djangosite'),
+(343, 'Can add djcelery crontabschedule', 115, 'add_djcelerycrontabschedule'),
+(344, 'Can change djcelery crontabschedule', 115, 'change_djcelerycrontabschedule'),
+(345, 'Can delete djcelery crontabschedule', 115, 'delete_djcelerycrontabschedule'),
+(346, 'Can add djcelery intervalschedule', 116, 'add_djceleryintervalschedule'),
+(347, 'Can change djcelery intervalschedule', 116, 'change_djceleryintervalschedule'),
+(348, 'Can delete djcelery intervalschedule', 116, 'delete_djceleryintervalschedule'),
+(349, 'Can add djcelery periodictask', 117, 'add_djceleryperiodictask'),
+(350, 'Can change djcelery periodictask', 117, 'change_djceleryperiodictask'),
+(351, 'Can delete djcelery periodictask', 117, 'delete_djceleryperiodictask'),
+(352, 'Can add djcelery periodictasks', 118, 'add_djceleryperiodictasks'),
+(353, 'Can change djcelery periodictasks', 118, 'change_djceleryperiodictasks'),
+(354, 'Can delete djcelery periodictasks', 118, 'delete_djceleryperiodictasks'),
+(355, 'Can add djcelery taskstate', 119, 'add_djcelerytaskstate'),
+(356, 'Can change djcelery taskstate', 119, 'change_djcelerytaskstate'),
+(357, 'Can delete djcelery taskstate', 119, 'delete_djcelerytaskstate'),
+(358, 'Can add djcelery workerstate', 120, 'add_djceleryworkerstate'),
+(359, 'Can change djcelery workerstate', 120, 'change_djceleryworkerstate'),
+(360, 'Can delete djcelery workerstate', 120, 'delete_djceleryworkerstate'),
+(361, 'Can add edxval coursevideo', 121, 'add_edxvalcoursevideo'),
+(362, 'Can change edxval coursevideo', 121, 'change_edxvalcoursevideo'),
+(363, 'Can delete edxval coursevideo', 121, 'delete_edxvalcoursevideo'),
+(364, 'Can add edxval encodedvideo', 122, 'add_edxvalencodedvideo'),
+(365, 'Can change edxval encodedvideo', 122, 'change_edxvalencodedvideo'),
+(366, 'Can delete edxval encodedvideo', 122, 'delete_edxvalencodedvideo'),
+(367, 'Can add edxval profile', 123, 'add_edxvalprofile'),
+(368, 'Can change edxval profile', 123, 'change_edxvalprofile'),
+(369, 'Can delete edxval profile', 123, 'delete_edxvalprofile'),
+(370, 'Can add edxval subtitle', 124, 'add_edxvalsubtitle'),
+(371, 'Can change edxval subtitle', 124, 'change_edxvalsubtitle'),
+(372, 'Can delete edxval subtitle', 124, 'delete_edxvalsubtitle'),
+(373, 'Can add edxval video', 125, 'add_edxvalvideo'),
+(374, 'Can change edxval video', 125, 'change_edxvalvideo'),
+(375, 'Can delete edxval video', 125, 'delete_edxvalvideo'),
+(376, 'Can add embargo embargoedcourse', 126, 'add_embargoembargoedcourse'),
+(377, 'Can change embargo embargoedcourse', 126, 'change_embargoembargoedcourse'),
+(378, 'Can delete embargo embargoedcourse', 126, 'delete_embargoembargoedcourse'),
+(379, 'Can add embargo embargoedstate', 127, 'add_embargoembargoedstate'),
+(380, 'Can change embargo embargoedstate', 127, 'change_embargoembargoedstate'),
+(381, 'Can delete embargo embargoedstate', 127, 'delete_embargoembargoedstate'),
+(382, 'Can add embargo ipfilter', 128, 'add_embargoipfilter'),
+(383, 'Can change embargo ipfilter', 128, 'change_embargoipfilter'),
+(384, 'Can delete embargo ipfilter', 128, 'delete_embargoipfilter'),
+(385, 'Can add external auth externalauthmap', 129, 'add_externalauthexternalauthmap'),
+(386, 'Can change external auth externalauthmap', 129, 'change_externalauthexternalauthmap'),
+(387, 'Can delete external auth externalauthmap', 129, 'delete_externalauthexternalauthmap'),
+(388, 'Can add foldit puzzlecomplete', 130, 'add_folditpuzzlecomplete'),
+(389, 'Can change foldit puzzlecomplete', 130, 'change_folditpuzzlecomplete'),
+(390, 'Can delete foldit puzzlecomplete', 130, 'delete_folditpuzzlecomplete'),
+(391, 'Can add foldit score', 131, 'add_folditscore'),
+(392, 'Can change foldit score', 131, 'change_folditscore'),
+(393, 'Can delete foldit score', 131, 'delete_folditscore'),
+(394, 'Can add instructor task instructortask', 132, 'add_instructortaskinstructortask'),
+(395, 'Can change instructor task instructortask', 132, 'change_instructortaskinstructortask'),
+(396, 'Can delete instructor task instructortask', 132, 'delete_instructortaskinstructortask'),
+(397, 'Can add licenses coursesoftware', 133, 'add_licensescoursesoftware'),
+(398, 'Can change licenses coursesoftware', 133, 'change_licensescoursesoftware'),
+(399, 'Can delete licenses coursesoftware', 133, 'delete_licensescoursesoftware'),
+(400, 'Can add licenses userlicense', 134, 'add_licensesuserlicense'),
+(401, 'Can change licenses userlicense', 134, 'change_licensesuserlicense'),
+(402, 'Can delete licenses userlicense', 134, 'delete_licensesuserlicense'),
+(403, 'Can add linkedin linkedin', 135, 'add_linkedinlinkedin'),
+(404, 'Can change linkedin linkedin', 135, 'change_linkedinlinkedin'),
+(405, 'Can delete linkedin linkedin', 135, 'delete_linkedinlinkedin'),
+(406, 'Can add lms xblock xblockasidesconfig', 136, 'add_lmsxblockxblockasidesconfig'),
+(407, 'Can change lms xblock xblockasidesconfig', 136, 'change_lmsxblockxblockasidesconfig'),
+(408, 'Can delete lms xblock xblockasidesconfig', 136, 'delete_lmsxblockxblockasidesconfig'),
+(409, 'Can add notes note', 137, 'add_notesnote'),
+(410, 'Can change notes note', 137, 'change_notesnote'),
+(411, 'Can delete notes note', 137, 'delete_notesnote'),
+(412, 'Can add notifications articlesubscription', 138, 'add_notificationsarticlesubscription'),
+(413, 'Can change notifications articlesubscription', 138, 'change_notificationsarticlesubscription'),
+(414, 'Can delete notifications articlesubscription', 138, 'delete_notificationsarticlesubscription'),
+(415, 'Can add notify notification', 139, 'add_notifynotification'),
+(416, 'Can change notify notification', 139, 'change_notifynotification'),
+(417, 'Can delete notify notification', 139, 'delete_notifynotification'),
+(418, 'Can add notify notificationtype', 140, 'add_notifynotificationtype'),
+(419, 'Can change notify notificationtype', 140, 'change_notifynotificationtype'),
+(420, 'Can delete notify notificationtype', 140, 'delete_notifynotificationtype'),
+(421, 'Can add notify settings', 141, 'add_notifysettings'),
+(422, 'Can change notify settings', 141, 'change_notifysettings'),
+(423, 'Can delete notify settings', 141, 'delete_notifysettings'),
+(424, 'Can add notify subscription', 142, 'add_notifysubscription'),
+(425, 'Can change notify subscription', 142, 'change_notifysubscription'),
+(426, 'Can delete notify subscription', 142, 'delete_notifysubscription'),
+(427, 'Can add oauth2 accesstoken', 143, 'add_oauth2accesstoken'),
+(428, 'Can change oauth2 accesstoken', 143, 'change_oauth2accesstoken'),
+(429, 'Can delete oauth2 accesstoken', 143, 'delete_oauth2accesstoken'),
+(430, 'Can add oauth2 client', 144, 'add_oauth2client'),
+(431, 'Can change oauth2 client', 144, 'change_oauth2client'),
+(432, 'Can delete oauth2 client', 144, 'delete_oauth2client'),
+(433, 'Can add oauth2 grant', 145, 'add_oauth2grant'),
+(434, 'Can change oauth2 grant', 145, 'change_oauth2grant'),
+(435, 'Can delete oauth2 grant', 145, 'delete_oauth2grant'),
+(436, 'Can add oauth2 provider trustedclient', 146, 'add_oauth2providertrustedclient'),
+(437, 'Can change oauth2 provider trustedclient', 146, 'change_oauth2providertrustedclient'),
+(438, 'Can delete oauth2 provider trustedclient', 146, 'delete_oauth2providertrustedclient'),
+(439, 'Can add oauth2 refreshtoken', 147, 'add_oauth2refreshtoken'),
+(440, 'Can change oauth2 refreshtoken', 147, 'change_oauth2refreshtoken'),
+(441, 'Can delete oauth2 refreshtoken', 147, 'delete_oauth2refreshtoken'),
+(442, 'Can add psychometrics psychometricdata', 148, 'add_psychometricspsychometricdata'),
+(443, 'Can change psychometrics psychometricdata', 148, 'change_psychometricspsychometricdata'),
+(444, 'Can delete psychometrics psychometricdata', 148, 'delete_psychometricspsychometricdata'),
+(445, 'Can add r midcoursereverificationwindow', 149, 'add_rmidcoursereverificationwindow'),
+(446, 'Can change r midcoursereverificationwindow', 149, 'change_rmidcoursereverificationwindow'),
+(447, 'Can delete r midcoursereverificationwindow', 149, 'delete_rmidcoursereverificationwindow'),
+(448, 'Can add shoppingcart certificateitem', 150, 'add_shoppingcartcertificateitem'),
+(449, 'Can change shoppingcart certificateitem', 150, 'change_shoppingcartcertificateitem'),
+(450, 'Can delete shoppingcart certificateitem', 150, 'delete_shoppingcartcertificateitem'),
+(451, 'Can add shoppingcart coupon', 151, 'add_shoppingcartcoupon'),
+(452, 'Can change shoppingcart coupon', 151, 'change_shoppingcartcoupon'),
+(453, 'Can delete shoppingcart coupon', 151, 'delete_shoppingcartcoupon'),
+(454, 'Can add shoppingcart couponredemption', 152, 'add_shoppingcartcouponredemption'),
+(455, 'Can change shoppingcart couponredemption', 152, 'change_shoppingcartcouponredemption'),
+(456, 'Can delete shoppingcart couponredemption', 152, 'delete_shoppingcartcouponredemption'),
+(457, 'Can add shoppingcart courseregcodeitem', 153, 'add_shoppingcartcourseregcodeitem'),
+(458, 'Can change shoppingcart courseregcodeitem', 153, 'change_shoppingcartcourseregcodeitem'),
+(459, 'Can delete shoppingcart courseregcodeitem', 153, 'delete_shoppingcartcourseregcodeitem'),
+(460, 'Can add s courseregcodeitemannotation', 154, 'add_scourseregcodeitemannotation'),
+(461, 'Can change s courseregcodeitemannotation', 154, 'change_scourseregcodeitemannotation'),
+(462, 'Can delete s courseregcodeitemannotation', 154, 'delete_scourseregcodeitemannotation'),
+(463, 'Can add shoppingcart courseregistrationcode', 155, 'add_shoppingcartcourseregistrationcode'),
+(464, 'Can change shoppingcart courseregistrationcode', 155, 'change_shoppingcartcourseregistrationcode'),
+(465, 'Can delete shoppingcart courseregistrationcode', 155, 'delete_shoppingcartcourseregistrationcode'),
+(466, 'Can add shoppingcart donation', 156, 'add_shoppingcartdonation'),
+(467, 'Can change shoppingcart donation', 156, 'change_shoppingcartdonation'),
+(468, 'Can delete shoppingcart donation', 156, 'delete_shoppingcartdonation'),
+(469, 'Can add shoppingcart donationconfiguration', 157, 'add_shoppingcartdonationconfiguration'),
+(470, 'Can change shoppingcart donationconfiguration', 157, 'change_shoppingcartdonationconfiguration'),
+(471, 'Can delete shoppingcart donationconfiguration', 157, 'delete_shoppingcartdonationconfiguration'),
+(472, 'Can add shoppingcart invoice', 158, 'add_shoppingcartinvoice'),
+(473, 'Can change shoppingcart invoice', 158, 'change_shoppingcartinvoice'),
+(474, 'Can delete shoppingcart invoice', 158, 'delete_shoppingcartinvoice'),
+(475, 'Can add shoppingcart order', 159, 'add_shoppingcartorder'),
+(476, 'Can change shoppingcart order', 159, 'change_shoppingcartorder'),
+(477, 'Can delete shoppingcart order', 159, 'delete_shoppingcartorder'),
+(478, 'Can add shoppingcart orderitem', 160, 'add_shoppingcartorderitem'),
+(479, 'Can change shoppingcart orderitem', 160, 'change_shoppingcartorderitem'),
+(480, 'Can delete shoppingcart orderitem', 160, 'delete_shoppingcartorderitem'),
+(481, 'Can add shoppingcart paidcourseregistration', 161, 'add_shoppingcartpaidcourseregistration'),
+(482, 'Can change shoppingcart paidcourseregistration', 161, 'change_shoppingcartpaidcourseregistration'),
+(483, 'Can delete shoppingcart paidcourseregistration', 161, 'delete_shoppingcartpaidcourseregistration'),
+(484, 'Can add s paidcourseregistrationannotation', 162, 'add_spaidcourseregistrationannotation'),
+(485, 'Can change s paidcourseregistrationannotation', 162, 'change_spaidcourseregistrationannotation'),
+(486, 'Can delete s paidcourseregistrationannotation', 162, 'delete_spaidcourseregistrationannotation'),
+(487, 'Can add shoppingcart registrationcoderedemption', 163, 'add_shoppingcartregistrationcoderedemption'),
+(488, 'Can change shoppingcart registrationcoderedemption', 163, 'change_shoppingcartregistrationcoderedemption'),
+(489, 'Can delete shoppingcart registrationcoderedemption', 163, 'delete_shoppingcartregistrationcoderedemption'),
+(490, 'Can add south migrationhistory', 164, 'add_southmigrationhistory'),
+(491, 'Can change south migrationhistory', 164, 'change_southmigrationhistory'),
+(492, 'Can delete south migrationhistory', 164, 'delete_southmigrationhistory'),
+(493, 'Can add splash splashconfig', 165, 'add_splashsplashconfig'),
+(494, 'Can change splash splashconfig', 165, 'change_splashsplashconfig'),
+(495, 'Can delete splash splashconfig', 165, 'delete_splashsplashconfig'),
+(496, 'Can add student anonymoususerid', 166, 'add_studentanonymoususerid'),
+(497, 'Can change student anonymoususerid', 166, 'change_studentanonymoususerid'),
+(498, 'Can delete student anonymoususerid', 166, 'delete_studentanonymoususerid'),
+(499, 'Can add student courseaccessrole', 167, 'add_studentcourseaccessrole'),
+(500, 'Can change student courseaccessrole', 167, 'change_studentcourseaccessrole'),
+(501, 'Can delete student courseaccessrole', 167, 'delete_studentcourseaccessrole'),
+(502, 'Can add student courseenrollment', 168, 'add_studentcourseenrollment'),
+(503, 'Can change student courseenrollment', 168, 'change_studentcourseenrollment'),
+(504, 'Can delete student courseenrollment', 168, 'delete_studentcourseenrollment'),
+(505, 'Can add student courseenrollmentallowed', 169, 'add_studentcourseenrollmentallowed'),
+(506, 'Can change student courseenrollmentallowed', 169, 'change_studentcourseenrollmentallowed'),
+(507, 'Can delete student courseenrollmentallowed', 169, 'delete_studentcourseenrollmentallowed'),
+(508, 'Can add student dashboardconfiguration', 170, 'add_studentdashboardconfiguration'),
+(509, 'Can change student dashboardconfiguration', 170, 'change_studentdashboardconfiguration'),
+(510, 'Can delete student dashboardconfiguration', 170, 'delete_studentdashboardconfiguration'),
+(511, 'Can add student loginfailures', 171, 'add_studentloginfailures'),
+(512, 'Can change student loginfailures', 171, 'change_studentloginfailures'),
+(513, 'Can delete student loginfailures', 171, 'delete_studentloginfailures'),
+(514, 'Can add student mooc city', 172, 'add_studentmooccity'),
+(515, 'Can change student mooc city', 172, 'change_studentmooccity'),
+(516, 'Can delete student mooc city', 172, 'delete_studentmooccity'),
+(517, 'Can add student mooc person', 173, 'add_studentmoocperson'),
+(518, 'Can change student mooc person', 173, 'change_studentmoocperson'),
+(519, 'Can delete student mooc person', 173, 'delete_studentmoocperson'),
+(520, 'Can add student mooc state', 174, 'add_studentmoocstate'),
+(521, 'Can change student mooc state', 174, 'change_studentmoocstate'),
+(522, 'Can delete student mooc state', 174, 'delete_studentmoocstate'),
+(523, 'Can add student passwordhistory', 175, 'add_studentpasswordhistory'),
+(524, 'Can change student passwordhistory', 175, 'change_studentpasswordhistory'),
+(525, 'Can delete student passwordhistory', 175, 'delete_studentpasswordhistory'),
+(526, 'Can add student pendingemailchange', 176, 'add_studentpendingemailchange'),
+(527, 'Can change student pendingemailchange', 176, 'change_studentpendingemailchange'),
+(528, 'Can delete student pendingemailchange', 176, 'delete_studentpendingemailchange'),
+(529, 'Can add student pendingnamechange', 177, 'add_studentpendingnamechange'),
+(530, 'Can change student pendingnamechange', 177, 'change_studentpendingnamechange'),
+(531, 'Can delete student pendingnamechange', 177, 'delete_studentpendingnamechange'),
+(532, 'Can add student usersignupsource', 178, 'add_studentusersignupsource'),
+(533, 'Can change student usersignupsource', 178, 'change_studentusersignupsource'),
+(534, 'Can delete student usersignupsource', 178, 'delete_studentusersignupsource'),
+(535, 'Can add student userstanding', 179, 'add_studentuserstanding'),
+(536, 'Can change student userstanding', 179, 'change_studentuserstanding'),
+(537, 'Can delete student userstanding', 179, 'delete_studentuserstanding'),
+(538, 'Can add student usertestgroup', 180, 'add_studentusertestgroup'),
+(539, 'Can change student usertestgroup', 180, 'change_studentusertestgroup'),
+(540, 'Can delete student usertestgroup', 180, 'delete_studentusertestgroup'),
+(541, 'Can add student usertestgroup users', 181, 'add_studentusertestgroupusers'),
+(542, 'Can change student usertestgroup users', 181, 'change_studentusertestgroupusers'),
+(543, 'Can delete student usertestgroup users', 181, 'delete_studentusertestgroupusers'),
+(544, 'Can add submissions score', 182, 'add_submissionsscore'),
+(545, 'Can change submissions score', 182, 'change_submissionsscore'),
+(546, 'Can delete submissions score', 182, 'delete_submissionsscore'),
+(547, 'Can add submissions scoresummary', 183, 'add_submissionsscoresummary'),
+(548, 'Can change submissions scoresummary', 183, 'change_submissionsscoresummary'),
+(549, 'Can delete submissions scoresummary', 183, 'delete_submissionsscoresummary'),
+(550, 'Can add submissions studentitem', 184, 'add_submissionsstudentitem'),
+(551, 'Can change submissions studentitem', 184, 'change_submissionsstudentitem'),
+(552, 'Can delete submissions studentitem', 184, 'delete_submissionsstudentitem'),
+(553, 'Can add submissions submission', 185, 'add_submissionssubmission'),
+(554, 'Can change submissions submission', 185, 'change_submissionssubmission'),
+(555, 'Can delete submissions submission', 185, 'delete_submissionssubmission'),
+(556, 'Can add survey surveyanswer', 186, 'add_surveysurveyanswer'),
+(557, 'Can change survey surveyanswer', 186, 'change_surveysurveyanswer'),
+(558, 'Can delete survey surveyanswer', 186, 'delete_surveysurveyanswer'),
+(559, 'Can add survey surveyform', 187, 'add_surveysurveyform'),
+(560, 'Can change survey surveyform', 187, 'change_surveysurveyform'),
+(561, 'Can delete survey surveyform', 187, 'delete_surveysurveyform'),
+(562, 'Can add track trackinglog', 188, 'add_tracktrackinglog'),
+(563, 'Can change track trackinglog', 188, 'change_tracktrackinglog'),
+(564, 'Can delete track trackinglog', 188, 'delete_tracktrackinglog'),
+(565, 'Can add user api usercoursetag', 189, 'add_userapiusercoursetag'),
+(566, 'Can change user api usercoursetag', 189, 'change_userapiusercoursetag'),
+(567, 'Can delete user api usercoursetag', 189, 'delete_userapiusercoursetag'),
+(568, 'Can add user api userorgtag', 190, 'add_userapiuserorgtag'),
+(569, 'Can change user api userorgtag', 190, 'change_userapiuserorgtag'),
+(570, 'Can delete user api userorgtag', 190, 'delete_userapiuserorgtag'),
+(571, 'Can add user api userpreference', 191, 'add_userapiuserpreference'),
+(572, 'Can change user api userpreference', 191, 'change_userapiuserpreference'),
+(573, 'Can delete user api userpreference', 191, 'delete_userapiuserpreference'),
+(574, 'Can add vs softwaresecurephotoverification', 192, 'add_vssoftwaresecurephotoverification'),
+(575, 'Can change vs softwaresecurephotoverification', 192, 'change_vssoftwaresecurephotoverification'),
+(576, 'Can delete vs softwaresecurephotoverification', 192, 'delete_vssoftwaresecurephotoverification'),
+(577, 'Can add wiki article', 193, 'add_wikiarticle'),
+(578, 'Can change wiki article', 193, 'change_wikiarticle'),
+(579, 'Can delete wiki article', 193, 'delete_wikiarticle'),
+(580, 'Can add wiki articleforobject', 194, 'add_wikiarticleforobject'),
+(581, 'Can change wiki articleforobject', 194, 'change_wikiarticleforobject'),
+(582, 'Can delete wiki articleforobject', 194, 'delete_wikiarticleforobject'),
+(583, 'Can add wiki articleplugin', 195, 'add_wikiarticleplugin'),
+(584, 'Can change wiki articleplugin', 195, 'change_wikiarticleplugin'),
+(585, 'Can delete wiki articleplugin', 195, 'delete_wikiarticleplugin'),
+(586, 'Can add wiki articlerevision', 196, 'add_wikiarticlerevision'),
+(587, 'Can change wiki articlerevision', 196, 'change_wikiarticlerevision'),
+(588, 'Can delete wiki articlerevision', 196, 'delete_wikiarticlerevision'),
+(589, 'Can add wiki articlesubscription', 197, 'add_wikiarticlesubscription'),
+(590, 'Can change wiki articlesubscription', 197, 'change_wikiarticlesubscription'),
+(591, 'Can delete wiki articlesubscription', 197, 'delete_wikiarticlesubscription'),
+(592, 'Can add wiki attachment', 198, 'add_wikiattachment'),
+(593, 'Can change wiki attachment', 198, 'change_wikiattachment'),
+(594, 'Can delete wiki attachment', 198, 'delete_wikiattachment'),
+(595, 'Can add wiki attachmentrevision', 199, 'add_wikiattachmentrevision'),
+(596, 'Can change wiki attachmentrevision', 199, 'change_wikiattachmentrevision'),
+(597, 'Can delete wiki attachmentrevision', 199, 'delete_wikiattachmentrevision'),
+(598, 'Can add wiki image', 200, 'add_wikiimage'),
+(599, 'Can change wiki image', 200, 'change_wikiimage'),
+(600, 'Can delete wiki image', 200, 'delete_wikiimage'),
+(601, 'Can add wiki imagerevision', 201, 'add_wikiimagerevision'),
+(602, 'Can change wiki imagerevision', 201, 'change_wikiimagerevision'),
+(603, 'Can delete wiki imagerevision', 201, 'delete_wikiimagerevision'),
+(604, 'Can add wiki reusableplugin', 202, 'add_wikireusableplugin'),
+(605, 'Can change wiki reusableplugin', 202, 'change_wikireusableplugin'),
+(606, 'Can delete wiki reusableplugin', 202, 'delete_wikireusableplugin'),
+(607, 'Can add wiki reusableplugin articles', 203, 'add_wikireusablepluginarticles'),
+(608, 'Can change wiki reusableplugin articles', 203, 'change_wikireusablepluginarticles'),
+(609, 'Can delete wiki reusableplugin articles', 203, 'delete_wikireusablepluginarticles'),
+(610, 'Can add wiki revisionplugin', 204, 'add_wikirevisionplugin'),
+(611, 'Can change wiki revisionplugin', 204, 'change_wikirevisionplugin'),
+(612, 'Can delete wiki revisionplugin', 204, 'delete_wikirevisionplugin'),
+(613, 'Can add wiki revisionpluginrevision', 205, 'add_wikirevisionpluginrevision'),
+(614, 'Can change wiki revisionpluginrevision', 205, 'change_wikirevisionpluginrevision'),
+(615, 'Can delete wiki revisionpluginrevision', 205, 'delete_wikirevisionpluginrevision'),
+(616, 'Can add wiki simpleplugin', 206, 'add_wikisimpleplugin'),
+(617, 'Can change wiki simpleplugin', 206, 'change_wikisimpleplugin'),
+(618, 'Can delete wiki simpleplugin', 206, 'delete_wikisimpleplugin'),
+(619, 'Can add wiki urlpath', 207, 'add_wikiurlpath'),
+(620, 'Can change wiki urlpath', 207, 'change_wikiurlpath'),
+(621, 'Can delete wiki urlpath', 207, 'delete_wikiurlpath'),
+(622, 'Can add workflow assessmentworkflow', 208, 'add_workflowassessmentworkflow'),
+(623, 'Can change workflow assessmentworkflow', 208, 'change_workflowassessmentworkflow'),
+(624, 'Can delete workflow assessmentworkflow', 208, 'delete_workflowassessmentworkflow'),
+(625, 'Can add workflow assessmentworkflowstep', 209, 'add_workflowassessmentworkflowstep'),
+(626, 'Can change workflow assessmentworkflowstep', 209, 'change_workflowassessmentworkflowstep'),
+(627, 'Can delete workflow assessmentworkflowstep', 209, 'delete_workflowassessmentworkflowstep'),
+(628, 'Can add visitor', 210, 'add_visitor'),
+(629, 'Can change visitor', 210, 'change_visitor'),
+(630, 'Can delete visitor', 210, 'delete_visitor'),
+(631, 'Can add Untracked User-Agent', 211, 'add_untrackeduseragent'),
+(632, 'Can change Untracked User-Agent', 211, 'change_untrackeduseragent'),
+(633, 'Can delete Untracked User-Agent', 211, 'delete_untrackeduseragent'),
+(634, 'Can add Banned IP', 212, 'add_bannedip'),
+(635, 'Can change Banned IP', 212, 'change_bannedip'),
+(636, 'Can delete Banned IP', 212, 'delete_bannedip');
 
 -- --------------------------------------------------------
 
@@ -707,15 +707,15 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 CREATE TABLE `auth_user` (
   `id` int(11) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `last_login` datetime DEFAULT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(254) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `email` varchar(254) NOT NULL,
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
-  `date_joined` datetime NOT NULL
+  `date_joined` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -723,11 +723,12 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(2, 'pbkdf2_sha256$20000$jazdxtNmsr7z$m+Gmev+a1JQqC+NFo31B7t3AlU3SFVE3IwDz1O9Zdr4=', '2017-02-02 08:28:47', 1, 'admin@workshop.com', '', '', 'admin@workshop.com', 1, 1, '2015-07-17 00:00:00'),
-(728, 'pbkdf2_sha256$20000$jazdxtNmsr7z$m+Gmev+a1JQqC+NFo31B7t3AlU3SFVE3IwDz1O9Zdr4=', '2016-10-19 12:15:21', 0, 'gopalrao@iei.edu', '', '', 'gopalrao@iei.edu', 0, 1, '2016-02-12 08:26:08'),
-(729, 'pbkdf2_sha256$20000$jazdxtNmsr7z$m+Gmev+a1JQqC+NFo31B7t3AlU3SFVE3IwDz1O9Zdr4=', '2016-09-26 11:30:57', 0, 'jaysharma@iei.edu', '', '', 'jaysharma@iei.edu', 0, 1, '2016-02-12 08:27:15'),
-(730, 'pbkdf2_sha256$20000$jazdxtNmsr7z$m+Gmev+a1JQqC+NFo31B7t3AlU3SFVE3IwDz1O9Zdr4=', '2017-02-02 08:27:30', 0, 'premkumar@iei.edu', '', '', 'premkumar@iei.edu', 0, 1, '2016-02-12 08:28:14'),
-(731, 'pbkdf2_sha256$20000$jazdxtNmsr7z$m+Gmev+a1JQqC+NFo31B7t3AlU3SFVE3IwDz1O9Zdr4=', '2017-02-01 06:56:32', 0, 'sitadevi@iei.edu', '', '', 'sitadevi@iei.edu', 0, 1, '2016-02-12 08:29:45');
+(1, 'pbkdf2_sha256$20000$U8T2M72vxLbB$WDM+4dtB2WNVeA4zdm04usbZHyed5587jpsBD8brmI8=', NULL, 1, 'aditi', '', '', '', 1, 1, '2017-02-08 11:22:24.398776'),
+(2, 'pbkdf2_sha256$20000$T5SqtlhaXSIp$i9H66p6D57kvU1oRqjc03qR3RGMnE2yieye9nxgErs4=', '2017-02-09 10:07:32.900307', 1, 'admin@workshop.com', '', '', 'admin@workshop.com', 1, 1, '2015-07-17 00:00:00.000000'),
+(3, 'pbkdf2_sha256$20000$T5SqtlhaXSIp$i9H66p6D57kvU1oRqjc03qR3RGMnE2yieye9nxgErs4=', '2016-10-19 12:15:21.000000', 0, 'gopalrao@iei.edu', '', '', 'gopalrao@iei.edu', 0, 1, '2016-02-12 08:26:08.000000'),
+(4, 'pbkdf2_sha256$20000$T5SqtlhaXSIp$i9H66p6D57kvU1oRqjc03qR3RGMnE2yieye9nxgErs4=', '2016-09-26 11:30:57.000000', 0, 'jaysharma@iei.edu', '', '', 'jaysharma@iei.edu', 0, 1, '2016-02-12 08:27:15.000000'),
+(5, 'pbkdf2_sha256$20000$T5SqtlhaXSIp$i9H66p6D57kvU1oRqjc03qR3RGMnE2yieye9nxgErs4=', '2017-02-09 10:10:17.393710', 0, 'premkumar@iei.edu', '', '', 'premkumar@iei.edu', 0, 1, '2016-02-12 08:28:14.000000'),
+(6, 'pbkdf2_sha256$20000$T5SqtlhaXSIp$i9H66p6D57kvU1oRqjc03qR3RGMnE2yieye9nxgErs4=', '2017-02-09 10:09:20.656622', 0, 'sitadevi@iei.edu', '', '', 'sitadevi@iei.edu', 0, 1, '2016-02-12 08:29:45.000000');
 
 -- --------------------------------------------------------
 
@@ -761,7 +762,7 @@ CREATE TABLE `auth_user_user_permissions` (
 
 CREATE TABLE `django_admin_log` (
   `id` int(11) NOT NULL,
-  `action_time` datetime NOT NULL,
+  `action_time` datetime(6) NOT NULL,
   `object_id` longtext,
   `object_repr` varchar(200) NOT NULL,
   `action_flag` smallint(5) UNSIGNED NOT NULL,
@@ -792,213 +793,213 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (2, 'auth', 'permission'),
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
-(41, 'iitbx', 'gen_evaluations'),
-(44, 'iitbx', 'gen_gradestable'),
-(45, 'iitbx', 'gen_headings'),
-(43, 'iitbx', 'gen_markstable'),
-(42, 'iitbx', 'gen_questions'),
-(208, 'iitbx', 'gen_repout'),
-(207, 'iitbx', 'gen_temp'),
-(50, 'managerapp', 'aaitrainingworkflowtraining'),
-(53, 'managerapp', 'aassessmentfeedbackassessments'),
-(46, 'managerapp', 'assessmentaiclassifier'),
-(47, 'managerapp', 'assessmentaiclassifierset'),
-(48, 'managerapp', 'assessmentaigradingworkflow'),
-(49, 'managerapp', 'assessmentaitrainingworkflow'),
-(51, 'managerapp', 'assessmentassessment'),
-(52, 'managerapp', 'assessmentassessmentfeedback'),
-(55, 'managerapp', 'assessmentassessmentfeedbackoption'),
-(54, 'managerapp', 'assessmentassessmentfeedbackoptions'),
-(56, 'managerapp', 'assessmentassessmentpart'),
-(57, 'managerapp', 'assessmentcriterion'),
-(58, 'managerapp', 'assessmentcriterionoption'),
-(59, 'managerapp', 'assessmentpeerworkflow'),
-(60, 'managerapp', 'assessmentpeerworkflowitem'),
-(61, 'managerapp', 'assessmentrubric'),
-(62, 'managerapp', 'assessmentstudenttrainingworkflow'),
-(63, 'managerapp', 'assessmentstudenttrainingworkflowitem'),
-(64, 'managerapp', 'assessmenttrainingexample'),
-(65, 'managerapp', 'atrainingexampleoptionsselected'),
-(66, 'managerapp', 'authgroup'),
-(67, 'managerapp', 'authgrouppermissions'),
-(68, 'managerapp', 'authpermission'),
-(69, 'managerapp', 'authregistration'),
-(70, 'managerapp', 'authuser'),
-(71, 'managerapp', 'authusergroups'),
-(73, 'managerapp', 'authuserprofile'),
-(72, 'managerapp', 'authuseruserpermissions'),
-(74, 'managerapp', 'bulkemailcourseauthorization'),
-(75, 'managerapp', 'bulkemailcourseemail'),
-(76, 'managerapp', 'bulkemailcourseemailtemplate'),
-(77, 'managerapp', 'bulkemailoptout'),
-(78, 'managerapp', 'celerytaskmeta'),
-(79, 'managerapp', 'celerytasksetmeta'),
-(80, 'managerapp', 'certificatescertificatewhitelist'),
-(81, 'managerapp', 'certificatesgeneratedcertificate'),
-(87, 'managerapp', 'cgroupscourseusergrouppartitiongroup'),
-(82, 'managerapp', 'circuitservercircuit'),
-(83, 'managerapp', 'courseactionstatecoursererunstate'),
-(84, 'managerapp', 'coursecreatorscoursecreator'),
-(85, 'managerapp', 'coursegroupscourseusergroup'),
-(86, 'managerapp', 'coursegroupscourseusergroupusers'),
-(88, 'managerapp', 'coursemodescoursemode'),
-(89, 'managerapp', 'coursemodescoursemodesarchive'),
-(90, 'managerapp', 'coursewarecoursesubject'),
-(91, 'managerapp', 'coursewareofflinecomputedgrade'),
-(92, 'managerapp', 'coursewareofflinecomputedgradelog'),
-(93, 'managerapp', 'coursewareorganization'),
-(94, 'managerapp', 'coursewarestudentmodule'),
-(95, 'managerapp', 'coursewarestudentmodulehistory'),
-(96, 'managerapp', 'coursewaresubject'),
-(97, 'managerapp', 'coursewarexmodulestudentinfofield'),
-(98, 'managerapp', 'coursewarexmodulestudentprefsfield'),
-(99, 'managerapp', 'coursewarexmoduleuserstatesummaryfield'),
-(100, 'managerapp', 'darklangdarklangconfig'),
-(101, 'managerapp', 'djangoadminlog'),
-(102, 'managerapp', 'djangocommentclientpermission'),
-(103, 'managerapp', 'djangocommentclientpermissionroles'),
-(104, 'managerapp', 'djangocommentclientrole'),
-(105, 'managerapp', 'djangocommentclientroleusers'),
-(106, 'managerapp', 'djangocontenttype'),
-(107, 'managerapp', 'djangoopenidauthassociation'),
-(108, 'managerapp', 'djangoopenidauthnonce'),
-(109, 'managerapp', 'djangoopenidauthuseropenid'),
-(110, 'managerapp', 'djangosession'),
-(111, 'managerapp', 'djangosite'),
-(112, 'managerapp', 'djcelerycrontabschedule'),
-(113, 'managerapp', 'djceleryintervalschedule'),
-(114, 'managerapp', 'djceleryperiodictask'),
-(115, 'managerapp', 'djceleryperiodictasks'),
-(116, 'managerapp', 'djcelerytaskstate'),
-(117, 'managerapp', 'djceleryworkerstate'),
-(118, 'managerapp', 'edxvalcoursevideo'),
-(119, 'managerapp', 'edxvalencodedvideo'),
-(120, 'managerapp', 'edxvalprofile'),
-(121, 'managerapp', 'edxvalsubtitle'),
-(122, 'managerapp', 'edxvalvideo'),
-(123, 'managerapp', 'embargoembargoedcourse'),
-(124, 'managerapp', 'embargoembargoedstate'),
-(125, 'managerapp', 'embargoipfilter'),
-(126, 'managerapp', 'externalauthexternalauthmap'),
-(127, 'managerapp', 'folditpuzzlecomplete'),
-(128, 'managerapp', 'folditscore'),
-(129, 'managerapp', 'instructortaskinstructortask'),
-(130, 'managerapp', 'licensescoursesoftware'),
-(131, 'managerapp', 'licensesuserlicense'),
-(132, 'managerapp', 'linkedinlinkedin'),
-(133, 'managerapp', 'lmsxblockxblockasidesconfig'),
-(134, 'managerapp', 'notesnote'),
-(135, 'managerapp', 'notificationsarticlesubscription'),
-(136, 'managerapp', 'notifynotification'),
-(137, 'managerapp', 'notifynotificationtype'),
-(138, 'managerapp', 'notifysettings'),
-(139, 'managerapp', 'notifysubscription'),
-(140, 'managerapp', 'oauth2accesstoken'),
-(141, 'managerapp', 'oauth2client'),
-(142, 'managerapp', 'oauth2grant'),
-(143, 'managerapp', 'oauth2providertrustedclient'),
-(144, 'managerapp', 'oauth2refreshtoken'),
-(145, 'managerapp', 'psychometricspsychometricdata'),
-(146, 'managerapp', 'rmidcoursereverificationwindow'),
-(151, 'managerapp', 'scourseregcodeitemannotation'),
-(147, 'managerapp', 'shoppingcartcertificateitem'),
-(148, 'managerapp', 'shoppingcartcoupon'),
-(149, 'managerapp', 'shoppingcartcouponredemption'),
-(150, 'managerapp', 'shoppingcartcourseregcodeitem'),
-(152, 'managerapp', 'shoppingcartcourseregistrationcode'),
-(153, 'managerapp', 'shoppingcartdonation'),
-(154, 'managerapp', 'shoppingcartdonationconfiguration'),
-(155, 'managerapp', 'shoppingcartinvoice'),
-(156, 'managerapp', 'shoppingcartorder'),
-(157, 'managerapp', 'shoppingcartorderitem'),
-(158, 'managerapp', 'shoppingcartpaidcourseregistration'),
-(160, 'managerapp', 'shoppingcartregistrationcoderedemption'),
-(161, 'managerapp', 'southmigrationhistory'),
-(159, 'managerapp', 'spaidcourseregistrationannotation'),
-(162, 'managerapp', 'splashsplashconfig'),
-(163, 'managerapp', 'studentanonymoususerid'),
-(164, 'managerapp', 'studentcourseaccessrole'),
-(165, 'managerapp', 'studentcourseenrollment'),
-(166, 'managerapp', 'studentcourseenrollmentallowed'),
-(167, 'managerapp', 'studentdashboardconfiguration'),
-(168, 'managerapp', 'studentloginfailures'),
-(169, 'managerapp', 'studentmooccity'),
-(170, 'managerapp', 'studentmoocperson'),
-(171, 'managerapp', 'studentmoocstate'),
-(172, 'managerapp', 'studentpasswordhistory'),
-(173, 'managerapp', 'studentpendingemailchange'),
-(174, 'managerapp', 'studentpendingnamechange'),
-(175, 'managerapp', 'studentusersignupsource'),
-(176, 'managerapp', 'studentuserstanding'),
-(177, 'managerapp', 'studentusertestgroup'),
-(178, 'managerapp', 'studentusertestgroupusers'),
-(179, 'managerapp', 'submissionsscore'),
-(180, 'managerapp', 'submissionsscoresummary'),
-(181, 'managerapp', 'submissionsstudentitem'),
-(182, 'managerapp', 'submissionssubmission'),
-(183, 'managerapp', 'surveysurveyanswer'),
-(184, 'managerapp', 'surveysurveyform'),
-(185, 'managerapp', 'tracktrackinglog'),
-(186, 'managerapp', 'userapiusercoursetag'),
-(187, 'managerapp', 'userapiuserorgtag'),
-(188, 'managerapp', 'userapiuserpreference'),
-(189, 'managerapp', 'vssoftwaresecurephotoverification'),
-(190, 'managerapp', 'wikiarticle'),
-(191, 'managerapp', 'wikiarticleforobject'),
-(192, 'managerapp', 'wikiarticleplugin'),
-(193, 'managerapp', 'wikiarticlerevision'),
-(194, 'managerapp', 'wikiarticlesubscription'),
-(195, 'managerapp', 'wikiattachment'),
-(196, 'managerapp', 'wikiattachmentrevision'),
-(197, 'managerapp', 'wikiimage'),
-(198, 'managerapp', 'wikiimagerevision'),
-(199, 'managerapp', 'wikireusableplugin'),
-(200, 'managerapp', 'wikireusablepluginarticles'),
-(201, 'managerapp', 'wikirevisionplugin'),
-(202, 'managerapp', 'wikirevisionpluginrevision'),
-(203, 'managerapp', 'wikisimpleplugin'),
-(204, 'managerapp', 'wikiurlpath'),
-(205, 'managerapp', 'workflowassessmentworkflow'),
-(206, 'managerapp', 'workflowassessmentworkflowstep'),
+(42, 'iitbx', 'gen_evaluations'),
+(45, 'iitbx', 'gen_gradestable'),
+(46, 'iitbx', 'gen_headings'),
+(44, 'iitbx', 'gen_markstable'),
+(43, 'iitbx', 'gen_questions'),
+(48, 'iitbx', 'gen_repout'),
+(47, 'iitbx', 'gen_temp'),
+(53, 'managerapp', 'aaitrainingworkflowtraining'),
+(56, 'managerapp', 'aassessmentfeedbackassessments'),
+(49, 'managerapp', 'assessmentaiclassifier'),
+(50, 'managerapp', 'assessmentaiclassifierset'),
+(51, 'managerapp', 'assessmentaigradingworkflow'),
+(52, 'managerapp', 'assessmentaitrainingworkflow'),
+(54, 'managerapp', 'assessmentassessment'),
+(55, 'managerapp', 'assessmentassessmentfeedback'),
+(58, 'managerapp', 'assessmentassessmentfeedbackoption'),
+(57, 'managerapp', 'assessmentassessmentfeedbackoptions'),
+(59, 'managerapp', 'assessmentassessmentpart'),
+(60, 'managerapp', 'assessmentcriterion'),
+(61, 'managerapp', 'assessmentcriterionoption'),
+(62, 'managerapp', 'assessmentpeerworkflow'),
+(63, 'managerapp', 'assessmentpeerworkflowitem'),
+(64, 'managerapp', 'assessmentrubric'),
+(65, 'managerapp', 'assessmentstudenttrainingworkflow'),
+(66, 'managerapp', 'assessmentstudenttrainingworkflowitem'),
+(67, 'managerapp', 'assessmenttrainingexample'),
+(68, 'managerapp', 'atrainingexampleoptionsselected'),
+(69, 'managerapp', 'authgroup'),
+(70, 'managerapp', 'authgrouppermissions'),
+(71, 'managerapp', 'authpermission'),
+(72, 'managerapp', 'authregistration'),
+(73, 'managerapp', 'authuser'),
+(74, 'managerapp', 'authusergroups'),
+(76, 'managerapp', 'authuserprofile'),
+(75, 'managerapp', 'authuseruserpermissions'),
+(77, 'managerapp', 'bulkemailcourseauthorization'),
+(78, 'managerapp', 'bulkemailcourseemail'),
+(79, 'managerapp', 'bulkemailcourseemailtemplate'),
+(80, 'managerapp', 'bulkemailoptout'),
+(81, 'managerapp', 'celerytaskmeta'),
+(82, 'managerapp', 'celerytasksetmeta'),
+(83, 'managerapp', 'certificatescertificatewhitelist'),
+(84, 'managerapp', 'certificatesgeneratedcertificate'),
+(90, 'managerapp', 'cgroupscourseusergrouppartitiongroup'),
+(85, 'managerapp', 'circuitservercircuit'),
+(86, 'managerapp', 'courseactionstatecoursererunstate'),
+(87, 'managerapp', 'coursecreatorscoursecreator'),
+(88, 'managerapp', 'coursegroupscourseusergroup'),
+(89, 'managerapp', 'coursegroupscourseusergroupusers'),
+(91, 'managerapp', 'coursemodescoursemode'),
+(92, 'managerapp', 'coursemodescoursemodesarchive'),
+(93, 'managerapp', 'coursewarecoursesubject'),
+(94, 'managerapp', 'coursewareofflinecomputedgrade'),
+(95, 'managerapp', 'coursewareofflinecomputedgradelog'),
+(96, 'managerapp', 'coursewareorganization'),
+(97, 'managerapp', 'coursewarestudentmodule'),
+(98, 'managerapp', 'coursewarestudentmodulehistory'),
+(99, 'managerapp', 'coursewaresubject'),
+(100, 'managerapp', 'coursewarexmodulestudentinfofield'),
+(101, 'managerapp', 'coursewarexmodulestudentprefsfield'),
+(102, 'managerapp', 'coursewarexmoduleuserstatesummaryfield'),
+(103, 'managerapp', 'darklangdarklangconfig'),
+(104, 'managerapp', 'djangoadminlog'),
+(105, 'managerapp', 'djangocommentclientpermission'),
+(106, 'managerapp', 'djangocommentclientpermissionroles'),
+(107, 'managerapp', 'djangocommentclientrole'),
+(108, 'managerapp', 'djangocommentclientroleusers'),
+(109, 'managerapp', 'djangocontenttype'),
+(110, 'managerapp', 'djangoopenidauthassociation'),
+(111, 'managerapp', 'djangoopenidauthnonce'),
+(112, 'managerapp', 'djangoopenidauthuseropenid'),
+(113, 'managerapp', 'djangosession'),
+(114, 'managerapp', 'djangosite'),
+(115, 'managerapp', 'djcelerycrontabschedule'),
+(116, 'managerapp', 'djceleryintervalschedule'),
+(117, 'managerapp', 'djceleryperiodictask'),
+(118, 'managerapp', 'djceleryperiodictasks'),
+(119, 'managerapp', 'djcelerytaskstate'),
+(120, 'managerapp', 'djceleryworkerstate'),
+(121, 'managerapp', 'edxvalcoursevideo'),
+(122, 'managerapp', 'edxvalencodedvideo'),
+(123, 'managerapp', 'edxvalprofile'),
+(124, 'managerapp', 'edxvalsubtitle'),
+(125, 'managerapp', 'edxvalvideo'),
+(126, 'managerapp', 'embargoembargoedcourse'),
+(127, 'managerapp', 'embargoembargoedstate'),
+(128, 'managerapp', 'embargoipfilter'),
+(129, 'managerapp', 'externalauthexternalauthmap'),
+(130, 'managerapp', 'folditpuzzlecomplete'),
+(131, 'managerapp', 'folditscore'),
+(132, 'managerapp', 'instructortaskinstructortask'),
+(133, 'managerapp', 'licensescoursesoftware'),
+(134, 'managerapp', 'licensesuserlicense'),
+(135, 'managerapp', 'linkedinlinkedin'),
+(136, 'managerapp', 'lmsxblockxblockasidesconfig'),
+(137, 'managerapp', 'notesnote'),
+(138, 'managerapp', 'notificationsarticlesubscription'),
+(139, 'managerapp', 'notifynotification'),
+(140, 'managerapp', 'notifynotificationtype'),
+(141, 'managerapp', 'notifysettings'),
+(142, 'managerapp', 'notifysubscription'),
+(143, 'managerapp', 'oauth2accesstoken'),
+(144, 'managerapp', 'oauth2client'),
+(145, 'managerapp', 'oauth2grant'),
+(146, 'managerapp', 'oauth2providertrustedclient'),
+(147, 'managerapp', 'oauth2refreshtoken'),
+(148, 'managerapp', 'psychometricspsychometricdata'),
+(149, 'managerapp', 'rmidcoursereverificationwindow'),
+(154, 'managerapp', 'scourseregcodeitemannotation'),
+(150, 'managerapp', 'shoppingcartcertificateitem'),
+(151, 'managerapp', 'shoppingcartcoupon'),
+(152, 'managerapp', 'shoppingcartcouponredemption'),
+(153, 'managerapp', 'shoppingcartcourseregcodeitem'),
+(155, 'managerapp', 'shoppingcartcourseregistrationcode'),
+(156, 'managerapp', 'shoppingcartdonation'),
+(157, 'managerapp', 'shoppingcartdonationconfiguration'),
+(158, 'managerapp', 'shoppingcartinvoice'),
+(159, 'managerapp', 'shoppingcartorder'),
+(160, 'managerapp', 'shoppingcartorderitem'),
+(161, 'managerapp', 'shoppingcartpaidcourseregistration'),
+(163, 'managerapp', 'shoppingcartregistrationcoderedemption'),
+(164, 'managerapp', 'southmigrationhistory'),
+(162, 'managerapp', 'spaidcourseregistrationannotation'),
+(165, 'managerapp', 'splashsplashconfig'),
+(166, 'managerapp', 'studentanonymoususerid'),
+(167, 'managerapp', 'studentcourseaccessrole'),
+(168, 'managerapp', 'studentcourseenrollment'),
+(169, 'managerapp', 'studentcourseenrollmentallowed'),
+(170, 'managerapp', 'studentdashboardconfiguration'),
+(171, 'managerapp', 'studentloginfailures'),
+(172, 'managerapp', 'studentmooccity'),
+(173, 'managerapp', 'studentmoocperson'),
+(174, 'managerapp', 'studentmoocstate'),
+(175, 'managerapp', 'studentpasswordhistory'),
+(176, 'managerapp', 'studentpendingemailchange'),
+(177, 'managerapp', 'studentpendingnamechange'),
+(178, 'managerapp', 'studentusersignupsource'),
+(179, 'managerapp', 'studentuserstanding'),
+(180, 'managerapp', 'studentusertestgroup'),
+(181, 'managerapp', 'studentusertestgroupusers'),
+(182, 'managerapp', 'submissionsscore'),
+(183, 'managerapp', 'submissionsscoresummary'),
+(184, 'managerapp', 'submissionsstudentitem'),
+(185, 'managerapp', 'submissionssubmission'),
+(186, 'managerapp', 'surveysurveyanswer'),
+(187, 'managerapp', 'surveysurveyform'),
+(188, 'managerapp', 'tracktrackinglog'),
+(189, 'managerapp', 'userapiusercoursetag'),
+(190, 'managerapp', 'userapiuserorgtag'),
+(191, 'managerapp', 'userapiuserpreference'),
+(192, 'managerapp', 'vssoftwaresecurephotoverification'),
+(193, 'managerapp', 'wikiarticle'),
+(194, 'managerapp', 'wikiarticleforobject'),
+(195, 'managerapp', 'wikiarticleplugin'),
+(196, 'managerapp', 'wikiarticlerevision'),
+(197, 'managerapp', 'wikiarticlesubscription'),
+(198, 'managerapp', 'wikiattachment'),
+(199, 'managerapp', 'wikiattachmentrevision'),
+(200, 'managerapp', 'wikiimage'),
+(201, 'managerapp', 'wikiimagerevision'),
+(202, 'managerapp', 'wikireusableplugin'),
+(203, 'managerapp', 'wikireusablepluginarticles'),
+(204, 'managerapp', 'wikirevisionplugin'),
+(205, 'managerapp', 'wikirevisionpluginrevision'),
+(206, 'managerapp', 'wikisimpleplugin'),
+(207, 'managerapp', 'wikiurlpath'),
+(208, 'managerapp', 'workflowassessmentworkflow'),
+(209, 'managerapp', 'workflowassessmentworkflowstep'),
 (6, 'sessions', 'session'),
 (7, 'SIP', 'api_call'),
 (17, 'SIP', 'courseenrollment'),
-(35, 'SIP', 'coursefaculty'),
+(23, 'SIP', 'coursefaculty'),
 (21, 'SIP', 'courselevelusers'),
-(39, 'SIP', 'course_modlist'),
+(40, 'SIP', 'course_modlist'),
 (10, 'SIP', 'edxcourses'),
-(25, 'SIP', 'emailcontent'),
-(26, 'SIP', 'errorcontent'),
-(32, 'SIP', 'evaluations'),
+(26, 'SIP', 'emailcontent'),
+(27, 'SIP', 'errorcontent'),
+(33, 'SIP', 'evaluations'),
 (11, 'SIP', 'gradepolicy'),
 (12, 'SIP', 'gradescriteria'),
-(40, 'SIP', 'gradestable'),
-(37, 'SIP', 'headings'),
+(32, 'SIP', 'gradestable'),
+(35, 'SIP', 'headings'),
 (9, 'SIP', 'iitbx_auth_user'),
 (20, 'SIP', 'institutelevelusers'),
-(38, 'SIP', 'interfaces'),
+(39, 'SIP', 'interfaces'),
 (8, 'SIP', 'lookup'),
-(31, 'SIP', 'mail_interface'),
-(36, 'SIP', 'markstable'),
-(24, 'SIP', 'pagecontent'),
-(29, 'SIP', 'performance_interface'),
+(38, 'SIP', 'mail_interface'),
+(31, 'SIP', 'markstable'),
+(25, 'SIP', 'pagecontent'),
+(30, 'SIP', 'performance_interface'),
 (16, 'SIP', 'personinformation'),
-(33, 'SIP', 'questions'),
-(30, 'SIP', 'reports'),
-(28, 'SIP', 'requestedusers'),
+(34, 'SIP', 'questions'),
+(37, 'SIP', 'reports'),
+(29, 'SIP', 'requestedusers'),
 (18, 'SIP', 'responsibility'),
-(34, 'SIP', 'result'),
-(213, 'SIP', 'sectionlevelusers'),
+(36, 'SIP', 'result'),
+(41, 'SIP', 'sectionlevelusers'),
 (22, 'SIP', 'studentdetails'),
-(27, 'SIP', 'student_interface'),
+(28, 'SIP', 'student_interface'),
 (15, 'SIP', 't10kt_approvedinstitute'),
 (13, 'SIP', 't10kt_institute'),
 (14, 'SIP', 't10kt_remotecenter'),
-(23, 'SIP', 'uploadedfiles'),
+(24, 'SIP', 'uploadedfiles'),
 (19, 'SIP', 'userlogin'),
-(211, 'tracking', 'bannedip'),
-(210, 'tracking', 'untrackeduseragent'),
-(209, 'tracking', 'visitor');
+(212, 'tracking', 'bannedip'),
+(211, 'tracking', 'untrackeduseragent'),
+(210, 'tracking', 'visitor');
 
 -- --------------------------------------------------------
 
@@ -1010,8 +1011,30 @@ CREATE TABLE `django_migrations` (
   `id` int(11) NOT NULL,
   `app` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `applied` datetime NOT NULL
+  `applied` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `django_migrations`
+--
+
+INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
+(1, 'contenttypes', '0001_initial', '2017-02-08 11:21:34.872009'),
+(2, 'auth', '0001_initial', '2017-02-08 11:21:40.328726'),
+(3, 'admin', '0001_initial', '2017-02-08 11:21:41.631626'),
+(4, 'contenttypes', '0002_remove_content_type_name', '2017-02-08 11:21:42.402861'),
+(5, 'auth', '0002_alter_permission_name_max_length', '2017-02-08 11:21:42.908894'),
+(6, 'auth', '0003_alter_user_email_max_length', '2017-02-08 11:21:43.416403'),
+(7, 'auth', '0004_alter_user_username_opts', '2017-02-08 11:21:43.465660'),
+(8, 'auth', '0005_alter_user_last_login_null', '2017-02-08 11:21:43.975889'),
+(9, 'auth', '0006_require_contenttypes_0002', '2017-02-08 11:21:44.026788'),
+(10, 'iitbx', '0001_initial', '2017-02-08 11:21:46.977245'),
+(11, 'managerapp', '0001_initial', '2017-02-08 11:21:49.875993'),
+(12, 'sessions', '0001_initial', '2017-02-08 11:21:50.680617'),
+(13, 'tracking', '0001_initial', '2017-02-08 11:21:52.244264'),
+(14, 'tracking', '0002_auto_20141023_0732', '2017-02-08 11:21:52.598192'),
+(15, 'tracking', '0003_auto_20141023_0834', '2017-02-08 11:21:52.755812'),
+(16, 'tracking', '0004_auto_20160915_0546', '2017-02-08 11:21:53.245937');
 
 -- --------------------------------------------------------
 
@@ -1022,7 +1045,7 @@ CREATE TABLE `django_migrations` (
 CREATE TABLE `django_session` (
   `session_key` varchar(40) NOT NULL,
   `session_data` longtext NOT NULL,
-  `expire_date` datetime NOT NULL
+  `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1030,10 +1053,17 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('ai1dc9yh2yvzyyvqr5ho5c53e0oanb4d', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:27:34'),
-('guluhpbld91nhsgxa7unrku4mf0inbkx', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:27:21'),
-('v8h4jdzwtbjvjm564upwfojc2i5rb2bn', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:29:22'),
-('veap63oiccuj5ootb4cl6gitrfu2g3vd', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:27:15');
+('1yn5h0tljvqqkxzidt8s8i2yx18okcoz', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 11:54:52.000000'),
+('2pfqx152klutmwjim1heaesu7p8lqdfm', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 11:53:58.000000'),
+('6b6aq0ezh8j22scw9inmh455uhx3zktz', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 11:54:10.000000'),
+('85mpvxcv50833emq3dpajeli3xgq2is4', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-23 10:06:26.575309'),
+('ai1dc9yh2yvzyyvqr5ho5c53e0oanb4d', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:27:34.000000'),
+('b6ku2gqj3ltblsq9sbe8fo8m312gvd5r', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-23 10:13:31.852480'),
+('guluhpbld91nhsgxa7unrku4mf0inbkx', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:27:21.000000'),
+('p8ybf8chaqzhruxprn0eruwlsrhoygbo', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-23 10:08:18.644888'),
+('v8h4jdzwtbjvjm564upwfojc2i5rb2bn', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:29:22.000000'),
+('veap63oiccuj5ootb4cl6gitrfu2g3vd', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-16 08:27:15.000000'),
+('zs9srm5wf16j8td40ik2a0x31e3q0lsd', 'N2ViMzQ5OTc5MjRkYjZiNmQyZGVlOTQ1MDBkMjRmNDBmMzhiZThlMzqAAn1xAS4=', '2017-02-23 10:09:59.389162');
 
 -- --------------------------------------------------------
 
@@ -1048,8 +1078,8 @@ CREATE TABLE `iitbx_gen_evaluations` (
   `subsec_id` varchar(250) NOT NULL,
   `subsec_name` varchar(250) NOT NULL,
   `type` varchar(150) NOT NULL,
-  `release_date` datetime NOT NULL,
-  `due_date` datetime NOT NULL,
+  `release_date` datetime(6) NOT NULL,
+  `due_date` datetime(6) NOT NULL,
   `total_weight` double NOT NULL,
   `grade_weight` double NOT NULL,
   `total_marks` int(11) DEFAULT NULL,
@@ -1107,9 +1137,9 @@ CREATE TABLE `iitbx_gen_questions` (
   `qid` varchar(250) NOT NULL,
   `q_name` varchar(250) NOT NULL,
   `q_weight` double NOT NULL,
+  `prob_count` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `eval_id` int(11) NOT NULL,
-  `prob_count` int(11) DEFAULT NULL
+  `eval_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1122,16 +1152,16 @@ CREATE TABLE `iitbx_gen_repout` (
   `id` int(11) NOT NULL,
   `reportid` int(11) NOT NULL,
   `num_cols` int(11) NOT NULL,
-  `A` text,
-  `B` text,
-  `C` text,
-  `D` text,
-  `E` text,
-  `F` text,
-  `G` text,
-  `H` text,
-  `I` text,
-  `J` text
+  `A` longtext NOT NULL,
+  `B` longtext NOT NULL,
+  `C` longtext NOT NULL,
+  `D` longtext NOT NULL,
+  `E` longtext NOT NULL,
+  `F` longtext NOT NULL,
+  `G` longtext NOT NULL,
+  `H` longtext NOT NULL,
+  `I` longtext NOT NULL,
+  `J` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -20309,7 +20339,7 @@ INSERT INTO `postalinfo` (`pincode`, `Rural`, `Section`, `Head`, `Type`) VALUES
 CREATE TABLE `SIP_api_call` (
   `id` int(11) NOT NULL,
   `api_name` varchar(200) NOT NULL,
-  `last_run` datetime NOT NULL
+  `last_run` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -20317,8 +20347,8 @@ CREATE TABLE `SIP_api_call` (
 --
 
 INSERT INTO `SIP_api_call` (`id`, `api_name`, `last_run`) VALUES
-(1, 'fetch_auth_user', '2005-01-01 00:00:00'),
-(2, 'fetch_course_enrollment', '2005-01-01 00:00:00');
+(1, 'fetch_auth_user', '2005-01-01 00:00:00.000000'),
+(2, 'fetch_course_enrollment', '2005-01-01 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -20328,22 +20358,22 @@ INSERT INTO `SIP_api_call` (`id`, `api_name`, `last_run`) VALUES
 
 CREATE TABLE `SIP_courseenrollment` (
   `id` int(11) NOT NULL,
-  `courseid_id` varchar(100) DEFAULT NULL,
-  `instituteid_id` int(11) DEFAULT NULL,
-  `corresponding_course_name` varchar(100) DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `year` int(11) DEFAULT NULL,
-  `program` varchar(50) DEFAULT NULL,
-  `total_moocs_students` int(11) DEFAULT NULL,
-  `total_course_students` int(11) DEFAULT NULL,
-  `enrollment_date` date DEFAULT NULL,
-  `enrolledby_id` int(11) DEFAULT NULL,
+  `courseid_id` varchar(100) NOT NULL,
+  `instituteid_id` int(11) NOT NULL,
+  `corresponding_course_name` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `year` int(11) NOT NULL,
+  `program` varchar(50) NOT NULL,
+  `total_moocs_students` int(11) NOT NULL,
+  `total_course_students` int(11) NOT NULL,
+  `enrollment_date` date NOT NULL,
+  `enrolledby_id` int(11) NOT NULL,
   `comments` longtext,
   `cancelled_date` date DEFAULT NULL,
   `cancelledby_id` int(11) DEFAULT NULL,
   `reason_of_cancellation` longtext,
-  `status` tinyint(1) DEFAULT NULL
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -20351,8 +20381,8 @@ CREATE TABLE `SIP_courseenrollment` (
 --
 
 INSERT INTO `SIP_courseenrollment` (`id`, `courseid_id`, `instituteid_id`, `corresponding_course_name`, `start_date`, `end_date`, `year`, `program`, `total_moocs_students`, `total_course_students`, `enrollment_date`, `enrolledby_id`, `comments`, `cancelled_date`, `cancelledby_id`, `reason_of_cancellation`, `status`) VALUES
-(192, 'IITBombay/DC101/2015_25', 61, '', '2016-02-10', NULL, NULL, '', NULL, NULL, '2016-02-10', NULL, NULL, NULL, NULL, NULL, 1),
-(229, 'IITBombay/DC101/2015_25', 0, '', '2016-02-10', NULL, NULL, '', NULL, NULL, '2016-02-10', NULL, NULL, NULL, NULL, NULL, 1);
+(1, 'IITBombay/DC101/2015_25', 1, '', '2016-02-10', '2030-02-10', 2016, '', 15, 27, '2016-02-10', 1, NULL, NULL, NULL, NULL, 1),
+(2, 'IITBombay/DC101/2015_25', 2, '', '2016-02-10', '2030-02-10', 2016, '', 12, 27, '2016-02-10', 4, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -20387,9 +20417,9 @@ CREATE TABLE `SIP_courselevelusers` (
 --
 
 INSERT INTO `SIP_courselevelusers` (`id`, `personid_id`, `instituteid_id`, `courseid_id`, `roleid`, `startdate`, `enddate`) VALUES
-(8, 1, 0, 34, 5, '2005-01-01', '4712-12-31'),
-(590, 686, 2, 34, 5, '2016-02-12', '4712-12-31'),
-(591, 687, 2, 34, 5, '2016-02-12', '4712-12-31');
+(1, 1, 0, 1, 5, '2005-01-01', '4712-12-31'),
+(2, 4, 1, 1, 5, '2016-02-12', '4712-12-31'),
+(3, 5, 1, 1, 5, '2016-02-12', '4712-12-31');
 
 -- --------------------------------------------------------
 
@@ -20399,47 +20429,47 @@ INSERT INTO `SIP_courselevelusers` (`id`, `personid_id`, `instituteid_id`, `cour
 
 CREATE TABLE `SIP_course_modlist` (
   `id` int(11) NOT NULL,
-  `display_name` varchar(500) NOT NULL,
+  `display_name` varchar(200) NOT NULL,
   `module_type` varchar(200) NOT NULL,
   `module_id` varchar(200) NOT NULL,
+  `startdate` datetime(6) NOT NULL,
+  `duedate` datetime(6) NOT NULL,
+  `long_name` varchar(300) NOT NULL,
+  `course` int(11) NOT NULL,
   `related_id` int(11) NOT NULL,
-  `startdate` datetime DEFAULT NULL,
-  `duedate` datetime DEFAULT NULL,
-  `long_name` varchar(300) DEFAULT NULL,
-  `course` int(11) DEFAULT NULL,
-  `order` int(11) DEFAULT NULL,
-  `visible_to_staff_only` int(11) DEFAULT '0',
-  `graded` int(11) DEFAULT '0',
-  `questions` int(11) DEFAULT '0',
-  `maxmarks` int(11) DEFAULT '0',
-  `hasproblems` int(11) DEFAULT '0',
+  `order` int(11) NOT NULL,
+  `visible_to_staff_only` int(11) NOT NULL,
+  `graded` int(11) NOT NULL,
+  `questions` int(11) NOT NULL,
+  `maxmarks` int(11) NOT NULL,
+  `hasproblems` int(11) NOT NULL,
   `gradetype` varchar(100) NOT NULL,
-  `discussion_id` varchar(100) DEFAULT NULL
+  `discussion_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `SIP_course_modlist`
 --
 
-INSERT INTO `SIP_course_modlist` (`id`, `display_name`, `module_type`, `module_id`, `related_id`, `startdate`, `duedate`, `long_name`, `course`, `order`, `visible_to_staff_only`, `graded`, `questions`, `maxmarks`, `hasproblems`, `gradetype`, `discussion_id`) VALUES
-(6616, 'Question 3 (A)', 'problem', '2823', 2821, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(6617, 'Question 3 (B)', 'problem', '2824', 2821, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(6618, 'Question 3 (C)', 'problem', '2825', 2821, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(6619, 'Question 3 (D)', 'problem', '2826', 2821, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(6620, 'Question 3(E)', 'problem', '2827', 2821, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(15496, 'Demo Course', 'course', 'DemoCourse', 0, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'DemoCourse', 34, 1, 0, 0, 0, 0, 0, '', ''),
-(15497, 'Graded Assignments', 'chapter', 'a803', 15496, '2034-09-14 00:00:08', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/chapter/a803', 34, 2, 1, 0, 0, 0, 0, '', ''),
-(15498, 'Quiz 1', 'sequential', '8276', 15497, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/sequential/8276', 34, 3, 0, 0, 0, 0, 0, '', ''),
-(15499, 'Quiz 2', 'sequential', '34bd', 15497, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/sequential/34bd', 34, 8, 0, 0, 0, 0, 0, '', ''),
-(15500, 'Quiz 3', 'sequential', 'ff3b', 15497, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/sequential/ff3b', 34, 12, 0, 0, 0, 0, 0, '', ''),
-(15501, 'Quiz 4', 'sequential', 'de8d', 15497, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/sequential/de8d', 34, 15, 0, 0, 0, 0, 0, '', ''),
-(15502, 'Unit', 'vertical', 'b142', 15498, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/vertical/b142', 34, 4, 0, 0, 0, 0, 0, '', ''),
-(15503, 'Question 1', 'problem', 'eaad', 15502, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/problem/eaad', 34, 5, 0, 0, 0, 4, 1, '', ''),
-(15504, 'Question 2', 'problem', 'ebad', 15502, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/problem/ebad', 34, 6, 0, 0, 0, 4, 1, '', ''),
-(15505, 'Question 3', 'problem', 'ecad', 15502, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/problem/ecad', 34, 7, 0, 0, 0, 2, 1, '', ''),
-(15506, 'Unit', 'vertical', 'b342', 15499, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/vertical/b342', 34, 9, 0, 0, 0, 0, 0, '', ''),
-(15507, 'Question 1', 'problem', 'eabd', 15506, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/problem/eabd', 34, 10, 0, 0, 0, 5, 1, '', ''),
-(15508, 'Question 2', 'problem', 'ebcd', 15506, '2016-01-04 00:30:06', '2016-05-10 00:30:06', 'i4x://IITBombayX/DemoCourse/problem/ebad', 34, 11, 0, 0, 0, 5, 1, '', '');
+INSERT INTO `SIP_course_modlist` (`id`, `display_name`, `module_type`, `module_id`, `startdate`, `duedate`, `long_name`, `course`, `related_id`, `order`, `visible_to_staff_only`, `graded`, `questions`, `maxmarks`, `hasproblems`, `gradetype`, `discussion_id`) VALUES
+(1, 'Question 3 (A)', 'problem', '2823', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', '', 1, 2821, 20, 0, 0, 0, 0, 0, '', ''),
+(2, 'Question 3 (B)', 'problem', '2824', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', '', 1, 2821, 21, 0, 0, 0, 0, 0, '', ''),
+(3, 'Question 3 (C)', 'problem', '2825', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', '', 1, 2821, 22, 0, 0, 0, 0, 0, '', ''),
+(4, 'Question 3 (D)', 'problem', '2826', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', '', 1, 2821, 21, 0, 0, 0, 0, 0, '', ''),
+(5, 'Question 3(E)', 'problem', '2827', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', '', 1, 2821, 24, 0, 0, 0, 0, 0, '', ''),
+(6, 'Demo Course', 'course', 'DemoCourse', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'DemoCourse', 1, 0, 1, 0, 0, 0, 0, 0, '', ''),
+(7, 'Graded Assignments', 'chapter', 'a803', '2034-09-14 00:00:08.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/chapter/a803', 1, 15496, 2, 1, 0, 0, 0, 0, '', ''),
+(8, 'Quiz 1', 'sequential', '8276', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/sequential/8276', 1, 15497, 3, 0, 0, 0, 0, 0, '', ''),
+(9, 'Quiz 2', 'sequential', '34bd', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/sequential/34bd', 1, 15497, 8, 0, 0, 0, 0, 0, '', ''),
+(10, 'Quiz 3', 'sequential', 'ff3b', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/sequential/ff3b', 1, 15497, 12, 0, 0, 0, 0, 0, '', ''),
+(11, 'Quiz 4', 'sequential', 'de8d', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/sequential/de8d', 1, 15497, 15, 0, 0, 0, 0, 0, '', ''),
+(12, 'Unit', 'vertical', 'b142', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/vertical/b142', 1, 15498, 4, 0, 0, 0, 0, 0, '', ''),
+(13, 'Question 1', 'problem', 'eaad', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/problem/eaad', 1, 15502, 5, 0, 0, 0, 4, 1, '', ''),
+(14, 'Question 2', 'problem', 'ebad', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/problem/ebad', 1, 15502, 6, 0, 0, 0, 4, 1, '', ''),
+(15, 'Question 3', 'problem', 'ecad', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/problem/ecad', 1, 15502, 7, 0, 0, 0, 2, 1, '', ''),
+(16, 'Unit', 'vertical', 'b342', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/vertical/b342', 1, 15499, 9, 0, 0, 0, 0, 0, '', ''),
+(17, 'Question 1', 'problem', 'eabd', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/problem/eabd', 1, 15506, 10, 0, 0, 0, 5, 1, '', ''),
+(18, 'Question 2', 'problem', 'ebcd', '2016-01-04 00:30:06.000000', '2016-05-10 00:30:06.000000', 'i4x://IITBombayX/DemoCourse/problem/ebad', 1, 15506, 11, 0, 0, 0, 5, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -20455,14 +20485,14 @@ CREATE TABLE `SIP_edxcourses` (
   `name` varchar(100) DEFAULT NULL,
   `courseid` varchar(100) DEFAULT NULL,
   `coursename` varchar(100) DEFAULT NULL,
-  `enrollstart` datetime DEFAULT NULL,
-  `enrollend` datetime DEFAULT NULL,
-  `coursestart` datetime DEFAULT NULL,
-  `courseend` datetime DEFAULT NULL,
-  `image` varchar(200) DEFAULT NULL,
+  `enrollstart` datetime(6) DEFAULT NULL,
+  `enrollend` datetime(6) DEFAULT NULL,
+  `coursestart` datetime(6) DEFAULT NULL,
+  `courseend` datetime(6) DEFAULT NULL,
+  `image` varchar(100) NOT NULL,
   `instructor` varchar(50) NOT NULL,
   `coursesubtitle` longtext NOT NULL,
-  `blended_mode` int(2) DEFAULT '1'
+  `blended_mode` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -20470,7 +20500,7 @@ CREATE TABLE `SIP_edxcourses` (
 --
 
 INSERT INTO `SIP_edxcourses` (`id`, `tag`, `org`, `course`, `name`, `courseid`, `coursename`, `enrollstart`, `enrollend`, `coursestart`, `courseend`, `image`, `instructor`, `coursesubtitle`, `blended_mode`) VALUES
-(34, 'i4x', 'IITBombay', 'DC101', '2015_25', 'IITBombay/DC101/2015_25', 'Demo Course', '2016-01-26 00:30:06', '2025-12-31 00:30:06', '2015-01-26 00:30:06', '2025-12-31 00:30:06', 'https://iitbombayx.in/c4x/IITBombayX/IITBombayX/asset/IITBombayXdemo_course_banner.png', '', '', 1);
+(1, 'i4x', 'IITBombay', 'DC101', '2015_25', 'IITBombay/DC101/2015_25', 'Demo Course', '2016-01-26 00:30:06.000000', '2025-12-31 00:30:06.000000', '2016-01-26 00:30:06.000000', '2025-12-31 00:30:06.000000', 'https://iitbombayx.in/c4x/IITBombayX/IITBombayX/asset/IITBombayXdemo_course_banner.png', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -20673,11 +20703,11 @@ CREATE TABLE `SIP_evaluations` (
   `subsec_id` varchar(250) NOT NULL,
   `subsec_name` varchar(250) NOT NULL,
   `type` varchar(150) NOT NULL,
-  `release_date` datetime NOT NULL,
-  `due_date` datetime NOT NULL,
+  `release_date` datetime(6) NOT NULL,
+  `due_date` datetime(6) NOT NULL,
   `total_weight` double NOT NULL,
   `grade_weight` double NOT NULL,
-  `total_marks` int(10) DEFAULT '0'
+  `total_marks` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -20685,8 +20715,8 @@ CREATE TABLE `SIP_evaluations` (
 --
 
 INSERT INTO `SIP_evaluations` (`id`, `course_id`, `sectionid`, `sec_name`, `subsec_id`, `subsec_name`, `type`, `release_date`, `due_date`, `total_weight`, `grade_weight`, `total_marks`) VALUES
-(742, 34, '34bd', 'Quiz 2', '', '', 'Quizzes', '2015-08-31 06:30:00', '2015-08-31 06:30:00', 1, 0.133333333333333, 10),
-(743, 34, '8276', 'Quiz 1', '', '', 'Quizzes', '2015-08-31 06:30:00', '2015-08-31 06:30:00', 1, 0.133333333333333, 10);
+(1, 1, '34bd', 'Quiz 2', '', '', 'Quizzes', '2015-08-31 06:30:00.000000', '2030-08-31 06:30:00.000000', 1, 0.133333333333333, 10),
+(2, 1, '8276', 'Quiz 1', '', '', 'Quizzes', '2015-08-31 06:30:00.000000', '2030-08-31 06:30:00.000000', 1, 0.133333333333333, 10);
 
 -- --------------------------------------------------------
 
@@ -20709,9 +20739,9 @@ CREATE TABLE `SIP_gradepolicy` (
 --
 
 INSERT INTO `SIP_gradepolicy` (`id`, `courseid_id`, `min_count`, `weight`, `type`, `drop_count`, `short_label`) VALUES
-(2276, 'IITBombay/DC101/2015_25', 1, 0.3, 'Final Exam', 0, 'FinalExam'),
-(2277, 'IITBombay/DC101/2015_25', 1, 0.3, 'Mid-term Exam', 0, 'Midterm'),
-(2278, 'IITBombay/DC101/2015_25', 4, 0.4, 'Quizzes', 1, 'QZ');
+(1, 'IITBombay/DC101/2015_25', 1, 0.3, 'Final Exam', 0, 'FinalExam'),
+(2, 'IITBombay/DC101/2015_25', 1, 0.3, 'Mid-term Exam', 0, 'Midterm'),
+(3, 'IITBombay/DC101/2015_25', 4, 0.4, 'Quizzes', 1, 'QZ');
 
 -- --------------------------------------------------------
 
@@ -20722,7 +20752,7 @@ INSERT INTO `SIP_gradepolicy` (`id`, `courseid_id`, `min_count`, `weight`, `type
 CREATE TABLE `SIP_gradescriteria` (
   `id` int(11) NOT NULL,
   `courseid_id` varchar(100) NOT NULL,
-  `grade` varchar(100) DEFAULT NULL,
+  `grade` varchar(5) DEFAULT NULL,
   `cutoffs` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -20731,9 +20761,9 @@ CREATE TABLE `SIP_gradescriteria` (
 --
 
 INSERT INTO `SIP_gradescriteria` (`id`, `courseid_id`, `grade`, `cutoffs`) VALUES
-(8077, 'IITBombay/DC101/2015_25', 'A', 0.8),
-(8078, 'IITBombay/DC101/2015_25', 'C', 0.4),
-(8079, 'IITBombay/DC101/2015_25', 'B', 0.65);
+(1, 'IITBombay/DC101/2015_25', 'A', 0.8),
+(2, 'IITBombay/DC101/2015_25', 'C', 0.4),
+(3, 'IITBombay/DC101/2015_25', 'B', 0.65);
 
 -- --------------------------------------------------------
 
@@ -20754,33 +20784,33 @@ CREATE TABLE `SIP_gradestable` (
 --
 
 INSERT INTO `SIP_gradestable` (`id`, `stud_id`, `course`, `grade`, `eval`) VALUES
-(30085, 52165, 'IITBombay/DC101/2015_25', '18', '10,8'),
-(30086, 52166, 'IITBombay/DC101/2015_25', '12', '5,7'),
-(30087, 52167, 'IITBombay/DC101/2015_25', '11', '3,8'),
-(30088, 52168, 'IITBombay/DC101/2015_25', '16', '9,7'),
-(30089, 52169, 'IITBombay/DC101/2015_25', '16', '8,8'),
-(30090, 52170, 'IITBombay/DC101/2015_25', '12', '7,5'),
-(30091, 52171, 'IITBombay/DC101/2015_25', '14', '8,6'),
-(30092, 52172, 'IITBombay/DC101/2015_25', '0', '0,0'),
-(30093, 52173, 'IITBombay/DC101/2015_25', '4', '2,2'),
-(30094, 52174, 'IITBombay/DC101/2015_25', '15', '6,9'),
-(30095, 52175, 'IITBombay/DC101/2015_25', '14', '8,6'),
-(30096, 52176, 'IITBombay/DC101/2015_25', '4', '3,1'),
-(30097, 52177, 'IITBombay/DC101/2015_25', '16', '6,10'),
-(30098, 52178, 'IITBombay/DC101/2015_25', '14', '8,6'),
-(30099, 52179, 'IITBombay/DC101/2015_25', '0', '0,0'),
-(30100, 52180, 'IITBombay/DC101/2015_25', '10', '5,5'),
-(30101, 52181, 'IITBombay/DC101/2015_25', '10', '6,4'),
-(30102, 52182, 'IITBombay/DC101/2015_25', '16', '9,7'),
-(30103, 52183, 'IITBombay/DC101/2015_25', '4', '3,1'),
-(30104, 52184, 'IITBombay/DC101/2015_25', '12', '6,6'),
-(30105, 52185, 'IITBombay/DC101/2015_25', '15', '8,7'),
-(30106, 52186, 'IITBombay/DC101/2015_25', '9', '5,4'),
-(30107, 52187, 'IITBombay/DC101/2015_25', '0', '0,0'),
-(30108, 52188, 'IITBombay/DC101/2015_25', '18', '10,8'),
-(30109, 52189, 'IITBombay/DC101/2015_25', '11', '8,3'),
-(30110, 52190, 'IITBombay/DC101/2015_25', '0', '0,0'),
-(30111, 52191, 'IITBombay/DC101/2015_25', '12', '7,5');
+(1, 1, 'IITBombay/DC101/2015_25', '18', '10,8'),
+(2, 2, 'IITBombay/DC101/2015_25', '12', '5,7'),
+(3, 3, 'IITBombay/DC101/2015_25', '11', '3,8'),
+(4, 4, 'IITBombay/DC101/2015_25', '16', '9,7'),
+(5, 5, 'IITBombay/DC101/2015_25', '16', '8,8'),
+(6, 6, 'IITBombay/DC101/2015_25', '12', '7,5'),
+(7, 7, 'IITBombay/DC101/2015_25', '14', '8,6'),
+(8, 8, 'IITBombay/DC101/2015_25', '0', '0,0'),
+(9, 9, 'IITBombay/DC101/2015_25', '4', '2,2'),
+(10, 10, 'IITBombay/DC101/2015_25', '15', '6,9'),
+(11, 11, 'IITBombay/DC101/2015_25', '14', '8,6'),
+(12, 12, 'IITBombay/DC101/2015_25', '4', '3,1'),
+(13, 13, 'IITBombay/DC101/2015_25', '16', '6,10'),
+(14, 14, 'IITBombay/DC101/2015_25', '14', '8,6'),
+(15, 15, 'IITBombay/DC101/2015_25', '0', '0,0'),
+(16, 16, 'IITBombay/DC101/2015_25', '10', '5,5'),
+(17, 17, 'IITBombay/DC101/2015_25', '10', '6,4'),
+(18, 18, 'IITBombay/DC101/2015_25', '16', '9,7'),
+(19, 19, 'IITBombay/DC101/2015_25', '4', '3,1'),
+(20, 20, 'IITBombay/DC101/2015_25', '12', '6,6'),
+(21, 21, 'IITBombay/DC101/2015_25', '15', '8,7'),
+(22, 22, 'IITBombay/DC101/2015_25', '9', '5,4'),
+(23, 23, 'IITBombay/DC101/2015_25', '0', '0,0'),
+(24, 24, 'IITBombay/DC101/2015_25', '18', '10,8'),
+(25, 25, 'IITBombay/DC101/2015_25', '11', '8,3'),
+(26, 26, 'IITBombay/DC101/2015_25', '0', '0,0'),
+(27, 27, 'IITBombay/DC101/2015_25', '12', '7,5');
 
 -- --------------------------------------------------------
 
@@ -20799,10 +20829,10 @@ CREATE TABLE `SIP_headings` (
 --
 
 INSERT INTO `SIP_headings` (`id`, `section`, `heading`) VALUES
-(95, '8276', 'Rollno,Username,Email Id,Total <br>MM:10.0,Q01<br>MM:4.0,Q02<br>MM:4.0,Q03<br>MM:2.0'),
-(96, '34bd', 'Rollno,Username,Email Id,Total <br>MM:10.0,Q01<br>MM:5.0,Q02<br>MM:5.0'),
-(97, 'IITBombay/DC101/2015_25', 'RollNumber,Username,Email Id,Progress <br>in %,QZ01,QZ02'),
-(98, 'TTIITBombay/DC101/2015_25', 'Quiz 1,Quiz 2');
+(1, '8276', 'Rollno,Username,Email Id,Total <br>MM:10.0,Q01<br>MM:4.0,Q02<br>MM:4.0,Q03<br>MM:2.0'),
+(2, '34bd', 'Rollno,Username,Email Id,Total <br>MM:10.0,Q01<br>MM:5.0,Q02<br>MM:5.0'),
+(3, 'IITBombay/DC101/2015_25', 'RollNumber,Username,Email Id,Progress <br>in %,QZ01,QZ02'),
+(4, 'TTIITBombay/DC101/2015_25', 'Quiz 1,Quiz 2');
 
 -- --------------------------------------------------------
 
@@ -20871,8 +20901,8 @@ CREATE TABLE `SIP_institutelevelusers` (
 INSERT INTO `SIP_institutelevelusers` (`id`, `personid_id`, `instituteid_id`, `roleid`, `startdate`, `enddate`) VALUES
 (1, 1, 0, 2, '2014-01-01', '4712-12-31'),
 (2, 1, 0, 3, '2014-01-01', '4712-12-31'),
-(124, 684, 2, 2, '2016-02-12', '4712-12-31'),
-(125, 685, 2, 3, '2016-02-12', '4712-12-31');
+(3, 2, 1, 2, '2014-01-01', '4712-12-31'),
+(4, 3, 1, 3, '2014-01-01', '4712-12-31');
 
 -- --------------------------------------------------------
 
@@ -20883,7 +20913,7 @@ INSERT INTO `SIP_institutelevelusers` (`id`, `personid_id`, `instituteid_id`, `r
 CREATE TABLE `SIP_interfaces` (
   `id` int(11) NOT NULL,
   `type` varchar(200) NOT NULL,
-  `date` datetime NOT NULL
+  `date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21039,69 +21069,69 @@ CREATE TABLE `SIP_markstable` (
   `id` int(11) NOT NULL,
   `stud_id` int(11) NOT NULL,
   `section` varchar(250) NOT NULL,
-  `eval` longtext,
-  `total` varchar(25) DEFAULT NULL
+  `total` varchar(25) NOT NULL,
+  `eval` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `SIP_markstable`
 --
 
-INSERT INTO `SIP_markstable` (`id`, `stud_id`, `section`, `eval`, `total`) VALUES
-(147060, 52165, '8276', '4,4,2', '10'),
-(147061, 52166, '8276', '3,2,NA', '5'),
-(147062, 52167, '8276', '1,1,1', '3'),
-(147063, 52168, '8276', '4,3,2', '9'),
-(147064, 52169, '8276', '3,3,2', '8'),
-(147065, 52170, '8276', '2,3,2', '7'),
-(147066, 52171, '8276', '2,4,2', '8'),
-(147067, 52172, '8276', 'NA,NA,NA', '0'),
-(147068, 52173, '8276', '2,NA,NA', '2'),
-(147069, 52174, '8276', '2,2,2', '6'),
-(147070, 52175, '8276', '4,2,2', '8'),
-(147071, 52176, '8276', '1,1,1', '3'),
-(147072, 52177, '8276', '2,2,2', '6'),
-(147073, 52178, '8276', '3,3,2', '8'),
-(147074, 52179, '8276', 'NA,NA,NA', '0'),
-(147075, 52180, '8276', '3,2,0', '5'),
-(147076, 52181, '8276', '4,0,2', '6'),
-(147077, 52182, '8276', '4,3,2', '9'),
-(147078, 52183, '8276', '1,1,1', '3'),
-(147079, 52184, '8276', '3,3,NA', '6'),
-(147080, 52185, '8276', '3,4,1', '8'),
-(147081, 52186, '8276', '2,2,1', '5'),
-(147082, 52187, '8276', 'NA,NA,NA', '0'),
-(147083, 52188, '8276', '4,4,2', '10'),
-(147084, 52189, '8276', '3,3,2', '8'),
-(147085, 52190, '8276', 'NA,NA,NA', '0'),
-(147086, 52191, '8276', '2,3,2', '7'),
-(147146, 52165, '34bd', '4,4', '8'),
-(147147, 52166, '34bd', '3,4', '7'),
-(147148, 52167, '34bd', '5,3', '8'),
-(147149, 52168, '34bd', '4,3', '7'),
-(147150, 52169, '34bd', '3,5', '8'),
-(147151, 52170, '34bd', '2,3', '5'),
-(147152, 52171, '34bd', '2,4', '6'),
-(147153, 52172, '34bd', 'NA,NA', '0'),
-(147154, 52173, '34bd', '2,NA', '2'),
-(147155, 52174, '34bd', '5,4', '9'),
-(147156, 52175, '34bd', '4,2', '6'),
-(147157, 52176, '34bd', 'NA,1', '1'),
-(147158, 52177, '34bd', '5,5', '10'),
-(147159, 52178, '34bd', '3,3', '6'),
-(147160, 52179, '34bd', 'NA,NA', '0'),
-(147161, 52180, '34bd', '3,2', '5'),
-(147162, 52181, '34bd', '4,0', '4'),
-(147163, 52182, '34bd', '4,3', '7'),
-(147164, 52183, '34bd', 'NA,1', '1'),
-(147165, 52184, '34bd', '3,3', '6'),
-(147166, 52185, '34bd', '3,4', '7'),
-(147167, 52186, '34bd', '2,2', '4'),
-(147168, 52187, '34bd', 'NA,NA', '0'),
-(147169, 52188, '34bd', '4,4', '8'),
-(147170, 52189, '34bd', '3,NA', '3'),
-(147171, 52190, '34bd', 'NA,NA', '0'),
-(147172, 52191, '34bd', '2,3', '5');
+INSERT INTO `SIP_markstable` (`id`, `stud_id`, `section`, `total`, `eval`) VALUES
+(1, 1, '8276', '10', '4,4,2'),
+(2, 2, '8276', '5', '3,2,NA'),
+(3, 3, '8276', '3', '1,1,1'),
+(4, 4, '8276', '9', '4,3,2'),
+(5, 5, '8276', '8', '3,3,2'),
+(6, 6, '8276', '7', '2,3,2'),
+(7, 7, '8276', '8', '2,4,2'),
+(8, 8, '8276', '0', 'NA,NA,NA'),
+(9, 9, '8276', '2', '2,NA,NA'),
+(10, 10, '8276', '6', '2,2,2'),
+(11, 11, '8276', '8', '4,2,2'),
+(12, 12, '8276', '3', '1,1,1'),
+(13, 13, '8276', '6', '2,2,2'),
+(14, 14, '8276', '8', '3,3,2'),
+(15, 15, '8276', '0', 'NA,NA,NA'),
+(16, 16, '8276', '5', '3,2,0'),
+(17, 17, '8276', '6', '4,0,2'),
+(18, 18, '8276', '9', '4,3,2'),
+(19, 19, '8276', '3', '1,1,1'),
+(20, 20, '8276', '6', '3,3,NA'),
+(21, 21, '8276', '8', '3,4,1'),
+(22, 22, '8276', '5', '2,2,1'),
+(23, 23, '8276', '0', 'NA,NA,NA'),
+(24, 24, '8276', '10', '4,4,2'),
+(25, 25, '8276', '8', '3,3,2'),
+(26, 26, '8276', '0', 'NA,NA,NA'),
+(27, 27, '8276', '7', '2,3,2'),
+(28, 1, '34bd', '8', '4,4'),
+(29, 2, '34bd', '7', '3,4'),
+(30, 3, '34bd', '8', '5,3'),
+(31, 4, '34bd', '7', '4,3'),
+(32, 5, '34bd', '8', '3,5'),
+(33, 6, '34bd', '5', '2,3'),
+(34, 7, '34bd', '6', '2,4'),
+(35, 8, '34bd', '0', 'NA,NA'),
+(36, 9, '34bd', '2', '2,NA'),
+(37, 10, '34bd', '9', '5,4'),
+(38, 11, '34bd', '6', '4,2'),
+(39, 12, '34bd', '1', 'NA,1'),
+(40, 13, '34bd', '10', '5,5'),
+(41, 14, '34bd', '6', '3,3'),
+(42, 15, '34bd', '0', 'NA,NA'),
+(43, 16, '34bd', '5', '3,2'),
+(44, 17, '34bd', '4', '4,0'),
+(45, 18, '34bd', '7', '4,3'),
+(46, 19, '34bd', '1', 'NA,1'),
+(47, 20, '34bd', '6', '3,3'),
+(48, 21, '34bd', '7', '3,4'),
+(49, 22, '34bd', '4', '2,2'),
+(50, 23, '34bd', '0', 'NA,NA'),
+(51, 24, '34bd', '8', '4,4'),
+(52, 25, '34bd', '3', '3,NA'),
+(53, 26, '34bd', '0', 'NA,NA'),
+(54, 27, '34bd', '5', '2,3');
 
 -- --------------------------------------------------------
 
@@ -21124,21 +21154,9 @@ CREATE TABLE `SIP_pagecontent` (
 
 CREATE TABLE `SIP_performance_interface` (
   `id` int(11) NOT NULL,
-  `courseid` varchar(100) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `email` varchar(254) NOT NULL,
-  `username` varchar(15) NOT NULL,
+  `stud_id` int(11) NOT NULL,
   `grade` varchar(2) DEFAULT NULL,
-  `quiz1` int(11) DEFAULT NULL,
-  `quiz2` int(11) DEFAULT NULL,
-  `quiz3` int(11) DEFAULT NULL,
-  `quiz4` int(11) DEFAULT NULL,
-  `quiz5` int(11) DEFAULT NULL,
-  `quiz6` int(11) DEFAULT NULL,
-  `quiz7` int(11) DEFAULT NULL,
-  `quiz8` int(11) DEFAULT NULL,
-  `quiz9` int(11) DEFAULT NULL,
-  `quiz10` int(11) DEFAULT NULL
+  `eval` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21153,12 +21171,12 @@ CREATE TABLE `SIP_personinformation` (
   `titleid` int(11) DEFAULT NULL,
   `firstname` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
-  `designation` int(11) NOT NULL DEFAULT '-1',
+  `designation` int(11) DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
-  `streamid` int(11) NOT NULL DEFAULT '-1',
+  `streamid` int(11) DEFAULT NULL,
   `instituteid_id` int(11) NOT NULL,
   `experience` varchar(45) DEFAULT NULL,
-  `qualification` varchar(45) NOT NULL DEFAULT '-1',
+  `qualification` varchar(45) DEFAULT NULL,
   `telephone1` varchar(12) NOT NULL,
   `telephone2` varchar(12) DEFAULT NULL,
   `createdondate` date NOT NULL,
@@ -21170,11 +21188,11 @@ CREATE TABLE `SIP_personinformation` (
 --
 
 INSERT INTO `SIP_personinformation` (`id`, `email`, `titleid`, `firstname`, `lastname`, `designation`, `gender`, `streamid`, `instituteid_id`, `experience`, `qualification`, `telephone1`, `telephone2`, `createdondate`, `isactive`) VALUES
-(1, 'admin@workshop.com', NULL, 'Workshop', 'Administrator', 0, '', -1, 0, NULL, '-1', '', '', '2015-01-01', 1),
-(684, 'gopalrao@iei.edu', NULL, 'Gopal', 'Rao', 5, 'Male', 20, 2, NULL, '14', '02224567678', '0', '2016-02-12', 1),
-(685, 'jaysharma@iei.edu', NULL, 'Jay', 'Sharma', 15, 'Male', 28, 2, NULL, '13', '02224567678', '0', '2016-02-12', 1),
-(686, 'premkumar@iei.edu', NULL, 'Prem', 'Kumar', 12, 'Male', 22, 2, NULL, '9', '02224567678', '0', '2016-02-12', 1),
-(687, 'sitadevi@iei.edu', NULL, 'Sita', 'Devi', 2, 'Female', 22, 2, NULL, '13', '02224567678', '0', '2016-02-12', 1);
+(1, 'admin@workshop.com', NULL, 'Workshop', 'Administrator', 0, 'Male', -1, 0, NULL, '-1', '', NULL, '2015-01-01', 1),
+(2, 'gopalrao@iei.edu', NULL, 'Gopal', 'Rao', 5, 'Male', 20, 1, NULL, '14', '', NULL, '2016-02-12', 1),
+(3, 'jaysharma@iei.edu', NULL, 'Jay', 'Sharma', 15, 'Male', 28, 1, NULL, '13', '', NULL, '2016-02-12', 1),
+(4, 'premkumar@iei.edu', NULL, 'Prem', 'Kumar', 12, 'Male', 22, 1, NULL, '9', '', NULL, '2016-02-12', 1),
+(5, 'sitadevi@iei.edu', NULL, 'Sita', 'Devi', 2, 'Female', 22, 1, NULL, '13', '', NULL, '2016-02-12', 1);
 
 -- --------------------------------------------------------
 
@@ -21189,7 +21207,7 @@ CREATE TABLE `SIP_questions` (
   `qid` varchar(250) NOT NULL,
   `q_name` varchar(250) NOT NULL,
   `q_weight` double NOT NULL,
-  `prob_count` int(11) DEFAULT NULL
+  `prob_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21197,10 +21215,10 @@ CREATE TABLE `SIP_questions` (
 --
 
 INSERT INTO `SIP_questions` (`id`, `course_id`, `eval_id`, `qid`, `q_name`, `q_weight`, `prob_count`) VALUES
-(4829, 34, 743, 'i4x://IITBombayX/DemoCourse/problem/eaad', 'Question 1', 4, 1),
-(4830, 34, 743, 'i4x://IITBombayX/DemoCourse/problem/ecad', 'Question 3', 2, 1),
-(4832, 34, 742, 'i4x://IITBombayX/DemoCourse/problem/eabd', 'Question 1', 5, 1),
-(4833, 34, 742, 'i4x://IITBombayX/DemoCourse/problem/ebad', 'Question 2', 5, 1);
+(1, 1, 1, 'i4x://IITBombayX/DemoCourse/problem/eaad', 'Question 1', 4, 1),
+(2, 1, 1, 'i4x://IITBombayX/DemoCourse/problem/ecad', 'Question 3', 2, 1),
+(3, 1, 2, 'i4x://IITBombayX/DemoCourse/problem/eabd', 'Question 1', 5, 1),
+(4, 1, 2, 'i4x://IITBombayX/DemoCourse/problem/ebad', 'Question 2', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -21211,33 +21229,33 @@ INSERT INTO `SIP_questions` (`id`, `course_id`, `eval_id`, `qid`, `q_name`, `q_w
 CREATE TABLE `SIP_reports` (
   `reportid` varchar(20) NOT NULL,
   `usertype` int(11) NOT NULL,
-  `sqlquery` mediumtext,
+  `sqlquery` varchar(200) NOT NULL,
   `report_title` varchar(100) NOT NULL,
+  `num_cols` int(11) NOT NULL,
   `comments` varchar(200) NOT NULL,
-  `num_cols` int(11) DEFAULT '1',
-  `category` varchar(30) DEFAULT NULL,
-  `rel_rep_id` int(11) DEFAULT NULL,
-  `org` varchar(10) NOT NULL DEFAULT 'IITBombayX'
+  `category` varchar(30) NOT NULL,
+  `rel_rep_id` int(11) NOT NULL,
+  `org` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `SIP_reports`
 --
 
-INSERT INTO `SIP_reports` (`reportid`, `usertype`, `sqlquery`, `report_title`, `comments`, `num_cols`, `category`, `rel_rep_id`, `org`) VALUES
-('1', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B\r\n,"Email" as\'C\',"Name" as\'D\' ,"Course" as E,"IITBX Login" as\'F\'\r\n,"MIS Login" as \'G\'\r\nunion all select (@cnt := @cnt + 1) AS\r\n\r\nid,query.RCID,query.Institute_Name,query.Email,query.Full_Name,query.Course,query.IITBX_Login,query.BMS_Login\r\n from (SELECT p.email as Email, concat(p.firstname,\' \',p.lastname)\r\nas Full_Name, i.remotecenterid as RCID,i.remotecentername as\r\nInstitute_Name,ec.course as\r\nCourse,if(a.email is null, "Not Exists","Exists")\r\n"IITBX_Login",if(l.status=0,"Not Activated","Activated")\r\n"BMS_Login" from SIP_personinformation p LEFT OUTER JOIN\r\nedxapp.auth_user a on\r\nlower(a.email)=lower(p.email),SIP_courselevelusers c,SIP_edxcourses\r\nec, SIP_t10kt_remotecenter i ,SIP_userlogin l,auth_user au where\r\nc.roleid=5 and c.courseid_id=ec.id and c.personid_id=p.id and\r\np.instituteid_id=i.instituteid_id and l.user_id=au.id and\r\nc.courseid_id in (34) and\r\np.email=au.email  and i.org=\'IITBombayX\' order by\r\nec.courseend DESC, BMS_Login DESC,IITBX_Login ,i.remotecenterid) as\r\nquery CROSS JOIN (SELECT @cnt := 0)\r\nAS dummy', 'Teachers\' Status', 'Displays the List of Teachers in the Blended MOOCs', 7, 'MIS Activation Status', NULL, 'IITBombayX'),
-('13', 0, 'select 0 AS\r\nid,"Institute Name" as A,"Course Id" as B,"Teacher\'s Name" as C\r\n,"Teacher\'s Email" as D, "Student\'s Rollno" as E ,"Student\'s Email Id"\r\nas F,"Student\'s Username" as G\r\n union all\r\nselect (@cnt := @cnt + 1) AS\r\n\r\nid,query.institutename,query.courseid,query.full_name,query.email,query.roll_no,query.stud_email,query.username\r\nFROM\r\n(SELECT t.institutename, s.courseid, concat( p.firstname, \' \',\r\np.lastname ) full_name, p.email, s.roll_no, i.email stud_email,\r\ni.username\r\nFROM SIP_studentdetails s, SIP_iitbx_auth_user i,\r\nSIP_courselevelusers c, SIP_personinformation p, SIP_t10kt_institute t,SIP_edxcourses e\r\nWHERE s.edxuserid_id = i.edxuserid\r\nAND s.edxis_active =1\r\nAND s.teacherid_id = c.id\r\nAND c.personid_id !=1\r\nAND p.id = c.personid_id\r\nand e.courseid=s.courseid\r\nand e.courseend >= DATE_ADD(NOW(), INTERVAL -7 DAY)\r\n and e.org="IITBombay"\r\nAND t.instituteid = c.instituteid_id ) query CROSS JOIN (SELECT @cnt\r\n:= 0) AS dummy', 'Student Details', 'Displays the List of all MOOCs students tagged for the Blended MOOCs Program', 6, 'Teacher-Students Association', NULL, 'IITBombayX'),
-('14', 0, 'Select 0 AS id,"Institute Name" as \'A\',"RCID" as \r\nB,"DC101" as \'C\'\r\n union all select (@cnt := @cnt + 1)\r\nAS\r\nid,query.remotecentername,query.remotecenterid,query.dc\r\nFROM (SELECT t.remotecentername,t.remotecenterid,\r\nsum(if(s.courseid="IITBombay/DC101/2015_25",1,0))\r\ndc\r\nFROM SIP_studentdetails s, SIP_courselevelusers\r\nc,SIP_t10kt_remotecenter t\r\nWHERE s.edxis_active =1 AND\r\ns.teacherid_id = c.id\r\n AND t.instituteid_id = c.instituteid_id AND\r\nc.instituteid_id !=0\r\ngroup by\r\nt.remotecentername,t.remotecenterid ORDER BY `t`.`remotecentername` ASC)\r\nquery\r\nCROSS JOIN (SELECT @cnt := 0) AS dummy\r\nunion all\r\nSELECT "Total","",count(distinct\r\nt.remotecentername),\r\nsum(if(s.courseid="IITBombay/DC101/2015_25",1,0))\r\ndc\r\nFROM SIP_studentdetails s, SIP_courselevelusers\r\nc,\r\nSIP_t10kt_remotecenter t\r\nWHERE s.edxis_active =1 AND\r\ns.teacherid_id = c.id\r\n AND t.instituteid_id = c.instituteid_id AND\r\nc.instituteid_id !=0  ', 'Students\'Participation', 'Displays list of institutes with number of students\nparticipating in Blended Moocs program, per course', 3, 'Institute-wise', NULL, 'IITBombayX'),
-('18', 0, 'select 0 AS\r\nid, "RCID" AS A, "Institute" as "B","Email"\r\nas "C","Name" as "D","Role"\r\nas "E" , "Course" as F  union all\r\nSELECT ( @cnt := @cnt +1 ) AS\r\n id,\r\nquery.RCID,query.Institute_Name,\r\nquery.Email, query.Full_Name,\r\nquery.Role,query.Course FROM (\r\nSELECT p.email AS Email, concat(\r\np.firstname, \' \',p.lastname ) AS\r\nFull_Name, i.remotecenterid\r\n"RCID", i.remotecentername AS Institute_Name, if( c.roleid\r\n=-2,\r\n"Head", "Programme Coordinator" ) "Role",NULL "Course"\r\nFROM\r\nSIP_personinformation p LEFT OUTER JOIN edxapp.auth_user a ON\r\na.email\r\n= p.email, SIP_institutelevelusers c,\r\nSIP_t10kt_remotecenter i,\r\nSIP_userlogin l, auth_user au WHERE\r\nc.roleid <0 AND c.personid_id =\r\np.id AND p.instituteid_id =\r\ni.instituteid_id AND l.user_id = au.id AND\r\nlower(p.email) =\r\nlower(au.email)  and i.org=\'IITBombayX\'\r\nunion\r\nSELECT p.email\r\nas Email, concat(p.firstname,\' \',p.lastname) as\r\nFull_Name,\r\ni.remotecenterid ,i.remotecentername as\r\nInstitute_Name,"Teacher",ec.course\r\nfrom SIP_personinformation p\r\nLEFT OUTER JOIN edxapp.auth_user a\r\non\r\nlower(a.email)=lower(p.email),SIP_courselevelusers\r\nc,SIP_edxcourses\r\nec, SIP_t10kt_remotecenter i ,SIP_userlogin\r\nl,auth_user au\r\nwhere\r\nc.roleid<0\r\nand\r\nc.courseid_id=ec.id\r\nand c.courseid_id in (34)\r\nand\r\nc.personid_id=p.id\r\nand p.instituteid_id=i.instituteid_id\r\nand\r\nl.user_id=au.id\r\nand p.email=au.email\r\norder by 3,4,5\r\n) AS\r\nquery\r\nCROSS JOIN ( SELECT @cnt :=0 ) AS dummy', 'Deactivated Users\' List', 'Displays the List of Deactivated Teachers, Heads and\nProgram Coordinators in the Blended MOOCs', 6, 'MIS Activation Status', NULL, 'IITBombayX'),
-('2', 0, 'select 0 AS\r\nid,"RCID" A,"Institute" as "B","Email" as\n"C","Name" as "D","MIS\r\nLogin" as "E" union all SELECT ( @cnt :=\n@cnt +1 ) AS id,query.RCID ,\nquery.Institute,query.Email,\r\nquery.Full_Name, query.MIS_Login FROM\n( SELECT\r\np.email AS Email, concat( p.firstname, \' \',p.lastname )\nAS\r\nFull_Name,i.remotecenterid "RCID" ,i.remotecentername AS\nInstitute, if( l.status =0, "Not\r\nActivated", "Activated" )\n"MIS_Login" FROM SIP_personinformation p\r\nLEFT OUTER JOIN\nedxapp.auth_user a ON a.email = p.email,\r\nSIP_institutelevelusers c,\nSIP_t10kt_remotecenter i, SIP_userlogin l,\r\nauth_user au WHERE\nc.roleid = 2 AND c.personid_id = p.id AND\r\np.instituteid_id =\ni.instituteid_id AND l.user_id = au.id AND\r\nlower(p.email) =\nlower(au.email)  and i.org=\'IITBombayX\' order by\r\nMIS_Login\nDESC,i.remotecenterid ) AS query CROSS JOIN ( SELECT @cnt :=0 ) AS\ndummy', 'Institute Heads\' Status', 'Displays Status Report of the\nHeads of the Institutes', 5, 'MIS Activation Status', NULL, 'IITBombayX'),
-('20', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B ,"Course"\r\nas C,\r\n"First Name" as\'D\' ,"Last Name" as\'E\' ,"Email"\r\nas\'F\',"Gender" as G,"Phone" as H,"Qualifications" as I, "Department"\r\nas J,"Designation" as K\r\nunion all\r\nselect (@cnt := @cnt + 1)\r\nAS\r\nid,query.RCID,query.Institute,query.course,query.Firstname,\r\n\r\nquery.Lastname,query.Email,query.Gender,query.Phone,query.qualification,query.department,query.designation\r\n\r\nfrom (select p.id\r\n       , r.remotecenterid \'RCID\'\r\n\r\n,r.remotecentername \'Institute\'\r\n       ,p.firstname\r\n"Firstname"\r\n      ,p.lastname\r\n"Lastname",p.email,p.gender,p.telephone1 "Phone", qual.description\r\nqualification,depart.description department,desig.description\r\ndesignation\r\n,e.course\r\nfrom SIP_personinformation p\r\n,SIP_t10kt_approvedinstitute a,SIP_t10kt_remotecenter\r\nr,SIP_courselevelusers c,SIP_edxcourses e, SIP_lookup desig,SIP_lookup\r\ndepart,SIP_lookup qual\r\nwhere a.instituteid_id=p.instituteid_id\r\n\r\nand p.designation =desig.code\r\n and desig.category="Designation"\r\n\r\nand p.qualification=qual.code\r\n and\r\nqual.category="Qualification"\r\n and p.streamid=depart.code\r\n and\r\ndepart.category="Stream"\r\n and\r\na.remotecenterid_id=r.remotecenterid\r\n and c.personid_id=p.id\r\n\r\nand c.courseid_id=e.id\r\n and c.roleid > 0\r\n and\r\ne.blended_mode=1\r\n and c.courseid_id in (34)\r\n and r.org\r\n=\'IITBombayX\'\r\n and r.remotecenterid !=0\r\n and r.org\r\n=\'IITBombayX\'\r\nORDER BY e.courseend DESC,`r`.`remotecenterid`\r\nASC\r\n ) as query CROSS JOIN (SELECT @cnt := 0)\r\nAS dummy', 'Teachers\' Information', 'Displays the List of Teachers Profile in\nthe Blended MOOCs', 11, 'Users Profile', NULL, 'IITBombayX'),
-('21', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B\r\n,"First Name" as\'C\' ,"Last Name" as\'D\' ,"Email" as\'E\',"Gender" as F,"Phone" as G,"Qualifications" as H, "Department" as I,"Designation" as "J"\r\nunion all select (@cnt := @cnt + 1) AS\r\nid,query.RCID,query.Institute,query.Firstname, query.Lastname,query.Email,query.Gender,query.Phone,query.qualification,query.department,query.designation\r\n from (select p.id,\r\n       r.remotecenterid RCID\r\n       ,r.remotecentername Institute ,\r\n       p.firstname Firstname, p.lastname Lastname ,p.email Email,p.gender Gender,p.telephone1 Phone,\r\nqual.description qualification,depart.description department,desig.description designation\r\nfrom SIP_personinformation p ,SIP_t10kt_approvedinstitute a,SIP_t10kt_remotecenter r,SIP_institutelevelusers i, SIP_lookup desig,SIP_lookup depart,SIP_lookup qual\r\nwhere a.instituteid_id=p.instituteid_id\r\n  and p.designation =desig.code\r\n and desig.category="Designation"\r\n and p.qualification=qual.code\r\n and qual.category="Qualification"\r\n and p.streamid=depart.code\r\n and depart.category="Stream"\r\n and a.remotecenterid_id=r.remotecenterid\r\n and i.instituteid_id=r.instituteid_id\r\n and i.personid_id=p.id\r\n and i.roleid =2\r\n and r.remotecenterid !=0\r\n and r.org=\'IITBombayX\'\r\nORDER BY `r`.`remotecenterid` ASC\r\n ) as query CROSS JOIN (SELECT @cnt := 0)\r\nAS dummy', 'Institutes\' Head Information', 'Displays Information about the Heads of Institutes in the Blended MOOCs', 10, 'Users Profile', NULL, 'IITBombayX'),
-('22', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B\r\n,"First Name" as\'C\' ,"Last Name" as\'D\' ,"Email" as\'E\',"Gender" as F,"Phone" as G,"Qualifications" as H, "Department" as I,"Designation" as "J"\r\nunion all select (@cnt := @cnt + 1) AS\r\nid,query.RCID,query.Institute,query.Firstname, query.Lastname,query.Email,query.Gender,query.Phone,query.qualification,query.department,query.designation\r\n from (select p.id,\r\n       r.remotecenterid RCID\r\n       ,r.remotecentername Institute ,\r\n       p.firstname Firstname, p.lastname Lastname ,p.email Email,p.gender Gender,p.telephone1 Phone,\r\nqual.description qualification,depart.description department,desig.description designation\r\nfrom SIP_personinformation p ,SIP_t10kt_approvedinstitute a,SIP_t10kt_remotecenter r,SIP_institutelevelusers i, SIP_lookup desig,SIP_lookup depart,SIP_lookup qual\r\nwhere a.instituteid_id=p.instituteid_id\r\n  and p.designation =desig.code\r\n and desig.category="Designation"\r\n and p.qualification=qual.code\r\n and qual.category="Qualification"\r\n and p.streamid=depart.code\r\n and depart.category="Stream"\r\n and a.remotecenterid_id=r.remotecenterid\r\n and i.instituteid_id=r.instituteid_id\r\n and i.personid_id=p.id\r\n and i.roleid =3\r\n and r.remotecenterid !=0\r\n and r.org=\'IITBombayX\'\r\nORDER BY `r`.`remotecenterid` ASC\r\n\r\n ) as query CROSS JOIN (SELECT @cnt := 0)\r\nAS dummy', 'Institutes\' Program Coordinator Information', 'Displays Information about Institutes Program Coordinator in Blended MOOCs', 10, 'Users Profile', NULL, 'IITBombayX'),
-('23', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B ,"Course" as C,\r\n"First Name" as\'D\' ,"Last Name" as\'E\' ,"Email" as\'F\',"Gender" as G,"Phone" as H,"Qualifications" as I, "Department" as J,"Designation" as K\r\nunion all\r\nselect (@cnt := @cnt + 1) AS\r\nid,query.RCID,query.Institute,query.course,query.Firstname, query.Lastname,query.Email,query.Gender,query.Phone,query.qualification,query.department,query.designation\r\n from (select p.id, r.remotecenterid "RCID",r.remotecentername "Institute",p.firstname,p.lastname,p.email,p.gender,p.telephone1 "Phone",e.course,\r\nqual.description qualification,depart.description department,desig.description designation\r\nfrom SIP_personinformation p ,SIP_t10kt_approvedinstitute a,SIP_t10kt_remotecenter r,SIP_courselevelusers c,SIP_edxcourses e, SIP_lookup desig,SIP_lookup depart,SIP_lookup qual\r\nwhere a.instituteid_id=p.instituteid_id\r\n  and p.designation =desig.code\r\n and desig.category="Designation"\r\n and p.qualification=qual.code\r\n and qual.category="Qualification"\r\n and p.streamid=depart.code\r\n and depart.category="Stream"\r\n and a.remotecenterid_id=r.remotecenterid\r\n and c.personid_id=p.id\r\n and c.courseid_id=e.id\r\n and c.roleid < 0\r\n and  c.courseid_id in (34)\r\n and r.remotecenterid !=0\r\n and e.blended_mode=1\r\nunion\r\nselect p.id,\r\n       r.remotecenterid RCID\r\n       ,r.remotecentername Institute ,\r\n       p.firstname Firstname, p.lastname Lastname ,p.email Email,p.gender Gender,p.telephone1 Phone,NULL,\r\nqual.description qualification,depart.description department,desig.description designation\r\nfrom SIP_personinformation p ,SIP_t10kt_approvedinstitute a,SIP_t10kt_remotecenter r,SIP_institutelevelusers i, SIP_lookup desig,SIP_lookup depart,SIP_lookup qual\r\nwhere a.instituteid_id=p.instituteid_id\r\n  and p.designation =desig.code\r\n and desig.category="Designation"\r\n and p.qualification=qual.code\r\n and qual.category="Qualification"\r\n and p.streamid=depart.code\r\n and depart.category="Stream"\r\n and a.remotecenterid_id=r.remotecenterid\r\n and i.instituteid_id=r.instituteid_id\r\n and i.personid_id=p.id\r\n and i.roleid <0\r\n and r.remotecenterid !=0\r\n and r.org=\'IITBombayX\'\r\nORDER BY 2 ASC\r\n ) as query CROSS JOIN (SELECT @cnt := 0)\r\nAS dummy', 'Deactivated Users Information', 'Displays Information about Deactivated Teaches,Program Coordinators and Heads in the Blended MOOCs', 11, 'Users Profile', NULL, 'IITBombayX'),
-('3', 0, 'select 0 AS\r\nid,"RCID" A,"Institute" as "B","Email" as\n"C","Name" as "D","MIS\r\nLogin" as "E" union all SELECT ( @cnt :=\n@cnt +1 ) AS id,query.RCID ,\nquery.Institute,query.Email,\r\nquery.Full_Name, query.MIS_Login FROM\n( SELECT\r\np.email AS Email, concat( p.firstname, \' \',p.lastname )\nAS\r\nFull_Name,i.remotecenterid "RCID" ,i.remotecentername AS\nInstitute, if( l.status =0, "Not\r\nActivated", "Activated" )\n"MIS_Login" FROM SIP_personinformation p\r\nLEFT OUTER JOIN\nedxapp.auth_user a ON a.email = p.email,\r\nSIP_institutelevelusers c,\nSIP_t10kt_remotecenter i, SIP_userlogin l,\r\nauth_user au WHERE\nc.roleid = 3 AND c.personid_id = p.id AND\r\np.instituteid_id =\ni.instituteid_id AND l.user_id = au.id AND\r\nlower(p.email) =\nlower(au.email) and  i.org=\'IITBombayX\' order by\r\nMIS_Login\nDESC,i.remotecenterid ) AS query CROSS JOIN ( SELECT @cnt :=0 ) AS\ndummy', 'Program Coordinators\' Status', 'Displays Status Report of\nProgram Coordinators of Institutes', 5, 'MIS Activation Status', NULL, 'IITBombayX'),
-('6', 0, 'select 0 AS id,"Course" as\'A\',"RCID" as\'B\' ,"Institute"\r\nas \'C\'\r\n,"Email" as\'D\',"Name" as \'E\' ,"#Students" as \'F\'\r\nunion all\r\nselect (@cnt := @cnt + 1)\r\n\r\nAS\r\nid,query.course,query.rcid,query.institutename,query.email,query.name,query.student\r\nfrom\r\n (SELECT  e.course, ai.remotecenterid_id\r\nrcid\r\n,i.institutename,p.email,concat(p.firstname," ", p.lastname)\r\nname\r\n,count(*) student FROM `SIP_studentdetails` s,\r\nSIP_courselevelusers\r\nc,SIP_edxcourses e,SIP_t10kt_institute i,\r\nSIP_personinformation\r\np,SIP_t10kt_approvedinstitute  ai  where\r\ns.edxis_active =1 and s.teacherid_id=c.id and\r\nc.personid_id=p.id\r\nand p.instituteid_id =i.instituteid and  e.id=c.courseid_id and\r\np.instituteid_id=\r\nai.instituteid_id and e.courseend >=\r\nDATE_ADD(NOW(), INTERVAL -7 DAY)\r\nand e.org=\'IITBombay\' and i.instituteid !=0\r\ngroup by\r\nc.courseid_id, e.course,\r\np.email,p.firstname,\r\np.lastname,p.instituteid_id\r\n,i.institutename,ai.remotecenterid_id\r\norder by\r\ne.id desc,ai.remotecenterid_id, student DESC ) query\r\nCROSS JOIN\r\n(SELECT @cnt := 0) AS dummy', 'Teacher wise- Students Summary ', 'Displays the summary of students who have been tagged by\nthe teachers', 6, 'Teacher-Students Association', NULL, 'IITBombayX'),
-('7', 0, 'select 0 AS\r\nid,"Institute Name" as\'A\',"RCID" as \'B\' ,"DC101" as \'C\'\r\nunion all  select (@cnt\r\n:= @cnt + 1) AS\r\nid,query.institutename,query.remotecenterid_id,query.dc\r\nfrom (select\r\nb.institutename,remotecenterid_id,sum(if(courseid_id=34,teachers,0)) as\r\ndc\r\nfrom (SELECT\r\na.instituteid_id,a.remotecenterid_id,b.courseid_id,count(personid_id)\r\nteachers FROM `SIP_t10kt_approvedinstitute` a,SIP_courselevelusers b\r\nwhere  a.instituteid_id=b.instituteid_id and roleid = 5 and\r\na.remotecenterid_id !=0 group by\r\na.instituteid_id,a.remotecenterid_id,b.courseid_id ) query,\r\nSIP_t10kt_institute b WHERE instituteid_id=b.instituteid GROUP BY\r\nb.institutename,remotecenterid_id ORDER BY remotecenterid_id) query  CROSS JOIN (SELECT @cnt := 0) AS dummy\r\nunion all\r\nselect "Total",\r\n"",count(distinct remotecenterid_id),sum(if(courseid_id=34,teachers,0)) as dc \r\nfrom (SELECT\r\na.instituteid_id,a.remotecenterid_id,b.courseid_id,count(personid_id)\r\nteachers FROM `SIP_t10kt_approvedinstitute` a,SIP_courselevelusers b\r\nwhere  a.instituteid_id=b.instituteid_id and roleid = 5 and\r\na.remotecenterid_id !=0 group by\r\na.instituteid_id,a.remotecenterid_id,b.courseid_id ) query,\r\nSIP_t10kt_institute b WHERE instituteid_id=b.instituteid', 'Teachers\' Participation', 'Number of teachers participating in respective courses institute-wise', 3, 'Institute-wise', NULL, 'IITBombayX'),
-('8', 0, 'select 0 AS id," " as A,"DC101" as\'B\'\r\n union all select (@cnt := @cnt + 1) AS id,\r\n"No. of Institutes" a, query.dc\r\nfrom\r\n (SELECT sum( if( courseid_id =34, 1, 0 ) ) as dc\r\nFROM (SELECT a.instituteid_id, a.remotecenterid_id, b.courseid_id, count( personid_id ) teachers\r\nFROM `SIP_t10kt_approvedinstitute` a, SIP_courselevelusers b\r\nWHERE a.instituteid_id = b.instituteid_id AND roleid =5\r\nAND a.remotecenterid_id !=0\r\nGROUP BY a.instituteid_id, a.remotecenterid_id, b.courseid_id )q)\r\nquery CROSS JOIN (SELECT @cnt := 0) AS dummy', 'Course Participation', 'Displays Institutes\' Participation count in each Course', 2, 'Institute-wise', NULL, 'IITBombayX');
+INSERT INTO `SIP_reports` (`reportid`, `usertype`, `sqlquery`, `report_title`, `num_cols`, `comments`, `category`, `rel_rep_id`, `org`) VALUES
+('1', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B\r\n,"Email" as\'C\',"Name" as\'D\' ,"Course" as E,"IITBX Login" as\'F\'\r\n,"MIS Login" as \'G\'\r\nunion all select (@cnt := @cnt + 1) AS\r\n\r\nid,query.RCID,query.Insti', 'Teachers\' Status', 7, 'Displays the List of Teachers in the Blended MOOCs', 'MIS Activation Status', 0, 'IITBombayX'),
+('13', 0, 'select 0 AS\r\nid,"Institute Name" as A,"Course Id" as B,"Teacher\'s Name" as C\r\n,"Teacher\'s Email" as D, "Student\'s Rollno" as E ,"Student\'s Email Id"\r\nas F,"Student\'s Username" as G\r\n union all\r\nselect', 'Student Details', 6, 'Displays the List of all MOOCs students tagged for the Blended MOOCs Program', 'Teacher-Students Association', 0, 'IITBombayX'),
+('14', 0, 'Select 0 AS id,"Institute Name" as \'A\',"RCID" as \r\nB,"DC101" as \'C\'\r\n union all select (@cnt := @cnt + 1)\r\nAS\r\nid,query.remotecentername,query.remotecenterid,query.dc\r\nFROM (SELECT t.remotecentername,', 'Students\'Participation', 3, 'Displays list of institutes with number of students\nparticipating in Blended Moocs program, per course', 'Institute-wise', 0, 'IITBombayX'),
+('18', 0, 'select 0 AS\r\nid, "RCID" AS A, "Institute" as "B","Email"\r\nas "C","Name" as "D","Role"\r\nas "E" , "Course" as F  union all\r\nSELECT ( @cnt := @cnt +1 ) AS\r\n id,\r\nquery.RCID,query.Institute_Name,\r\nquery.E', 'Deactivated Users\' List', 6, 'Displays the List of Deactivated Teachers, Heads and\nProgram Coordinators in the Blended MOOCs', 'MIS Activation Status', 0, 'IITBombayX'),
+('2', 0, 'select 0 AS\r\nid,"RCID" A,"Institute" as "B","Email" as\n"C","Name" as "D","MIS\r\nLogin" as "E" union all SELECT ( @cnt :=\n@cnt +1 ) AS id,query.RCID ,\nquery.Institute,query.Email,\r\nquery.Full_Name, quer', 'Institute Heads\' Status', 5, 'Displays Status Report of the\nHeads of the Institutes', 'MIS Activation Status', 0, 'IITBombayX'),
+('20', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B ,"Course"\r\nas C,\r\n"First Name" as\'D\' ,"Last Name" as\'E\' ,"Email"\r\nas\'F\',"Gender" as G,"Phone" as H,"Qualifications" as I, "Department"\r\nas J,"Designation', 'Teachers\' Information', 11, 'Displays the List of Teachers Profile in\nthe Blended MOOCs', 'Users Profile', 0, 'IITBombayX'),
+('21', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B\r\n,"First Name" as\'C\' ,"Last Name" as\'D\' ,"Email" as\'E\',"Gender" as F,"Phone" as G,"Qualifications" as H, "Department" as I,"Designation" as "J"\r\nunion al', 'Institutes\' Head Information', 10, 'Displays Information about the Heads of Institutes in the Blended MOOCs', 'Users Profile', 0, 'IITBombayX'),
+('22', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B\r\n,"First Name" as\'C\' ,"Last Name" as\'D\' ,"Email" as\'E\',"Gender" as F,"Phone" as G,"Qualifications" as H, "Department" as I,"Designation" as "J"\r\nunion al', 'Institutes\' Program Coordinator Information', 10, 'Displays Information about Institutes Program Coordinator in Blended MOOCs', 'Users Profile', 0, 'IITBombayX'),
+('23', 0, 'select 0 AS\r\nid, "RCID" as A, "Institute" as B ,"Course" as C,\r\n"First Name" as\'D\' ,"Last Name" as\'E\' ,"Email" as\'F\',"Gender" as G,"Phone" as H,"Qualifications" as I, "Department" as J,"Designation" a', 'Deactivated Users Information', 11, 'Displays Information about Deactivated Teaches,Program Coordinators and Heads in the Blended MOOCs', 'Users Profile', 0, 'IITBombayX'),
+('3', 0, 'select 0 AS\r\nid,"RCID" A,"Institute" as "B","Email" as\n"C","Name" as "D","MIS\r\nLogin" as "E" union all SELECT ( @cnt :=\n@cnt +1 ) AS id,query.RCID ,\nquery.Institute,query.Email,\r\nquery.Full_Name, quer', 'Program Coordinators\' Status', 5, 'Displays Status Report of\nProgram Coordinators of Institutes', 'MIS Activation Status', 0, 'IITBombayX'),
+('6', 0, 'select 0 AS id,"Course" as\'A\',"RCID" as\'B\' ,"Institute"\r\nas \'C\'\r\n,"Email" as\'D\',"Name" as \'E\' ,"#Students" as \'F\'\r\nunion all\r\nselect (@cnt := @cnt + 1)\r\n\r\nAS\r\nid,query.course,query.rcid,query.institut', 'Teacher wise- Students Summary ', 6, 'Displays the summary of students who have been tagged by\nthe teachers', 'Teacher-Students Association', 0, 'IITBombayX'),
+('7', 0, 'select 0 AS\r\nid,"Institute Name" as\'A\',"RCID" as \'B\' ,"DC101" as \'C\'\r\nunion all  select (@cnt\r\n:= @cnt + 1) AS\r\nid,query.institutename,query.remotecenterid_id,query.dc\r\nfrom (select\r\nb.institutename,r', 'Teachers\' Participation', 3, 'Number of teachers participating in respective courses institute-wise', 'Institute-wise', 0, 'IITBombayX'),
+('8', 0, 'select 0 AS id," " as A,"DC101" as\'B\'\r\n union all select (@cnt := @cnt + 1) AS id,\r\n"No. of Institutes" a, query.dc\r\nfrom\r\n (SELECT sum( if( courseid_id =34, 1, 0 ) ) as dc\r\nFROM (SELECT a.instituteid', 'Course Participation', 2, 'Displays Institutes\' Participation count in each Course', 'Institute-wise', 0, 'IITBombayX');
 
 -- --------------------------------------------------------
 
@@ -21257,9 +21275,9 @@ CREATE TABLE `SIP_requestedusers` (
   `roleid` int(11) NOT NULL,
   `designation` int(11) DEFAULT NULL,
   `status` varchar(50) NOT NULL,
-  `createdon` datetime NOT NULL,
+  `createdon` datetime(6) NOT NULL,
   `createdby_id` int(11) DEFAULT NULL,
-  `updatedon` datetime NOT NULL,
+  `updatedon` datetime(6) NOT NULL,
   `updatedby_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21336,33 +21354,33 @@ CREATE TABLE `SIP_studentdetails` (
 --
 
 INSERT INTO `SIP_studentdetails` (`id`, `edxuserid_id`, `courseid`, `teacherid_id`, `roll_no`, `last_update_on`, `last_updated_by_id`, `edxcreatedon`, `edxis_active`, `edxmode`) VALUES
-(52165, -2, 'IITBombay/DC101/2015_25', 8, '145637205', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52166, -1, 'IITBombay/DC101/2015_25', 8, '122874839', '2015-07-20 09:40:03.000000', 1, '12:08:34', 1, 'honor'),
-(52167, -3, 'IITBombay/DC101/2015_25', 8, '167294367', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52168, -4, 'IITBombay/DC101/2015_25', 8, '194304428', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52169, -5, 'IITBombay/DC101/2015_25', 590, '234355167', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52170, -6, 'IITBombay/DC101/2015_25', 8, '237849217', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52171, -7, 'IITBombay/DC101/2015_25', 590, '274596043', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52172, -8, 'IITBombay/DC101/2015_25', 590, '289478363', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52173, -9, 'IITBombay/DC101/2015_25', 590, '293652329', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52174, -10, 'IITBombay/DC101/2015_25', 590, '357593476', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52175, -11, 'IITBombay/DC101/2015_25', 590, '367829047', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52176, -12, 'IITBombay/DC101/2015_25', 591, '372054321', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52177, -13, 'IITBombay/DC101/2015_25', 591, '378462917', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52178, -14, 'IITBombay/DC101/2015_25', 591, '467879765', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52179, -15, 'IITBombay/DC101/2015_25', 591, '478369204', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52180, -16, 'IITBombay/DC101/2015_25', 591, '483029412', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52181, -17, 'IITBombay/DC101/2015_25', 591, '547293675', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52182, -18, 'IITBombay/DC101/2015_25', 591, '547392749', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52183, -19, 'IITBombay/DC101/2015_25', 591, '567879343', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52184, -21, 'IITBombay/DC101/2015_25', 591, '638798462', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52185, -22, 'IITBombay/DC101/2015_25', 591, '648309214', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52186, -23, 'IITBombay/DC101/2015_25', 591, '674930930', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52187, -24, 'IITBombay/DC101/2015_25', 8, '703946238', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52188, -25, 'IITBombay/DC101/2015_25', 590, '743092873', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52189, -26, 'IITBombay/DC101/2015_25', 590, '804763829', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52190, 27, 'IITBombay/DC101/2015_25', 591, '847204826', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
-(52191, 28, 'IITBombay/DC101/2015_25', 591, '867496732', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor');
+(1, -2, 'IITBombay/DC101/2015_25', 1, '145637205', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(2, -1, 'IITBombay/DC101/2015_25', 1, '122874839', '2015-07-20 09:40:03.000000', 1, '12:08:34', 1, 'honor'),
+(3, -3, 'IITBombay/DC101/2015_25', 1, '167294367', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(4, -4, 'IITBombay/DC101/2015_25', 1, '194304428', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(5, -5, 'IITBombay/DC101/2015_25', 4, '234355167', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(6, -6, 'IITBombay/DC101/2015_25', 1, '237849217', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(7, -7, 'IITBombay/DC101/2015_25', 4, '274596043', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(8, -8, 'IITBombay/DC101/2015_25', 4, '289478363', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(9, -9, 'IITBombay/DC101/2015_25', 4, '293652329', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(10, -10, 'IITBombay/DC101/2015_25', 4, '357593476', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(11, -11, 'IITBombay/DC101/2015_25', 4, '367829047', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(12, -12, 'IITBombay/DC101/2015_25', 5, '372054321', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(13, -13, 'IITBombay/DC101/2015_25', 5, '378462917', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(14, -14, 'IITBombay/DC101/2015_25', 5, '467879765', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(15, -15, 'IITBombay/DC101/2015_25', 5, '478369204', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(16, -16, 'IITBombay/DC101/2015_25', 5, '483029412', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(17, -17, 'IITBombay/DC101/2015_25', 5, '547293675', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(18, -18, 'IITBombay/DC101/2015_25', 5, '547392749', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(19, -19, 'IITBombay/DC101/2015_25', 5, '567879343', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(20, -21, 'IITBombay/DC101/2015_25', 5, '638798462', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(21, -22, 'IITBombay/DC101/2015_25', 5, '648309214', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(22, -23, 'IITBombay/DC101/2015_25', 5, '674930930', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(23, -24, 'IITBombay/DC101/2015_25', 1, '703946238', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(24, -25, 'IITBombay/DC101/2015_25', 4, '743092873', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(25, -26, 'IITBombay/DC101/2015_25', 4, '804763829', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(26, 27, 'IITBombay/DC101/2015_25', 5, '847204826', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor'),
+(27, 28, 'IITBombay/DC101/2015_25', 5, '867496732', '2015-07-20 09:40:03.000000', 1, '2015-07-02 11:52:56', 1, 'honor');
 
 -- --------------------------------------------------------
 
@@ -21386,68 +21404,68 @@ CREATE TABLE `SIP_student_interface` (
 --
 
 INSERT INTO `SIP_student_interface` (`id`, `fileid_id`, `recordno`, `roll_no`, `username`, `email`, `error_message`, `status`) VALUES
-(203544, 6987, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
-(203545, 6987, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '', 'Valid'),
-(203546, 6987, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
-(203548, 6987, 5, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
-(203550, 6987, 7, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
-(203551, 6988, 1, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
-(203552, 6988, 2, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
-(203553, 6989, 1, '293652329', 'HawthorneJean', 'Hawthorne@iei.edu', '', 'Valid'),
-(203554, 6989, 2, '357593476', 'DoeJohn', 'Doe@iei.edu', '', 'Valid'),
-(203555, 6989, 3, '367829047', 'TaylorAnne', 'Taylor@iei.edu', '', 'Valid'),
-(203556, 6989, 4, '372054321', 'HallBrad', 'Hall@iei.edu', '', 'Valid'),
-(203557, 6989, 5, '378462917', 'StarnesRandy', 'Starnes@iei.edu', '', 'Valid'),
-(203558, 6989, 6, '467879765', 'MitchellBarbara', 'Mitchell@iei.edu', '', 'Valid'),
-(203559, 6990, 1, '478369204', 'WardKeith', 'Ward@iei.edu', '', 'Valid'),
-(253333, 8900, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
-(253334, 8900, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
-(253335, 8900, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
-(253336, 8900, 4, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
-(253337, 8900, 5, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
-(253338, 8900, 6, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
-(253341, 8901, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
-(253342, 8901, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
-(253343, 8901, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
-(253344, 8901, 4, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
-(253345, 8901, 5, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
-(253346, 8901, 6, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
-(253349, 8902, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
-(253350, 8902, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
-(253351, 8902, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
-(253352, 8902, 4, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
-(253353, 8902, 5, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
-(253354, 8902, 6, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
-(254807, 8963, 5, '547293675', 'PierceTimothy', 'Pierce@iei.edu', '', 'Valid'),
-(254808, 8963, 6, '547392749', 'ThomasMatthew', 'ThomasM@iei.edu', '', 'Valid'),
-(254809, 8963, 7, '567879343', 'ThomasWanda', 'ThomasW@iei.edu', '', 'Valid'),
-(254810, 8963, 8, '638798462', 'JonesTanya', 'Jones@iei.edu', '', 'Valid'),
-(254811, 8963, 9, '648309214', 'BradleySteve', 'Bradley@iei.edu', '', 'Valid'),
-(254812, 8963, 10, '674930930', 'OlsenWayne', 'Olsen@iei.edu', '', 'Valid'),
-(254813, 8963, 11, '703946238', 'AllenBeth', 'Allen@iei.edu', '\nUser name is not valid', 'Error'),
-(254814, 8963, 12, '743092873', 'MillerCaroll', 'Miller@iei.edu', '', 'Valid'),
-(254815, 8963, 13, '804763829', 'ThomasHenry', 'ThomasH@iei.edu', '', 'Valid'),
-(254816, 8963, 14, '847204826', 'AllenHarold', 'Allen@iei.edu', '', 'Valid'),
-(254817, 8963, 15, '867496732', 'QuimbleyFred', 'Quimbley@iei.edu', '', 'Valid'),
-(254820, 8964, 3, '293652329', 'HawthorneJean', 'Hawthorne@iei.edu', '', 'Valid'),
-(254821, 8964, 4, '357593476', 'DoeJohn', 'Doe@iei.edu', '', 'Valid'),
-(254822, 8964, 5, '367829047', 'TaylorAnne', 'Taylor@iei.edu', '', 'Valid'),
-(254823, 8964, 6, '372054321', 'HallBrad', 'Hall@iei.edu', '', 'Valid'),
-(254824, 8964, 7, '378462917', 'StarnesRandy', 'Starnes@iei.edu', '', 'Valid'),
-(254825, 8964, 8, '467879765', 'MitchellBarbara', 'Mitchell@iei.edu', '', 'Valid'),
-(254826, 8964, 9, '478369204', 'WardKeith', 'Ward@iei.edu', '', 'Valid'),
-(254827, 8964, 10, '483029412', 'HensonEdward', 'Henson@iei.edu', '', 'Valid'),
-(254828, 8964, 11, '547293675', 'PierceTimothy', 'Pierce@iei.edu', '', 'Valid'),
-(254829, 8964, 12, '547392749', 'ThomasMatthew', 'ThomasM@iei.edu', '', 'Valid'),
-(254830, 8964, 13, '567879343', 'ThomasWanda', 'ThomasW@iei.edu', '', 'Valid'),
-(254831, 8964, 14, '638798462', 'JonesTanya', 'Jones@iei.edu', '', 'Valid'),
-(254832, 8964, 15, '648309214', 'BradleySteve', 'Bradley@iei.edu', '', 'Valid'),
-(254833, 8964, 16, '674930930', 'OlsenWayne', 'Olsen@iei.edu', '', 'Valid'),
-(254834, 8964, 17, '703946238', 'AllenBeth', 'Allen@iei.edu', '\nUser name is not valid', 'Error'),
-(254835, 8964, 18, '743092873', 'MillerCaroll', 'Miller@iei.edu', '', 'Valid'),
-(254836, 8964, 19, '804763829', 'ThomasHenry', 'ThomasH@iei.edu', '', 'Valid'),
-(254837, 8964, 20, '847204826', 'AllenHarold', 'Allen@iei.edu', '', 'Valid'),
-(254838, 8964, 21, '867496732', 'QuimbleyFred', 'Quimbley@iei.edu', '', 'Valid');
+(1, 6987, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
+(2, 6987, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '', 'Valid'),
+(3, 6987, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
+(4, 6987, 5, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
+(5, 6987, 7, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
+(6, 6988, 1, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
+(7, 6988, 2, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
+(8, 6989, 1, '293652329', 'HawthorneJean', 'Hawthorne@iei.edu', '', 'Valid'),
+(9, 6989, 2, '357593476', 'DoeJohn', 'Doe@iei.edu', '', 'Valid'),
+(10, 6989, 3, '367829047', 'TaylorAnne', 'Taylor@iei.edu', '', 'Valid'),
+(11, 6989, 4, '372054321', 'HallBrad', 'Hall@iei.edu', '', 'Valid'),
+(12, 6989, 5, '378462917', 'StarnesRandy', 'Starnes@iei.edu', '', 'Valid'),
+(13, 6989, 6, '467879765', 'MitchellBarbara', 'Mitchell@iei.edu', '', 'Valid'),
+(14, 6990, 1, '478369204', 'WardKeith', 'Ward@iei.edu', '', 'Valid'),
+(15, 8900, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
+(16, 8900, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
+(17, 8900, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
+(18, 8900, 4, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
+(19, 8900, 5, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
+(20, 8900, 6, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
+(21, 8901, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
+(22, 8901, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
+(23, 8901, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
+(24, 8901, 4, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
+(25, 8901, 5, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
+(26, 8901, 6, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
+(27, 8902, 1, '145637205', 'MartinDuanne', 'Martin@iei.edu', '', 'Valid'),
+(28, 8902, 2, '122874839', 'EdwardsJulia', 'Edwards@iei.edu', '\nStudent was already assigned to you.No change', 'Ignore'),
+(29, 8902, 3, '167294367', 'SmithJerry', 'Smith@iei.edu', '', 'Valid'),
+(30, 8902, 4, '234355167', 'TeagueDenise', 'Teague@iei.edu', '', 'Valid'),
+(31, 8902, 5, '274596043', 'FriedmanOscar', 'Friedman@iei.edu', '', 'Valid'),
+(32, 8902, 6, '289478363', 'CoxJune', 'Cox@iei.edu', '', 'Valid'),
+(33, 8963, 5, '547293675', 'PierceTimothy', 'Pierce@iei.edu', '', 'Valid'),
+(34, 8963, 6, '547392749', 'ThomasMatthew', 'ThomasM@iei.edu', '', 'Valid'),
+(35, 8963, 7, '567879343', 'ThomasWanda', 'ThomasW@iei.edu', '', 'Valid'),
+(36, 8963, 8, '638798462', 'JonesTanya', 'Jones@iei.edu', '', 'Valid'),
+(37, 8963, 9, '648309214', 'BradleySteve', 'Bradley@iei.edu', '', 'Valid'),
+(38, 8963, 10, '674930930', 'OlsenWayne', 'Olsen@iei.edu', '', 'Valid'),
+(39, 8963, 11, '703946238', 'AllenBeth', 'Allen@iei.edu', '\nUser name is not valid', 'Error'),
+(40, 8963, 12, '743092873', 'MillerCaroll', 'Miller@iei.edu', '', 'Valid'),
+(41, 8963, 13, '804763829', 'ThomasHenry', 'ThomasH@iei.edu', '', 'Valid'),
+(42, 8963, 14, '847204826', 'AllenHarold', 'Allen@iei.edu', '', 'Valid'),
+(43, 8963, 15, '867496732', 'QuimbleyFred', 'Quimbley@iei.edu', '', 'Valid'),
+(44, 8964, 3, '293652329', 'HawthorneJean', 'Hawthorne@iei.edu', '', 'Valid'),
+(45, 8964, 4, '357593476', 'DoeJohn', 'Doe@iei.edu', '', 'Valid'),
+(46, 8964, 5, '367829047', 'TaylorAnne', 'Taylor@iei.edu', '', 'Valid'),
+(47, 8964, 6, '372054321', 'HallBrad', 'Hall@iei.edu', '', 'Valid'),
+(48, 8964, 7, '378462917', 'StarnesRandy', 'Starnes@iei.edu', '', 'Valid'),
+(49, 8964, 8, '467879765', 'MitchellBarbara', 'Mitchell@iei.edu', '', 'Valid'),
+(50, 8964, 9, '478369204', 'WardKeith', 'Ward@iei.edu', '', 'Valid'),
+(51, 8964, 10, '483029412', 'HensonEdward', 'Henson@iei.edu', '', 'Valid'),
+(52, 8964, 11, '547293675', 'PierceTimothy', 'Pierce@iei.edu', '', 'Valid'),
+(53, 8964, 12, '547392749', 'ThomasMatthew', 'ThomasM@iei.edu', '', 'Valid'),
+(54, 8964, 13, '567879343', 'ThomasWanda', 'ThomasW@iei.edu', '', 'Valid'),
+(55, 8964, 14, '638798462', 'JonesTanya', 'Jones@iei.edu', '', 'Valid'),
+(56, 8964, 15, '648309214', 'BradleySteve', 'Bradley@iei.edu', '', 'Valid'),
+(57, 8964, 16, '674930930', 'OlsenWayne', 'Olsen@iei.edu', '', 'Valid'),
+(58, 8964, 17, '703946238', 'AllenBeth', 'Allen@iei.edu', '\nUser name is not valid', 'Error'),
+(59, 8964, 18, '743092873', 'MillerCaroll', 'Miller@iei.edu', '', 'Valid'),
+(60, 8964, 19, '804763829', 'ThomasHenry', 'ThomasH@iei.edu', '', 'Valid'),
+(61, 8964, 20, '847204826', 'AllenHarold', 'Allen@iei.edu', '', 'Valid'),
+(62, 8964, 21, '867496732', 'QuimbleyFred', 'Quimbley@iei.edu', '', 'Valid');
 
 -- --------------------------------------------------------
 
@@ -21467,7 +21485,7 @@ CREATE TABLE `SIP_t10kt_approvedinstitute` (
 
 INSERT INTO `SIP_t10kt_approvedinstitute` (`id`, `remotecenterid_id`, `instituteid_id`) VALUES
 (1, 0, 0),
-(61, 2, 2);
+(2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -21490,7 +21508,7 @@ CREATE TABLE `SIP_t10kt_institute` (
 
 INSERT INTO `SIP_t10kt_institute` (`instituteid`, `institutename`, `state`, `city`, `pincode`, `address`) VALUES
 (0, 'IITBombayX', 'MAHARASHTRA', 'Mumbai', 0, 'Default'),
-(2, 'Ideal College of Engineering', 'MAHARASHTRA', 'Mumbai', 400001, 'Default');
+(1, 'Ideal College of Engineering', 'MAHARASHTRA', 'Mumbai', 400001, 'Default');
 
 -- --------------------------------------------------------
 
@@ -21505,7 +21523,7 @@ CREATE TABLE `SIP_t10kt_remotecenter` (
   `city` varchar(100) NOT NULL,
   `instituteid_id` int(11) NOT NULL,
   `autonomous` tinyint(1) NOT NULL,
-  `org` varchar(10) NOT NULL DEFAULT 'IITBombayX'
+  `org` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21514,7 +21532,7 @@ CREATE TABLE `SIP_t10kt_remotecenter` (
 
 INSERT INTO `SIP_t10kt_remotecenter` (`remotecenterid`, `remotecentername`, `state`, `city`, `instituteid_id`, `autonomous`, `org`) VALUES
 (0, 'IITBombayX', 'MAHARASHTRA', 'Bombay', 0, 0, 'IITBombayX'),
-(2, 'Ideal College of Engineering', 'MAHARASHTRA', 'Mumbai', 2, 0, 'IITBombayX');
+(1, 'Ideal College of Engineering', 'MAHARASHTRA', 'Mumbai', 1, 0, 'IITBombayX');
 
 -- --------------------------------------------------------
 
@@ -21542,7 +21560,7 @@ CREATE TABLE `SIP_userlogin` (
   `user_id` int(11) NOT NULL,
   `usertypeid` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `last_login` datetime NOT NULL,
+  `last_login` datetime(6) NOT NULL,
   `nooflogins` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21551,11 +21569,11 @@ CREATE TABLE `SIP_userlogin` (
 --
 
 INSERT INTO `SIP_userlogin` (`id`, `user_id`, `usertypeid`, `status`, `last_login`, `nooflogins`) VALUES
-(5, 2, 0, 1, '2017-02-02 08:28:47', 1337),
-(688, 728, 1, 1, '2016-10-19 12:15:21', 12),
-(689, 729, 1, 1, '2016-09-26 11:30:57', 9),
-(690, 730, 1, 1, '2017-02-02 08:27:30', 29),
-(691, 731, 1, 1, '2017-02-01 06:56:32', 17);
+(1, 2, 0, 1, '2017-02-09 10:07:32.988807', 1339),
+(2, 3, 1, 1, '2016-10-19 12:15:21.000000', 12),
+(3, 4, 1, 1, '2016-09-26 11:30:57.000000', 9),
+(4, 5, 1, 1, '2017-02-09 10:10:17.447558', 30),
+(5, 6, 1, 1, '2017-02-09 10:09:20.712241', 19);
 
 -- --------------------------------------------------------
 
@@ -21619,8 +21637,8 @@ CREATE TABLE `tracking_visitor` (
   `referrer` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `page_views` int(10) UNSIGNED NOT NULL,
-  `session_start` datetime NOT NULL,
-  `last_update` datetime NOT NULL,
+  `session_start` datetime(6) NOT NULL,
+  `last_update` datetime(6) NOT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21629,26 +21647,9 @@ CREATE TABLE `tracking_visitor` (
 --
 
 INSERT INTO `tracking_visitor` (`id`, `session_key`, `ip_address`, `user_agent`, `referrer`, `url`, `page_views`, `session_start`, `last_update`, `user_id`) VALUES
-(18785, 'gpx6c8kzsyazebdnm74rc9zsznvj2rl2', '115.113.11.142', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36', '', '/coursedescription/IITBombay/DC101/2015_25/687/', 6, '2017-01-31 11:36:07', '2017-01-31 11:36:07', NULL),
-(18791, 'iunfe172z1eer7bt8jrqse3vbwl6v0on', '115.113.11.142', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36', '', '/grades/IITBombay/DC101/2015_25/687/2/', 13, '2017-01-31 11:36:07', '2017-01-31 11:36:07', NULL),
-(20766, '78x3ivzpw9h38l3r2km2oo2ntcv7xf4t', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/iitbxhome/', 14, '2017-01-30 05:35:20', '2017-01-30 05:35:20', 2),
-(20767, '5oh570kd0inc2r6oah7fbzn3iwzhr0mq', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/favicon.ico', 3, '2017-01-31 11:16:48', '2017-01-31 11:16:48', NULL),
-(20768, 'bl9u3vvfanyelg5gxgyo7dquqw5jg9cw', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/get_multi_roles/', 67, '2017-01-31 11:37:46', '2017-01-31 11:37:46', 730),
-(20769, 'pyagbaproy2lvhj96gqkrj894v4evq2y', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/get_multi_roles/', 18, '2017-01-31 11:46:46', '2017-01-31 11:46:46', 730),
-(20770, 'ahmtqzxz911s6kqv0sbkkfy126kb8p5r', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/iitbxhome/', 2, '2017-01-31 11:55:42', '2017-01-31 11:55:42', NULL),
-(20771, 'r8tvjgjj8y3v6kyvfqzv87s4mxywzymf', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/favicon.ico', 3, '2017-01-31 12:07:03', '2017-01-31 12:07:03', NULL),
-(20772, 'i9iw9vnfj70wm3j4s85wul992oq4rjeo', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/', 2, '2017-01-31 12:26:25', '2017-01-31 12:26:25', NULL),
-(20773, 'nvopnmvbdji33fy88vq99w8ih4th5u48', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/iitbxhome/', 138, '2017-02-01 05:22:43', '2017-02-01 05:22:43', 2),
-(20774, '6kwecbg6ltqh6itkde4fiocjq1wgoox4', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/iitbxhome/', 6, '2017-02-01 05:48:40', '2017-02-01 05:48:40', 2),
-(20775, '8x1voztlxn33bi2swq6bwkqeza2ctsik', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/', 6, '2017-02-01 06:03:15', '2017-02-01 06:03:15', NULL),
-(20776, 'lgfv2d0iypmuicuq2t72n2p3rc5soec1', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/iitbxhome/', 17, '2017-02-01 06:13:51', '2017-02-01 06:13:51', 2),
-(20777, 'r9tp4u9ldpkcu61fdqf33oej2wzd39z0', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/studentsinformation/IITBombay/DC101/2015_25/1/', 40, '2017-02-01 06:33:39', '2017-02-01 06:33:39', 2),
-(20778, '265e9pfy8vxetjzetrojbe05n3zgvvz8', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/createpasswordemail/', 52, '2017-02-01 07:01:46', '2017-02-01 07:01:46', NULL),
-(20779, 'jpc19ivg3wt4ox8tv2uq3sjfiitlpx1i', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/blendedadmin/13/', 8, '2017-02-02 06:36:40', '2017-02-02 06:36:40', 2),
-(20780, 'q1ghq2b0cbky2wzuqwn42mbcd9lz6f6o', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/blendedadmin/13/', 7, '2017-02-02 06:43:19', '2017-02-02 06:43:19', 2),
-(20781, 'kbd0frtq42h3w04rt8ws9yj8nkgvq3of', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/blendedadmin/8/', 6, '2017-02-02 06:54:00', '2017-02-02 06:54:00', 2),
-(20782, '9oqnu5ovdwoqbpvo6y0xhi5n01khlugw', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/blendedadmin/8/', 20, '2017-02-02 07:22:34', '2017-02-02 07:22:34', 2),
-(20783, 'v8h4jdzwtbjvjm564upwfojc2i5rb2bn', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/', 40, '2017-02-02 08:29:22', '2017-02-02 08:29:22', NULL);
+(1, 'gpx6c8kzsyazebdnm74rc9zsznvj2rl2', '115.113.11.142', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36', '', '/coursedescription/IITBombay/DC101/2015_25/687/', 6, '2017-02-09 10:07:33.137248', '2017-02-09 10:07:33.137253', NULL),
+(2, 'iunfe172z1eer7bt8jrqse3vbwl6v0on', '115.113.11.142', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36', '', '/grades/IITBombay/DC101/2015_25/687/2/', 13, '2017-02-09 10:07:33.137269', '2017-02-09 10:07:33.137273', NULL),
+(5, 'b6ku2gqj3ltblsq9sbe8fo8m312gvd5r', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0', '', '/', 42, '2017-02-09 10:13:31.931908', '2017-02-09 10:13:31.927705', NULL);
 
 --
 -- Indexes for dumped tables
@@ -21798,9 +21799,7 @@ ALTER TABLE `SIP_courseenrollment`
 -- Indexes for table `SIP_coursefaculty`
 --
 ALTER TABLE `SIP_coursefaculty`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `SIP_cours_person_id_19a835c3fea0e6a2_fk_SIP_personinformation_id` (`person_id`),
-  ADD KEY `SIP_coursefaculty_course_id_e668abf2c76653e_fk_SIP_edxcourses_id` (`course_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_courselevelusers`
@@ -21838,8 +21837,7 @@ ALTER TABLE `SIP_errorcontent`
 -- Indexes for table `SIP_evaluations`
 --
 ALTER TABLE `SIP_evaluations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `SIP_evaluations_course_id_6071e36a61b66868_fk_SIP_edxcourses_id` (`course_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_gradepolicy`
@@ -21859,8 +21857,7 @@ ALTER TABLE `SIP_gradescriteria`
 -- Indexes for table `SIP_gradestable`
 --
 ALTER TABLE `SIP_gradestable`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `SIP_gradestable_stud_id_2b76dff6cf237b6_fk_SIP_studentdetails_id` (`stud_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_headings`
@@ -21896,15 +21893,13 @@ ALTER TABLE `SIP_lookup`
 -- Indexes for table `SIP_mail_interface`
 --
 ALTER TABLE `SIP_mail_interface`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `D3702d024a9ee5db737a80e108814682` (`instituteid_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_markstable`
 --
 ALTER TABLE `SIP_markstable`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `SIP_markstable_stud_id_612aa77a52de569d_fk_SIP_studentdetails_id` (`stud_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_pagecontent`
@@ -21929,9 +21924,7 @@ ALTER TABLE `SIP_personinformation`
 -- Indexes for table `SIP_questions`
 --
 ALTER TABLE `SIP_questions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `SIP_questions_course_id_64dfc6ed3a2a960_fk_SIP_edxcourses_id` (`course_id`),
-  ADD KEY `SIP_questions_eval_id_1154b1b5776e8e8f_fk_SIP_evaluations_id` (`eval_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_reports`
@@ -21955,27 +21948,19 @@ ALTER TABLE `SIP_responsibility`
 -- Indexes for table `SIP_result`
 --
 ALTER TABLE `SIP_result`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `SIP_result_question_id_4b94cc6c6ec5e6bc_fk_SIP_questions_id` (`question_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_sectionlevelusers`
 --
 ALTER TABLE `SIP_sectionlevelusers`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `SIP_sec_personid_id_5b31d53b5b0e2503_fk_SIP_personinformation_id` (`personid_id`),
-  ADD KEY `cdff0407959e670acf42bb3f8da099bb` (`instituteid_id`),
-  ADD KEY `SIP_sectionlev_courseid_id_6a0f6475c9e8ef5d_fk_SIP_edxcourses_id` (`courseid_id`),
-  ADD KEY `SIP_sectionleve_sec_id_77b306a232468011_fk_SIP_course_modlist_id` (`sec_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_studentdetails`
 --
 ALTER TABLE `SIP_studentdetails`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `S_edxuserid_id_7995a2bcf145a05c_fk_SIP_iitbx_auth_user_edxuserid` (`edxuserid_id`),
-  ADD KEY `SIP_stu_teacherid_id_2cdf485c9c7568f2_fk_SIP_courselevelusers_id` (`teacherid_id`),
-  ADD KEY `last_updated_by_id_23015b0ccb0b6a4f_fk_SIP_personinformation_id` (`last_updated_by_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `SIP_student_interface`
@@ -22055,12 +22040,12 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=640;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=637;
 --
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=732;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
 --
@@ -22080,12 +22065,12 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `iitbx_gen_evaluations`
 --
@@ -22130,7 +22115,7 @@ ALTER TABLE `SIP_api_call`
 -- AUTO_INCREMENT for table `SIP_courseenrollment`
 --
 ALTER TABLE `SIP_courseenrollment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `SIP_coursefaculty`
 --
@@ -22140,17 +22125,17 @@ ALTER TABLE `SIP_coursefaculty`
 -- AUTO_INCREMENT for table `SIP_courselevelusers`
 --
 ALTER TABLE `SIP_courselevelusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=592;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `SIP_course_modlist`
 --
 ALTER TABLE `SIP_course_modlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62178;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `SIP_edxcourses`
 --
 ALTER TABLE `SIP_edxcourses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `SIP_emailcontent`
 --
@@ -22165,32 +22150,32 @@ ALTER TABLE `SIP_errorcontent`
 -- AUTO_INCREMENT for table `SIP_evaluations`
 --
 ALTER TABLE `SIP_evaluations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=744;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `SIP_gradepolicy`
 --
 ALTER TABLE `SIP_gradepolicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2279;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `SIP_gradescriteria`
 --
 ALTER TABLE `SIP_gradescriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8080;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `SIP_gradestable`
 --
 ALTER TABLE `SIP_gradestable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30112;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `SIP_headings`
 --
 ALTER TABLE `SIP_headings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `SIP_institutelevelusers`
 --
 ALTER TABLE `SIP_institutelevelusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `SIP_interfaces`
 --
@@ -22210,7 +22195,7 @@ ALTER TABLE `SIP_mail_interface`
 -- AUTO_INCREMENT for table `SIP_markstable`
 --
 ALTER TABLE `SIP_markstable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `SIP_pagecontent`
 --
@@ -22225,12 +22210,12 @@ ALTER TABLE `SIP_performance_interface`
 -- AUTO_INCREMENT for table `SIP_personinformation`
 --
 ALTER TABLE `SIP_personinformation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=688;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `SIP_questions`
 --
 ALTER TABLE `SIP_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4834;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `SIP_requestedusers`
 --
@@ -22255,17 +22240,17 @@ ALTER TABLE `SIP_sectionlevelusers`
 -- AUTO_INCREMENT for table `SIP_studentdetails`
 --
 ALTER TABLE `SIP_studentdetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52192;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `SIP_student_interface`
 --
 ALTER TABLE `SIP_student_interface`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254839;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT for table `SIP_t10kt_approvedinstitute`
 --
 ALTER TABLE `SIP_t10kt_approvedinstitute`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `SIP_uploadedfiles`
 --
@@ -22275,7 +22260,7 @@ ALTER TABLE `SIP_uploadedfiles`
 -- AUTO_INCREMENT for table `SIP_userlogin`
 --
 ALTER TABLE `SIP_userlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=692;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tracking_bannedip`
 --
@@ -22290,7 +22275,7 @@ ALTER TABLE `tracking_untrackeduseragent`
 -- AUTO_INCREMENT for table `tracking_visitor`
 --
 ALTER TABLE `tracking_visitor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20784;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
@@ -22343,17 +22328,13 @@ ALTER TABLE `iitbx_gen_questions`
   ADD CONSTRAINT `iitbx_gen_question_course_id_19f699b7f49c8f_fk_SIP_edxcourses_id` FOREIGN KEY (`course_id`) REFERENCES `SIP_edxcourses` (`id`);
 
 --
--- Constraints for table `SIP_coursefaculty`
+-- Constraints for table `SIP_courseenrollment`
 --
-ALTER TABLE `SIP_coursefaculty`
-  ADD CONSTRAINT `SIP_cours_person_id_19a835c3fea0e6a2_fk_SIP_personinformation_id` FOREIGN KEY (`person_id`) REFERENCES `SIP_personinformation` (`id`),
-  ADD CONSTRAINT `SIP_coursefaculty_course_id_e668abf2c76653e_fk_SIP_edxcourses_id` FOREIGN KEY (`course_id`) REFERENCES `SIP_edxcourses` (`id`);
-
---
--- Constraints for table `SIP_evaluations`
---
-ALTER TABLE `SIP_evaluations`
-  ADD CONSTRAINT `SIP_evaluations_course_id_6071e36a61b66868_fk_SIP_edxcourses_id` FOREIGN KEY (`course_id`) REFERENCES `SIP_edxcourses` (`id`);
+ALTER TABLE `SIP_courseenrollment`
+  ADD CONSTRAINT `D7814a2d334ea1eaa68885e53784dc64` FOREIGN KEY (`instituteid_id`) REFERENCES `SIP_t10kt_approvedinstitute` (`id`),
+  ADD CONSTRAINT `SIP__cancelledby_id_4c15845b15f5bc4b_fk_SIP_personinformation_id` FOREIGN KEY (`cancelledby_id`) REFERENCES `SIP_personinformation` (`id`),
+  ADD CONSTRAINT `SIP_c_enrolledby_id_36754a95068caec4_fk_SIP_personinformation_id` FOREIGN KEY (`enrolledby_id`) REFERENCES `SIP_personinformation` (`id`),
+  ADD CONSTRAINT `SIP_cour_courseid_id_25bb6d6b8ea2eb36_fk_SIP_edxcourses_courseid` FOREIGN KEY (`courseid_id`) REFERENCES `SIP_edxcourses` (`courseid`);
 
 --
 -- Constraints for table `SIP_gradepolicy`
@@ -22368,58 +22349,10 @@ ALTER TABLE `SIP_gradescriteria`
   ADD CONSTRAINT `SIP_grad_courseid_id_44fcf78dd5caa768_fk_SIP_edxcourses_courseid` FOREIGN KEY (`courseid_id`) REFERENCES `SIP_edxcourses` (`courseid`);
 
 --
--- Constraints for table `SIP_gradestable`
---
-ALTER TABLE `SIP_gradestable`
-  ADD CONSTRAINT `SIP_gradestable_stud_id_2b76dff6cf237b6_fk_SIP_studentdetails_id` FOREIGN KEY (`stud_id`) REFERENCES `SIP_studentdetails` (`id`);
-
---
--- Constraints for table `SIP_mail_interface`
---
-ALTER TABLE `SIP_mail_interface`
-  ADD CONSTRAINT `D3702d024a9ee5db737a80e108814682` FOREIGN KEY (`instituteid_id`) REFERENCES `SIP_t10kt_institute` (`instituteid`);
-
---
--- Constraints for table `SIP_markstable`
---
-ALTER TABLE `SIP_markstable`
-  ADD CONSTRAINT `SIP_markstable_stud_id_612aa77a52de569d_fk_SIP_studentdetails_id` FOREIGN KEY (`stud_id`) REFERENCES `SIP_studentdetails` (`id`);
-
---
 -- Constraints for table `SIP_personinformation`
 --
 ALTER TABLE `SIP_personinformation`
   ADD CONSTRAINT `b0b185b26decb8466fff53a1de349709` FOREIGN KEY (`instituteid_id`) REFERENCES `SIP_t10kt_institute` (`instituteid`);
-
---
--- Constraints for table `SIP_questions`
---
-ALTER TABLE `SIP_questions`
-  ADD CONSTRAINT `SIP_questions_course_id_64dfc6ed3a2a960_fk_SIP_edxcourses_id` FOREIGN KEY (`course_id`) REFERENCES `SIP_edxcourses` (`id`),
-  ADD CONSTRAINT `SIP_questions_eval_id_1154b1b5776e8e8f_fk_SIP_evaluations_id` FOREIGN KEY (`eval_id`) REFERENCES `SIP_evaluations` (`id`);
-
---
--- Constraints for table `SIP_result`
---
-ALTER TABLE `SIP_result`
-  ADD CONSTRAINT `SIP_result_question_id_4b94cc6c6ec5e6bc_fk_SIP_questions_id` FOREIGN KEY (`question_id`) REFERENCES `SIP_questions` (`id`);
-
---
--- Constraints for table `SIP_sectionlevelusers`
---
-ALTER TABLE `SIP_sectionlevelusers`
-  ADD CONSTRAINT `SIP_sec_personid_id_5b31d53b5b0e2503_fk_SIP_personinformation_id` FOREIGN KEY (`personid_id`) REFERENCES `SIP_personinformation` (`id`),
-  ADD CONSTRAINT `SIP_sectionlev_courseid_id_6a0f6475c9e8ef5d_fk_SIP_edxcourses_id` FOREIGN KEY (`courseid_id`) REFERENCES `SIP_edxcourses` (`id`),
-  ADD CONSTRAINT `SIP_sectionleve_sec_id_77b306a232468011_fk_SIP_course_modlist_id` FOREIGN KEY (`sec_id`) REFERENCES `SIP_course_modlist` (`id`),
-  ADD CONSTRAINT `cdff0407959e670acf42bb3f8da099bb` FOREIGN KEY (`instituteid_id`) REFERENCES `SIP_t10kt_institute` (`instituteid`);
-
---
--- Constraints for table `SIP_studentdetails`
---
-ALTER TABLE `SIP_studentdetails`
-  ADD CONSTRAINT `SIP_stu_teacherid_id_2cdf485c9c7568f2_fk_SIP_courselevelusers_id` FOREIGN KEY (`teacherid_id`) REFERENCES `SIP_courselevelusers` (`id`),
-  ADD CONSTRAINT `S_edxuserid_id_7995a2bcf145a05c_fk_SIP_iitbx_auth_user_edxuserid` FOREIGN KEY (`edxuserid_id`) REFERENCES `SIP_iitbx_auth_user` (`edxuserid`),
-  ADD CONSTRAINT `last_updated_by_id_23015b0ccb0b6a4f_fk_SIP_personinformation_id` FOREIGN KEY (`last_updated_by_id`) REFERENCES `SIP_personinformation` (`id`);
 
 --
 -- Constraints for table `SIP_t10kt_approvedinstitute`
