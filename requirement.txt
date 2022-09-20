@@ -1,6 +1,6 @@
 git+https://github.com/bashu/django-tracking.git
 pytz
-Django==1.11.28
+Django==1.8.19
 MySQL-python==1.2.5
 beautifulsoup4
 Pillow==9.0.1
