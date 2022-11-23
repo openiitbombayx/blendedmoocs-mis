@@ -3,7 +3,7 @@ pytz
 Django==1.8.19
 MySQL-python==1.2.5
 beautifulsoup4
-Pillow==6.2.2
+Pillow==9.2.0
 pymongo
 django_compressor
 python-dateutil
